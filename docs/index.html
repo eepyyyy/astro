@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jamakkol Prasanam Docs — Home</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box">
+          <input type="text" placeholder="Search docs…" id="search-input" oninput="filterNav(this.value)" />
+        </div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li class="current"><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li><a href="rasi.html">12 Rasis</a></li>
+          <li><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── CONTENT ─────────────────────────────────────── -->
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+
+    <div class="wy-nav-content">
+      <div class="rst-content">
+
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Introduction
+        </div>
+
+        <div role="main">
+
+          <h1>Jamakkol Prasanam — Developer Documentation</h1>
+
+          <div class="highlight-block">
+<pre><span class="kw">import</span> pysweph <span class="kw">as</span> swe
+<span class="kw">from</span> jamakkol_engine <span class="kw">import</span> compute
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
+
+result = compute(
+    dt_local=datetime(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">14</span>, <span class="num">30</span>, <span class="num">0</span>),
+    lat=<span class="num">13.0827</span>,  <span class="cmt"># Chennai</span>
+    lon=<span class="num">80.2707</span>,
+)
+<span class="fn">print</span>(result[<span class="str">"udhayam"</span>][<span class="str">"rasi_ta"</span>])   <span class="cmt"># → விருச்சிகம்</span>
+<span class="fn">print</span>(result[<span class="str">"arudham"</span>][<span class="str">"rasi_ta"</span>])   <span class="cmt"># → கடகம்</span></pre>
+          </div>
+
+          <ul class="quick-links">
+            <li>🆕 New here? Start with <a href="installation.html">Installation</a>.</li>
+            <li>📖 Want to understand the theory? Read <a href="udhayam.html">Udhayam</a> first.</li>
+            <li>⚡ Just want the code? Jump to <a href="engine.html">The Calculation Engine</a>.</li>
+            <li>🌐 Building an API? See <a href="fastapi.html">FastAPI Server</a>.</li>
+            <li>🎯 Matching jamakkol.com? See <a href="accuracy.html">Accuracy &amp; Testing</a>.</li>
+          </ul>
+
+          <h2>What is this?</h2>
+          <p>
+            Jamakkol Prasanam (ஜாமக்கோள் பிரசன்னம்) is a Tamil horary astrology system — you ask it a question at a specific moment, and it gives you an answer by reading the "sky map" at that exact second. Think of it like a snapshot of the planets, but instead of a birth chart, it's a <em>question chart</em>.
+          </p>
+          <p>
+            This library (<strong>pysweph</strong>) gives you access to NASA-level planet calculations in Python. We use it to build all the pieces of a Jamakkol chart: the rising sign (Udhayam), the answer point (Arudham), the obstacle point (Kavappu), and the positions of all 9 planets.
+          </p>
+
+          <h2>How do I use these docs?</h2>
+          <p>
+            If you're completely new, follow the sidebar top to bottom — it's designed in that order. If you already know astrology and just need the code, use the <strong>Building the API</strong> section on the left.
+          </p>
+          <p>
+            Each page explains <em>why</em> something works the way it does, not just how to call a function. You should be able to understand and reproduce every calculation without copying code blindly.
+          </p>
+
+          <div class="admonition note">
+            <p class="admonition-title">📌 Note</p>
+            <p>All calculations in this guide use the <strong>Lahiri Ayanamsa</strong> — the standard correction used by all Tamil and South Indian astrologers. This is already set up in the engine code.</p>
+          </div>
+
+          <h2>What does this cover?</h2>
+          <table>
+            <thead><tr><th>Topic</th><th>What you'll learn</th></tr></thead>
+            <tbody>
+              <tr><td><a href="julday.html">Julian Day</a></td><td>The universal time format that drives every calculation</td></tr>
+              <tr><td><a href="calc.html">Planet Positions</a></td><td>How to get the sidereal longitude of any planet</td></tr>
+              <tr><td><a href="udhayam.html">Udhayam</a></td><td>The Jamakkol rising sign — not the standard Lagna</td></tr>
+              <tr><td><a href="arudham.html">Arudham</a></td><td>The 5-minute rule for the query answer point</td></tr>
+              <tr><td><a href="kavappu.html">Kavappu</a></td><td>The shadow/obstacle point derived from Arudham and Sun</td></tr>
+              <tr><td><a href="jamam.html">Jamam Planets</a></td><td>8 symbolic planets placed clockwise every ~90 min</td></tr>
+              <tr><td><a href="mandi.html">Mandi &amp; Gulika</a></td><td>Sub-planets computed from Saturn's time allocation</td></tr>
+              <tr><td><a href="panchangam.html">Panchangam</a></td><td>Thithi, Yogam, Karanam, Nakshatra — all from Sun &amp; Moon</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <footer class="rst-footer">
+          <a href="installation.html" class="btn-next">Installation &rarr;</a>
+        </footer>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="docs.js"></script>
+</body>
+</html>

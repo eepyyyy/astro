@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ascendant — swe.houses() — Jamakkol Prasanam Docs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+      </div>
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li class="current"><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li><a href="rasi.html">12 Rasis</a></li>
+          <li><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Core Library &rsaquo; Ascendant
+        </div>
+        <div role="main">
+          <h1>Ascendant — <code>swe.houses()</code></h1>
+          
+          <p>
+            The <strong>Ascendant (Lagna)</strong> represents the intersection of the eastern horizon with the ecliptic at any given moment. In traditional Vedic and Western astrology, it is the starting point of the 1st house.
+          </p>
+          <p>
+            In Jamakkol Prasanam, the rising sign of the query itself is called <strong>Udhayam</strong>. However, Udhayam is computed by a symbolic progression of the Sun throughout the day (see <a href="udhayam.html">Udhayam</a>). Standard physical Ascendant calculations are still critical because the sub-planets <strong>Mandi and Gulika</strong> are calculated by finding the physical Ascendant at their specific planetary hour times (see <a href="mandi.html">Mandi &amp; Gulika</a>).
+          </p>
+
+          <h2>The Function</h2>
+          <p>
+            To compute house cusps and the Ascendant, use the <code>swe.houses()</code> function:
+          </p>
+
+          <div class="fn-sig">
+            <code><span class="fn-name">swe.houses</span>(jd, lat, lon, hsys)</code>
+            <span class="fn-ret">→ Returns: (cusps, ascmc)</span>
+          </div>
+
+          <h3>Parameters</h3>
+          <dl class="param-table">
+            <dt><span class="pname">jd</span> <span class="ptype">: float</span></dt>
+            <dd>Julian Day number (must be in Universal Time UTC).</dd>
+            <dt><span class="pname">lat</span> <span class="ptype">: float</span></dt>
+            <dd>Latitude of the observer in degrees (positive = North, negative = South).</dd>
+            <dt><span class="pname">lon</span> <span class="ptype">: float</span></dt>
+            <dd>Longitude of the observer in degrees (positive = East, negative = West).</dd>
+            <dt><span class="pname">hsys</span> <span class="ptype">: bytes</span></dt>
+            <dd>
+              A single-character byte string representing the house system:
+              <ul style="padding-left: 20px; margin-top: 6px;">
+                <li><code>b'P'</code>: Placidus (most common in modern astrology)</li>
+                <li><code>b'O'</code>: Porphyry</li>
+                <li><code>b'E'</code>: Equal HouseDetails</li>
+                <li><code>b'W'</code>: Whole Sign</li>
+              </ul>
+            </dd>
+          </dl>
+
+          <h3>Return Values</h3>
+          <p>
+            The function returns a tuple of two lists:
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 14px;">
+            <li><strong><code>cusps</code></strong>: A list of 13 floats. Index 0 is unused. Indexes 1 through 12 represent the starting longitude of the 1st through 12th houses.</li>
+            <li><strong><code>ascmc</code></strong>: A list of 10 floats containing secondary calculations:
+              <ul style="padding-left: 20px; margin-top: 6px;">
+                <li><code>ascmc[0]</code>: <strong>The Ascendant (Lagna) longitude</strong></li>
+                <li><code>ascmc[1]</code>: The Midheaven (MC) longitude</li>
+                <li><code>ascmc[2]</code>: Vertex</li>
+                <li><code>ascmc[3]</code>: East Point</li>
+              </ul>
+            </li>
+          </ul>
+
+          <h2>Calculating Sidereal Ascendant</h2>
+          <div class="admonition note">
+            <p class="admonition-title">📌 Important Ayanamsa Correction</p>
+            <p>
+              Unlike planetary positions, <code>swe.houses()</code> does not apply the sidereal ayanamsa automatically. It always returns <strong>tropical values</strong>.
+            </p>
+            <p>
+              To get the sidereal Ascendant, you must manually fetch the ayanamsa value at that Julian Day and subtract it:
+            </p>
+          </div>
+
+          <div class="highlight-block">
+<pre><span class="kw">import</span> pysweph <span class="kw">as</span> swe
+
+<span class="cmt"># Define coordinates (e.g., Chennai, India: 13.0827° N, 80.2707° E)</span>
+lat = <span class="num">13.0827</span>
+lon = <span class="num">80.2707</span>
+jd = swe.<span class="fn">julday</span>(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">9.0</span>, swe.GREG_CAL)  <span class="cmt"># Aug 4, 2026 14:30 IST</span>
+
+<span class="cmt"># 1. Fetch the tropical house calculations</span>
+cusps, ascmc = swe.<span class="fn">houses</span>(jd, lat, lon, <span class="str">b'P'</span>)
+tropical_asc = ascmc[<span class="num">0</span>]
+
+<span class="cmt"># 2. Get the Lahiri Ayanamsa</span>
+swe.<span class="fn">set_sid_mode</span>(swe.SIDM_LAHIRI, <span class="num">0</span>, <span class="num">0</span>)
+ayanamsa = swe.<span class="fn">get_ayanamsa_ut</span>(jd)
+
+<span class="cmt"># 3. Calculate sidereal Ascendant</span>
+sidereal_asc = (tropical_asc - ayanamsa) % <span class="num">360</span>
+
+<span class="fn">print</span>(<span class="str">f"Tropical Ascendant: {tropical_asc:.4f}°"</span>)
+<span class="fn">print</span>(<span class="str">f"Sidereal Ascendant: {sidereal_asc:.4f}°"</span>)
+<span class="cmt"># Output: 
+# Tropical Ascendant: 254.1054° (Dhanusu / Sagittarius)
+# Sidereal Ascendant: 229.8673° (Viruchigam / Scorpio)</span></pre>
+          </div>
+
+        </div>
+        <footer class="rst-footer">
+          <a href="ayanamsa.html" class="btn-prev">&larr; Ayanamsa</a>
+          <a href="risetrans.html" class="btn-next">Sunrise &amp; Sunset &rarr;</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

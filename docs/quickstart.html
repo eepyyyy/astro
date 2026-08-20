@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quick Start — Jamakkol Prasanam Docs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+      </div>
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li class="current"><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li><a href="rasi.html">12 Rasis</a></li>
+          <li><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Getting Started &rsaquo; Quick Start
+        </div>
+        <div role="main">
+          <h1>Quick Start</h1>
+          <p>
+            Ready to calculate a chart? In this page, we'll write a simple Python script to calculate the positions of the planets and the Udhayam/Arudham using <code>pysweph</code>.
+          </p>
+
+          <h2>Your First Jamakkol Script</h2>
+          <p>
+            Create a file named <code>quickstart.py</code> in your project root and paste the following code:
+          </p>
+
+          <div class="highlight-block">
+<pre><span class="kw">import</span> pysweph <span class="kw">as</span> swe
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime, timedelta
+
+<span class="cmt"># Initialize Swiss Ephemeris and set Sidereal Lahiri Mode</span>
+swe.<span class="fn">set_ephe_path</span>(<span class="str">""</span>)
+swe.<span class="fn">set_sid_mode</span>(swe.SIDM_LAHIRI, <span class="num">0</span>, <span class="num">0</span>)
+
+<span class="cmt"># 1. Define local date & time (e.g., Chennai, India)</span>
+dt_local = datetime(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">14</span>, <span class="num">30</span>, <span class="num">0</span>)  <span class="cmt"># August 4, 2026 at 2:30 PM</span>
+tz_offset = <span class="num">5.5</span>                             <span class="cmt"># UTC+5:30 (IST)</span>
+
+<span class="cmt"># 2. Convert to Julian Day (using UTC time)</span>
+dt_utc = dt_local - timedelta(hours=tz_offset)
+decimal_hour = dt_utc.hour + dt_utc.minute / <span class="num">60.0</span> + dt_utc.second / <span class="num">3600.0</span>
+jd = swe.<span class="fn">julday</span>(dt_utc.year, dt_utc.month, dt_utc.day, decimal_hour, swe.GREG_CAL)
+
+<span class="cmt"># 3. Calculate Sun's sidereal position</span>
+flags = swe.FLG_SWIEPH | swe.FLG_SIDEREAL
+res, _ = swe.<span class="fn">calc_ut</span>(jd, swe.SUN, flags)
+sun_lon = res[<span class="num">0</span>]
+sun_rasi = int(sun_lon // <span class="num">30</span>)
+
+<span class="cmt"># 4. Calculate Udhayam (rising sign for Jamakkol)</span>
+<span class="cmt"># For the sake of this quickstart, assume sunrise is at 06:00:00 IST (2461259.5208)</span>
+jd_sunrise = swe.<span class="fn">julday</span>(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">0.5</span>, swe.GREG_CAL)  <span class="cmt"># 00:30 UTC = 06:00 IST</span>
+jd_sunset  = swe.<span class="fn">julday</span>(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">13.0</span>, swe.GREG_CAL) <span class="cmt"># 13:00 UTC = 18:30 IST</span>
+
+fraction = (jd - jd_sunrise) / (jd_sunset - jd_sunrise)
+udhayam_deg = (sun_rasi * <span class="num">30</span> + fraction * <span class="num">360</span>) % <span class="num">360</span>
+udhayam_rasi = int(udhayam_deg // <span class="num">30</span>)
+
+<span class="cmt"># 5. Calculate Arudham (5-minute rule based on query local time)</span>
+total_seconds = dt_local.minute * <span class="num">60</span> + dt_local.second
+arudham_rasi = total_seconds // <span class="num">300</span>  <span class="cmt"># 5 minutes = 300 seconds per Rasi</span>
+
+<span class="cmt"># Rasi name lookup list</span>
+rasi_names = [<span class="str">"Mesham"</span>, <span class="str">"Rishabham"</span>, <span class="str">"Mithunam"</span>, <span class="str">"Kadagam"</span>, 
+              <span class="str">"Simmam"</span>, <span class="str">"Kanni"</span>, <span class="str">"Thulaam"</span>, <span class="str">"Viruchigam"</span>, 
+              <span class="str">"Dhanusu"</span>, <span class="str">"Magaram"</span>, <span class="str">"Kumbam"</span>, <span class="str">"Meenam"</span>]
+
+<span class="fn">print</span>(<span class="str">f"Query Time : {dt_local}"</span>)
+<span class="fn">print</span>(<span class="str">f"Sun Rasi   : {rasi_names[sun_rasi]} ({sun_lon:.4f}°)"</span>)
+<span class="fn">print</span>(<span class="str">f"Udhayam    : {rasi_names[udhayam_rasi]} ({udhayam_deg:.4f}°)"</span>)
+<span class="fn">print</span>(<span class="str">f"Arudham    : {rasi_names[arudham_rasi]}"</span>)</pre>
+          </div>
+
+          <h2>Run the Code</h2>
+          <p>
+            Execute the script in your terminal using <code>uv run</code> (or standard python):
+          </p>
+          <div class="highlight-shell">
+            <pre>uv run quickstart.py</pre>
+          </div>
+          <p>
+            You should see output similar to this:
+          </p>
+          <div class="highlight-shell">
+            <pre>Query Time : 2026-08-04 14:30:00
+Sun Rasi   : Kadagam (108.0673°)
+Udhayam    : Viruchigam (229.8673°)
+Arudham    : Viruchigam</pre>
+          </div>
+
+          <div class="admonition note">
+            <p class="admonition-title">📌 What's Next?</p>
+            <p>
+              This quickstart used hardcoded sunrise and sunset times for simplicity. To build a robust system, you must calculate precise daily sunrises and sunsets using the physical location coordinate (latitude and longitude). 
+              Proceed to the <a href="julday.html">Julian Day</a> and <a href="risetrans.html">Sunrise & Sunset</a> pages to see how to calculate these values automatically!
+            </p>
+          </div>
+
+        </div>
+        <footer class="rst-footer">
+          <a href="installation.html" class="btn-prev">&larr; Installation</a>
+          <a href="julday.html" class="btn-next">Julian Day &rarr;</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

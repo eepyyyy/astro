@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Udhayam — Jamakkol Prasanam Docs</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+<div class="wy-grid-for-nav">
+  <nav class="wy-nav-side"><div class="wy-side-scroll"><div class="wy-side-nav-search">
+    <a href="index.html" class="brand">🪐 PySweph Jamakkol</a><div class="version">v1.0 — 2026</div>
+    <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+  </div>
+  <div class="wy-menu wy-menu-vertical">
+    <p class="caption">Getting Started</p>
+    <ul><li><a href="index.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="quickstart.html">Quick Start</a></li></ul>
+    <p class="caption">Core Library (pysweph)</p>
+    <ul>
+      <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+      <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+      <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+      <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+      <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+    </ul>
+    <p class="caption">Jamakkol Concepts</p>
+    <ul>
+      <li class="current"><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+      <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+      <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+      <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+      <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+      <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+    </ul>
+    <p class="caption">Reference Tables</p>
+    <ul><li><a href="rasi.html">12 Rasis</a></li><li><a href="nakshatras.html">27 Nakshatras</a></li><li><a href="panchangam.html">Panchangam</a></li></ul>
+    <p class="caption">Building the API</p>
+    <ul><li><a href="engine.html">The Calculation Engine</a></li><li><a href="fastapi.html">FastAPI Server</a></li><li><a href="accuracy.html">Accuracy &amp; Testing</a></li></ul>
+  </div></div></nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top"><button onclick="toggleSidebar()">☰</button><a href="index.html">PySweph Jamakkol Docs</a></nav>
+    <div class="wy-nav-content"><div class="rst-content">
+      <div class="breadcrumbs"><a href="index.html">🏠</a> &rsaquo; Jamakkol Concepts &rsaquo; Udhayam</div>
+      <div role="main">
+
+        <h1>Udhayam (உதயம்) — The Rising Sign</h1>
+
+        <p>
+          Udhayam is the first thing you calculate in a Jamakkol chart. It's the "ascendant" of the Prasanam — the rising sign at the moment of the query. But here's what makes it different from a regular birth chart ascendant:
+        </p>
+        <p>
+          <strong>In a normal birth chart</strong>, the ascendant moves through all 12 Rasis in one full day (~24 hours). So each Rasi holds the ascendant for about 2 hours.
+        </p>
+        <p>
+          <strong>In Jamakkol</strong>, the Udhayam completes a full 12-Rasi cycle between <em>sunrise and sunset</em> (one day cycle), then another full cycle from <em>sunset to sunrise</em> (one night cycle). If the day is 12 hours long, each Rasi gets 1 hour. If it's a short winter day (10 hours), each Rasi gets only 50 minutes.
+        </p>
+
+        <div class="admonition note">
+          <p class="admonition-title">📌 Key rule</p>
+          <p>At <strong>sunrise</strong>, the Udhayam begins at the <em>start of the Sun's current Rasi</em> (not the Sun's exact degree). For example, if the Sun is at 18° of Kadagam, the Udhayam starts at 0° of Kadagam at sunrise.</p>
+        </div>
+
+        <h2>Why does it work this way?</h2>
+        <p>
+          In Jamakkol tradition, the Sun is the master of the day. The day "belongs" to the Sun, so the rising sign starts from the Sun's Rasi. The Udhayam then marches through all 12 signs in proportion to the day's length — giving each moment its own unique rising sign.
+        </p>
+
+        <h2>The Algorithm — Step by Step</h2>
+
+        <ul class="step-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h5>Get the query's Julian Day</h5>
+              <p>Convert the query's local time to UTC, then to a Julian Day number using <a href="julday.html">swe.julday()</a>.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h5>Get today's sunrise and sunset Julian Days</h5>
+              <p>Use <a href="risetrans.html">swe.rise_trans()</a> with the astrologer's location. You'll also need yesterday's sunset and tomorrow's sunrise for night queries.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h5>Find the current span (Day or Night)</h5>
+              <p>If <code>sunrise ≤ query &lt; sunset</code>, it's a Day span. If the query is before today's sunrise, the span is yesterday's sunset → today's sunrise. If after today's sunset, the span is today's sunset → tomorrow's sunrise.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h5>Calculate what fraction of the span has elapsed</h5>
+              <p><code>fraction = (query_jd - span_start_jd) / (span_end_jd - span_start_jd)</code></p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <h5>Map the fraction to a degree in the zodiac</h5>
+              <p>Start from the beginning of the Sun's Rasi (<code>sun_rasi_index × 30°</code>), then add <code>fraction × 360°</code>. Take modulo 360 to stay within bounds.</p>
+            </div>
+          </li>
+        </ul>
+
+        <h2>The Formula</h2>
+
+        <div class="formula-box">
+          <div class="formula-title">Udhayam Degree</div>
+          span_start = jd_sunrise  (or prev_sunset for night query before sunrise)<br/>
+          span_end   = jd_sunset   (or next_sunrise for night query)<br/><br/>
+          fraction       = (jd_query - span_start) / (span_end - span_start)<br/>
+          udhayam_degree = (sun_rasi_index × 30  +  fraction × 360) % 360
+        </div>
+
+        <h2>Code</h2>
+
+        <div class="highlight-block">
+<pre><span class="kw">def</span> <span class="fn">calculate_udhayam</span>(
+    jd_query,
+    jd_sunrise, jd_sunset,
+    jd_prev_sunset, jd_next_sunrise,
+    sun_rasi_index: int
+) -> dict:
+    <span class="str">"""
+    Calculate the Jamakkol Udhayam (rising sign) for a query moment.
+
+    sun_rasi_index: 0 = Mesham, 1 = Rishabham ... 11 = Meenam
+                    Get this from the Sun's sidereal longitude // 30
+    """</span>
+    <span class="cmt"># Which span are we in?</span>
+    <span class="kw">if</span> jd_sunrise <= jd_query < jd_sunset:
+        span_start, span_end = jd_sunrise, jd_sunset       <span class="cmt"># Day query</span>
+    <span class="kw">elif</span> jd_query < jd_sunrise:
+        span_start, span_end = jd_prev_sunset, jd_sunrise  <span class="cmt"># Last night query</span>
+    <span class="kw">else</span>:
+        span_start, span_end = jd_sunset, jd_next_sunrise  <span class="cmt"># Tonight query</span>
+
+    <span class="cmt"># Fraction of the day/night that has passed</span>
+    fraction = (jd_query - span_start) / (span_end - span_start)
+
+    <span class="cmt"># Udhayam starts at the beginning of the Sun's Rasi
+    # E.g. if Sun is at 18° Kadagam, start = 3 × 30 = 90°</span>
+    start_deg     = sun_rasi_index * <span class="num">30.0</span>
+    udhayam_deg   = (start_deg + fraction * <span class="num">360.0</span>) % <span class="num">360.0</span>
+
+    <span class="kw">return</span> <span class="fn">degree_to_rasi_info</span>(udhayam_deg)   <span class="cmt"># see engine page</span></pre>
+        </div>
+
+        <h2>Common Mistakes</h2>
+
+        <div class="admonition warning">
+          <p class="admonition-title">⚠️ Don't use the astronomical Ascendant for Udhayam</p>
+          <p>
+            The <code>swe.houses()</code> function gives you the standard astronomical ascendant. Do <strong>not</strong> use this as the Udhayam in Jamakkol. They are entirely different things. The astronomical ascendant uses Earth's rotation; the Udhayam uses the Sun's Rasi and daylight duration.
+          </p>
+        </div>
+
+        <div class="admonition warning">
+          <p class="admonition-title">⚠️ Start from the Rasi boundary, not the Sun's degree</p>
+          <p>
+            If the Sun is at 18° Kadagam, you do NOT start from 18°. You start from 0° Kadagam (= 90°). The Sun's <em>Rasi</em> sets the starting Rasi, but the Udhayam always starts from the beginning of that Rasi.
+          </p>
+        </div>
+
+        <h2>Interpreting Udhayam</h2>
+        <p>
+          The Udhayam Rasi and its lord (the planet that rules that Rasi) form the foundation of the interpretation. Planets placed in or aspecting the Udhayam, planets that have already crossed the Udhayam, and planets approaching it tell you about the past, present, and future of the querent's situation.
+        </p>
+
+      </div>
+      <footer class="rst-footer">
+        <a href="risetrans.html" class="btn-prev">&larr; Sunrise &amp; Sunset</a>
+        <a href="arudham.html" class="btn-next">Arudham &rarr;</a>
+      </footer>
+    </div></div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

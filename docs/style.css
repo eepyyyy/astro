@@ -1,0 +1,595 @@
+/* ================================================================
+   JAMAKKOL PRASANAM DOCS — STYLESHEET
+   Modeled after Read the Docs / Sphinx RTD Theme
+   ================================================================ */
+
+/* ── Fonts ──────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Roboto+Slab:wght@400;700&family=Inconsolata:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;600&display=swap');
+
+/* ── Variables ──────────────────────────────────────────────── */
+:root {
+  --sidebar-bg:      #343131;
+  --sidebar-hover:   #4e4a4a;
+  --sidebar-active:  #e74c3c;
+  --sidebar-caption: #9b9b9b;
+  --sidebar-link:    #d9d9d9;
+  --sidebar-width:   300px;
+  --content-bg:      #fcfcfc;
+  --text-color:      #404040;
+  --heading-color:   #222;
+  --link-color:      #2980b9;
+  --link-hover:      #3091d1;
+  --code-bg:         #f8f8f8;
+  --code-border:     #e1e4e5;
+  --note-bg:         #e7f2fa;
+  --note-border:     #6ab0de;
+  --warning-bg:      #ffedcc;
+  --warning-border:  #f0b37e;
+  --tip-bg:          #dbfaf4;
+  --tip-border:      #1abc9c;
+  --table-head-bg:   #e1e4e5;
+  --table-border:    #e1e4e5;
+  --breadcrumb-bg:   #fcfcfc;
+  --footer-bg:       #e1e4e5;
+  --highlight-green: #4af626;
+  --font-body:       'Lato', sans-serif;
+  --font-mono:       'Inconsolata', monospace;
+  --font-heading:    'Roboto Slab', serif;
+  --font-tamil:      'Noto Sans Tamil', sans-serif;
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-color);
+  background: var(--content-bg);
+  line-height: 1.75;
+}
+
+/* ── Grid ───────────────────────────────────────────────────── */
+.wy-grid-for-nav {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ────────────────────────────────────────────────── */
+.wy-nav-side {
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  z-index: 200;
+  transition: transform 0.3s ease;
+}
+
+.wy-side-scroll { padding-bottom: 40px; }
+
+.wy-side-nav-search {
+  background: #2c2828;
+  padding: 18px 16px 14px;
+  border-bottom: 1px solid #4a4545;
+}
+
+.brand {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 4px;
+  letter-spacing: 0.01em;
+}
+
+.brand:hover { color: #e0e0e0; }
+
+.version {
+  font-size: 0.75rem;
+  color: #999;
+  margin-bottom: 12px;
+}
+
+.search-box input {
+  width: 100%;
+  background: #3e3a3a;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  color: #fff;
+  font-family: var(--font-body);
+  outline: none;
+}
+
+.search-box input::placeholder { color: #888; }
+.search-box input:focus { border-color: #777; background: #464242; }
+
+/* ── Nav Menu ───────────────────────────────────────────────── */
+.wy-menu-vertical { padding: 10px 0; }
+
+.wy-menu-vertical p.caption {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sidebar-caption);
+  padding: 14px 16px 5px;
+  pointer-events: none;
+}
+
+.wy-menu-vertical ul { list-style: none; }
+
+.wy-menu-vertical ul li a {
+  display: block;
+  padding: 7px 16px 7px 20px;
+  font-size: 0.87rem;
+  color: var(--sidebar-link);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.wy-menu-vertical ul li a:hover {
+  background: var(--sidebar-hover);
+  border-left-color: #666;
+}
+
+.wy-menu-vertical ul li.current > a {
+  background: #2c2828;
+  border-left-color: var(--sidebar-active);
+  color: #fff;
+  font-weight: 700;
+}
+
+.wy-menu-vertical ul li.current.has-sub > a {
+  color: #e74c3c;
+}
+
+/* ── Top Nav (mobile) ───────────────────────────────────────── */
+.wy-nav-top {
+  display: none;
+  background: #2c2828;
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  align-items: center;
+  gap: 12px;
+}
+
+.wy-nav-top button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.wy-nav-top a { color: #fff; text-decoration: none; }
+
+/* ── Content Area ───────────────────────────────────────────── */
+.wy-nav-content-wrap {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wy-nav-content {
+  flex: 1;
+  padding: 0;
+  background: var(--content-bg);
+}
+
+.rst-content {
+  max-width: 900px;
+  padding: 28px 48px 60px;
+  margin: 0 auto;
+}
+
+/* ── Breadcrumbs ─────────────────────────────────────────────── */
+.breadcrumbs {
+  font-size: 0.82rem;
+  color: #888;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--table-border);
+  margin-bottom: 28px;
+}
+
+.breadcrumbs a { color: var(--link-color); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+
+/* ── Typography ──────────────────────────────────────────────── */
+h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--table-border);
+  line-height: 1.2;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin: 36px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--table-border);
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #444;
+  margin: 28px 0 10px;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #555;
+  margin: 20px 0 8px;
+}
+
+p {
+  margin-bottom: 14px;
+  color: var(--text-color);
+  line-height: 1.8;
+}
+
+a { color: var(--link-color); text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--link-hover); }
+
+strong { font-weight: 700; color: #333; }
+em { font-style: italic; }
+
+/* ── Inline Code ─────────────────────────────────────────────── */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  color: #e74c3c;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+/* ── Code Blocks ─────────────────────────────────────────────── */
+.highlight-block {
+  background: #272822;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  overflow-x: auto;
+  position: relative;
+}
+
+.highlight-block::before {
+  content: 'python';
+  position: absolute;
+  top: 6px; right: 10px;
+  font-size: 0.7rem;
+  color: #666;
+  font-family: var(--font-mono);
+  text-transform: lowercase;
+}
+
+.highlight-block pre {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: #f8f8f2;
+  white-space: pre;
+  tab-size: 4;
+}
+
+/* Syntax coloring */
+.highlight-block .kw  { color: #66d9e8; }  /* keywords: import, def, from */
+.highlight-block .fn  { color: #a6e22e; }  /* function calls */
+.highlight-block .str { color: #e6db74; }  /* strings */
+.highlight-block .num { color: #ae81ff; }  /* numbers */
+.highlight-block .cmt { color: #75715e; font-style: italic; } /* comments */
+.highlight-block .cls { color: #fd971f; }  /* class names */
+.highlight-block .op  { color: #f92672; }  /* operators */
+
+/* Shell blocks */
+.highlight-shell {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  overflow-x: auto;
+}
+
+.highlight-shell::before { content: 'shell'; color: #555; }
+
+.highlight-shell pre {
+  font-family: var(--font-mono);
+  font-size: 0.87rem;
+  line-height: 1.65;
+  color: #a8ff60;
+}
+
+/* ── Formula Box ─────────────────────────────────────────────── */
+.formula-box {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 2;
+  color: #5d4037;
+}
+
+.formula-box .formula-title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #bf6f00;
+  margin-bottom: 8px;
+}
+
+/* ── Admonitions ─────────────────────────────────────────────── */
+.admonition {
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin: 20px 0;
+  border-left: 4px solid;
+}
+
+.admonition p { margin-bottom: 6px; }
+.admonition p:last-child { margin-bottom: 0; }
+
+.admonition-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.admonition.note    { background: var(--note-bg);    border-color: var(--note-border); }
+.admonition.warning { background: var(--warning-bg); border-color: var(--warning-border); }
+.admonition.tip     { background: var(--tip-bg);     border-color: var(--tip-border); }
+.admonition.important { background: #fde8e8; border-color: #e74c3c; }
+
+.admonition.note    .admonition-title { color: #2980b9; }
+.admonition.warning .admonition-title { color: #c0392b; }
+.admonition.tip     .admonition-title { color: #16a085; }
+.admonition.important .admonition-title { color: #c0392b; }
+
+/* ── Tables ──────────────────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 0.9rem;
+}
+
+thead th {
+  background: var(--table-head-bg);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: #333;
+  border-bottom: 2px solid #c8c8c8;
+  border-top: 1px solid var(--table-border);
+}
+
+tbody td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--table-border);
+  vertical-align: top;
+}
+
+tbody tr:hover { background: #f5f5f5; }
+tbody td:first-child { font-weight: 600; }
+
+/* Tamil cells */
+.ta { font-family: var(--font-tamil); font-size: 0.9em; }
+
+/* ── Quick Links (Home page) ─────────────────────────────────── */
+.quick-links {
+  list-style: none;
+  background: #f0f4f8;
+  border: 1px solid #d0dae5;
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin: 20px 0;
+}
+
+.quick-links li {
+  padding: 5px 0;
+  font-size: 0.92rem;
+}
+
+/* ── Parameter Docs (like Python docs) ───────────────────────── */
+.param-table {
+  margin: 12px 0;
+}
+
+.param-table dt {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+  padding: 8px 14px;
+  margin-bottom: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+
+.param-table dt .pname { color: #2980b9; font-weight: 600; }
+.param-table dt .ptype { color: #888; }
+
+.param-table dd {
+  padding: 6px 14px 12px 20px;
+  font-size: 0.88rem;
+  color: #555;
+  border-left: 2px solid #e1e4e5;
+  margin-left: 14px;
+  margin-bottom: 8px;
+}
+
+/* ── Function Signature Block ────────────────────────────────── */
+.fn-sig {
+  background: #eef0f4;
+  border: 1px solid #c8cdd4;
+  border-radius: 4px;
+  padding: 12px 18px;
+  margin: 16px 0 8px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.fn-sig .fn-name { color: #2980b9; font-weight: 700; }
+.fn-sig .fn-ret  { color: #27ae60; font-style: italic; font-size: 0.82rem; display: block; margin-top: 4px; }
+
+/* ── Horizontal Divider ──────────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid var(--table-border);
+  margin: 32px 0;
+}
+
+/* ── Step Numbers ────────────────────────────────────────────── */
+.step-list { list-style: none; margin: 14px 0; }
+
+.step-list li {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #2980b9;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-body h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 3px;
+}
+
+.step-body p { font-size: 0.9rem; margin: 0; color: #555; }
+
+/* ── Rasi Grid ───────────────────────────────────────────────── */
+.rasi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--table-border);
+  border: 1px solid var(--table-border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 14px 0;
+}
+
+.rasi-cell {
+  background: #fff;
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 0.82rem;
+}
+
+.rasi-cell:hover { background: #f0f4f8; }
+
+.rasi-cell .ri { font-size: 1.3rem; margin-bottom: 2px; }
+.rasi-cell .rn { font-weight: 700; color: #2980b9; }
+.rasi-cell .rt { font-family: var(--font-tamil); font-size: 0.82rem; color: #555; }
+.rasi-cell .rd { font-size: 0.7rem; color: #aaa; margin-top: 2px; }
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.rst-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 1px solid var(--table-border);
+}
+
+.btn-prev, .btn-next {
+  display: inline-block;
+  background: var(--link-color);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.btn-prev:hover, .btn-next:hover {
+  background: var(--link-hover);
+  text-decoration: none;
+  color: #fff;
+}
+
+/* ── Nav hidden search items ─────────────────────────────────── */
+.nav-hidden { display: none !important; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .wy-nav-side {
+    transform: translateX(-100%);
+  }
+
+  .wy-nav-side.open {
+    transform: translateX(0);
+  }
+
+  .wy-nav-content-wrap {
+    margin-left: 0;
+  }
+
+  .wy-nav-top {
+    display: flex;
+  }
+
+  .rst-content {
+    padding: 20px 22px 50px;
+  }
+}
+
+/* ── Print ───────────────────────────────────────────────────── */
+@media print {
+  .wy-nav-side, .wy-nav-top, .rst-footer { display: none; }
+  .wy-nav-content-wrap { margin-left: 0; }
+  .rst-content { max-width: 100%; padding: 0; }
+  .highlight-block { background: #f8f8f8; border-color: #ddd; }
+  .highlight-block pre { color: #333; }
+  .highlight-block .kw  { color: #0070b0; }
+  .highlight-block .fn  { color: #006400; }
+  .highlight-block .str { color: #8b0000; }
+  .highlight-block .num { color: #660099; }
+  .highlight-block .cmt { color: #888; }
+}

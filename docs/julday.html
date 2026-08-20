@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Julian Day — Jamakkol Prasanam Docs</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+<div class="wy-grid-for-nav">
+  <nav class="wy-nav-side"><div class="wy-side-scroll"><div class="wy-side-nav-search">
+    <a href="index.html" class="brand">🪐 PySweph Jamakkol</a><div class="version">v1.0 — 2026</div>
+    <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+  </div>
+  <div class="wy-menu wy-menu-vertical">
+    <p class="caption">Getting Started</p>
+    <ul><li><a href="index.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="quickstart.html">Quick Start</a></li></ul>
+    <p class="caption">Core Library (pysweph)</p>
+    <ul>
+      <li class="current"><a href="julday.html">Julian Day — swe.julday()</a></li>
+      <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+      <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+      <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+      <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+    </ul>
+    <p class="caption">Jamakkol Concepts</p>
+    <ul>
+      <li><a href="udhayam.html">Udhayam (உதயம்)</a></li><li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+      <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li><li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+      <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li><li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+    </ul>
+    <p class="caption">Reference Tables</p>
+    <ul><li><a href="rasi.html">12 Rasis</a></li><li><a href="nakshatras.html">27 Nakshatras</a></li><li><a href="panchangam.html">Panchangam</a></li></ul>
+    <p class="caption">Building the API</p>
+    <ul><li><a href="engine.html">The Calculation Engine</a></li><li><a href="fastapi.html">FastAPI Server</a></li><li><a href="accuracy.html">Accuracy &amp; Testing</a></li></ul>
+  </div></div></nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top"><button onclick="toggleSidebar()">☰</button><a href="index.html">PySweph Jamakkol Docs</a></nav>
+    <div class="wy-nav-content"><div class="rst-content">
+      <div class="breadcrumbs"><a href="index.html">🏠</a> &rsaquo; Core Library &rsaquo; Julian Day</div>
+      <div role="main">
+
+        <h1>Julian Day — <code>swe.julday()</code></h1>
+
+        <p>
+          Before you can calculate anything — planets, sunrise, ascendant — you need to give the library a time. But not in the format of "August 4, 2:30 PM". The Swiss Ephemeris uses its own time format called a <strong>Julian Day Number (JD)</strong>.
+        </p>
+        <p>
+          Think of it as: "the number of days since January 1, 4713 BC". It's just a single floating-point number that unambiguously represents any moment in time, anywhere. Every single <code>swe</code> function that takes time as input expects a Julian Day.
+        </p>
+
+        <h2>The Function</h2>
+
+        <div class="fn-sig">
+          <code><span class="fn-name">swe.julday</span>(year, month, day, hour, calendar)</code>
+          <span class="fn-ret">→ Returns: float (the Julian Day Number)</span>
+        </div>
+
+        <h3>Parameters</h3>
+        <dl class="param-table">
+          <dt><span class="pname">year</span> <span class="ptype">: int</span></dt>
+          <dd>The year. Positive = AD, negative = BC. e.g. <code>2026</code></dd>
+
+          <dt><span class="pname">month</span> <span class="ptype">: int</span></dt>
+          <dd>Month number. <code>1</code> = January, <code>12</code> = December.</dd>
+
+          <dt><span class="pname">day</span> <span class="ptype">: int</span></dt>
+          <dd>Day of the month. <code>1</code> to <code>31</code>.</dd>
+
+          <dt><span class="pname">hour</span> <span class="ptype">: float</span></dt>
+          <dd>
+            The hour as a decimal. <strong>This must be in UTC</strong>, not local time.
+            Convert minutes and seconds into a fraction: <code>hour + minute/60 + second/3600</code>.
+            For example, 14:30:45 UTC = <code>14 + 30/60 + 45/3600 = 14.5125</code>.
+          </dd>
+
+          <dt><span class="pname">calendar</span> <span class="ptype">: int</span></dt>
+          <dd>
+            Use <code>swe.GREG_CAL</code> for the Gregorian calendar (which is what we use after 1582).
+            For dates before 1582, use <code>swe.JUL_CAL</code>. For our purposes, always use <code>swe.GREG_CAL</code>.
+          </dd>
+        </dl>
+
+        <h2>A Simple Example</h2>
+
+        <div class="highlight-block">
+<pre><span class="kw">import</span> pysweph <span class="kw">as</span> swe
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime, timedelta
+
+<span class="cmt"># The user's query time is 2:30 PM IST on August 4, 2026.
+# IST is UTC+5:30, so we subtract 5 hours 30 minutes to get UTC.</span>
+
+dt_local = datetime(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">14</span>, <span class="num">30</span>, <span class="num">0</span>)    <span class="cmt"># 2:30 PM IST</span>
+dt_utc   = dt_local - timedelta(hours=<span class="num">5.5</span>)       <span class="cmt"># 9:00 AM UTC</span>
+
+<span class="cmt"># Build the decimal hour for swe.julday</span>
+decimal_hour = dt_utc.hour + dt_utc.minute / <span class="num">60.0</span> + dt_utc.second / <span class="num">3600.0</span>
+<span class="cmt"># decimal_hour = 9.0</span>
+
+jd = swe.<span class="fn">julday</span>(dt_utc.year, dt_utc.month, dt_utc.day, decimal_hour, swe.GREG_CAL)
+<span class="fn">print</span>(jd)
+<span class="cmt"># Output: 2461259.875  (this is the Julian Day for Aug 4, 2026 at 09:00 UTC)</span></pre>
+        </div>
+
+        <h2>The Reusable Helper Function</h2>
+        <p>
+          You'll call <code>swe.julday()</code> constantly, so it's cleaner to write a helper once:
+        </p>
+
+        <div class="highlight-block">
+<pre><span class="kw">def</span> <span class="fn">to_jd</span>(dt_utc: datetime) -> float:
+    <span class="str">"""Convert a UTC datetime to Julian Day Number."""</span>
+    h = dt_utc.hour + dt_utc.minute / <span class="num">60.0</span> + dt_utc.second / <span class="num">3600.0</span>
+    <span class="kw">return</span> swe.<span class="fn">julday</span>(dt_utc.year, dt_utc.month, dt_utc.day, h, swe.GREG_CAL)
+
+
+<span class="kw">def</span> <span class="fn">local_to_jd</span>(dt_local: datetime, tz_offset_hours: float = <span class="num">5.5</span>) -> float:
+    <span class="str">"""Convert local time to Julian Day. Default timezone is IST (UTC+5:30)."""</span>
+    dt_utc = dt_local - timedelta(hours=tz_offset_hours)
+    <span class="kw">return</span> <span class="fn">to_jd</span>(dt_utc)</pre>
+        </div>
+
+        <h2>Converting JD Back to a Human-Readable Time</h2>
+        <p>
+          You'll need this when converting sunrise/sunset Julian Days back into something you can display. Use <code>swe.revjul()</code>:
+        </p>
+
+        <div class="highlight-block">
+<pre>y, m, d, h = swe.<span class="fn">revjul</span>(jd, swe.GREG_CAL)
+<span class="cmt"># h is a decimal like 9.0 = 09:00:00 UTC</span>
+
+hour    = int(h)
+minutes = int((h - hour) * <span class="num">60</span>)
+seconds = int(((h - hour) * <span class="num">60</span> - minutes) * <span class="num">60</span>)
+
+<span class="cmt"># For IST, add 5:30 to UTC time</span>
+dt_utc = datetime(int(y), int(m), int(d), hour, minutes, seconds)
+dt_ist = dt_utc + timedelta(hours=<span class="num">5.5</span>)
+<span class="fn">print</span>(dt_ist.strftime(<span class="str">"%H:%M:%S IST"</span>))</pre>
+        </div>
+
+        <div class="admonition warning">
+          <p class="admonition-title">⚠️ Always use UTC</p>
+          <p>
+            Every function in <code>pysweph</code> expects the Julian Day in <strong>Universal Time (UTC)</strong>. If you pass IST or any other local time directly, your sunrise times will be off by 5.5 hours and all your Jamam calculations will be wrong. Always convert to UTC first.
+          </p>
+        </div>
+
+        <h2>Why does this matter for Jamakkol?</h2>
+        <p>
+          Every single Jamakkol calculation depends on an accurate Julian Day. The sunrise time, the Udhayam degree, the Mandi position — all of them are computed from a JD. If your JD is even 1 minute off, your Jamam number could be wrong, and the whole chart shifts.
+        </p>
+
+      </div>
+
+      <footer class="rst-footer">
+        <a href="quickstart.html" class="btn-prev">&larr; Quick Start</a>
+        <a href="calc.html" class="btn-next">Planet Positions &rarr;</a>
+      </footer>
+    </div></div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

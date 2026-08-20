@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Kavappu — Jamakkol Prasanam Docs</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+<div class="wy-grid-for-nav">
+  <nav class="wy-nav-side"><div class="wy-side-scroll"><div class="wy-side-nav-search">
+    <a href="index.html" class="brand">🪐 PySweph Jamakkol</a><div class="version">v1.0 — 2026</div>
+    <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+  </div>
+  <div class="wy-menu wy-menu-vertical">
+    <p class="caption">Getting Started</p>
+    <ul><li><a href="index.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="quickstart.html">Quick Start</a></li></ul>
+    <p class="caption">Core Library (pysweph)</p>
+    <ul>
+      <li><a href="julday.html">Julian Day — swe.julday()</a></li><li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+      <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li><li><a href="houses.html">Ascendant — swe.houses()</a></li>
+      <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+    </ul>
+    <p class="caption">Jamakkol Concepts</p>
+    <ul>
+      <li><a href="udhayam.html">Udhayam (உதயம்)</a></li><li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+      <li class="current"><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+      <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+      <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li><li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+    </ul>
+    <p class="caption">Reference Tables</p>
+    <ul><li><a href="rasi.html">12 Rasis</a></li><li><a href="nakshatras.html">27 Nakshatras</a></li><li><a href="panchangam.html">Panchangam</a></li></ul>
+    <p class="caption">Building the API</p>
+    <ul><li><a href="engine.html">The Calculation Engine</a></li><li><a href="fastapi.html">FastAPI Server</a></li><li><a href="accuracy.html">Accuracy &amp; Testing</a></li></ul>
+  </div></div></nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top"><button onclick="toggleSidebar()">☰</button><a href="index.html">PySweph Jamakkol Docs</a></nav>
+    <div class="wy-nav-content"><div class="rst-content">
+      <div class="breadcrumbs"><a href="index.html">🏠</a> &rsaquo; Jamakkol Concepts &rsaquo; Kavappu</div>
+      <div role="main">
+
+        <h1>Kavappu (கவப்பு) — The Shadow Point</h1>
+
+        <p>
+          Kavappu (also written Kavippu) means "closure" or "covering" in Tamil. It represents a <strong>hidden blockage or shadow influence</strong> in the chart — a Rasi that is under some kind of pressure or obstruction. The planet ruling the Kavappu Rasi and any planets placed there can delay or prevent the desired outcome.
+        </p>
+
+        <h2>How it's calculated</h2>
+
+        <p>
+          Calculating Kavappu requires four main inputs:
+        </p>
+        <ul style="padding-left:20px;margin-bottom:14px">
+          <li>The <strong>Udhayam Rasi</strong> (see <a href="udhayam.html">Udhayam</a>)</li>
+          <li>The <strong>Arudham Rasi</strong> (see <a href="arudham.html">Arudham</a>)</li>
+          <li>The <strong>Sun's current Rasi</strong> (from <a href="calc.html">swe.calc_ut()</a>)</li>
+          <li>The <strong>Soorya Veedi Rasi</strong> (calculated from the Sun's current Rasi)</li>
+        </ul>
+
+        <blockquote>
+          <strong>⚠️ IMPORTANT: 0-Indexed Rasi Indices</strong><br/>
+          In code arrays and astronomical engines, the 12 signs are <strong>0-indexed (0 to 11)</strong>. 
+          Mesham (Aries) = <code>0</code>, Thulaam (Libra) = <code>6</code>, and Meenam (Pisces) = <code>11</code>. 
+          Using 1-indexed values (1 to 12) will cause out-of-bounds index translation errors.
+        </blockquote>
+
+        <h3>Step 1 — Find the Soorya Veedi</h3>
+        <p>
+          The Sun's path (Soorya Veedi) determines a representative Rasi based on the Sun's transit sign (using 0-indexed Rasis):
+        </p>
+        <ul style="padding-left:20px;margin-bottom:14px">
+          <li><strong>Mesha Veedhi (Aries)</strong>: If the Sun is in Taurus (1), Gemini (2), Cancer (3), or Leo (4). Representative Rasi index = <code>0</code>.</li>
+          <li><strong>Vrishabha Veedhi (Taurus)</strong>: If the Sun is in Aries (0), Virgo (5), Libra (6), or Pisces (11). Representative Rasi index = <code>1</code>.</li>
+          <li><strong>Mithuna Veedhi (Gemini)</strong>: If the Sun is in Scorpio (7), Sagittarius (8), Capricorn (9), or Aquarius (10). Representative Rasi index = <code>2</code>.</li>
+        </ul>
+
+        <h3>Step 2 — Apply the Offset</h3>
+        <p>
+          Instead of counting with inclusive offsets (adding 1 for inclusive distance and subtracting 1 to project from Udhayam, which mathematically cancel out), we use a direct relative distance offset:
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-title">Kavappu Formula</div>
+          kavappu_rasi = (udhayam_rasi + veedi_rasi - arudham_rasi) % 12
+        </div>
+
+        <h3>Step 3 — Degree &amp; Retrograde Status</h3>
+        <p>
+          Kavappu moves in the opposite direction (retrograde) to Arudham. As Arudham progresses forward from <code>0°</code> to <code>30°</code>, Kavappu moves backward from <code>30°</code> to <code>0°</code> (with a <code>1"</code> offset to match jamakkol.com).
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-title">Kavappu Degree Formula</div>
+          kavappu_deg_in_rasi = 30.0 - arudham_deg_in_rasi - (1.0 / 3600.0)<br/>
+          kavappu_deg = kavappu_rasi * 30.0 + kavappu_deg_in_rasi
+        </div>
+
+        <h2>A Worked Example</h2>
+
+        <p>Suppose (at 10:24:10 PM):</p>
+        <ul style="padding-left:20px;margin-bottom:14px">
+          <li>Sun is in Cancer (Rasi index 3) &rarr; Soorya Veedi is Mesha (Rasi index 0)</li>
+          <li>Arudham is in Leo (Rasi index 4, at <code>25° 0' 0"</code>)</li>
+          <li>Udhayam is in Scorpio (Rasi index 7)</li>
+        </ul>
+
+        <p>
+          Applying the offset: <code>kavappu_rasi = (7 + 0 - 4) % 12 = 3</code> = Rasi index 3 = <strong>Kadagam (Cancer)</strong>.<br/>
+          Degree calculation: <code>30.0 - 25.0 - 1" = 4° 59' 59"</code>.<br/>
+          So Kavappu is in <strong>Kadagam (Cancer)</strong> at <strong>4° 59' 59" (R)</strong> (absolute degree <code>94° 59' 59"</code>).
+        </p>
+
+        <h2>Code</h2>
+
+        <div class="highlight-block">
+<pre><span class="kw">def</span> <span class="fn">get_soorya_veedi</span>(sun_rasi: int) -> int:
+    <span class="str">"""Determine the Soorya Veedi Rasi index based on the Sun's 0-indexed sign."""</span>
+    <span class="kw">if</span> sun_rasi <span class="kw">in</span> [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>]:
+        <span class="kw">return</span> <span class="num">0</span>  <span class="cmt"># Mesha (Aries)</span>
+    <span class="kw">elif</span> sun_rasi <span class="kw">in</span> [<span class="num">0</span>, <span class="num">5</span>, <span class="num">6</span>, <span class="num">11</span>]:
+        <span class="kw">return</span> <span class="num">1</span>  <span class="cmt"># Vrishabha (Taurus)</span>
+    <span class="kw">else</span>:
+        <span class="kw">return</span> <span class="num">2</span>  <span class="cmt"># Mithuna (Gemini)</span>
+
+<span class="kw">def</span> <span class="fn">calculate_kavappu</span>(
+    udhayam_rasi: int,
+    arudham_rasi: int,
+    arudham_deg_in_rasi: float,
+    sun_rasi:     int
+) -> dict:
+    <span class="str">"""
+    Calculate Kavappu (the shadow/obstacle point) using 0-indexed Rasis.
+    """</span>
+    veedi_rasi = <span class="fn">get_soorya_veedi</span>(sun_rasi)
+    kavappu_rasi = (udhayam_rasi + veedi_rasi - arudham_rasi) % <span class="num">12</span>
+    
+    # Retrograde complementary degree
+    kavappu_deg_in_rasi = 30.0 - arudham_deg_in_rasi - (1.0 / 3600.0)
+    kavappu_deg = kavappu_rasi * 30.0 + kavappu_deg_in_rasi
+
+    <span class="kw">return</span> {
+        <span class="str">"rasi"</span>          : kavappu_rasi,
+        <span class="str">"rasi_en"</span>       : RASI_NAMES_EN[kavappu_rasi],
+        <span class="str">"rasi_ta"</span>       : RASI_NAMES_TA[kavappu_rasi],
+        <span class="str">"degree"</span>        : kavappu_deg,
+        <span class="str">"is_retrograde"</span> : <span class="kw">True</span>
+    }</pre>
+        </div>
+
+        <h2>What does Kavappu tell you?</h2>
+        <p>
+          Think of the Kavappu Rasi as a "covered" or "blocked" house. Malefic planets (Saturn, Mars, Rahu, Ketu) placed in the Kavappu Rasi tend to show obstacles. The Kavappu Rasi's lord, and where that lord is placed in the chart, can show whether the blockage is temporary or severe.
+        </p>
+        <p>
+          In prediction: if the Kavappu falls in the same house as the querent's desired matter (e.g., 7th house for marriage, 11th for gains), it signals difficulty or delay in that area.
+        </p>
+
+      </div>
+      <footer class="rst-footer">
+        <a href="arudham.html" class="btn-prev">&larr; Arudham</a>
+        <a href="jamam.html" class="btn-next">Jamam Planets &rarr;</a>
+      </footer>
+    </div></div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>The Calculation Engine — Jamakkol Prasanam Docs</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+<div class="wy-grid-for-nav">
+  <nav class="wy-nav-side"><div class="wy-side-scroll"><div class="wy-side-nav-search">
+    <a href="index.html" class="brand">🪐 PySweph Jamakkol</a><div class="version">v1.0 — 2026</div>
+    <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+  </div>
+  <div class="wy-menu wy-menu-vertical">
+    <p class="caption">Getting Started</p>
+    <ul><li><a href="index.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="quickstart.html">Quick Start</a></li></ul>
+    <p class="caption">Core Library (pysweph)</p>
+    <ul>
+      <li><a href="julday.html">Julian Day — swe.julday()</a></li><li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+      <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li><li><a href="houses.html">Ascendant — swe.houses()</a></li>
+      <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+    </ul>
+    <p class="caption">Jamakkol Concepts</p>
+    <ul>
+      <li><a href="udhayam.html">Udhayam (உதயம்)</a></li><li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+      <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li><li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+      <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li><li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+    </ul>
+    <p class="caption">Reference Tables</p>
+    <ul><li><a href="rasi.html">12 Rasis</a></li><li><a href="nakshatras.html">27 Nakshatras</a></li><li><a href="panchangam.html">Panchangam</a></li></ul>
+    <p class="caption">Building the API</p>
+    <ul>
+      <li class="current"><a href="engine.html">The Calculation Engine</a></li>
+      <li><a href="fastapi.html">FastAPI Server</a></li>
+      <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+    </ul>
+  </div></div></nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top"><button onclick="toggleSidebar()">☰</button><a href="index.html">PySweph Jamakkol Docs</a></nav>
+    <div class="wy-nav-content"><div class="rst-content">
+      <div class="breadcrumbs"><a href="index.html">🏠</a> &rsaquo; Building the API &rsaquo; The Calculation Engine</div>
+      <div role="main">
+
+        <h1>The Calculation Engine</h1>
+
+        <p>
+          This page contains the complete <code>jamakkol_engine.py</code> — a single file that ties together every calculation covered in this documentation into one <code>compute()</code> function.
+        </p>
+        <p>
+          If you've read through the concept pages, every line here should make sense. If you're jumping straight here, go back and read at least <a href="udhayam.html">Udhayam</a>, <a href="arudham.html">Arudham</a>, and <a href="kavappu.html">Kavappu</a> first.
+        </p>
+
+        <h2>The <code>compute()</code> function</h2>
+
+        <p>
+          This is the single entry point. You give it a date, time, and location. It gives you back a complete Jamakkol chart.
+        </p>
+
+        <div class="fn-sig">
+          <code><span class="fn-name">compute</span>(dt_local, lat, lon, tz_h=5.5, alt=0)</code>
+          <span class="fn-ret">→ Returns: dict with udhayam, arudham, kavappu, jamam, nitya_planets, upagrahas, panchangam</span>
+        </div>
+
+        <dl class="param-table">
+          <dt><span class="pname">dt_local</span> <span class="ptype">: datetime</span></dt>
+          <dd>The local date and time of the query. Do not convert to UTC yourself — the engine does it.</dd>
+
+          <dt><span class="pname">lat</span> <span class="ptype">: float</span></dt>
+          <dd>Latitude of the <strong>astrologer's location</strong> (not the client's). Positive = North.</dd>
+
+          <dt><span class="pname">lon</span> <span class="ptype">: float</span></dt>
+          <dd>Longitude of the astrologer's location. Positive = East.</dd>
+
+          <dt><span class="pname">tz_h</span> <span class="ptype">: float = 5.5</span></dt>
+          <dd>Timezone offset from UTC in hours. India Standard Time = 5.5. Don't change this unless you're in a different timezone.</dd>
+
+          <dt><span class="pname">alt</span> <span class="ptype">: float = 0</span></dt>
+          <dd>Elevation above sea level in meters. Affects sunrise accuracy. Use 0 if you don't know.</dd>
+        </dl>
+
+        <h2>Full Source — <code>jamakkol_engine.py</code></h2>
+
+        <div class="highlight-block">
+<pre><span class="str">"""
+jamakkol_engine.py
+Complete Jamakkol Prasanam calculation engine.
+
+Usage:
+    from jamakkol_engine import compute
+    from datetime import datetime
+
+    result = compute(datetime(2026, 8, 4, 14, 30, 0), lat=13.0827, lon=80.2707)
+"""</span>
+<span class="kw">import</span> pysweph <span class="kw">as</span> swe
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime, timedelta
+
+<span class="cmt"># ─── One-time setup ───────────────────────────────────────────</span>
+swe.<span class="fn">set_ephe_path</span>(<span class="str">""</span>)                     <span class="cmt"># Use Moshier (no files needed)</span>
+swe.<span class="fn">set_sid_mode</span>(swe.SIDM_LAHIRI, <span class="num">0</span>, <span class="num">0</span>) <span class="cmt"># Lahiri Ayanamsa — always</span>
+
+<span class="cmt"># ─── Tamil Rasi Names ─────────────────────────────────────────</span>
+RASI_EN = [
+    <span class="str">"Mesham"</span>, <span class="str">"Rishabham"</span>, <span class="str">"Mithunam"</span>, <span class="str">"Kadagam"</span>,
+    <span class="str">"Simmam"</span>, <span class="str">"Kanni"</span>, <span class="str">"Thulaam"</span>, <span class="str">"Viruchigam"</span>,
+    <span class="str">"Dhanusu"</span>, <span class="str">"Magaram"</span>, <span class="str">"Kumbam"</span>, <span class="str">"Meenam"</span>,
+]
+RASI_TA = [
+    <span class="str">"மேஷம்"</span>, <span class="str">"ரிஷபம்"</span>, <span class="str">"மிதுனம்"</span>, <span class="str">"கடகம்"</span>,
+    <span class="str">"சிம்மம்"</span>, <span class="str">"கன்னி"</span>, <span class="str">"துலாம்"</span>, <span class="str">"விருச்சிகம்"</span>,
+    <span class="str">"தனுசு"</span>, <span class="str">"மகரம்"</span>, <span class="str">"கும்பம்"</span>, <span class="str">"மீனம்"</span>,
+]
+NAKSHATRAS = [
+    <span class="str">"Ashwini"</span>, <span class="str">"Bharani"</span>, <span class="str">"Krittika"</span>, <span class="str">"Rohini"</span>, <span class="str">"Mrigashira"</span>,
+    <span class="str">"Ardra"</span>, <span class="str">"Punarvasu"</span>, <span class="str">"Pushya"</span>, <span class="str">"Ashlesha"</span>, <span class="str">"Magha"</span>,
+    <span class="str">"Purva Phalguni"</span>, <span class="str">"Uttara Phalguni"</span>, <span class="str">"Hasta"</span>, <span class="str">"Chitra"</span>,
+    <span class="str">"Svati"</span>, <span class="str">"Vishakha"</span>, <span class="str">"Anuradha"</span>, <span class="str">"Jyeshtha"</span>, <span class="str">"Mula"</span>,
+    <span class="str">"Purva Ashadha"</span>, <span class="str">"Uttara Ashadha"</span>, <span class="str">"Shravana"</span>,
+    <span class="str">"Dhanishtha"</span>, <span class="str">"Shatabhisha"</span>, <span class="str">"Purva Bhadrapada"</span>,
+    <span class="str">"Uttara Bhadrapada"</span>, <span class="str">"Revati"</span>,
+]
+JAMAM_PLANETS = [<span class="str">"Sun"</span>, <span class="str">"Mars"</span>, <span class="str">"Jupiter"</span>, <span class="str">"Mercury"</span>,
+                 <span class="str">"Venus"</span>, <span class="str">"Saturn"</span>, <span class="str">"Rahu"</span>, <span class="str">"Ketu"</span>]
+DAY_START     = {<span class="num">0</span>:<span class="str">"Sun"</span>,<span class="num">1</span>:<span class="str">"Venus"</span>,<span class="num">2</span>:<span class="str">"Mars"</span>,<span class="num">3</span>:<span class="str">"Mercury"</span>,
+                 <span class="num">4</span>:<span class="str">"Jupiter"</span>,<span class="num">5</span>:<span class="str">"Venus"</span>,<span class="num">6</span>:<span class="str">"Saturn"</span>}  <span class="cmt"># 0=Sun…6=Sat</span>
+MANDI_DAY     = [<span class="num">5</span>,<span class="num">4</span>,<span class="num">7</span>,<span class="num">3</span>,<span class="num">2</span>,<span class="num">1</span>,<span class="num">6</span>]  <span class="cmt"># Kala index (0-based) by weekday</span>
+MANDI_NIGHT   = [<span class="num">0</span>,<span class="num">1</span>,<span class="num">4</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">6</span>,<span class="num">7</span>]
+
+
+<span class="cmt"># ─── Helper: longitude → Rasi info ────────────────────────────</span>
+<span class="kw">def</span> <span class="fn">dri</span>(deg: float) -> dict:
+    deg  = deg % <span class="num">360.0</span>
+    ri   = int(deg // <span class="num">30</span>)
+    ni   = int(deg // (<span class="num">360</span> / <span class="num">27</span>))
+    pada = int((deg % (<span class="num">360</span>/<span class="num">27</span>)) // (<span class="num">360</span>/<span class="num">108</span>)) + <span class="num">1</span>
+    <span class="kw">return</span> {
+        <span class="str">"degree"</span>     : round(deg, <span class="num">4</span>),
+        <span class="str">"rasi"</span>       : ri,
+        <span class="str">"rasi_en"</span>    : RASI_EN[ri],
+        <span class="str">"rasi_ta"</span>    : RASI_TA[ri],
+        <span class="str">"deg_in_rasi"</span>: round(deg % <span class="num">30</span>, <span class="num">4</span>),
+        <span class="str">"nakshatra"</span>  : NAKSHATRAS[ni],
+        <span class="str">"pada"</span>       : pada,
+    }
+
+
+<span class="cmt"># ─── Helper: get sunrise/sunset for a date ────────────────────</span>
+<span class="kw">def</span> <span class="fn">_rise_set</span>(jd_start, lat, lon, alt=<span class="num">0</span>):
+    _, r = swe.<span class="fn">rise_trans</span>(jd_start, swe.SUN, swe.CALC_RISE, [lon, lat, alt], <span class="num">0</span>, <span class="num">0</span>)
+    _, s = swe.<span class="fn">rise_trans</span>(jd_start, swe.SUN, swe.CALC_SET,  [lon, lat, alt], <span class="num">0</span>, <span class="num">0</span>)
+    <span class="kw">return</span> r[<span class="num">0</span>], s[<span class="num">0</span>]
+
+
+<span class="cmt"># ─── Main function ─────────────────────────────────────────────</span>
+<span class="kw">def</span> <span class="fn">compute</span>(dt_local: datetime, lat: float, lon: float,
+            tz_h: float = <span class="num">5.5</span>, alt: float = <span class="num">0</span>) -> dict:
+    <span class="str">"""
+    Compute a complete Jamakkol Prasanam chart.
+
+    Parameters
+    ----------
+    dt_local : datetime  — local date/time of the query
+    lat      : float     — astrologer's latitude  (positive = North)
+    lon      : float     — astrologer's longitude (positive = East)
+    tz_h     : float     — UTC offset in hours (5.5 for IST)
+    alt      : float     — elevation in metres (improves sunrise accuracy)
+
+    Returns
+    -------
+    dict with keys: udhayam, arudham, kavappu, jamam,
+                    nitya_planets, upagrahas, panchangam,
+                    sunrise_ist, sunset_ist, ayanamsa
+    """</span>
+
+    <span class="cmt"># 1. Convert local time → UTC → Julian Day</span>
+    dt_utc = dt_local - timedelta(hours=tz_h)
+    h = dt_utc.hour + dt_utc.minute/<span class="num">60</span> + dt_utc.second/<span class="num">3600</span>
+    jd = swe.<span class="fn">julday</span>(dt_utc.year, dt_utc.month, dt_utc.day, h, swe.GREG_CAL)
+
+    ayanamsa = swe.<span class="fn">get_ayanamsa_ut</span>(jd)
+
+    <span class="cmt"># 2. Sunrise / sunset (today, yesterday, tomorrow)</span>
+    midnight = int(jd) - <span class="num">0.5</span>
+    sr,  ss  = <span class="fn">_rise_set</span>(midnight,   lat, lon, alt)
+    psr, pss = <span class="fn">_rise_set</span>(midnight-<span class="num">1</span>, lat, lon, alt)
+    nsr, nss = <span class="fn">_rise_set</span>(midnight+<span class="num">1</span>, lat, lon, alt)
+
+    <span class="cmt"># 3. Determine which span the query falls in</span>
+    <span class="kw">if</span> sr <= jd < ss:
+        span_s, span_e = sr, ss          <span class="cmt"># Daytime</span>
+    <span class="kw">elif</span> jd < sr:
+        span_s, span_e = pss, sr         <span class="cmt"># Before today's sunrise</span>
+    <span class="kw">else</span>:
+        span_s, span_e = ss, nsr         <span class="cmt"># After today's sunset</span>
+
+    is_day = (span_s == sr)
+
+    <span class="cmt"># 4. Get all 9 planet positions (sidereal)</span>
+    flags = swe.FLG_SWIEPH | swe.FLG_SIDEREAL | swe.FLG_SPEED
+    pids  = {<span class="str">"Sun"</span>:swe.SUN,<span class="str">"Moon"</span>:swe.MOON,<span class="str">"Mars"</span>:swe.MARS,
+             <span class="str">"Mercury"</span>:swe.MERCURY,<span class="str">"Jupiter"</span>:swe.JUPITER,
+             <span class="str">"Venus"</span>:swe.VENUS,<span class="str">"Saturn"</span>:swe.SATURN,<span class="str">"Rahu"</span>:swe.TRUE_NODE}
+    nps = {}
+    <span class="kw">for</span> name, pid <span class="kw">in</span> pids.items():
+        res, _ = swe.<span class="fn">calc_ut</span>(jd, pid, flags)
+        info = <span class="fn">dri</span>(res[<span class="num">0</span>])
+        info[<span class="str">"retrograde"</span>] = res[<span class="num">3</span>] < <span class="num">0</span>
+        info[<span class="str">"speed"</span>]      = round(res[<span class="num">3</span>], <span class="num">6</span>)
+        nps[name] = info
+
+    ketu_lon = (nps[<span class="str">"Rahu"</span>][<span class="str">"degree"</span>] + <span class="num">180</span>) % <span class="num">360</span>
+    nps[<span class="str">"Ketu"</span>] = <span class="fn">dri</span>(ketu_lon)
+    nps[<span class="str">"Ketu"</span>][<span class="str">"retrograde"</span>] = True
+
+    sun_rasi = nps[<span class="str">"Sun"</span>][<span class="str">"rasi"</span>]
+
+    <span class="cmt"># 5. Udhayam</span>
+    fraction   = (jd - span_s) / (span_e - span_s)
+    udhayam    = <span class="fn">dri</span>(sun_rasi * <span class="num">30</span> + fraction * <span class="num">360</span>)
+
+    <span class="cmt"># 6. Arudham (5-minute rule — local time, seconds precision)</span>
+    tsec       = dt_local.minute * <span class="num">60</span> + dt_local.second
+    ard_rasi   = tsec // <span class="num">300</span>
+    ard_deg    = ard_rasi * <span class="num">30.0</span> + (tsec % <span class="num">300</span>) * (<span class="num">30.0</span> / <span class="num">300</span>)
+    arudham    = <span class="fn">dri</span>(ard_deg)
+
+    <span class="cmt"># 7. Kavappu</span>
+    dist       = (sun_rasi - ard_rasi) % <span class="num">12</span> <span class="kw">or</span> <span class="num">12</span>
+    kav_rasi   = (udhayam[<span class="str">"rasi"</span>] + dist - <span class="num">1</span>) % <span class="num">12</span>
+    kavappu    = <span class="fn">dri</span>(kav_rasi * <span class="num">30</span> + <span class="num">15</span>)
+
+    <span class="cmt"># 8. Jamam number and planet positions</span>
+    jkw     = (dt_local.weekday() + <span class="num">1</span>) % <span class="num">7</span>   <span class="cmt"># 0=Sun...6=Sat</span>
+    jdur    = (span_e - span_s) / <span class="num">8</span>
+    jnum    = max(<span class="num">1</span>, min(<span class="num">8</span>, int((jd - span_s) / jdur) + <span class="num">1</span>))
+    start_p = DAY_START[jkw]
+    lord    = JAMAM_PLANETS[(JAMAM_PLANETS.index(start_p) + jnum - <span class="num">1</span>) % <span class="num">8</span>]
+    jpos    = {p: <span class="fn">dri</span>((sun_rasi + i) % <span class="num">12</span> * <span class="num">30</span>)
+               <span class="kw">for</span> i, p <span class="kw">in</span> enumerate(JAMAM_PLANETS)}
+
+    <span class="cmt"># 9. Mandi & Gulika</span>
+    <span class="kw">def</span> <span class="fn">_asc</span>(jd2):
+        c, a = swe.<span class="fn">houses</span>(jd2, lat, lon, b<span class="str">'P'</span>)
+        <span class="kw">return</span> (a[<span class="num">0</span>] - swe.<span class="fn">get_ayanamsa_ut</span>(jd2)) % <span class="num">360</span>
+
+    mk_d  = MANDI_DAY[jkw]
+    jm    = sr + mk_d * (ss - sr) / <span class="num">8</span>
+    jg    = jm - (ss - sr) / <span class="num">8</span>
+
+    <span class="cmt"># 10. Panchangam</span>
+    sl    = nps[<span class="str">"Sun"</span>][<span class="str">"degree"</span>]
+    ml    = nps[<span class="str">"Moon"</span>][<span class="str">"degree"</span>]
+    diff  = (ml - sl) % <span class="num">360</span>
+    VAAR  = [<span class="str">"Somavar"</span>,<span class="str">"Sevvai"</span>,<span class="str">"Budhan"</span>,<span class="str">"Viyazhan"</span>,<span class="str">"Velli"</span>,<span class="str">"Sani"</span>,<span class="str">"Nyaniru"</span>]
+
+    <span class="cmt"># Helper to convert JD back to IST string</span>
+    <span class="kw">def</span> <span class="fn">_ist</span>(jd_val):
+        y,m,d,h = swe.<span class="fn">revjul</span>(jd_val, swe.GREG_CAL)
+        h += tz_h
+        hr = int(h % <span class="num">24</span>); mn = int((h%<span class="num">1</span>)*<span class="num">60</span>); sc = int(((h%<span class="num">1</span>)*<span class="num">60</span>%<span class="num">1</span>)*<span class="num">60</span>)
+        <span class="kw">return</span> <span class="str">f"{hr:02d}:{mn:02d}:{sc:02d} IST"</span>
+
+    <span class="kw">return</span> {
+        <span class="str">"query_local"</span>    : dt_local.isoformat(),
+        <span class="str">"ayanamsa"</span>       : round(ayanamsa, <span class="num">4</span>),
+        <span class="str">"sunrise_ist"</span>    : <span class="fn">_ist</span>(sr),
+        <span class="str">"sunset_ist"</span>     : <span class="fn">_ist</span>(ss),
+        <span class="str">"udhayam"</span>        : udhayam,
+        <span class="str">"arudham"</span>        : arudham,
+        <span class="str">"kavappu"</span>        : kavappu,
+        <span class="str">"jamam"</span>          : {
+            <span class="str">"is_day"</span>         : is_day,
+            <span class="str">"number"</span>         : jnum,
+            <span class="str">"lord"</span>           : lord,
+            <span class="str">"duration_mins"</span>  : round(jdur * <span class="num">1440</span>, <span class="num">2</span>),
+            <span class="str">"planets"</span>        : jpos,
+        },
+        <span class="str">"nitya_planets"</span>  : nps,
+        <span class="str">"upagrahas"</span>      : {
+            <span class="str">"mandi"</span>  : <span class="fn">dri</span>(<span class="fn">_asc</span>(jm)),
+            <span class="str">"gulika"</span> : <span class="fn">dri</span>(<span class="fn">_asc</span>(jg)),
+        },
+        <span class="str">"panchangam"</span>     : {
+            <span class="str">"vaaram"</span>     : VAAR[dt_local.weekday()],
+            <span class="str">"thithi"</span>     : (int(diff/<span class="num">12</span>) % <span class="num">15</span>) + <span class="num">1</span>,
+            <span class="str">"paksha"</span>     : <span class="str">"Shukla"</span> <span class="kw">if</span> diff < <span class="num">180</span> <span class="kw">else</span> <span class="str">"Krishna"</span>,
+            <span class="str">"nakshatra"</span>  : nps[<span class="str">"Moon"</span>][<span class="str">"nakshatra"</span>],
+            <span class="str">"yogam_idx"</span>  : int((sl + ml) % <span class="num">360</span> / (<span class="num">360</span>/<span class="num">27</span>)),
+        },
+    }</pre>
+        </div>
+
+        <div class="admonition tip">
+          <p class="admonition-title">💡 Save this file as jamakkol_engine.py</p>
+          <p>Put it in the root of your project folder alongside <code>main.py</code>. Then import it as shown on the <a href="fastapi.html">FastAPI Server</a> page.</p>
+        </div>
+
+      </div>
+      <footer class="rst-footer">
+        <a href="panchangam.html" class="btn-prev">&larr; Panchangam</a>
+        <a href="fastapi.html" class="btn-next">FastAPI Server &rarr;</a>
+      </footer>
+    </div></div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

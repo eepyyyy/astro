@@ -1,0 +1,6117 @@
+{
+  "datetime_utc": "2007-10-20T18:30:00",
+  "datetime_local": "2007-10-21T00:00:00",
+  "latitude": 12.986,
+  "longitude": 77.47,
+  "altitude": 820.0,
+  "julian_day": 2454394.2708333335,
+  "ayanamsa": 23.944503048995642,
+  "main_chart": {
+    "ascendant_sidereal": {
+      "planet_name": "acendant_sidereal",
+      "housedetails": {
+        "rasi": "Kadagam",
+        "house": 3,
+        "deg": 92.85320946133848,
+        "DMS": "2° 51' 11.5541",
+        "kp_details": {
+          "nakshatra_name_en": "Punarvasu",
+          "nakshatra_name_tam": "Punarpoosam",
+          "pada": 4,
+          "star_lord": "Jupiter",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Punarvasu-4 / Punarpoosam-4,   Jupiter, Rahu,  Venus, Saturn"
+        }
+      },
+      "is_retrograde": false
+    },
+    "ascendant_tropical": {
+      "planet_name": "acendant_tropical",
+      "housedetails": {
+        "rasi": "Kadagam",
+        "house": 3,
+        "deg": 116.79771251033412,
+        "DMS": "26° 47' 51.7650",
+        "kp_details": {
+          "nakshatra_name_en": "Ashlesha",
+          "nakshatra_name_tam": "Ayilyam",
+          "pada": 4,
+          "star_lord": "Mercury",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Ashlesha-4 / Ayilyam-4,   Mercury, Jupiter,  Mercury, Rahu"
+        }
+      },
+      "is_retrograde": false
+    },
+    "udhayam": {
+      "housedetails": {
+        "rasi": "Meenam",
+        "house": 11,
+        "deg": 359.8610475996373,
+        "DMS": "29° 51' 39.7714",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 4,
+          "star_lord": "Mercury",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Revati-4 / Revathi-4,   Mercury, Saturn,  Jupiter, Venus"
+        }
+      },
+      "sunrise": "2007-10-20T06:14:31.078371",
+      "sunset": "2007-10-20T17:55:20.799114",
+      "fraction": 0.49321551070720204,
+      "method": "vedic"
+    },
+    "arudham": {
+      "rasi": "Mesham",
+      "house": 0,
+      "deg": 0.0,
+      "DMS": "0° 0' 0.0000",
+      "kp_details": {
+        "nakshatra_name_en": "Aswini",
+        "nakshatra_name_tam": "Aswini",
+        "pada": 1,
+        "star_lord": "Ketu",
+        "sub_lord": "Ketu",
+        "sub_sub_lord": "Ketu",
+        "sub_sub_sub_lord": "Ketu",
+        "formatted_kp": "Aswini-1 / Aswini-1,   Ketu, Ketu,  Ketu, Ketu"
+      }
+    },
+    "kavippu": {
+      "rasi": "Mesham",
+      "house": 0,
+      "deg": 29.99972222222222,
+      "DMS": "29° 59' 59.0000",
+      "kp_details": {
+        "nakshatra_name_en": "Krittika",
+        "nakshatra_name_tam": "Karthigai",
+        "pada": 1,
+        "star_lord": "Sun",
+        "sub_lord": "Rahu",
+        "sub_sub_lord": "Saturn",
+        "sub_sub_sub_lord": "Mars",
+        "formatted_kp": "Krittika-1 / Karthigai-1,   Sun, Rahu,  Saturn, Mars"
+      }
+    },
+    "planets": {
+      "ayanamsa": {
+        "planet_name": "ayanamsa",
+        "housedetails": {
+          "rasi": "Mesham",
+          "house": 0,
+          "deg": 23.944503048995642,
+          "DMS": "23° 56' 40.2110",
+          "kp_details": {
+            "nakshatra_name_en": "Bharani",
+            "nakshatra_name_tam": "Bharani",
+            "pada": 4,
+            "star_lord": "Venus",
+            "sub_lord": "Saturn",
+            "sub_sub_lord": "Jupiter",
+            "sub_sub_sub_lord": "Mars",
+            "formatted_kp": "Bharani-4 / Bharani-4,   Venus, Saturn,  Jupiter, Mars"
+          }
+        },
+        "is_retrograde": false
+      },
+      "acendant_sidereal": {
+        "planet_name": "acendant_sidereal",
+        "housedetails": {
+          "rasi": "Kadagam",
+          "house": 3,
+          "deg": 92.85320946133848,
+          "DMS": "2° 51' 11.5541",
+          "kp_details": {
+            "nakshatra_name_en": "Punarvasu",
+            "nakshatra_name_tam": "Punarpoosam",
+            "pada": 4,
+            "star_lord": "Jupiter",
+            "sub_lord": "Rahu",
+            "sub_sub_lord": "Venus",
+            "sub_sub_sub_lord": "Saturn",
+            "formatted_kp": "Punarvasu-4 / Punarpoosam-4,   Jupiter, Rahu,  Venus, Saturn"
+          }
+        },
+        "is_retrograde": false
+      },
+      "acendant_tropical": {
+        "planet_name": "acendant_tropical",
+        "housedetails": {
+          "rasi": "Kadagam",
+          "house": 3,
+          "deg": 116.79771251033412,
+          "DMS": "26° 47' 51.7650",
+          "kp_details": {
+            "nakshatra_name_en": "Ashlesha",
+            "nakshatra_name_tam": "Ayilyam",
+            "pada": 4,
+            "star_lord": "Mercury",
+            "sub_lord": "Jupiter",
+            "sub_sub_lord": "Mercury",
+            "sub_sub_sub_lord": "Rahu",
+            "formatted_kp": "Ashlesha-4 / Ayilyam-4,   Mercury, Jupiter,  Mercury, Rahu"
+          }
+        },
+        "is_retrograde": false
+      },
+      "sun": {
+        "planet_name": "sun",
+        "housedetails": {
+          "rasi": "Thulaam",
+          "house": 6,
+          "deg": 183.03868021931925,
+          "DMS": "3° 2' 19.2488",
+          "kp_details": {
+            "nakshatra_name_en": "Chitra",
+            "nakshatra_name_tam": "Chithirai",
+            "pada": 3,
+            "star_lord": "Mars",
+            "sub_lord": "Venus",
+            "sub_sub_lord": "Sun",
+            "sub_sub_sub_lord": "Sun",
+            "formatted_kp": "Chitra-3 / Chithirai-3,   Mars, Venus,  Sun, Sun"
+          }
+        },
+        "is_retrograde": false
+      },
+      "moon": {
+        "planet_name": "moon",
+        "housedetails": {
+          "rasi": "Magaram",
+          "house": 9,
+          "deg": 289.9749452618667,
+          "DMS": "19° 58' 29.8029",
+          "kp_details": {
+            "nakshatra_name_en": "Shravana",
+            "nakshatra_name_tam": "Thiruvonam",
+            "pada": 3,
+            "star_lord": "Moon",
+            "sub_lord": "Ketu",
+            "sub_sub_lord": "Mars",
+            "sub_sub_sub_lord": "Ketu",
+            "formatted_kp": "Shravana-3 / Thiruvonam-3,   Moon, Ketu,  Mars, Ketu"
+          }
+        },
+        "is_retrograde": false
+      },
+      "mars": {
+        "planet_name": "mars",
+        "housedetails": {
+          "rasi": "Mithunam",
+          "house": 2,
+          "deg": 74.40639010607977,
+          "DMS": "14° 24' 23.0044",
+          "kp_details": {
+            "nakshatra_name_en": "Ardra",
+            "nakshatra_name_tam": "Thiruvathirai",
+            "pada": 3,
+            "star_lord": "Rahu",
+            "sub_lord": "Mercury",
+            "sub_sub_lord": "Saturn",
+            "sub_sub_sub_lord": "Jupiter",
+            "formatted_kp": "Ardra-3 / Thiruvathirai-3,   Rahu, Mercury,  Saturn, Jupiter"
+          }
+        },
+        "is_retrograde": false
+      },
+      "mercury": {
+        "planet_name": "mercury",
+        "housedetails": {
+          "rasi": "Thulaam",
+          "house": 6,
+          "deg": 190.17206306893505,
+          "DMS": "10° 10' 19.4270",
+          "kp_details": {
+            "nakshatra_name_en": "Swati",
+            "nakshatra_name_tam": "Swaathi",
+            "pada": 2,
+            "star_lord": "Rahu",
+            "sub_lord": "Jupiter",
+            "sub_sub_lord": "Mars",
+            "sub_sub_sub_lord": "Moon",
+            "formatted_kp": "Swati-2 / Swaathi-2,   Rahu, Jupiter,  Mars, Moon"
+          }
+        },
+        "is_retrograde": true
+      },
+      "jupiter": {
+        "planet_name": "jupiter",
+        "housedetails": {
+          "rasi": "Viruchigam",
+          "house": 7,
+          "deg": 233.53696755884448,
+          "DMS": "23° 32' 13.0832",
+          "kp_details": {
+            "nakshatra_name_en": "Jyestha",
+            "nakshatra_name_tam": "Kettai",
+            "pada": 3,
+            "star_lord": "Mercury",
+            "sub_lord": "Mars",
+            "sub_sub_lord": "Jupiter",
+            "sub_sub_sub_lord": "Mercury",
+            "formatted_kp": "Jyestha-3 / Kettai-3,   Mercury, Mars,  Jupiter, Mercury"
+          }
+        },
+        "is_retrograde": false
+      },
+      "venus": {
+        "planet_name": "venus",
+        "housedetails": {
+          "rasi": "Simmam",
+          "house": 4,
+          "deg": 136.80843219424418,
+          "DMS": "16° 48' 30.3559",
+          "kp_details": {
+            "nakshatra_name_en": "Purva Phalguni",
+            "nakshatra_name_tam": "Pooram",
+            "pada": 2,
+            "star_lord": "Venus",
+            "sub_lord": "Moon",
+            "sub_sub_lord": "Saturn",
+            "sub_sub_sub_lord": "Moon",
+            "formatted_kp": "Purva Phalguni-2 / Pooram-2,   Venus, Moon,  Saturn, Moon"
+          }
+        },
+        "is_retrograde": false
+      },
+      "saturn": {
+        "planet_name": "saturn",
+        "housedetails": {
+          "rasi": "Simmam",
+          "house": 4,
+          "deg": 131.5500702333342,
+          "DMS": "11° 33' 0.2528",
+          "kp_details": {
+            "nakshatra_name_en": "Magha",
+            "nakshatra_name_tam": "Makam",
+            "pada": 4,
+            "star_lord": "Ketu",
+            "sub_lord": "Mercury",
+            "sub_sub_lord": "Mercury",
+            "sub_sub_sub_lord": "Sun",
+            "formatted_kp": "Magha-4 / Makam-4,   Ketu, Mercury,  Mercury, Sun"
+          }
+        },
+        "is_retrograde": false
+      },
+      "rahu": {
+        "planet_name": "rahu",
+        "housedetails": {
+          "rasi": "Kumbam",
+          "house": 10,
+          "deg": 310.22040257021763,
+          "DMS": "10° 13' 13.4493",
+          "kp_details": {
+            "nakshatra_name_en": "Shatabhisha",
+            "nakshatra_name_tam": "Sadhayam",
+            "pada": 2,
+            "star_lord": "Rahu",
+            "sub_lord": "Jupiter",
+            "sub_sub_lord": "Rahu",
+            "sub_sub_sub_lord": "Jupiter",
+            "formatted_kp": "Shatabhisha-2 / Sadhayam-2,   Rahu, Jupiter,  Rahu, Jupiter"
+          }
+        },
+        "is_retrograde": true
+      },
+      "ketu": {
+        "planet_name": "ketu",
+        "housedetails": {
+          "rasi": "Simmam",
+          "house": 4,
+          "deg": 130.22040257021763,
+          "DMS": "10° 13' 13.4493",
+          "kp_details": {
+            "nakshatra_name_en": "Magha",
+            "nakshatra_name_tam": "Makam",
+            "pada": 4,
+            "star_lord": "Ketu",
+            "sub_lord": "Saturn",
+            "sub_sub_lord": "Venus",
+            "sub_sub_sub_lord": "Rahu",
+            "formatted_kp": "Magha-4 / Makam-4,   Ketu, Saturn,  Venus, Rahu"
+          }
+        },
+        "is_retrograde": true
+      }
+    },
+    "jamma_planets": {
+      "sun": {
+        "planet_name": "Sun",
+        "housedetails": {
+          "rasi": "Kanni",
+          "house": 5,
+          "deg": 179.99999989166665,
+          "DMS": "29° 59' 59.9996",
+          "kp_details": {
+            "nakshatra_name_en": "Chitra",
+            "nakshatra_name_tam": "Chithirai",
+            "pada": 2,
+            "star_lord": "Mars",
+            "sub_lord": "Saturn",
+            "sub_sub_lord": "Jupiter",
+            "sub_sub_sub_lord": "Rahu",
+            "formatted_kp": "Chitra-2 / Chithirai-2,   Mars, Saturn,  Jupiter, Rahu"
+          }
+        },
+        "is_retrograde": true,
+        "rasi_name_en": "Virgo",
+        "rasi_name_sanskrit": "Kanya"
+      },
+      "mars": {
+        "planet_name": "Mars",
+        "housedetails": {
+          "rasi": "Simmam",
+          "house": 4,
+          "deg": 134.99999989166668,
+          "DMS": "14° 59' 59.9996",
+          "kp_details": {
+            "nakshatra_name_en": "Purva Phalguni",
+            "nakshatra_name_tam": "Pooram",
+            "pada": 1,
+            "star_lord": "Venus",
+            "sub_lord": "Venus",
+            "sub_sub_lord": "Saturn",
+            "sub_sub_sub_lord": "Mars",
+            "formatted_kp": "Purva Phalguni-1 / Pooram-1,   Venus, Venus,  Saturn, Mars"
+          }
+        },
+        "is_retrograde": true,
+        "rasi_name_en": "Leo",
+        "rasi_name_sanskrit": "Simha"
+      },
+      "jupiter": {
+        "planet_name": "Jupiter",
+        "housedetails": {
+          "rasi": "Mithunam",
+          "house": 2,
+          "deg": 89.99999989166668,
+          "DMS": "29° 59' 59.9996",
+          "kp_details": {
+            "nakshatra_name_en": "Punarvasu",
+            "nakshatra_name_tam": "Punarpoosam",
+            "pada": 3,
+            "star_lord": "Jupiter",
+            "sub_lord": "Moon",
+            "sub_sub_lord": "Saturn",
+            "sub_sub_sub_lord": "Venus",
+            "formatted_kp": "Punarvasu-3 / Punarpoosam-3,   Jupiter, Moon,  Saturn, Venus"
+          }
+        },
+        "is_retrograde": true,
+        "rasi_name_en": "Gemini",
+        "rasi_name_sanskrit": "Mithuna"
+      },
+      "mercury": {
+        "planet_name": "Mercury",
+        "housedetails": {
+          "rasi": "Rishabham",
+          "house": 1,
+          "deg": 44.999999891666675,
+          "DMS": "14° 59' 59.9996",
+          "kp_details": {
+            "nakshatra_name_en": "Rohini",
+            "nakshatra_name_tam": "Rohini",
+            "pada": 2,
+            "star_lord": "Moon",
+            "sub_lord": "Jupiter",
+            "sub_sub_lord": "Venus",
+            "sub_sub_sub_lord": "Saturn",
+            "formatted_kp": "Rohini-2 / Rohini-2,   Moon, Jupiter,  Venus, Saturn"
+          }
+        },
+        "is_retrograde": true,
+        "rasi_name_en": "Taurus",
+        "rasi_name_sanskrit": "Vrishabha"
+      },
+      "venus": {
+        "planet_name": "Venus",
+        "housedetails": {
+          "rasi": "Meenam",
+          "house": 11,
+          "deg": 359.9999998916667,
+          "DMS": "29° 59' 59.9996",
+          "kp_details": {
+            "nakshatra_name_en": "Revati",
+            "nakshatra_name_tam": "Revathi",
+            "pada": 4,
+            "star_lord": "Mercury",
+            "sub_lord": "Saturn",
+            "sub_sub_lord": "Jupiter",
+            "sub_sub_sub_lord": "Rahu",
+            "formatted_kp": "Revati-4 / Revathi-4,   Mercury, Saturn,  Jupiter, Rahu"
+          }
+        },
+        "is_retrograde": true,
+        "rasi_name_en": "Pisces",
+        "rasi_name_sanskrit": "Meena"
+      },
+      "saturn": {
+        "planet_name": "Saturn",
+        "housedetails": {
+          "rasi": "Kumbam",
+          "house": 10,
+          "deg": 314.9999998916667,
+          "DMS": "14° 59' 59.9996",
+          "kp_details": {
+            "nakshatra_name_en": "Shatabhisha",
+            "nakshatra_name_tam": "Sadhayam",
+            "pada": 3,
+            "star_lord": "Rahu",
+            "sub_lord": "Ketu",
+            "sub_sub_lord": "Saturn",
+            "sub_sub_sub_lord": "Saturn",
+            "formatted_kp": "Shatabhisha-3 / Sadhayam-3,   Rahu, Ketu,  Saturn, Saturn"
+          }
+        },
+        "is_retrograde": true,
+        "rasi_name_en": "Aquarius",
+        "rasi_name_sanskrit": "Kumbha"
+      },
+      "moon": {
+        "planet_name": "Moon",
+        "housedetails": {
+          "rasi": "Dhanusu",
+          "house": 8,
+          "deg": 269.9999998916667,
+          "DMS": "29° 59' 59.9996",
+          "kp_details": {
+            "nakshatra_name_en": "Uttara Ashadha",
+            "nakshatra_name_tam": "Uthiraadam",
+            "pada": 1,
+            "star_lord": "Sun",
+            "sub_lord": "Rahu",
+            "sub_sub_lord": "Saturn",
+            "sub_sub_sub_lord": "Mars",
+            "formatted_kp": "Uttara Ashadha-1 / Uthiraadam-1,   Sun, Rahu,  Saturn, Mars"
+          }
+        },
+        "is_retrograde": true,
+        "rasi_name_en": "Sagittarius",
+        "rasi_name_sanskrit": "Dhanus"
+      },
+      "snake": {
+        "planet_name": "Snake",
+        "housedetails": {
+          "rasi": "Viruchigam",
+          "house": 7,
+          "deg": 224.99999989166665,
+          "DMS": "14° 59' 59.9996",
+          "kp_details": {
+            "nakshatra_name_en": "Anuradha",
+            "nakshatra_name_tam": "Anusham",
+            "pada": 4,
+            "star_lord": "Saturn",
+            "sub_lord": "Jupiter",
+            "sub_sub_lord": "Jupiter",
+            "sub_sub_sub_lord": "Ketu",
+            "formatted_kp": "Anuradha-4 / Anusham-4,   Saturn, Jupiter,  Jupiter, Ketu"
+          }
+        },
+        "is_retrograde": true,
+        "rasi_name_en": "Scorpio",
+        "rasi_name_sanskrit": "Vrischika"
+      }
+    }
+  },
+  "divisional_charts": {
+    "d1": {
+      "varga_code": "D-1",
+      "harmonic": 1,
+      "name": "Rasi",
+      "ascendant": {
+        "varga_code": "D-1",
+        "harmonic": 1,
+        "name": "Rasi",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 0,
+        "deg_in_varga": 2.85320946133848,
+        "DMS": "2° 51' 11.5541\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Punarvasu",
+          "nakshatra_name_tam": "Punarpoosam",
+          "pada": 4,
+          "star_lord": "Jupiter",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Punarvasu-4, Jupiter, Rahu, Venus"
+        }
+      },
+      "sun": {
+        "varga_code": "D-1",
+        "harmonic": 1,
+        "name": "Rasi",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 3,
+        "deg_in_varga": 3.0386802193192466,
+        "DMS": "3° 2' 19.2488\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Chitra",
+          "nakshatra_name_tam": "Chithirai",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Chitra-3, Mars, Venus, Sun"
+        }
+      },
+      "moon": {
+        "varga_code": "D-1",
+        "harmonic": 1,
+        "name": "Rasi",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 6,
+        "deg_in_varga": 19.974945261866708,
+        "DMS": "19° 58' 29.8029\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Shravana-3, Moon, Ketu, Mars"
+        }
+      },
+      "mars": {
+        "varga_code": "D-1",
+        "harmonic": 1,
+        "name": "Rasi",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 11,
+        "deg_in_varga": 14.406390106079769,
+        "DMS": "14° 24' 23.0044\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Ardra",
+          "nakshatra_name_tam": "Thiruvathirai",
+          "pada": 3,
+          "star_lord": "Rahu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Ardra-3, Rahu, Mercury, Saturn"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-1",
+        "harmonic": 1,
+        "name": "Rasi",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 3,
+        "deg_in_varga": 10.172063068935046,
+        "DMS": "10° 10' 19.4270\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Swati",
+          "nakshatra_name_tam": "Swaathi",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Swati-2, Rahu, Jupiter, Mars"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-1",
+        "harmonic": 1,
+        "name": "Rasi",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 4,
+        "deg_in_varga": 23.53696755884448,
+        "DMS": "23° 32' 13.0832\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Jyestha",
+          "nakshatra_name_tam": "Kettai",
+          "pada": 3,
+          "star_lord": "Mercury",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Jyestha-3, Mercury, Mars, Jupiter"
+        }
+      },
+      "venus": {
+        "varga_code": "D-1",
+        "harmonic": 1,
+        "name": "Rasi",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 16.808432194244176,
+        "DMS": "16° 48' 30.3559\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 2,
+          "star_lord": "Venus",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Purva Phalguni-2, Venus, Moon, Saturn"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-1",
+        "harmonic": 1,
+        "name": "Rasi",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 11.550070233334196,
+        "DMS": "11° 33' 0.2528\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 4,
+          "star_lord": "Ketu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Magha-4, Ketu, Mercury, Mercury"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-1",
+        "harmonic": 1,
+        "name": "Rasi",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 7,
+        "deg_in_varga": 10.22040257021763,
+        "DMS": "10° 13' 13.4493\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shatabhisha",
+          "nakshatra_name_tam": "Sadhayam",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Shatabhisha-2, Rahu, Jupiter, Rahu"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-1",
+        "harmonic": 1,
+        "name": "Rasi",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 10.22040257021763,
+        "DMS": "10° 13' 13.4493\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 4,
+          "star_lord": "Ketu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Magha-4, Ketu, Saturn, Venus"
+        }
+      }
+    },
+    "d2": {
+      "varga_code": "D-2",
+      "harmonic": 2,
+      "name": "Hora",
+      "ascendant": {
+        "varga_code": "D-2",
+        "harmonic": 2,
+        "name": "Hora",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 0,
+        "deg_in_varga": 5.70641892267696,
+        "DMS": "5° 42' 23.1081\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 1,
+          "star_lord": "Saturn",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Pushya-1, Saturn, Mercury, Mercury"
+        }
+      },
+      "sun": {
+        "varga_code": "D-2",
+        "harmonic": 2,
+        "name": "Hora",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 6.077360438638493,
+        "DMS": "6° 4' 38.4976\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Magha-2, Ketu, Rahu, Jupiter"
+        }
+      },
+      "moon": {
+        "varga_code": "D-2",
+        "harmonic": 2,
+        "name": "Hora",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 9.949890523733416,
+        "DMS": "9° 56' 59.6059\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 3,
+          "star_lord": "Ketu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Magha-3, Ketu, Saturn, Mercury"
+        }
+      },
+      "mars": {
+        "varga_code": "D-2",
+        "harmonic": 2,
+        "name": "Hora",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 28.812780212159538,
+        "DMS": "28° 48' 46.0088\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Phalguni",
+          "nakshatra_name_tam": "Uthiram",
+          "pada": 1,
+          "star_lord": "Sun",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Uttara Phalguni-1, Sun, Mars, Saturn"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-2",
+        "harmonic": 2,
+        "name": "Hora",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 20.34412613787009,
+        "DMS": "20° 20' 38.8541\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Purva Phalguni-3, Venus, Jupiter, Jupiter"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-2",
+        "harmonic": 2,
+        "name": "Hora",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 17.07393511768896,
+        "DMS": "17° 4' 26.1664\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 2,
+          "star_lord": "Venus",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Purva Phalguni-2, Venus, Moon, Ketu"
+        }
+      },
+      "venus": {
+        "varga_code": "D-2",
+        "harmonic": 2,
+        "name": "Hora",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 0,
+        "deg_in_varga": 3.6168643884883522,
+        "DMS": "3° 37' 0.7118\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 1,
+          "star_lord": "Saturn",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Pushya-1, Saturn, Saturn, Saturn"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-2",
+        "harmonic": 2,
+        "name": "Hora",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 23.100140466668392,
+        "DMS": "23° 6' 0.5057\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Purva Phalguni-3, Venus, Saturn, Sun"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-2",
+        "harmonic": 2,
+        "name": "Hora",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 20.44080514043526,
+        "DMS": "20° 26' 26.8985\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Purva Phalguni-3, Venus, Jupiter, Saturn"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-2",
+        "harmonic": 2,
+        "name": "Hora",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 20.44080514043526,
+        "DMS": "20° 26' 26.8985\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Purva Phalguni-3, Venus, Jupiter, Saturn"
+        }
+      }
+    },
+    "d3": {
+      "varga_code": "D-3",
+      "harmonic": 3,
+      "name": "Drekkana",
+      "ascendant": {
+        "varga_code": "D-3",
+        "harmonic": 3,
+        "name": "Drekkana",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 0,
+        "deg_in_varga": 8.55962838401544,
+        "DMS": "8° 33' 34.6622\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 2,
+          "star_lord": "Saturn",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Pushya-2, Saturn, Venus, Sun"
+        }
+      },
+      "sun": {
+        "varga_code": "D-3",
+        "harmonic": 3,
+        "name": "Drekkana",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 3,
+        "deg_in_varga": 9.11604065795774,
+        "DMS": "9° 6' 57.7464\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Swati",
+          "nakshatra_name_tam": "Swaathi",
+          "pada": 1,
+          "star_lord": "Rahu",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Swati-1, Rahu, Jupiter, Saturn"
+        }
+      },
+      "moon": {
+        "varga_code": "D-3",
+        "harmonic": 3,
+        "name": "Drekkana",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 10,
+        "deg_in_varga": 29.924835785600123,
+        "DMS": "29° 55' 29.4088\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 2,
+          "star_lord": "Mars",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Mrigashira-2, Mars, Saturn, Jupiter"
+        }
+      },
+      "mars": {
+        "varga_code": "D-3",
+        "harmonic": 3,
+        "name": "Drekkana",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 3,
+        "deg_in_varga": 13.219170318239307,
+        "DMS": "13° 13' 9.0131\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Swati",
+          "nakshatra_name_tam": "Swaathi",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Swati-2, Rahu, Mercury, Venus"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-3",
+        "harmonic": 3,
+        "name": "Drekkana",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 7,
+        "deg_in_varga": 0.5161892068051372,
+        "DMS": "0° 30' 58.2811\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Dhanishtha",
+          "nakshatra_name_tam": "Avittam",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Dhanishtha-3, Mars, Mercury, Venus"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-3",
+        "harmonic": 3,
+        "name": "Drekkana",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 0,
+        "deg_in_varga": 10.610902676533442,
+        "DMS": "10° 36' 39.2496\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 3,
+          "star_lord": "Saturn",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Pushya-3, Saturn, Sun, Jupiter"
+        }
+      },
+      "venus": {
+        "varga_code": "D-3",
+        "harmonic": 3,
+        "name": "Drekkana",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 5,
+        "deg_in_varga": 20.42529658273253,
+        "DMS": "20° 25' 31.0677\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Purva Ashadha-3, Venus, Jupiter, Saturn"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-3",
+        "harmonic": 3,
+        "name": "Drekkana",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 5,
+        "deg_in_varga": 4.650210700002589,
+        "DMS": "4° 39' 0.7585\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Mula",
+          "nakshatra_name_tam": "Moolam",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Mula-2, Ketu, Moon, Venus"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-3",
+        "harmonic": 3,
+        "name": "Drekkana",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 11,
+        "deg_in_varga": 0.6612077106528886,
+        "DMS": "0° 39' 40.3478\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Mrigashira-3, Mars, Mercury, Venus"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-3",
+        "harmonic": 3,
+        "name": "Drekkana",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 5,
+        "deg_in_varga": 0.6612077106528886,
+        "DMS": "0° 39' 40.3478\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Mula",
+          "nakshatra_name_tam": "Moolam",
+          "pada": 1,
+          "star_lord": "Ketu",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Mula-1, Ketu, Ketu, Saturn"
+        }
+      }
+    },
+    "d4": {
+      "varga_code": "D-4",
+      "harmonic": 4,
+      "name": "Chaturthamsa",
+      "ascendant": {
+        "varga_code": "D-4",
+        "harmonic": 4,
+        "name": "Chaturthamsa",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 0,
+        "deg_in_varga": 11.41283784535392,
+        "DMS": "11° 24' 46.2162\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 3,
+          "star_lord": "Saturn",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Pushya-3, Saturn, Moon, Jupiter"
+        }
+      },
+      "sun": {
+        "varga_code": "D-4",
+        "harmonic": 4,
+        "name": "Chaturthamsa",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 3,
+        "deg_in_varga": 12.154720877276986,
+        "DMS": "12° 9' 16.9952\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Swati",
+          "nakshatra_name_tam": "Swaathi",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Swati-2, Rahu, Saturn, Rahu"
+        }
+      },
+      "moon": {
+        "varga_code": "D-4",
+        "harmonic": 4,
+        "name": "Chaturthamsa",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 0,
+        "deg_in_varga": 19.89978104746683,
+        "DMS": "19° 53' 59.2118\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Ashlesha",
+          "nakshatra_name_tam": "Ayilyam",
+          "pada": 1,
+          "star_lord": "Mercury",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Ashlesha-1, Mercury, Venus, Moon"
+        }
+      },
+      "mars": {
+        "varga_code": "D-4",
+        "harmonic": 4,
+        "name": "Chaturthamsa",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 2,
+        "deg_in_varga": 27.625560424319076,
+        "DMS": "27° 37' 32.0175\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Chitra",
+          "nakshatra_name_tam": "Chithirai",
+          "pada": 2,
+          "star_lord": "Mars",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Chitra-2, Mars, Jupiter, Rahu"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-4",
+        "harmonic": 4,
+        "name": "Chaturthamsa",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 6,
+        "deg_in_varga": 10.688252275740183,
+        "DMS": "10° 41' 17.7082\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 1,
+          "star_lord": "Moon",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Shravana-1, Moon, Moon, Mercury"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-4",
+        "harmonic": 4,
+        "name": "Chaturthamsa",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 1,
+        "deg_in_varga": 4.147870235377923,
+        "DMS": "4° 8' 52.3328\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Magha-2, Ketu, Moon, Saturn"
+        }
+      },
+      "venus": {
+        "varga_code": "D-4",
+        "harmonic": 4,
+        "name": "Chaturthamsa",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 7,
+        "deg_in_varga": 7.2337287769767045,
+        "DMS": "7° 14' 1.4236\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shatabhisha",
+          "nakshatra_name_tam": "Sadhayam",
+          "pada": 1,
+          "star_lord": "Rahu",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Shatabhisha-1, Rahu, Rahu, Saturn"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-4",
+        "harmonic": 4,
+        "name": "Chaturthamsa",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 4,
+        "deg_in_varga": 16.200280933336785,
+        "DMS": "16° 12' 1.0114\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 4,
+          "star_lord": "Saturn",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Anuradha-4, Saturn, Jupiter, Moon"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-4",
+        "harmonic": 4,
+        "name": "Chaturthamsa",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 10,
+        "deg_in_varga": 10.881610280870518,
+        "DMS": "10° 52' 53.7970\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 1,
+          "star_lord": "Moon",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Rohini-1, Moon, Moon, Venus"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-4",
+        "harmonic": 4,
+        "name": "Chaturthamsa",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 4,
+        "deg_in_varga": 10.881610280870518,
+        "DMS": "10° 52' 53.7970\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 3,
+          "star_lord": "Saturn",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Anuradha-3, Saturn, Sun, Ketu"
+        }
+      }
+    },
+    "d5": {
+      "varga_code": "D-5",
+      "harmonic": 5,
+      "name": "Panchamsha",
+      "ascendant": {
+        "varga_code": "D-5",
+        "harmonic": 5,
+        "name": "Panchamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 0,
+        "deg_in_varga": 14.2660473066924,
+        "DMS": "14° 15' 57.7703\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 1,
+          "star_lord": "Venus",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Bharani-1, Venus, Venus, Rahu"
+        }
+      },
+      "sun": {
+        "varga_code": "D-5",
+        "harmonic": 5,
+        "name": "Panchamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 0,
+        "deg_in_varga": 15.193401096596233,
+        "DMS": "15° 11' 36.2439\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 1,
+          "star_lord": "Venus",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Bharani-1, Venus, Venus, Mercury"
+        }
+      },
+      "moon": {
+        "varga_code": "D-5",
+        "harmonic": 5,
+        "name": "Panchamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 3,
+        "deg_in_varga": 9.87472630933354,
+        "DMS": "9° 52' 29.0147\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 2,
+          "star_lord": "Saturn",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Pushya-2, Saturn, Venus, Saturn"
+        }
+      },
+      "mars": {
+        "varga_code": "D-5",
+        "harmonic": 5,
+        "name": "Panchamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 10,
+        "deg_in_varga": 12.031950530398845,
+        "DMS": "12° 1' 55.0219\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shatabhisha",
+          "nakshatra_name_tam": "Sadhayam",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Shatabhisha-2, Rahu, Saturn, Rahu"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-5",
+        "harmonic": 5,
+        "name": "Panchamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 1,
+        "deg_in_varga": 20.86031534467523,
+        "DMS": "20° 51' 37.1352\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 4,
+          "star_lord": "Moon",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Rohini-4, Moon, Venus, Sun"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-5",
+        "harmonic": 5,
+        "name": "Panchamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 7,
+        "deg_in_varga": 27.684837794222403,
+        "DMS": "27° 41' 5.4161\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Jyestha",
+          "nakshatra_name_tam": "Kettai",
+          "pada": 4,
+          "star_lord": "Mercury",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Jyestha-4, Mercury, Jupiter, Rahu"
+        }
+      },
+      "venus": {
+        "varga_code": "D-5",
+        "harmonic": 5,
+        "name": "Panchamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 6,
+        "deg_in_varga": 24.04216097122088,
+        "DMS": "24° 2' 31.7795\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 2,
+          "star_lord": "Jupiter",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Vishakha-2, Jupiter, Mercury, Mercury"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-5",
+        "harmonic": 5,
+        "name": "Panchamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 5,
+        "deg_in_varga": 27.75035116667098,
+        "DMS": "27° 45' 1.2642\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Chitra",
+          "nakshatra_name_tam": "Chithirai",
+          "pada": 2,
+          "star_lord": "Mars",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Chitra-2, Mars, Jupiter, Rahu"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-5",
+        "harmonic": 5,
+        "name": "Panchamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 5,
+        "deg_in_varga": 21.102012851088148,
+        "DMS": "21° 6' 7.2463\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Hasta",
+          "nakshatra_name_tam": "Hastham",
+          "pada": 4,
+          "star_lord": "Moon",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Hasta-4, Moon, Venus, Moon"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-5",
+        "harmonic": 5,
+        "name": "Panchamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 5,
+        "deg_in_varga": 21.102012851088148,
+        "DMS": "21° 6' 7.2463\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Hasta",
+          "nakshatra_name_tam": "Hastham",
+          "pada": 4,
+          "star_lord": "Moon",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Hasta-4, Moon, Venus, Moon"
+        }
+      }
+    },
+    "d6": {
+      "varga_code": "D-6",
+      "harmonic": 6,
+      "name": "Shashtamsha",
+      "ascendant": {
+        "varga_code": "D-6",
+        "harmonic": 6,
+        "name": "Shashtamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 0,
+        "deg_in_varga": 17.11925676803088,
+        "DMS": "17° 7' 9.3244\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Swati",
+          "nakshatra_name_tam": "Swaathi",
+          "pada": 4,
+          "star_lord": "Rahu",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Swati-4, Rahu, Venus, Mercury"
+        }
+      },
+      "sun": {
+        "varga_code": "D-6",
+        "harmonic": 6,
+        "name": "Shashtamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 6,
+        "deg_in_varga": 18.23208131591548,
+        "DMS": "18° 13' 55.4927\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 2,
+          "star_lord": "Venus",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Bharani-2, Venus, Rahu, Rahu"
+        }
+      },
+      "moon": {
+        "varga_code": "D-6",
+        "harmonic": 6,
+        "name": "Shashtamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 3,
+        "deg_in_varga": 29.849671571200247,
+        "DMS": "29° 50' 58.8177\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Dhanishtha",
+          "nakshatra_name_tam": "Avittam",
+          "pada": 2,
+          "star_lord": "Mars",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Dhanishtha-2, Mars, Saturn, Jupiter"
+        }
+      },
+      "mars": {
+        "varga_code": "D-6",
+        "harmonic": 6,
+        "name": "Shashtamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 8,
+        "deg_in_varga": 26.438340636478614,
+        "DMS": "26° 26' 18.0263\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Punarvasu",
+          "nakshatra_name_tam": "Punarpoosam",
+          "pada": 2,
+          "star_lord": "Jupiter",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Punarvasu-2, Jupiter, Ketu, Saturn"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-6",
+        "harmonic": 6,
+        "name": "Shashtamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 8,
+        "deg_in_varga": 1.0323784136102745,
+        "DMS": "1° 1' 56.5623\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Mrigashira-3, Mars, Mercury, Mars"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-6",
+        "harmonic": 6,
+        "name": "Shashtamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 4,
+        "deg_in_varga": 21.221805353066884,
+        "DMS": "21° 13' 18.4993\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Bhadrapada",
+          "nakshatra_name_tam": "Poorattathi",
+          "pada": 1,
+          "star_lord": "Jupiter",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Purva Bhadrapada-1, Jupiter, Jupiter, Sun"
+        }
+      },
+      "venus": {
+        "varga_code": "D-6",
+        "harmonic": 6,
+        "name": "Shashtamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 9,
+        "deg_in_varga": 10.850593165465057,
+        "DMS": "10° 51' 2.1354\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 3,
+          "star_lord": "Saturn",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Pushya-3, Saturn, Sun, Ketu"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-6",
+        "harmonic": 6,
+        "name": "Shashtamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 8,
+        "deg_in_varga": 9.300421400005177,
+        "DMS": "9° 18' 1.5170\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Ardra",
+          "nakshatra_name_tam": "Thiruvathirai",
+          "pada": 1,
+          "star_lord": "Rahu",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Ardra-1, Rahu, Jupiter, Mercury"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-6",
+        "harmonic": 6,
+        "name": "Shashtamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 8,
+        "deg_in_varga": 1.3224154213057773,
+        "DMS": "1° 19' 20.6955\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Mrigashira-3, Mars, Mercury, Rahu"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-6",
+        "harmonic": 6,
+        "name": "Shashtamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 8,
+        "deg_in_varga": 1.3224154213057773,
+        "DMS": "1° 19' 20.6955\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Mrigashira-3, Mars, Mercury, Rahu"
+        }
+      }
+    },
+    "d7": {
+      "varga_code": "D-7",
+      "harmonic": 7,
+      "name": "Saptamsha",
+      "ascendant": {
+        "varga_code": "D-7",
+        "harmonic": 7,
+        "name": "Saptamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 0,
+        "deg_in_varga": 19.97246622936936,
+        "DMS": "19° 58' 20.8784\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Shravana-3, Moon, Ketu, Mars"
+        }
+      },
+      "sun": {
+        "varga_code": "D-7",
+        "harmonic": 7,
+        "name": "Saptamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 9,
+        "deg_in_varga": 21.270761535234726,
+        "DMS": "21° 16' 14.7415\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 1,
+          "star_lord": "Jupiter",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Vishakha-1, Jupiter, Jupiter, Moon"
+        }
+      },
+      "moon": {
+        "varga_code": "D-7",
+        "harmonic": 7,
+        "name": "Saptamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 10,
+        "deg_in_varga": 19.82461683306696,
+        "DMS": "19° 49' 28.6206\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Jyestha",
+          "nakshatra_name_tam": "Kettai",
+          "pada": 1,
+          "star_lord": "Mercury",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Jyestha-1, Mercury, Venus, Moon"
+        }
+      },
+      "mars": {
+        "varga_code": "D-7",
+        "harmonic": 7,
+        "name": "Saptamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 8,
+        "deg_in_varga": 10.84473074255838,
+        "DMS": "10° 50' 41.0307\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Hasta",
+          "nakshatra_name_tam": "Hastham",
+          "pada": 1,
+          "star_lord": "Moon",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Hasta-1, Moon, Moon, Ketu"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-7",
+        "harmonic": 7,
+        "name": "Saptamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 11,
+        "deg_in_varga": 11.204441482545322,
+        "DMS": "11° 12' 15.9893\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Mula",
+          "nakshatra_name_tam": "Moolam",
+          "pada": 4,
+          "star_lord": "Ketu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Mula-4, Ketu, Saturn, Jupiter"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-7",
+        "harmonic": 7,
+        "name": "Saptamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 9,
+        "deg_in_varga": 14.758772911911375,
+        "DMS": "14° 45' 31.5825\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Swati",
+          "nakshatra_name_tam": "Swaathi",
+          "pada": 3,
+          "star_lord": "Rahu",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Swati-3, Rahu, Ketu, Mars"
+        }
+      },
+      "venus": {
+        "varga_code": "D-7",
+        "harmonic": 7,
+        "name": "Saptamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 10,
+        "deg_in_varga": 27.65902535970923,
+        "DMS": "27° 39' 32.4913\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Jyestha",
+          "nakshatra_name_tam": "Kettai",
+          "pada": 4,
+          "star_lord": "Mercury",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Jyestha-4, Mercury, Jupiter, Rahu"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-7",
+        "harmonic": 7,
+        "name": "Saptamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 9,
+        "deg_in_varga": 20.850491633339374,
+        "DMS": "20° 51' 1.7699\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 1,
+          "star_lord": "Jupiter",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Vishakha-1, Jupiter, Jupiter, Ketu"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-7",
+        "harmonic": 7,
+        "name": "Saptamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 3,
+        "deg_in_varga": 11.542817991523409,
+        "DMS": "11° 32' 34.1448\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Aswini",
+          "nakshatra_name_tam": "Aswini",
+          "pada": 4,
+          "star_lord": "Ketu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Aswini-4, Ketu, Mercury, Mercury"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-7",
+        "harmonic": 7,
+        "name": "Saptamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 9,
+        "deg_in_varga": 11.542817991523409,
+        "DMS": "11° 32' 34.1448\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Swati",
+          "nakshatra_name_tam": "Swaathi",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Swati-2, Rahu, Saturn, Venus"
+        }
+      }
+    },
+    "d8": {
+      "varga_code": "D-8",
+      "harmonic": 8,
+      "name": "Ashtamsha",
+      "ascendant": {
+        "varga_code": "D-8",
+        "harmonic": 8,
+        "name": "Ashtamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 0,
+        "deg_in_varga": 22.82567569070784,
+        "DMS": "22° 49' 32.4325\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Bharani-3, Venus, Saturn, Venus"
+        }
+      },
+      "sun": {
+        "varga_code": "D-8",
+        "harmonic": 8,
+        "name": "Ashtamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 0,
+        "deg_in_varga": 24.309441754553973,
+        "DMS": "24° 18' 33.9903\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 4,
+          "star_lord": "Venus",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Bharani-4, Venus, Mercury, Ketu"
+        }
+      },
+      "moon": {
+        "varga_code": "D-8",
+        "harmonic": 8,
+        "name": "Ashtamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 5,
+        "deg_in_varga": 9.799562094933663,
+        "DMS": "9° 47' 58.4235\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Phalguni",
+          "nakshatra_name_tam": "Uthiram",
+          "pada": 4,
+          "star_lord": "Sun",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Uttara Phalguni-4, Sun, Venus, Mercury"
+        }
+      },
+      "mars": {
+        "varga_code": "D-8",
+        "harmonic": 8,
+        "name": "Ashtamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 7,
+        "deg_in_varga": 25.251120848638152,
+        "DMS": "25° 15' 4.0351\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Jyestha",
+          "nakshatra_name_tam": "Kettai",
+          "pada": 3,
+          "star_lord": "Mercury",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Jyestha-3, Mercury, Rahu, Mercury"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-8",
+        "harmonic": 8,
+        "name": "Ashtamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 2,
+        "deg_in_varga": 21.376504551480366,
+        "DMS": "21° 22' 35.4164\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Punarvasu",
+          "nakshatra_name_tam": "Punarpoosam",
+          "pada": 1,
+          "star_lord": "Jupiter",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Punarvasu-1, Jupiter, Jupiter, Moon"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-8",
+        "harmonic": 8,
+        "name": "Ashtamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 2,
+        "deg_in_varga": 8.295740470755845,
+        "DMS": "8° 17' 44.6657\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Ardra",
+          "nakshatra_name_tam": "Thiruvathirai",
+          "pada": 1,
+          "star_lord": "Rahu",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Ardra-1, Rahu, Rahu, Sun"
+        }
+      },
+      "venus": {
+        "varga_code": "D-8",
+        "harmonic": 8,
+        "name": "Ashtamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 0,
+        "deg_in_varga": 14.467457553953409,
+        "DMS": "14° 28' 2.8472\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 1,
+          "star_lord": "Venus",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Bharani-1, Venus, Venus, Jupiter"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-8",
+        "harmonic": 8,
+        "name": "Ashtamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 11,
+        "deg_in_varga": 2.40056186667357,
+        "DMS": "2° 24' 2.0227\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Bhadrapada",
+          "nakshatra_name_tam": "Poorattathi",
+          "pada": 4,
+          "star_lord": "Jupiter",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Purva Bhadrapada-4, Jupiter, Rahu, Mercury"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-8",
+        "harmonic": 8,
+        "name": "Ashtamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 10,
+        "deg_in_varga": 21.763220561741036,
+        "DMS": "21° 45' 47.5940\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Bhadrapada",
+          "nakshatra_name_tam": "Poorattathi",
+          "pada": 1,
+          "star_lord": "Jupiter",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Purva Bhadrapada-1, Jupiter, Jupiter, Rahu"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-8",
+        "harmonic": 8,
+        "name": "Ashtamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 10,
+        "deg_in_varga": 21.763220561741036,
+        "DMS": "21° 45' 47.5940\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Bhadrapada",
+          "nakshatra_name_tam": "Poorattathi",
+          "pada": 1,
+          "star_lord": "Jupiter",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Purva Bhadrapada-1, Jupiter, Jupiter, Rahu"
+        }
+      }
+    },
+    "d9": {
+      "varga_code": "D-9",
+      "harmonic": 9,
+      "name": "Navamsha",
+      "ascendant": {
+        "varga_code": "D-9",
+        "harmonic": 9,
+        "name": "Navamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 0,
+        "deg_in_varga": 25.67888515204632,
+        "DMS": "25° 40' 43.9865\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Ashlesha",
+          "nakshatra_name_tam": "Ayilyam",
+          "pada": 3,
+          "star_lord": "Mercury",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Ashlesha-3, Mercury, Rahu, Venus"
+        }
+      },
+      "sun": {
+        "varga_code": "D-9",
+        "harmonic": 9,
+        "name": "Navamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 3,
+        "deg_in_varga": 27.34812197387322,
+        "DMS": "27° 20' 53.2391\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 3,
+          "star_lord": "Jupiter",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Vishakha-3, Jupiter, Venus, Mars"
+        }
+      },
+      "moon": {
+        "varga_code": "D-9",
+        "harmonic": 9,
+        "name": "Navamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 11,
+        "deg_in_varga": 29.77450735680036,
+        "DMS": "29° 46' 28.2265\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Punarvasu",
+          "nakshatra_name_tam": "Punarpoosam",
+          "pada": 3,
+          "star_lord": "Jupiter",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Punarvasu-3, Jupiter, Moon, Jupiter"
+        }
+      },
+      "mars": {
+        "varga_code": "D-9",
+        "harmonic": 9,
+        "name": "Navamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 7,
+        "deg_in_varga": 9.657510954717916,
+        "DMS": "9° 39' 27.0394\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shatabhisha",
+          "nakshatra_name_tam": "Sadhayam",
+          "pada": 1,
+          "star_lord": "Rahu",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Shatabhisha-1, Rahu, Jupiter, Venus"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-9",
+        "harmonic": 9,
+        "name": "Navamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 6,
+        "deg_in_varga": 1.5485676204154117,
+        "DMS": "1° 32' 54.8434\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Ashadha",
+          "nakshatra_name_tam": "Uthiraadam",
+          "pada": 2,
+          "star_lord": "Sun",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Uttara Ashadha-2, Sun, Jupiter, Saturn"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-9",
+        "harmonic": 9,
+        "name": "Navamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 7,
+        "deg_in_varga": 1.8327080296003047,
+        "DMS": "1° 49' 57.7489\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Dhanishtha",
+          "nakshatra_name_tam": "Avittam",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Dhanishtha-3, Mars, Mercury, Saturn"
+        }
+      },
+      "venus": {
+        "varga_code": "D-9",
+        "harmonic": 9,
+        "name": "Navamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 2,
+        "deg_in_varga": 1.2758897481975744,
+        "DMS": "1° 16' 33.2031\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Phalguni",
+          "nakshatra_name_tam": "Uthiram",
+          "pada": 2,
+          "star_lord": "Sun",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Uttara Phalguni-2, Sun, Jupiter, Jupiter"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-9",
+        "harmonic": 9,
+        "name": "Navamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 0,
+        "deg_in_varga": 13.950632100007766,
+        "DMS": "13° 57' 2.2756\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 4,
+          "star_lord": "Saturn",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Pushya-4, Saturn, Rahu, Mercury"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-9",
+        "harmonic": 9,
+        "name": "Navamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 6,
+        "deg_in_varga": 1.983623131958666,
+        "DMS": "1° 59' 1.0433\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Ashadha",
+          "nakshatra_name_tam": "Uthiraadam",
+          "pada": 2,
+          "star_lord": "Sun",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Uttara Ashadha-2, Sun, Jupiter, Mercury"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-9",
+        "harmonic": 9,
+        "name": "Navamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 0,
+        "deg_in_varga": 1.983623131958666,
+        "DMS": "1° 59' 1.0433\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Punarvasu",
+          "nakshatra_name_tam": "Punarpoosam",
+          "pada": 4,
+          "star_lord": "Jupiter",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Punarvasu-4, Jupiter, Rahu, Saturn"
+        }
+      }
+    },
+    "d10": {
+      "varga_code": "D-10",
+      "harmonic": 10,
+      "name": "Dasamsha",
+      "ascendant": {
+        "varga_code": "D-10",
+        "harmonic": 10,
+        "name": "Dasamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 0,
+        "deg_in_varga": 28.5320946133848,
+        "DMS": "28° 31' 55.5406\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 4,
+          "star_lord": "Mercury",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Revati-4, Mercury, Saturn, Ketu"
+        }
+      },
+      "sun": {
+        "varga_code": "D-10",
+        "harmonic": 10,
+        "name": "Dasamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 8,
+        "deg_in_varga": 0.3868021931924659,
+        "DMS": "0° 23' 12.4879\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 4,
+          "star_lord": "Jupiter",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Vishakha-4, Jupiter, Moon, Venus"
+        }
+      },
+      "moon": {
+        "varga_code": "D-10",
+        "harmonic": 10,
+        "name": "Dasamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 0,
+        "deg_in_varga": 19.74945261866708,
+        "DMS": "19° 44' 58.0294\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 1,
+          "star_lord": "Mercury",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Revati-1, Mercury, Venus, Sun"
+        }
+      },
+      "mars": {
+        "varga_code": "D-10",
+        "harmonic": 10,
+        "name": "Dasamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 7,
+        "deg_in_varga": 24.06390106079769,
+        "DMS": "24° 3' 50.0438\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 2,
+          "star_lord": "Jupiter",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Vishakha-2, Jupiter, Mercury, Mercury"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-10",
+        "harmonic": 10,
+        "name": "Dasamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 10,
+        "deg_in_varga": 11.720630689350457,
+        "DMS": "11° 43' 14.2705\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 1,
+          "star_lord": "Moon",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Shravana-1, Moon, Mars, Venus"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-10",
+        "harmonic": 10,
+        "name": "Dasamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 11,
+        "deg_in_varga": 25.369675588444807,
+        "DMS": "25° 22' 10.8321\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Bhadrapada",
+          "nakshatra_name_tam": "Poorattathi",
+          "pada": 2,
+          "star_lord": "Jupiter",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Purva Bhadrapada-2, Jupiter, Mercury, Jupiter"
+        }
+      },
+      "venus": {
+        "varga_code": "D-10",
+        "harmonic": 10,
+        "name": "Dasamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 10,
+        "deg_in_varga": 18.08432194244176,
+        "DMS": "18° 5' 3.5590\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Shravana-3, Moon, Mercury, Ketu"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-10",
+        "harmonic": 10,
+        "name": "Dasamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 8,
+        "deg_in_varga": 25.500702333341962,
+        "DMS": "25° 30' 2.5284\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Jyestha",
+          "nakshatra_name_tam": "Kettai",
+          "pada": 3,
+          "star_lord": "Mercury",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Jyestha-3, Mercury, Rahu, Venus"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-10",
+        "harmonic": 10,
+        "name": "Dasamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 2,
+        "deg_in_varga": 12.204025702176295,
+        "DMS": "12° 12' 14.4925\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 1,
+          "star_lord": "Moon",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Rohini-1, Moon, Rahu, Jupiter"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-10",
+        "harmonic": 10,
+        "name": "Dasamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 8,
+        "deg_in_varga": 12.204025702176295,
+        "DMS": "12° 12' 14.4925\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 3,
+          "star_lord": "Saturn",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Anuradha-3, Saturn, Mars, Rahu"
+        }
+      }
+    },
+    "d11": {
+      "varga_code": "D-11",
+      "harmonic": 11,
+      "name": "Rudramsha",
+      "ascendant": {
+        "varga_code": "D-11",
+        "harmonic": 11,
+        "name": "Rudramsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 0,
+        "deg_in_varga": 1.3853040747232819,
+        "DMS": "1° 23' 7.0947\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Mula",
+          "nakshatra_name_tam": "Moolam",
+          "pada": 1,
+          "star_lord": "Ketu",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Mula-1, Ketu, Venus, Moon"
+        }
+      },
+      "sun": {
+        "varga_code": "D-11",
+        "harmonic": 11,
+        "name": "Rudramsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 9,
+        "deg_in_varga": 3.4254824125117147,
+        "DMS": "3° 25' 31.7367\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Phalguni",
+          "nakshatra_name_tam": "Uthiram",
+          "pada": 3,
+          "star_lord": "Sun",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Uttara Phalguni-3, Sun, Saturn, Mercury"
+        }
+      },
+      "moon": {
+        "varga_code": "D-11",
+        "harmonic": 11,
+        "name": "Rudramsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 0,
+        "deg_in_varga": 9.724397880533797,
+        "DMS": "9° 43' 27.8324\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Mula",
+          "nakshatra_name_tam": "Moolam",
+          "pada": 3,
+          "star_lord": "Ketu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Mula-3, Ketu, Saturn, Mercury"
+        }
+      },
+      "mars": {
+        "varga_code": "D-11",
+        "harmonic": 11,
+        "name": "Rudramsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 9,
+        "deg_in_varga": 8.470291166877475,
+        "DMS": "8° 28' 13.0482\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Phalguni",
+          "nakshatra_name_tam": "Uthiram",
+          "pada": 4,
+          "star_lord": "Sun",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Uttara Phalguni-4, Sun, Venus, Mars"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-11",
+        "harmonic": 11,
+        "name": "Rudramsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 7,
+        "deg_in_varga": 21.892693758285503,
+        "DMS": "21° 53' 33.6975\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Ashlesha",
+          "nakshatra_name_tam": "Ayilyam",
+          "pada": 2,
+          "star_lord": "Mercury",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Ashlesha-2, Mercury, Sun, Saturn"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-11",
+        "harmonic": 11,
+        "name": "Rudramsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 1,
+        "deg_in_varga": 18.906643147289305,
+        "DMS": "18° 54' 23.9153\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Shravana-3, Moon, Mercury, Rahu"
+        }
+      },
+      "venus": {
+        "varga_code": "D-11",
+        "harmonic": 11,
+        "name": "Rudramsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 6,
+        "deg_in_varga": 4.892754136685941,
+        "DMS": "4° 53' 33.9149\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 4,
+          "star_lord": "Mars",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Mrigashira-4, Mars, Sun, Sun"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-11",
+        "harmonic": 11,
+        "name": "Rudramsha",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 8,
+        "deg_in_varga": 7.050772566676168,
+        "DMS": "7° 3' 2.7812\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 3,
+          "star_lord": "Ketu",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Magha-3, Ketu, Rahu, Venus"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-11",
+        "harmonic": 11,
+        "name": "Rudramsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 3,
+        "deg_in_varga": 22.424428272393925,
+        "DMS": "22° 25' 27.9418\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 2,
+          "star_lord": "Mercury",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Revati-2, Mercury, Moon, Rahu"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-11",
+        "harmonic": 11,
+        "name": "Rudramsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 9,
+        "deg_in_varga": 22.424428272393925,
+        "DMS": "22° 25' 27.9418\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Hasta",
+          "nakshatra_name_tam": "Hastham",
+          "pada": 4,
+          "star_lord": "Moon",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Hasta-4, Moon, Venus, Mercury"
+        }
+      }
+    },
+    "d12": {
+      "varga_code": "D-12",
+      "harmonic": 12,
+      "name": "Dwadasamsha",
+      "ascendant": {
+        "varga_code": "D-12",
+        "harmonic": 12,
+        "name": "Dwadasamsha",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 0,
+        "deg_in_varga": 4.23851353606176,
+        "DMS": "4° 14' 18.6487\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Magha-2, Ketu, Moon, Saturn"
+        }
+      },
+      "sun": {
+        "varga_code": "D-12",
+        "harmonic": 12,
+        "name": "Dwadasamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 3,
+        "deg_in_varga": 6.464162631830959,
+        "DMS": "6° 27' 50.9855\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 1,
+          "star_lord": "Saturn",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Anuradha-1, Saturn, Mercury, Mars"
+        }
+      },
+      "moon": {
+        "varga_code": "D-12",
+        "harmonic": 12,
+        "name": "Dwadasamsha",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 0,
+        "deg_in_varga": 29.699343142400494,
+        "DMS": "29° 41' 57.6353\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Phalguni",
+          "nakshatra_name_tam": "Uthiram",
+          "pada": 1,
+          "star_lord": "Sun",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Uttara Phalguni-1, Sun, Rahu, Jupiter"
+        }
+      },
+      "mars": {
+        "varga_code": "D-12",
+        "harmonic": 12,
+        "name": "Dwadasamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 3,
+        "deg_in_varga": 22.876681272957228,
+        "DMS": "22° 52' 36.0526\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Jyestha",
+          "nakshatra_name_tam": "Kettai",
+          "pada": 2,
+          "star_lord": "Mercury",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Jyestha-2, Mercury, Moon, Mercury"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-12",
+        "harmonic": 12,
+        "name": "Dwadasamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 6,
+        "deg_in_varga": 2.064756827220549,
+        "DMS": "2° 3' 53.1246\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Dhanishtha",
+          "nakshatra_name_tam": "Avittam",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Dhanishtha-3, Mars, Ketu, Sun"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-12",
+        "harmonic": 12,
+        "name": "Dwadasamsha",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 0,
+        "deg_in_varga": 12.443610706133768,
+        "DMS": "12° 26' 36.9985\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 4,
+          "star_lord": "Ketu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Magha-4, Ketu, Mercury, Mars"
+        }
+      },
+      "venus": {
+        "varga_code": "D-12",
+        "harmonic": 12,
+        "name": "Dwadasamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 6,
+        "deg_in_varga": 21.701186330930113,
+        "DMS": "21° 42' 4.2708\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Bhadrapada",
+          "nakshatra_name_tam": "Poorattathi",
+          "pada": 1,
+          "star_lord": "Jupiter",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Purva Bhadrapada-1, Jupiter, Jupiter, Rahu"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-12",
+        "harmonic": 12,
+        "name": "Dwadasamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 4,
+        "deg_in_varga": 18.600842800010355,
+        "DMS": "18° 36' 3.0341\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 2,
+          "star_lord": "Venus",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Purva Ashadha-2, Venus, Rahu, Jupiter"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-12",
+        "harmonic": 12,
+        "name": "Dwadasamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 10,
+        "deg_in_varga": 2.6448308426115545,
+        "DMS": "2° 38' 41.3910\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Mrigashira-3, Mars, Ketu, Mercury"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-12",
+        "harmonic": 12,
+        "name": "Dwadasamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 4,
+        "deg_in_varga": 2.6448308426115545,
+        "DMS": "2° 38' 41.3910\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Mula",
+          "nakshatra_name_tam": "Moolam",
+          "pada": 1,
+          "star_lord": "Ketu",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Mula-1, Ketu, Venus, Mercury"
+        }
+      }
+    },
+    "d16": {
+      "varga_code": "D-16",
+      "harmonic": 16,
+      "name": "Shodashamsha",
+      "ascendant": {
+        "varga_code": "D-16",
+        "harmonic": 16,
+        "name": "Shodashamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 0,
+        "deg_in_varga": 15.65135138141568,
+        "DMS": "15° 39' 4.8650\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 2,
+          "star_lord": "Moon",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Rohini-2, Moon, Jupiter, Rahu"
+        }
+      },
+      "sun": {
+        "varga_code": "D-16",
+        "harmonic": 16,
+        "name": "Shodashamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 0,
+        "deg_in_varga": 18.618883509107945,
+        "DMS": "18° 37' 7.9806\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Rohini-3, Moon, Mercury, Moon"
+        }
+      },
+      "moon": {
+        "varga_code": "D-16",
+        "harmonic": 16,
+        "name": "Shodashamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 9,
+        "deg_in_varga": 19.599124189867325,
+        "DMS": "19° 35' 56.8471\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shatabhisha",
+          "nakshatra_name_tam": "Sadhayam",
+          "pada": 4,
+          "star_lord": "Rahu",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Shatabhisha-4, Rahu, Mars, Saturn"
+        }
+      },
+      "mars": {
+        "varga_code": "D-16",
+        "harmonic": 16,
+        "name": "Shodashamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 2,
+        "deg_in_varga": 20.502241697276304,
+        "DMS": "20° 30' 8.0701\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Ashlesha",
+          "nakshatra_name_tam": "Ayilyam",
+          "pada": 2,
+          "star_lord": "Mercury",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Ashlesha-2, Mercury, Venus, Jupiter"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-16",
+        "harmonic": 16,
+        "name": "Shodashamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 4,
+        "deg_in_varga": 12.753009102960732,
+        "DMS": "12° 45' 10.8328\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Hasta",
+          "nakshatra_name_tam": "Hastham",
+          "pada": 1,
+          "star_lord": "Moon",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Hasta-1, Moon, Rahu, Saturn"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-16",
+        "harmonic": 16,
+        "name": "Shodashamsha",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 3,
+        "deg_in_varga": 16.59148094151169,
+        "DMS": "16° 35' 29.3314\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 1,
+          "star_lord": "Venus",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Purva Phalguni-1, Venus, Moon, Jupiter"
+        }
+      },
+      "venus": {
+        "varga_code": "D-16",
+        "harmonic": 16,
+        "name": "Shodashamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 11,
+        "deg_in_varga": 28.934915107906818,
+        "DMS": "28° 56' 5.6944\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Krittika",
+          "nakshatra_name_tam": "Karthigai",
+          "pada": 1,
+          "star_lord": "Sun",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Krittika-1, Sun, Mars, Mercury"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-16",
+        "harmonic": 16,
+        "name": "Shodashamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 9,
+        "deg_in_varga": 4.80112373334714,
+        "DMS": "4° 48' 4.0454\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Dhanishtha",
+          "nakshatra_name_tam": "Avittam",
+          "pada": 4,
+          "star_lord": "Mars",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Dhanishtha-4, Mars, Venus, Ketu"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-16",
+        "harmonic": 16,
+        "name": "Shodashamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 8,
+        "deg_in_varga": 13.526441123482073,
+        "DMS": "13° 31' 35.1880\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 2,
+          "star_lord": "Moon",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Shravana-2, Moon, Rahu, Sun"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-16",
+        "harmonic": 16,
+        "name": "Shodashamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 8,
+        "deg_in_varga": 13.526441123482073,
+        "DMS": "13° 31' 35.1880\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 2,
+          "star_lord": "Moon",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Shravana-2, Moon, Rahu, Sun"
+        }
+      }
+    },
+    "d20": {
+      "varga_code": "D-20",
+      "harmonic": 20,
+      "name": "Vimsamsha",
+      "ascendant": {
+        "varga_code": "D-20",
+        "harmonic": 20,
+        "name": "Vimsamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 0,
+        "deg_in_varga": 27.0641892267696,
+        "DMS": "27° 3' 51.0812\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 2,
+          "star_lord": "Mars",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Mrigashira-2, Mars, Jupiter, Venus"
+        }
+      },
+      "sun": {
+        "varga_code": "D-20",
+        "harmonic": 20,
+        "name": "Vimsamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 1,
+        "deg_in_varga": 0.7736043863849318,
+        "DMS": "0° 46' 24.9758\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Mrigashira-3, Mars, Mercury, Sun"
+        }
+      },
+      "moon": {
+        "varga_code": "D-20",
+        "harmonic": 20,
+        "name": "Vimsamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 0,
+        "deg_in_varga": 9.498905237334156,
+        "DMS": "9° 29' 56.0589\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Krittika",
+          "nakshatra_name_tam": "Karthigai",
+          "pada": 4,
+          "star_lord": "Sun",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Krittika-4, Sun, Venus, Saturn"
+        }
+      },
+      "mars": {
+        "varga_code": "D-20",
+        "harmonic": 20,
+        "name": "Vimsamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 0,
+        "deg_in_varga": 18.12780212159538,
+        "DMS": "18° 7' 40.0876\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Rohini-3, Moon, Mercury, Ketu"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-20",
+        "harmonic": 20,
+        "name": "Vimsamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 5,
+        "deg_in_varga": 23.441261378700915,
+        "DMS": "23° 26' 28.5410\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 2,
+          "star_lord": "Jupiter",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Vishakha-2, Jupiter, Saturn, Rahu"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-20",
+        "harmonic": 20,
+        "name": "Vimsamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 10,
+        "deg_in_varga": 20.739351176889613,
+        "DMS": "20° 44' 21.6642\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 2,
+          "star_lord": "Mercury",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Revati-2, Mercury, Venus, Jupiter"
+        }
+      },
+      "venus": {
+        "varga_code": "D-20",
+        "harmonic": 20,
+        "name": "Vimsamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 6,
+        "deg_in_varga": 6.168643884883522,
+        "DMS": "6° 10' 7.1180\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 1,
+          "star_lord": "Saturn",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Anuradha-1, Saturn, Mercury, Sun"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-20",
+        "harmonic": 20,
+        "name": "Vimsamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 2,
+        "deg_in_varga": 21.001404666683925,
+        "DMS": "21° 0' 5.0568\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Ashlesha",
+          "nakshatra_name_tam": "Ayilyam",
+          "pada": 2,
+          "star_lord": "Mercury",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Ashlesha-2, Mercury, Venus, Saturn"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-20",
+        "harmonic": 20,
+        "name": "Vimsamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 1,
+        "deg_in_varga": 24.40805140435259,
+        "DMS": "24° 24' 28.9851\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Punarvasu",
+          "nakshatra_name_tam": "Punarpoosam",
+          "pada": 2,
+          "star_lord": "Jupiter",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Punarvasu-2, Jupiter, Mercury, Venus"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-20",
+        "harmonic": 20,
+        "name": "Vimsamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 1,
+        "deg_in_varga": 24.40805140435259,
+        "DMS": "24° 24' 28.9851\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Punarvasu",
+          "nakshatra_name_tam": "Punarpoosam",
+          "pada": 2,
+          "star_lord": "Jupiter",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Punarvasu-2, Jupiter, Mercury, Venus"
+        }
+      }
+    },
+    "d24": {
+      "varga_code": "D-24",
+      "harmonic": 24,
+      "name": "Siddhamsa",
+      "ascendant": {
+        "varga_code": "D-24",
+        "harmonic": 24,
+        "name": "Siddhamsa",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 0,
+        "deg_in_varga": 8.47702707212352,
+        "DMS": "8° 28' 37.2975\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Phalguni",
+          "nakshatra_name_tam": "Uthiram",
+          "pada": 4,
+          "star_lord": "Sun",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Uttara Phalguni-4, Sun, Venus, Mars"
+        }
+      },
+      "sun": {
+        "varga_code": "D-24",
+        "harmonic": 24,
+        "name": "Siddhamsa",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 1,
+        "deg_in_varga": 12.928325263661918,
+        "DMS": "12° 55' 41.9709\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Swati",
+          "nakshatra_name_tam": "Swaathi",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Swati-2, Rahu, Mercury, Ketu"
+        }
+      },
+      "moon": {
+        "varga_code": "D-24",
+        "harmonic": 24,
+        "name": "Siddhamsa",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 1,
+        "deg_in_varga": 29.398686284800988,
+        "DMS": "29° 23' 55.2706\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 3,
+          "star_lord": "Jupiter",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Vishakha-3, Jupiter, Sun, Venus"
+        }
+      },
+      "mars": {
+        "varga_code": "D-24",
+        "harmonic": 24,
+        "name": "Siddhamsa",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 10,
+        "deg_in_varga": 15.753362545914456,
+        "DMS": "15° 45' 12.1052\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 4,
+          "star_lord": "Saturn",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Pushya-4, Saturn, Jupiter, Ketu"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-24",
+        "harmonic": 24,
+        "name": "Siddhamsa",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 7,
+        "deg_in_varga": 4.129513654441098,
+        "DMS": "4° 7' 46.2492\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Aswini",
+          "nakshatra_name_tam": "Aswini",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Aswini-2, Ketu, Moon, Jupiter"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-24",
+        "harmonic": 24,
+        "name": "Siddhamsa",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 4,
+        "deg_in_varga": 24.887221412267536,
+        "DMS": "24° 53' 13.9971\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Dhanishtha",
+          "nakshatra_name_tam": "Avittam",
+          "pada": 1,
+          "star_lord": "Mars",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Dhanishtha-1, Mars, Rahu, Saturn"
+        }
+      },
+      "venus": {
+        "varga_code": "D-24",
+        "harmonic": 24,
+        "name": "Siddhamsa",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 0,
+        "deg_in_varga": 13.402372661860227,
+        "DMS": "13° 24' 8.5416\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Hasta",
+          "nakshatra_name_tam": "Hastham",
+          "pada": 2,
+          "star_lord": "Moon",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Hasta-2, Moon, Rahu, Venus"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-24",
+        "harmonic": 24,
+        "name": "Siddhamsa",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 8,
+        "deg_in_varga": 7.20168560002071,
+        "DMS": "7° 12' 6.0682\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Krittika",
+          "nakshatra_name_tam": "Karthigai",
+          "pada": 4,
+          "star_lord": "Sun",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Krittika-4, Sun, Ketu, Sun"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-24",
+        "harmonic": 24,
+        "name": "Siddhamsa",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 7,
+        "deg_in_varga": 5.289661685223109,
+        "DMS": "5° 17' 22.7821\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Aswini",
+          "nakshatra_name_tam": "Aswini",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Aswini-2, Ketu, Mars, Ketu"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-24",
+        "harmonic": 24,
+        "name": "Siddhamsa",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 7,
+        "deg_in_varga": 5.289661685223109,
+        "DMS": "5° 17' 22.7821\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Aswini",
+          "nakshatra_name_tam": "Aswini",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Aswini-2, Ketu, Mars, Ketu"
+        }
+      }
+    },
+    "d27": {
+      "varga_code": "D-27",
+      "harmonic": 27,
+      "name": "Saptavimsamsha",
+      "ascendant": {
+        "varga_code": "D-27",
+        "harmonic": 27,
+        "name": "Saptavimsamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 0,
+        "deg_in_varga": 17.036655456138956,
+        "DMS": "17° 2' 11.9596\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 1,
+          "star_lord": "Mercury",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Revati-1, Mercury, Mercury, Ketu"
+        }
+      },
+      "sun": {
+        "varga_code": "D-27",
+        "harmonic": 27,
+        "name": "Saptavimsamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 9,
+        "deg_in_varga": 22.044365921619654,
+        "DMS": "22° 2' 39.7173\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Purva Ashadha-3, Venus, Saturn, Saturn"
+        }
+      },
+      "moon": {
+        "varga_code": "D-27",
+        "harmonic": 27,
+        "name": "Saptavimsamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 9,
+        "deg_in_varga": 29.3235220704011,
+        "DMS": "29° 19' 24.6795\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Ashadha",
+          "nakshatra_name_tam": "Uthiraadam",
+          "pada": 1,
+          "star_lord": "Sun",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Uttara Ashadha-1, Sun, Rahu, Rahu"
+        }
+      },
+      "mars": {
+        "varga_code": "D-27",
+        "harmonic": 27,
+        "name": "Saptavimsamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 7,
+        "deg_in_varga": 28.97253286415375,
+        "DMS": "28° 58' 21.1183\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 3,
+          "star_lord": "Jupiter",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Vishakha-3, Jupiter, Sun, Rahu"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-27",
+        "harmonic": 27,
+        "name": "Saptavimsamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 4,
+        "deg_in_varga": 4.645702861246235,
+        "DMS": "4° 38' 44.5303\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 1,
+          "star_lord": "Saturn",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Pushya-1, Saturn, Saturn, Moon"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-27",
+        "harmonic": 27,
+        "name": "Saptavimsamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 7,
+        "deg_in_varga": 5.498124088800914,
+        "DMS": "5° 29' 53.2467\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Chitra",
+          "nakshatra_name_tam": "Chithirai",
+          "pada": 4,
+          "star_lord": "Mars",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Chitra-4, Mars, Sun, Venus"
+        }
+      },
+      "venus": {
+        "varga_code": "D-27",
+        "harmonic": 27,
+        "name": "Saptavimsamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 4,
+        "deg_in_varga": 3.827669244592723,
+        "DMS": "3° 49' 39.6093\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 1,
+          "star_lord": "Saturn",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Pushya-1, Saturn, Saturn, Mercury"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-27",
+        "harmonic": 27,
+        "name": "Saptavimsamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 11,
+        "deg_in_varga": 11.85189630002331,
+        "DMS": "11° 51' 6.8267\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shatabhisha",
+          "nakshatra_name_tam": "Sadhayam",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Shatabhisha-2, Rahu, Saturn, Mars"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-27",
+        "harmonic": 27,
+        "name": "Saptavimsamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 4,
+        "deg_in_varga": 5.950869395875998,
+        "DMS": "5° 57' 3.1298\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 1,
+          "star_lord": "Saturn",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Pushya-1, Saturn, Mercury, Venus"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-27",
+        "harmonic": 27,
+        "name": "Saptavimsamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 10,
+        "deg_in_varga": 5.950869395875998,
+        "DMS": "5° 57' 3.1298\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Ashadha",
+          "nakshatra_name_tam": "Uthiraadam",
+          "pada": 3,
+          "star_lord": "Sun",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Uttara Ashadha-3, Sun, Mercury, Moon"
+        }
+      }
+    },
+    "d30": {
+      "varga_code": "D-30",
+      "harmonic": 30,
+      "name": "Trimsamsha",
+      "ascendant": {
+        "varga_code": "D-30",
+        "harmonic": 30,
+        "name": "Trimsamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 0,
+        "deg_in_varga": 25.5962838401544,
+        "DMS": "25° 35' 46.6218\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 1,
+          "star_lord": "Mars",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Mrigashira-1, Mars, Rahu, Venus"
+        }
+      },
+      "sun": {
+        "varga_code": "D-30",
+        "harmonic": 30,
+        "name": "Trimsamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 11,
+        "deg_in_varga": 1.1604065795773977,
+        "DMS": "1° 9' 37.4637\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Aswini",
+          "nakshatra_name_tam": "Aswini",
+          "pada": 1,
+          "star_lord": "Ketu",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Aswini-1, Ketu, Venus, Sun"
+        }
+      },
+      "moon": {
+        "varga_code": "D-30",
+        "harmonic": 30,
+        "name": "Trimsamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 10,
+        "deg_in_varga": 29.248357856001235,
+        "DMS": "29° 14' 54.0883\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 4,
+          "star_lord": "Mercury",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Revati-4, Mercury, Saturn, Moon"
+        }
+      },
+      "mars": {
+        "varga_code": "D-30",
+        "harmonic": 30,
+        "name": "Trimsamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 7,
+        "deg_in_varga": 12.19170318239307,
+        "DMS": "12° 11' 30.1315\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Mula",
+          "nakshatra_name_tam": "Moolam",
+          "pada": 4,
+          "star_lord": "Ketu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Mula-4, Ketu, Mercury, Sun"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-30",
+        "harmonic": 30,
+        "name": "Trimsamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 7,
+        "deg_in_varga": 5.1618920680513725,
+        "DMS": "5° 9' 42.8114\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Mula",
+          "nakshatra_name_tam": "Moolam",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Mula-2, Ketu, Mars, Saturn"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-30",
+        "harmonic": 30,
+        "name": "Trimsamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 8,
+        "deg_in_varga": 16.10902676533442,
+        "DMS": "16° 6' 32.4964\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 2,
+          "star_lord": "Moon",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Shravana-2, Moon, Saturn, Mercury"
+        }
+      },
+      "venus": {
+        "varga_code": "D-30",
+        "harmonic": 30,
+        "name": "Trimsamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 7,
+        "deg_in_varga": 24.252965827325283,
+        "DMS": "24° 15' 10.6770\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 4,
+          "star_lord": "Venus",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Purva Ashadha-4, Venus, Mercury, Mercury"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-30",
+        "harmonic": 30,
+        "name": "Trimsamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 7,
+        "deg_in_varga": 16.502107000025887,
+        "DMS": "16° 30' 7.5852\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 1,
+          "star_lord": "Venus",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Purva Ashadha-1, Venus, Moon, Rahu"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-30",
+        "harmonic": 30,
+        "name": "Trimsamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 7,
+        "deg_in_varga": 6.612077106528886,
+        "DMS": "6° 36' 43.4776\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Mula",
+          "nakshatra_name_tam": "Moolam",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Mula-2, Ketu, Rahu, Mercury"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-30",
+        "harmonic": 30,
+        "name": "Trimsamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 7,
+        "deg_in_varga": 6.612077106528886,
+        "DMS": "6° 36' 43.4776\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Mula",
+          "nakshatra_name_tam": "Moolam",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Mula-2, Ketu, Rahu, Mercury"
+        }
+      }
+    },
+    "d40": {
+      "varga_code": "D-40",
+      "harmonic": 40,
+      "name": "Khavedamsha",
+      "ascendant": {
+        "varga_code": "D-40",
+        "harmonic": 40,
+        "name": "Khavedamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 0,
+        "deg_in_varga": 24.1283784535392,
+        "DMS": "24° 7' 42.1624\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Dhanishtha",
+          "nakshatra_name_tam": "Avittam",
+          "pada": 1,
+          "star_lord": "Mars",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Dhanishtha-1, Mars, Rahu, Rahu"
+        }
+      },
+      "sun": {
+        "varga_code": "D-40",
+        "harmonic": 40,
+        "name": "Khavedamsha",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 7,
+        "deg_in_varga": 1.5472087727698636,
+        "DMS": "1° 32' 49.9516\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 1,
+          "star_lord": "Ketu",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Magha-1, Ketu, Venus, Mars"
+        }
+      },
+      "moon": {
+        "varga_code": "D-40",
+        "harmonic": 40,
+        "name": "Khavedamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 11,
+        "deg_in_varga": 18.997810474668313,
+        "DMS": "18° 59' 52.1177\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 2,
+          "star_lord": "Venus",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Purva Ashadha-2, Venus, Rahu, Mercury"
+        }
+      },
+      "mars": {
+        "varga_code": "D-40",
+        "harmonic": 40,
+        "name": "Khavedamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 10,
+        "deg_in_varga": 6.25560424319076,
+        "DMS": "6° 15' 20.1753\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 1,
+          "star_lord": "Saturn",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Anuradha-1, Saturn, Mercury, Moon"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-40",
+        "harmonic": 40,
+        "name": "Khavedamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 4,
+        "deg_in_varga": 16.88252275740183,
+        "DMS": "16° 52' 57.0819\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Rohini-3, Moon, Saturn, Moon"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-40",
+        "harmonic": 40,
+        "name": "Khavedamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 4,
+        "deg_in_varga": 11.478702353779227,
+        "DMS": "11° 28' 43.3285\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 1,
+          "star_lord": "Moon",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Rohini-1, Moon, Mars, Saturn"
+        }
+      },
+      "venus": {
+        "varga_code": "D-40",
+        "harmonic": 40,
+        "name": "Khavedamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 1,
+        "deg_in_varga": 12.337287769767045,
+        "DMS": "12° 20' 14.2360\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shatabhisha",
+          "nakshatra_name_tam": "Sadhayam",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Shatabhisha-2, Rahu, Saturn, Jupiter"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-40",
+        "harmonic": 40,
+        "name": "Khavedamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 6,
+        "deg_in_varga": 12.00280933336785,
+        "DMS": "12° 0' 10.1136\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 3,
+          "star_lord": "Saturn",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Pushya-3, Saturn, Moon, Venus"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-40",
+        "harmonic": 40,
+        "name": "Khavedamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 4,
+        "deg_in_varga": 18.816102808705182,
+        "DMS": "18° 48' 57.9701\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Rohini-3, Moon, Mercury, Mars"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-40",
+        "harmonic": 40,
+        "name": "Khavedamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 4,
+        "deg_in_varga": 18.816102808705182,
+        "DMS": "18° 48' 57.9701\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Rohini-3, Moon, Mercury, Mars"
+        }
+      }
+    },
+    "d45": {
+      "varga_code": "D-45",
+      "harmonic": 45,
+      "name": "Akshavedamsha",
+      "ascendant": {
+        "varga_code": "D-45",
+        "harmonic": 45,
+        "name": "Akshavedamsha",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 0,
+        "deg_in_varga": 8.394425760231606,
+        "DMS": "8° 23' 39.9327\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 3,
+          "star_lord": "Ketu",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Magha-3, Ketu, Jupiter, Ketu"
+        }
+      },
+      "sun": {
+        "varga_code": "D-45",
+        "harmonic": 45,
+        "name": "Akshavedamsha",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 0,
+        "deg_in_varga": 16.740609869366104,
+        "DMS": "16° 44' 26.1955\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 2,
+          "star_lord": "Venus",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Purva Phalguni-2, Venus, Moon, Saturn"
+        }
+      },
+      "moon": {
+        "varga_code": "D-45",
+        "harmonic": 45,
+        "name": "Akshavedamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 1,
+        "deg_in_varga": 28.872536784001905,
+        "DMS": "28° 52' 21.1324\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Chitra",
+          "nakshatra_name_tam": "Chithirai",
+          "pada": 2,
+          "star_lord": "Mars",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Chitra-2, Mars, Saturn, Venus"
+        }
+      },
+      "mars": {
+        "varga_code": "D-45",
+        "harmonic": 45,
+        "name": "Akshavedamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 1,
+        "deg_in_varga": 18.287554773589605,
+        "DMS": "18° 17' 15.1972\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Hasta",
+          "nakshatra_name_tam": "Hastham",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Hasta-3, Moon, Mercury, Venus"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-45",
+        "harmonic": 45,
+        "name": "Akshavedamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 11,
+        "deg_in_varga": 7.742838102077059,
+        "DMS": "7° 44' 34.2172\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 2,
+          "star_lord": "Saturn",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Pushya-2, Saturn, Ketu, Rahu"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-45",
+        "harmonic": 45,
+        "name": "Akshavedamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 11,
+        "deg_in_varga": 9.163540148001683,
+        "DMS": "9° 9' 48.7445\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Pushya",
+          "nakshatra_name_tam": "Poosam",
+          "pada": 2,
+          "star_lord": "Saturn",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Pushya-2, Saturn, Venus, Rahu"
+        }
+      },
+      "venus": {
+        "varga_code": "D-45",
+        "harmonic": 45,
+        "name": "Akshavedamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 1,
+        "deg_in_varga": 6.379448740988032,
+        "DMS": "6° 22' 46.0155\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Phalguni",
+          "nakshatra_name_tam": "Uthiram",
+          "pada": 3,
+          "star_lord": "Sun",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Uttara Phalguni-3, Sun, Mercury, Rahu"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-45",
+        "harmonic": 45,
+        "name": "Akshavedamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 5,
+        "deg_in_varga": 9.753160500038884,
+        "DMS": "9° 45' 11.3778\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Ashadha",
+          "nakshatra_name_tam": "Uthiraadam",
+          "pada": 4,
+          "star_lord": "Sun",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Uttara Ashadha-4, Sun, Venus, Mercury"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-45",
+        "harmonic": 45,
+        "name": "Akshavedamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 3,
+        "deg_in_varga": 9.91811565979333,
+        "DMS": "9° 55' 5.2164\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 2,
+          "star_lord": "Saturn",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Anuradha-2, Saturn, Venus, Mercury"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-45",
+        "harmonic": 45,
+        "name": "Akshavedamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 3,
+        "deg_in_varga": 9.91811565979333,
+        "DMS": "9° 55' 5.2164\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 2,
+          "star_lord": "Saturn",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Anuradha-2, Saturn, Venus, Mercury"
+        }
+      }
+    },
+    "d60": {
+      "varga_code": "D-60",
+      "harmonic": 60,
+      "name": "Shashtiamsha",
+      "ascendant": {
+        "varga_code": "D-60",
+        "harmonic": 60,
+        "name": "Shashtiamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 0,
+        "deg_in_varga": 21.192567680308798,
+        "DMS": "21° 11' 33.2436\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Purva Ashadha-3, Venus, Jupiter, Venus"
+        }
+      },
+      "sun": {
+        "varga_code": "D-60",
+        "harmonic": 60,
+        "name": "Shashtiamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 4,
+        "deg_in_varga": 2.3208131591547954,
+        "DMS": "2° 19' 14.9274\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Aswini",
+          "nakshatra_name_tam": "Aswini",
+          "pada": 1,
+          "star_lord": "Ketu",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Aswini-1, Ketu, Venus, Saturn"
+        }
+      },
+      "moon": {
+        "varga_code": "D-60",
+        "harmonic": 60,
+        "name": "Shashtiamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 4,
+        "deg_in_varga": 28.49671571200247,
+        "DMS": "28° 29' 48.1766\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Krittika",
+          "nakshatra_name_tam": "Karthigai",
+          "pada": 1,
+          "star_lord": "Sun",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Krittika-1, Sun, Mars, Rahu"
+        }
+      },
+      "mars": {
+        "varga_code": "D-60",
+        "harmonic": 60,
+        "name": "Shashtiamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 10,
+        "deg_in_varga": 24.38340636478614,
+        "DMS": "24° 23' 0.2629\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 2,
+          "star_lord": "Jupiter",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Vishakha-2, Jupiter, Mercury, Venus"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-60",
+        "harmonic": 60,
+        "name": "Shashtiamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 6,
+        "deg_in_varga": 10.323784136102745,
+        "DMS": "10° 19' 25.6229\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Ardra",
+          "nakshatra_name_tam": "Thiruvathirai",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Ardra-2, Rahu, Jupiter, Rahu"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-60",
+        "harmonic": 60,
+        "name": "Shashtiamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 10,
+        "deg_in_varga": 2.21805353066884,
+        "DMS": "2° 13' 4.9927\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Chitra",
+          "nakshatra_name_tam": "Chithirai",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Chitra-3, Mars, Ketu, Rahu"
+        }
+      },
+      "venus": {
+        "varga_code": "D-60",
+        "harmonic": 60,
+        "name": "Shashtiamsha",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 5,
+        "deg_in_varga": 18.505931654650567,
+        "DMS": "18° 30' 21.3540\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Rohini-3, Moon, Mercury, Sun"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-60",
+        "harmonic": 60,
+        "name": "Shashtiamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 7,
+        "deg_in_varga": 3.0042140000517747,
+        "DMS": "3° 0' 15.1704\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Punarvasu",
+          "nakshatra_name_tam": "Punarpoosam",
+          "pada": 4,
+          "star_lord": "Jupiter",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Punarvasu-4, Jupiter, Rahu, Sun"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-60",
+        "harmonic": 60,
+        "name": "Shashtiamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 10,
+        "deg_in_varga": 13.224154213057773,
+        "DMS": "13° 13' 26.9552\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Swati",
+          "nakshatra_name_tam": "Swaathi",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Swati-2, Rahu, Mercury, Venus"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-60",
+        "harmonic": 60,
+        "name": "Shashtiamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 4,
+        "deg_in_varga": 13.224154213057773,
+        "DMS": "13° 13' 26.9552\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Aswini",
+          "nakshatra_name_tam": "Aswini",
+          "pada": 4,
+          "star_lord": "Ketu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Aswini-4, Ketu, Mercury, Saturn"
+        }
+      }
+    },
+    "d72": {
+      "varga_code": "D-72",
+      "harmonic": 72,
+      "name": "Ashtamamsha",
+      "ascendant": {
+        "varga_code": "D-72",
+        "harmonic": 72,
+        "name": "Ashtamamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 0,
+        "deg_in_varga": 25.431081216370558,
+        "DMS": "25° 25' 51.8924\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 2,
+          "star_lord": "Jupiter",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Vishakha-2, Jupiter, Mercury, Jupiter"
+        }
+      },
+      "sun": {
+        "varga_code": "D-72",
+        "harmonic": 72,
+        "name": "Ashtamamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 1,
+        "deg_in_varga": 8.784975790985733,
+        "DMS": "8° 47' 5.9128\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 2,
+          "star_lord": "Saturn",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Anuradha-2, Saturn, Venus, Mars"
+        }
+      },
+      "moon": {
+        "varga_code": "D-72",
+        "harmonic": 72,
+        "name": "Ashtamamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 5,
+        "deg_in_varga": 28.196058854402793,
+        "DMS": "28° 11' 45.8119\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 4,
+          "star_lord": "Mercury",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Revati-4, Mercury, Saturn, Saturn"
+        }
+      },
+      "mars": {
+        "varga_code": "D-72",
+        "harmonic": 72,
+        "name": "Ashtamamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 8,
+        "deg_in_varga": 17.260087637743283,
+        "DMS": "17° 15' 36.3155\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Ardra",
+          "nakshatra_name_tam": "Thiruvathirai",
+          "pada": 4,
+          "star_lord": "Rahu",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Ardra-4, Rahu, Venus, Mercury"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-72",
+        "harmonic": 72,
+        "name": "Ashtamamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 6,
+        "deg_in_varga": 12.388540963323294,
+        "DMS": "12° 23' 18.7475\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Aswini",
+          "nakshatra_name_tam": "Aswini",
+          "pada": 4,
+          "star_lord": "Ketu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Aswini-4, Ketu, Mercury, Moon"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-72",
+        "harmonic": 72,
+        "name": "Ashtamamsha",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 10,
+        "deg_in_varga": 14.661664236802437,
+        "DMS": "14° 39' 41.9913\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 1,
+          "star_lord": "Venus",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Purva Phalguni-1, Venus, Venus, Jupiter"
+        }
+      },
+      "venus": {
+        "varga_code": "D-72",
+        "harmonic": 72,
+        "name": "Ashtamamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 6,
+        "deg_in_varga": 10.207117985580595,
+        "DMS": "10° 12' 25.6247\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Aswini",
+          "nakshatra_name_tam": "Aswini",
+          "pada": 4,
+          "star_lord": "Ketu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Aswini-4, Ketu, Saturn, Venus"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-72",
+        "harmonic": 72,
+        "name": "Ashtamamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 5,
+        "deg_in_varga": 21.60505680006213,
+        "DMS": "21° 36' 18.2045\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 2,
+          "star_lord": "Mercury",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Revati-2, Mercury, Sun, Moon"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-72",
+        "harmonic": 72,
+        "name": "Ashtamamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 2,
+        "deg_in_varga": 15.868985055669327,
+        "DMS": "15° 52' 8.3462\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 1,
+          "star_lord": "Venus",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Purva Ashadha-1, Venus, Sun, Jupiter"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-72",
+        "harmonic": 72,
+        "name": "Ashtamamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 2,
+        "deg_in_varga": 15.868985055669327,
+        "DMS": "15° 52' 8.3462\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 1,
+          "star_lord": "Venus",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Purva Ashadha-1, Venus, Sun, Jupiter"
+        }
+      }
+    },
+    "d81": {
+      "varga_code": "D-81",
+      "harmonic": 81,
+      "name": "Nava-Navamsha",
+      "ascendant": {
+        "varga_code": "D-81",
+        "harmonic": 81,
+        "name": "Nava-Navamsha",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 0,
+        "deg_in_varga": 21.10996636841688,
+        "DMS": "21° 6' 35.8789\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Bhadrapada",
+          "nakshatra_name_tam": "Poorattathi",
+          "pada": 1,
+          "star_lord": "Jupiter",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Purva Bhadrapada-1, Jupiter, Jupiter, Venus"
+        }
+      },
+      "sun": {
+        "varga_code": "D-81",
+        "harmonic": 81,
+        "name": "Nava-Navamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 4,
+        "deg_in_varga": 6.133097764858987,
+        "DMS": "6° 7' 59.1520\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 4,
+          "star_lord": "Mars",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Mrigashira-4, Mars, Moon, Saturn"
+        }
+      },
+      "moon": {
+        "varga_code": "D-81",
+        "harmonic": 81,
+        "name": "Nava-Navamsha",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 4,
+        "deg_in_varga": 27.970566211203323,
+        "DMS": "27° 58' 14.0384\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Punarvasu",
+          "nakshatra_name_tam": "Punarpoosam",
+          "pada": 3,
+          "star_lord": "Jupiter",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Punarvasu-3, Jupiter, Venus, Jupiter"
+        }
+      },
+      "mars": {
+        "varga_code": "D-81",
+        "harmonic": 81,
+        "name": "Nava-Navamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 10,
+        "deg_in_varga": 26.917598592461406,
+        "DMS": "26° 55' 3.3549\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Ashadha",
+          "nakshatra_name_tam": "Uthiraadam",
+          "pada": 1,
+          "star_lord": "Sun",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Uttara Ashadha-1, Sun, Sun, Jupiter"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-81",
+        "harmonic": 81,
+        "name": "Nava-Navamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 11,
+        "deg_in_varga": 13.937108583738706,
+        "DMS": "13° 56' 13.5909\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 2,
+          "star_lord": "Moon",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Shravana-2, Moon, Jupiter, Jupiter"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-81",
+        "harmonic": 81,
+        "name": "Nava-Navamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 8,
+        "deg_in_varga": 16.49437226640303,
+        "DMS": "16° 29' 39.7402\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Swati",
+          "nakshatra_name_tam": "Swaathi",
+          "pada": 3,
+          "star_lord": "Rahu",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Swati-3, Rahu, Venus, Jupiter"
+        }
+      },
+      "venus": {
+        "varga_code": "D-81",
+        "harmonic": 81,
+        "name": "Nava-Navamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 11,
+        "deg_in_varga": 11.483007733778457,
+        "DMS": "11° 28' 58.8278\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 1,
+          "star_lord": "Moon",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Shravana-1, Moon, Mars, Saturn"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-81",
+        "harmonic": 81,
+        "name": "Nava-Navamsha",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 9,
+        "deg_in_varga": 5.5556889000699385,
+        "DMS": "5° 33' 20.4800\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 1,
+          "star_lord": "Saturn",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Anuradha-1, Saturn, Mercury, Mercury"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-81",
+        "harmonic": 81,
+        "name": "Nava-Navamsha",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 11,
+        "deg_in_varga": 17.852608187627993,
+        "DMS": "17° 51' 9.3895\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shravana",
+          "nakshatra_name_tam": "Thiruvonam",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Shravana-3, Moon, Mercury, Mercury"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-81",
+        "harmonic": 81,
+        "name": "Nava-Navamsha",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 5,
+        "deg_in_varga": 17.852608187627993,
+        "DMS": "17° 51' 9.3895\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Ashlesha",
+          "nakshatra_name_tam": "Ayilyam",
+          "pada": 1,
+          "star_lord": "Mercury",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Ashlesha-1, Mercury, Mercury, Rahu"
+        }
+      }
+    },
+    "d108": {
+      "varga_code": "D-108",
+      "harmonic": 108,
+      "name": "Ashtottaramsa",
+      "ascendant": {
+        "varga_code": "D-108",
+        "harmonic": 108,
+        "name": "Ashtottaramsa",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 0,
+        "deg_in_varga": 8.146621824555847,
+        "DMS": "8° 8' 47.8386\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Shatabhisha",
+          "nakshatra_name_tam": "Sadhayam",
+          "pada": 1,
+          "star_lord": "Rahu",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Shatabhisha-1, Rahu, Rahu, Venus"
+        }
+      },
+      "sun": {
+        "varga_code": "D-108",
+        "harmonic": 108,
+        "name": "Ashtottaramsa",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 0,
+        "deg_in_varga": 28.177463686478642,
+        "DMS": "28° 10' 38.8693\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Bhadrapada",
+          "nakshatra_name_tam": "Poorattathi",
+          "pada": 3,
+          "star_lord": "Jupiter",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Purva Bhadrapada-3, Jupiter, Venus, Saturn"
+        }
+      },
+      "moon": {
+        "varga_code": "D-108",
+        "harmonic": 108,
+        "name": "Ashtottaramsa",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 1,
+        "deg_in_varga": 27.29408828160453,
+        "DMS": "27° 17' 38.7178\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 4,
+          "star_lord": "Mercury",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Revati-4, Mercury, Jupiter, Sun"
+        }
+      },
+      "mars": {
+        "varga_code": "D-108",
+        "harmonic": 108,
+        "name": "Ashtottaramsa",
+        "rasi": "Kadagam",
+        "sign_index": 3,
+        "house": 5,
+        "deg_in_varga": 25.890131456614924,
+        "DMS": "25° 53' 24.4732\"",
+        "sign_lord": "Moon",
+        "kp_details": {
+          "nakshatra_name_en": "Ashlesha",
+          "nakshatra_name_tam": "Ayilyam",
+          "pada": 3,
+          "star_lord": "Mercury",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Ashlesha-3, Mercury, Rahu, Moon"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-108",
+        "harmonic": 108,
+        "name": "Ashtottaramsa",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 2,
+        "deg_in_varga": 18.58281144498494,
+        "DMS": "18° 34' 58.1212\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 2,
+          "star_lord": "Venus",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Bharani-2, Venus, Rahu, Jupiter"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-108",
+        "harmonic": 108,
+        "name": "Ashtottaramsa",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 2,
+        "deg_in_varga": 21.992496355203656,
+        "DMS": "21° 59' 32.9869\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Bharani-3, Venus, Saturn, Saturn"
+        }
+      },
+      "venus": {
+        "varga_code": "D-108",
+        "harmonic": 108,
+        "name": "Ashtottaramsa",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 2,
+        "deg_in_varga": 15.310676978370893,
+        "DMS": "15° 18' 38.4371\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 1,
+          "star_lord": "Venus",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Bharani-1, Venus, Venus, Mercury"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-108",
+        "harmonic": 108,
+        "name": "Ashtottaramsa",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 7,
+        "deg_in_varga": 17.407585200093152,
+        "DMS": "17° 24' 27.3067\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Hasta",
+          "nakshatra_name_tam": "Hastham",
+          "pada": 3,
+          "star_lord": "Moon",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Hasta-3, Moon, Saturn, Rahu"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-108",
+        "harmonic": 108,
+        "name": "Ashtottaramsa",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 2,
+        "deg_in_varga": 23.80347758350399,
+        "DMS": "23° 48' 12.5193\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 4,
+          "star_lord": "Venus",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Bharani-4, Venus, Saturn, Jupiter"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-108",
+        "harmonic": 108,
+        "name": "Ashtottaramsa",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 2,
+        "deg_in_varga": 23.80347758350399,
+        "DMS": "23° 48' 12.5193\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 4,
+          "star_lord": "Venus",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Bharani-4, Venus, Saturn, Jupiter"
+        }
+      }
+    },
+    "d144": {
+      "varga_code": "D-144",
+      "harmonic": 144,
+      "name": "Dwadasamsa-Dwadasamsha",
+      "ascendant": {
+        "varga_code": "D-144",
+        "harmonic": 144,
+        "name": "Dwadasamsa-Dwadasamsha",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 0,
+        "deg_in_varga": 20.862162432741094,
+        "DMS": "20° 51' 43.7848\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Purva Phalguni-3, Venus, Jupiter, Mercury"
+        }
+      },
+      "sun": {
+        "varga_code": "D-144",
+        "harmonic": 144,
+        "name": "Dwadasamsa-Dwadasamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 4,
+        "deg_in_varga": 17.569951581971466,
+        "DMS": "17° 34' 11.8257\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 2,
+          "star_lord": "Venus",
+          "sub_lord": "Mars",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Purva Ashadha-2, Venus, Mars, Jupiter"
+        }
+      },
+      "moon": {
+        "varga_code": "D-144",
+        "harmonic": 144,
+        "name": "Dwadasamsa-Dwadasamsha",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 4,
+        "deg_in_varga": 26.392117708805756,
+        "DMS": "26° 23' 31.6238\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 4,
+          "star_lord": "Venus",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Purva Ashadha-4, Venus, Ketu, Jupiter"
+        }
+      },
+      "mars": {
+        "varga_code": "D-144",
+        "harmonic": 144,
+        "name": "Dwadasamsa-Dwadasamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 7,
+        "deg_in_varga": 4.520175275486736,
+        "DMS": "4° 31' 12.6310\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Bhadrapada",
+          "nakshatra_name_tam": "Uthirattathi",
+          "pada": 1,
+          "star_lord": "Saturn",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Sun",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Uttara Bhadrapada-1, Saturn, Saturn, Sun"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-144",
+        "harmonic": 144,
+        "name": "Dwadasamsa-Dwadasamsha",
+        "rasi": "Thulaam",
+        "sign_index": 6,
+        "house": 2,
+        "deg_in_varga": 24.777081926646588,
+        "DMS": "24° 46' 37.4949\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 2,
+          "star_lord": "Jupiter",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Vishakha-2, Jupiter, Mercury, Moon"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-144",
+        "harmonic": 144,
+        "name": "Dwadasamsa-Dwadasamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 7,
+        "deg_in_varga": 29.323328473604874,
+        "DMS": "29° 19' 23.9825\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 4,
+          "star_lord": "Mercury",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Revati-4, Mercury, Saturn, Mars"
+        }
+      },
+      "venus": {
+        "varga_code": "D-144",
+        "harmonic": 144,
+        "name": "Dwadasamsa-Dwadasamsha",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 8,
+        "deg_in_varga": 20.41423597116119,
+        "DMS": "20° 24' 51.2495\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Bharani-3, Venus, Jupiter, Saturn"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-144",
+        "harmonic": 144,
+        "name": "Dwadasamsa-Dwadasamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 7,
+        "deg_in_varga": 13.210113600124174,
+        "DMS": "13° 12' 36.4090\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Bhadrapada",
+          "nakshatra_name_tam": "Uthirattathi",
+          "pada": 3,
+          "star_lord": "Saturn",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Uttara Bhadrapada-3, Saturn, Rahu, Jupiter"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-144",
+        "harmonic": 144,
+        "name": "Dwadasamsa-Dwadasamsha",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 7,
+        "deg_in_varga": 1.7379701113385693,
+        "DMS": "1° 44' 16.6924\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Bhadrapada",
+          "nakshatra_name_tam": "Poorattathi",
+          "pada": 4,
+          "star_lord": "Jupiter",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Purva Bhadrapada-4, Jupiter, Rahu, Jupiter"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-144",
+        "harmonic": 144,
+        "name": "Dwadasamsa-Dwadasamsha",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 1,
+        "deg_in_varga": 1.7379701113385693,
+        "DMS": "1° 44' 16.6924\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Phalguni",
+          "nakshatra_name_tam": "Uthiram",
+          "pada": 2,
+          "star_lord": "Sun",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Uttara Phalguni-2, Sun, Jupiter, Saturn"
+        }
+      }
+    },
+    "d150": {
+      "varga_code": "D-150",
+      "harmonic": 150,
+      "name": "Nadiamsa",
+      "ascendant": {
+        "varga_code": "D-150",
+        "harmonic": 150,
+        "name": "Nadiamsa",
+        "rasi": "Kanni",
+        "sign_index": 5,
+        "house": 0,
+        "deg_in_varga": 7.981419200771955,
+        "DMS": "7° 58' 53.1091\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Phalguni",
+          "nakshatra_name_tam": "Uthiram",
+          "pada": 4,
+          "star_lord": "Sun",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Uttara Phalguni-4, Sun, Venus, Venus"
+        }
+      },
+      "sun": {
+        "varga_code": "D-150",
+        "harmonic": 150,
+        "name": "Nadiamsa",
+        "rasi": "Magaram",
+        "sign_index": 9,
+        "house": 4,
+        "deg_in_varga": 5.802032897886988,
+        "DMS": "5° 48' 7.3184\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Ashadha",
+          "nakshatra_name_tam": "Uthiraadam",
+          "pada": 3,
+          "star_lord": "Sun",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Ketu",
+          "formatted_kp": "Uttara Ashadha-3, Sun, Mercury, Venus"
+        }
+      },
+      "moon": {
+        "varga_code": "D-150",
+        "harmonic": 150,
+        "name": "Nadiamsa",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 7,
+        "deg_in_varga": 26.241789280006067,
+        "DMS": "26° 14' 30.4414\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Bharani",
+          "nakshatra_name_tam": "Bharani",
+          "pada": 4,
+          "star_lord": "Venus",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Rahu",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Bharani-4, Venus, Ketu, Rahu"
+        }
+      },
+      "mars": {
+        "varga_code": "D-150",
+        "harmonic": 150,
+        "name": "Nadiamsa",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 9,
+        "deg_in_varga": 0.9585159119652964,
+        "DMS": "0° 57' 30.6573\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mars",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Mrigashira-3, Mars, Mercury, Mars"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-150",
+        "harmonic": 150,
+        "name": "Nadiamsa",
+        "rasi": "Dhanusu",
+        "sign_index": 8,
+        "house": 3,
+        "deg_in_varga": 25.809460340256862,
+        "DMS": "25° 48' 34.0572\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Ashadha",
+          "nakshatra_name_tam": "Pooradam",
+          "pada": 4,
+          "star_lord": "Venus",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Purva Ashadha-4, Venus, Mercury, Saturn"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-150",
+        "harmonic": 150,
+        "name": "Nadiamsa",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 11,
+        "deg_in_varga": 20.54513382667178,
+        "DMS": "20° 32' 42.4818\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Mars",
+          "formatted_kp": "Purva Phalguni-3, Venus, Jupiter, Saturn"
+        }
+      },
+      "venus": {
+        "varga_code": "D-150",
+        "harmonic": 150,
+        "name": "Nadiamsa",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 11,
+        "deg_in_varga": 1.264829136626311,
+        "DMS": "1° 15' 53.3849\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 1,
+          "star_lord": "Ketu",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Magha-1, Ketu, Venus, Moon"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-150",
+        "harmonic": 150,
+        "name": "Nadiamsa",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 8,
+        "deg_in_varga": 22.510535000129384,
+        "DMS": "22° 30' 37.9260\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Rohini",
+          "nakshatra_name_tam": "Rohini",
+          "pada": 4,
+          "star_lord": "Moon",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Rohini-4, Moon, Venus, Mercury"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-150",
+        "harmonic": 150,
+        "name": "Nadiamsa",
+        "rasi": "Rishabham",
+        "sign_index": 1,
+        "house": 8,
+        "deg_in_varga": 3.060385532644272,
+        "DMS": "3° 3' 37.3879\"",
+        "sign_lord": "Venus",
+        "kp_details": {
+          "nakshatra_name_en": "Krittika",
+          "nakshatra_name_tam": "Karthigai",
+          "pada": 2,
+          "star_lord": "Sun",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Mercury",
+          "formatted_kp": "Krittika-2, Sun, Saturn, Saturn"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-150",
+        "harmonic": 150,
+        "name": "Nadiamsa",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 2,
+        "deg_in_varga": 3.060385532644272,
+        "DMS": "3° 3' 37.3879\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Vishakha",
+          "nakshatra_name_tam": "Visagam",
+          "pada": 4,
+          "star_lord": "Jupiter",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Moon",
+          "formatted_kp": "Vishakha-4, Jupiter, Rahu, Moon"
+        }
+      }
+    },
+    "d300": {
+      "varga_code": "D-300",
+      "harmonic": 300,
+      "name": "Ardha-Nadiamsa",
+      "ascendant": {
+        "varga_code": "D-300",
+        "harmonic": 300,
+        "name": "Ardha-Nadiamsa",
+        "rasi": "Viruchigam",
+        "sign_index": 7,
+        "house": 0,
+        "deg_in_varga": 15.96283840154391,
+        "DMS": "15° 57' 46.2182\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Anuradha",
+          "nakshatra_name_tam": "Anusham",
+          "pada": 4,
+          "star_lord": "Saturn",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Venus",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Anuradha-4, Saturn, Jupiter, Venus"
+        }
+      },
+      "sun": {
+        "varga_code": "D-300",
+        "harmonic": 300,
+        "name": "Ardha-Nadiamsa",
+        "rasi": "Mesham",
+        "sign_index": 0,
+        "house": 5,
+        "deg_in_varga": 11.604065795773977,
+        "DMS": "11° 36' 14.6369\"",
+        "sign_lord": "Mars",
+        "kp_details": {
+          "nakshatra_name_en": "Aswini",
+          "nakshatra_name_tam": "Aswini",
+          "pada": 4,
+          "star_lord": "Ketu",
+          "sub_lord": "Mercury",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Aswini-4, Ketu, Mercury, Mercury"
+        }
+      },
+      "moon": {
+        "varga_code": "D-300",
+        "harmonic": 300,
+        "name": "Ardha-Nadiamsa",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 9,
+        "deg_in_varga": 22.483578560011708,
+        "DMS": "22° 29' 0.8828\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Purva Phalguni",
+          "nakshatra_name_tam": "Pooram",
+          "pada": 3,
+          "star_lord": "Venus",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Mercury",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Purva Phalguni-3, Venus, Saturn, Mercury"
+        }
+      },
+      "mars": {
+        "varga_code": "D-300",
+        "harmonic": 300,
+        "name": "Ardha-Nadiamsa",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 7,
+        "deg_in_varga": 1.9170318239305928,
+        "DMS": "1° 55' 1.3146\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Mrigashira",
+          "nakshatra_name_tam": "Mirugaseerisham",
+          "pada": 3,
+          "star_lord": "Mars",
+          "sub_lord": "Ketu",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Mrigashira-3, Mars, Ketu, Ketu"
+        }
+      },
+      "mercury": {
+        "varga_code": "D-300",
+        "harmonic": 300,
+        "name": "Ardha-Nadiamsa",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 4,
+        "deg_in_varga": 21.6189206805133,
+        "DMS": "21° 37' 8.1144\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Revati",
+          "nakshatra_name_tam": "Revathi",
+          "pada": 2,
+          "star_lord": "Mercury",
+          "sub_lord": "Sun",
+          "sub_sub_lord": "Moon",
+          "sub_sub_sub_lord": "Saturn",
+          "formatted_kp": "Revati-2, Mercury, Sun, Moon"
+        }
+      },
+      "jupiter": {
+        "varga_code": "D-300",
+        "harmonic": 300,
+        "name": "Ardha-Nadiamsa",
+        "rasi": "Mithunam",
+        "sign_index": 2,
+        "house": 7,
+        "deg_in_varga": 11.090267653344199,
+        "DMS": "11° 5' 24.9636\"",
+        "sign_lord": "Mercury",
+        "kp_details": {
+          "nakshatra_name_en": "Ardra",
+          "nakshatra_name_tam": "Thiruvathirai",
+          "pada": 2,
+          "star_lord": "Rahu",
+          "sub_lord": "Saturn",
+          "sub_sub_lord": "Ketu",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Ardra-2, Rahu, Saturn, Ketu"
+        }
+      },
+      "venus": {
+        "varga_code": "D-300",
+        "harmonic": 300,
+        "name": "Ardha-Nadiamsa",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 9,
+        "deg_in_varga": 2.529658273252622,
+        "DMS": "2° 31' 46.7698\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 1,
+          "star_lord": "Ketu",
+          "sub_lord": "Venus",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Jupiter",
+          "formatted_kp": "Magha-1, Ketu, Venus, Saturn"
+        }
+      },
+      "saturn": {
+        "varga_code": "D-300",
+        "harmonic": 300,
+        "name": "Ardha-Nadiamsa",
+        "rasi": "Meenam",
+        "sign_index": 11,
+        "house": 4,
+        "deg_in_varga": 15.021070000258874,
+        "DMS": "15° 1' 15.8520\"",
+        "sign_lord": "Jupiter",
+        "kp_details": {
+          "nakshatra_name_en": "Uttara Bhadrapada",
+          "nakshatra_name_tam": "Uthirattathi",
+          "pada": 4,
+          "star_lord": "Saturn",
+          "sub_lord": "Jupiter",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Venus",
+          "formatted_kp": "Uttara Bhadrapada-4, Saturn, Jupiter, Jupiter"
+        }
+      },
+      "rahu": {
+        "varga_code": "D-300",
+        "harmonic": 300,
+        "name": "Ardha-Nadiamsa",
+        "rasi": "Simmam",
+        "sign_index": 4,
+        "house": 9,
+        "deg_in_varga": 6.120771065288544,
+        "DMS": "6° 7' 14.7758\"",
+        "sign_lord": "Sun",
+        "kp_details": {
+          "nakshatra_name_en": "Magha",
+          "nakshatra_name_tam": "Makam",
+          "pada": 2,
+          "star_lord": "Ketu",
+          "sub_lord": "Rahu",
+          "sub_sub_lord": "Jupiter",
+          "sub_sub_sub_lord": "Rahu",
+          "formatted_kp": "Magha-2, Ketu, Rahu, Jupiter"
+        }
+      },
+      "ketu": {
+        "varga_code": "D-300",
+        "harmonic": 300,
+        "name": "Ardha-Nadiamsa",
+        "rasi": "Kumbam",
+        "sign_index": 10,
+        "house": 3,
+        "deg_in_varga": 6.120771065288544,
+        "DMS": "6° 7' 14.7758\"",
+        "sign_lord": "Saturn",
+        "kp_details": {
+          "nakshatra_name_en": "Dhanishtha",
+          "nakshatra_name_tam": "Avittam",
+          "pada": 4,
+          "star_lord": "Mars",
+          "sub_lord": "Moon",
+          "sub_sub_lord": "Saturn",
+          "sub_sub_sub_lord": "Sun",
+          "formatted_kp": "Dhanishtha-4, Mars, Moon, Saturn"
+        }
+      }
+    }
+  }
+}

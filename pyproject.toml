@@ -1,0 +1,13 @@
+[project]
+name = "jamakkol-prasanam"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.141.1",
+    "pydantic>=2.13.4",
+    "pysweph>=2.10.3.6",
+    "rich>=15.0.0",
+    "uvicorn>=0.52.4",
+]

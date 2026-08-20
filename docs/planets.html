@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nitya Grahas — 9 Planets — Jamakkol Prasanam Docs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+      </div>
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li class="current"><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li><a href="rasi.html">12 Rasis</a></li>
+          <li><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Jamakkol Concepts &rsaquo; Nitya Grahas
+        </div>
+        <div role="main">
+          <h1>Nitya Grahas (9 Planets)</h1>
+          
+          <p>
+            In Jamakkol Prasanam, the physical astronomical bodies in the sky are referred to as the <strong>Nitya Grahas</strong> (நித்திய கிரகங்கள்) or "constant planets". These represent the actual physical energies influencing the chart at the query moment.
+          </p>
+          <p>
+            There are 9 Nitya Grahas: the Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, and the two lunar nodes, Rahu and Ketu.
+          </p>
+
+          <h2>1. Swiss Ephemeris Planet IDs</h2>
+          <p>
+            Each planet has a specific integer ID in Swiss Ephemeris:
+          </p>
+          <table>
+            <thead><tr><th>Planet</th><th>Tamil Name</th><th>Swiss Ephemeris Constant</th></tr></thead>
+            <tbody>
+              <tr><td>Sun</td><td>சூரியன் (Nyaniru)</td><td><code>swe.SUN</code></td></tr>
+              <tr><td>Moon</td><td>சந்திரன் (Thingal)</td><td><code>swe.MOON</code></td></tr>
+              <tr><td>Mars</td><td>செவ்வாய் (Sevvai)</td><td><code>swe.MARS</code></td></tr>
+              <tr><td>Mercury</td><td>புதன் (Budhan)</td><td><code>swe.MERCURY</code></td></tr>
+              <tr><td>Jupiter</td><td>குரு / வியாழன் (Guru)</td><td><code>swe.JUPITER</code></td></tr>
+              <tr><td>Venus</td><td>சுக்கிரன் / வெள்ளி (Sukran)</td><td><code>swe.VENUS</code></td></tr>
+              <tr><td>Saturn</td><td>சனி (Sani)</td><td><code>swe.SATURN</code></td></tr>
+              <tr><td>Rahu</td><td>ராகு (Rahu)</td><td><code>swe.TRUE_NODE</code> (True Node)</td></tr>
+              <tr><td>Ketu</td><td>கேது (Ketu)</td><td>Derived from Rahu (Rahu + 180°)</td></tr>
+            </tbody>
+          </table>
+
+          <h2>2. Calculation Methodology</h2>
+          <p>
+            To compute a planet's sidereal coordinates, we call <code>swe.calc_ut()</code> with flags indicating we want sidereal positions and speed (to check for retrograde motion).
+          </p>
+          <div class="highlight-block">
+<pre><span class="kw">import</span> pysweph <span class="kw">as</span> swe
+
+<span class="cmt"># Set up Lahiri Ayanamsa</span>
+swe.<span class="fn">set_ephe_path</span>(<span class="str">""</span>)
+swe.<span class="fn">set_sid_mode</span>(swe.SIDM_LAHIRI, <span class="num">0</span>, <span class="num">0</span>)
+
+<span class="cmt"># Use Swiss Ephemeris, Sidereal Zodiac, and Speed flags</span>
+flags = swe.FLG_SWIEPH | swe.FLG_SIDEREAL | swe.FLG_SPEED
+
+jd = swe.<span class="fn">julday</span>(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">9.0</span>, swe.GREG_CAL)  <span class="cmt"># August 4, 2026 14:30 IST</span>
+
+<span class="cmt"># Compute Jupiter's position</span>
+res, _ = swe.<span class="fn">calc_ut</span>(jd, swe.JUPITER, flags)
+lon = res[<span class="num">0</span>]
+speed = res[<span class="num">3</span>]
+
+<span class="fn">print</span>(<span class="str">f"Jupiter Sidereal Longitude: {lon:.4f}°"</span>)
+<span class="fn">print</span>(<span class="str">f"Jupiter Speed in Longitude: {speed:.6f}°/day"</span>)</pre>
+          </div>
+
+          <h2>3. Retrograde Motion (℞)</h2>
+          <p>
+            When a planet's speed in longitude (<code>res[3]</code>) is negative, it is moving backward relative to the stars. This is called <strong>retrograde motion</strong>.
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 14px;">
+            <li>In astrological interpretations, retrograde planets represent intensified, internal, or delayed results.</li>
+            <li>Rahu and Ketu are node points and are <strong>always retrograde</strong> in their normal movement.</li>
+            <li>The Sun and Moon can never be retrograde.</li>
+          </ul>
+
+          <h2>4. Calculating Ketu</h2>
+          <p>
+            Swiss Ephemeris calculates Rahu (the North Node) directly. The South Node, <strong>Ketu</strong>, is always exactly opposite Rahu in the sky (180 degrees away).
+          </p>
+          <div class="formula-box" style="text-align: center;">
+            <strong>Ketu Longitude = (Rahu Longitude + 180°) % 360</strong>
+          </div>
+
+          <div class="admonition note">
+            <p class="admonition-title">📌 Node Types</p>
+            <p>
+              Vedic astrologers prefer the **True Node** (<code>swe.TRUE_NODE</code>) because it represents the actual instantaneous intersection point of the orbits. Some systems use the **Mean Node** (<code>swe.MEAN_NODE</code>), which averages out short-term orbital wobbles.
+            </p>
+          </div>
+
+        </div>
+        <footer class="rst-footer">
+          <a href="jamam.html" class="btn-prev">&larr; Jamam &amp; Jamam Planets</a>
+          <a href="mandi.html" class="btn-next">Mandi &amp; Gulika &rarr;</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

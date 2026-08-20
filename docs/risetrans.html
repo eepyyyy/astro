@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sunrise &amp; Sunset — swe.rise_trans() — Jamakkol Prasanam Docs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+      </div>
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li class="current"><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li><a href="rasi.html">12 Rasis</a></li>
+          <li><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Core Library &rsaquo; Sunrise &amp; Sunset
+        </div>
+        <div role="main">
+          <h1>Sunrise &amp; Sunset — <code>swe.rise_trans()</code></h1>
+          
+          <p>
+            In Jamakkol Prasanam, the astronomical day is divided into two parts: <strong>Daytime</strong> (from sunrise to sunset) and <strong>Nighttime</strong> (from sunset to next sunrise). Knowing the exact sunrise and sunset times is critical for:
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 14px;">
+            <li>Dividing the day/night into 8 equal Jamams (approximately 90 minutes each).</li>
+            <li>Calculating the progression of the Udhayam (rising degree) from the Sun's position.</li>
+            <li>Determining Mandi and Gulika portions based on day/night lengths.</li>
+          </ul>
+
+          <h2>The Function</h2>
+          <p>
+            To compute when a body rises or sets, use the <code>swe.rise_trans()</code> function:
+          </p>
+
+          <div class="fn-sig">
+            <code><span class="fn-name">swe.rise_trans</span>(jd_start, body_id, rise_set_flag, lon, lat, alt, pressure, temp)</code>
+            <span class="fn-ret">→ Returns: (t_ret, serr)</span>
+          </div>
+
+          <h3>Parameters</h3>
+          <dl class="param-table">
+            <dt><span class="pname">jd_start</span> <span class="ptype">: float</span></dt>
+            <dd>Julian Day number (UT) to start searching forward from.</dd>
+            <dt><span class="pname">body_id</span> <span class="ptype">: int</span></dt>
+            <dd>Body constant (for Sun, use <code>swe.SUN</code>).</dd>
+            <dt><span class="pname">rise_set_flag</span> <span class="ptype">: int</span></dt>
+            <dd>
+              Which event to compute:
+              <ul style="padding-left: 20px; margin-top: 6px;">
+                <li><code>swe.CALC_RISE</code>: Sunrise (upper limb touches horizon)</li>
+                <li><code>swe.CALC_SET</code>: Sunset</li>
+              </ul>
+            </dd>
+            <dt><span class="pname">lon, lat, alt</span> <span class="ptype">: float</span></dt>
+            <dd>Longitude (East = positive), latitude (North = positive) in degrees, and altitude in meters above sea level.</dd>
+            <dt><span class="pname">pressure, temp</span> <span class="ptype">: float</span></dt>
+            <dd>Atmospheric pressure in hPa (use 0 for standard 1013.25) and temperature in °C (use 0 for standard 15°C). Atmospheric refraction is calculated automatically.</dd>
+          </dl>
+
+          <h2>Determining the Active Span</h2>
+          <p>
+            Because the query can occur before today's sunrise or after today's sunset, we must check three days' worth of sunrises/sunsets: yesterday's, today's, and tomorrow's.
+          </p>
+
+          <div class="highlight-block">
+<pre><span class="kw">def</span> <span class="fn">get_rise_set</span>(jd_utc: float, lat: float, lon: float, alt: float = <span class="num">0</span>):
+    <span class="cmt"># Start searching from midnight before the target date</span>
+    midnight = int(jd_utc) - <span class="num">0.5</span>
+    
+    <span class="cmt"># Today's rise/set</span>
+    _, sr_res = swe.<span class="fn">rise_trans</span>(midnight, swe.SUN, swe.CALC_RISE, [lon, lat, alt], <span class="num">0</span>, <span class="num">0</span>)
+    _, ss_res = swe.<span class="fn">rise_trans</span>(midnight, swe.SUN, swe.CALC_SET,  [lon, lat, alt], <span class="num">0</span>, <span class="num">0</span>)
+    sr, ss = sr_res[<span class="num">0</span>], ss_res[<span class="num">0</span>]
+    
+    <span class="cmt"># Yesterday's rise/set (for early morning queries)</span>
+    _, psr_res = swe.<span class="fn">rise_trans</span>(midnight - <span class="num">1</span>, swe.SUN, swe.CALC_RISE, [lon, lat, alt], <span class="num">0</span>, <span class="num">0</span>)
+    _, pss_res = swe.<span class="fn">rise_trans</span>(midnight - <span class="num">1</span>, swe.SUN, swe.CALC_SET,  [lon, lat, alt], <span class="num">0</span>, <span class="num">0</span>)
+    psr, pss = psr_res[<span class="num">0</span>], pss_res[<span class="num">0</span>]
+    
+    <span class="cmt"># Tomorrow's rise/set (for late night queries)</span>
+    _, nsr_res = swe.<span class="fn">rise_trans</span>(midnight + <span class="num">1</span>, swe.SUN, swe.CALC_RISE, [lon, lat, alt], <span class="num">0</span>, <span class="num">0</span>)
+    nsr = nsr_res[<span class="num">0</span>]
+    
+    <span class="cmt"># Determine the span</span>
+    <span class="kw">if</span> sr <= jd_utc < ss:
+        <span class="kw">return</span> sr, ss, True        <span class="cmt"># Daytime (between today's sunrise and sunset)</span>
+    <span class="kw">elif</span> jd_utc < sr:
+        <span class="kw">return</span> pss, sr, False      <span class="cmt"># Nighttime (between yesterday's sunset and today's sunrise)</span>
+    <span class="kw">else</span>:
+        <span class="kw">return</span> ss, nsr, False      <span class="cmt"># Nighttime (between today's sunset and tomorrow's sunrise)</span></pre>
+          </div>
+
+          <div class="admonition note">
+            <p class="admonition-title">📌 Elevation Matters</p>
+            <p>
+              Setting the altitude (<code>alt</code>) parameter correctly is important. A location at sea level vs. 500m up a mountain will see sunrise several minutes apart. Swiss Ephemeris accounts for the dip of the horizon caused by elevation.
+            </p>
+          </div>
+
+        </div>
+        <footer class="rst-footer">
+          <a href="houses.html" class="btn-prev">&larr; Ascendant</a>
+          <a href="udhayam.html" class="btn-next">Udhayam &rarr;</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

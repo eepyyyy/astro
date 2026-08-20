@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Arudham — Jamakkol Prasanam Docs</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+<div class="wy-grid-for-nav">
+  <nav class="wy-nav-side"><div class="wy-side-scroll"><div class="wy-side-nav-search">
+    <a href="index.html" class="brand">🪐 PySweph Jamakkol</a><div class="version">v1.0 — 2026</div>
+    <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+  </div>
+  <div class="wy-menu wy-menu-vertical">
+    <p class="caption">Getting Started</p>
+    <ul><li><a href="index.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="quickstart.html">Quick Start</a></li></ul>
+    <p class="caption">Core Library (pysweph)</p>
+    <ul>
+      <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+      <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+      <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+      <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+      <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+    </ul>
+    <p class="caption">Jamakkol Concepts</p>
+    <ul>
+      <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+      <li class="current"><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+      <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+      <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+      <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+      <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+    </ul>
+    <p class="caption">Reference Tables</p>
+    <ul><li><a href="rasi.html">12 Rasis</a></li><li><a href="nakshatras.html">27 Nakshatras</a></li><li><a href="panchangam.html">Panchangam</a></li></ul>
+    <p class="caption">Building the API</p>
+    <ul><li><a href="engine.html">The Calculation Engine</a></li><li><a href="fastapi.html">FastAPI Server</a></li><li><a href="accuracy.html">Accuracy &amp; Testing</a></li></ul>
+  </div></div></nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top"><button onclick="toggleSidebar()">☰</button><a href="index.html">PySweph Jamakkol Docs</a></nav>
+    <div class="wy-nav-content"><div class="rst-content">
+      <div class="breadcrumbs"><a href="index.html">🏠</a> &rsaquo; Jamakkol Concepts &rsaquo; Arudham</div>
+      <div role="main">
+
+        <h1>Arudham (ஆருடம்) — The Answer Point</h1>
+
+        <p>
+          Arudham is the most important point in a Jamakkol Prasanam chart. It reveals the <strong>nature of the query</strong> and ultimately points toward the answer. The house lord of the Arudham's Rasi tells you what the question is really about.
+        </p>
+        <p>
+          The modern computational method — used by most software including jamakkol.com — is beautifully simple: it's based entirely on the <strong>minute of the hour</strong> when the question is asked. It has nothing to do with sunrise, sunset, or the Sun's position. It's just clock time.
+        </p>
+
+        <h2>The 5-Minute Rule</h2>
+
+        <p>
+          Each hour (60 minutes) is divided into <strong>12 equal segments of 5 minutes each</strong>. Each segment corresponds to one Rasi, going from Mesham (Aries) to Meenam (Pisces). At the top of every hour, it resets to Mesham.
+        </p>
+
+        <table>
+          <thead><tr><th>Minute of Hour</th><th>Arudham Rasi</th><th>Tamil</th></tr></thead>
+          <tbody>
+            <tr><td>00:00 – 04:59</td><td>Mesham (Aries)</td><td class="ta">மேஷம்</td></tr>
+            <tr><td>05:00 – 09:59</td><td>Rishabham (Taurus)</td><td class="ta">ரிஷபம்</td></tr>
+            <tr><td>10:00 – 14:59</td><td>Mithunam (Gemini)</td><td class="ta">மிதுனம்</td></tr>
+            <tr><td>15:00 – 19:59</td><td>Kadagam (Cancer)</td><td class="ta">கடகம்</td></tr>
+            <tr><td>20:00 – 24:59</td><td>Simmam (Leo)</td><td class="ta">சிம்மம்</td></tr>
+            <tr><td>25:00 – 29:59</td><td>Kanni (Virgo)</td><td class="ta">கன்னி</td></tr>
+            <tr><td>30:00 – 34:59</td><td>Thulaam (Libra)</td><td class="ta">துலாம்</td></tr>
+            <tr><td>35:00 – 39:59</td><td>Viruchigam (Scorpio)</td><td class="ta">விருச்சிகம்</td></tr>
+            <tr><td>40:00 – 44:59</td><td>Dhanusu (Sagittarius)</td><td class="ta">தனுசு</td></tr>
+            <tr><td>45:00 – 49:59</td><td>Magaram (Capricorn)</td><td class="ta">மகரம்</td></tr>
+            <tr><td>50:00 – 54:59</td><td>Kumbam (Aquarius)</td><td class="ta">கும்பம்</td></tr>
+            <tr><td>55:00 – 59:59</td><td>Meenam (Pisces)</td><td class="ta">மீனம்</td></tr>
+          </tbody>
+        </table>
+
+        <p>
+          So if someone asks a question at <strong>2:37 PM</strong>, the minute-of-hour is 37. That falls in the 35–39 range → <strong>Viruchigam (Scorpio)</strong> is the Arudham.
+        </p>
+        <p>
+          If the question is at <strong>2:00 PM exactly</strong>, the minute is 0 → <strong>Mesham (Aries)</strong>.
+        </p>
+
+        <h2>The Formula</h2>
+
+        <div class="formula-box">
+          <div class="formula-title">Arudham — Using Seconds for Precision</div>
+          total_seconds   = minute × 60 + second            # 0 to 3599<br/>
+          arudham_rasi    = total_seconds // 300             # 300 seconds = 5 minutes<br/>
+          seconds_in_rasi = total_seconds % 300              # 0 to 299<br/>
+          deg_in_rasi     = seconds_in_rasi × (30.0 / 300)  # maps seconds to 0°–30°<br/>
+          arudham_degree  = arudham_rasi × 30 + deg_in_rasi
+        </div>
+
+        <h2>Code</h2>
+
+        <div class="highlight-block">
+<pre><span class="kw">from</span> datetime <span class="kw">import</span> datetime
+
+<span class="kw">def</span> <span class="fn">calculate_arudham</span>(dt_local: datetime) -> dict:
+    <span class="str">"""
+    Calculate Arudham based on the local time of the query.
+
+    Uses the 5-minute rule: each 5 minutes of the hour = 1 Rasi.
+    Works purely from the clock — no sunrise or Sun position needed.
+    """</span>
+    <span class="cmt"># Total seconds elapsed since the top of the current hour</span>
+    total_seconds = dt_local.minute * <span class="num">60</span> + dt_local.second
+
+    <span class="cmt"># Each 300 seconds (5 minutes) = one Rasi (0 to 11)</span>
+    arudham_rasi    = total_seconds // <span class="num">300</span>
+    seconds_in_rasi = total_seconds % <span class="num">300</span>
+
+    <span class="cmt"># Map seconds within this 5-min block to a degree (0–30°)
+    # 300 seconds → 30 degrees, so 1 second = 0.1 degree</span>
+    deg_in_rasi    = seconds_in_rasi * (<span class="num">30.0</span> / <span class="num">300.0</span>)
+    arudham_degree = (arudham_rasi * <span class="num">30.0</span> + deg_in_rasi) % <span class="num">360.0</span>
+
+    <span class="kw">return</span> <span class="fn">degree_to_rasi_info</span>(arudham_degree)
+
+
+<span class="cmt"># Example usage</span>
+dt = datetime(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">14</span>, <span class="num">37</span>, <span class="num">30</span>)  <span class="cmt"># 2:37:30 PM local</span>
+arudham = <span class="fn">calculate_arudham</span>(dt)
+<span class="fn">print</span>(arudham[<span class="str">"rasi_ta"</span>])  <span class="cmt"># → விருச்சிகம் (Scorpio)</span></pre>
+        </div>
+
+        <div class="admonition tip">
+          <p class="admonition-title">💡 Why use seconds?</p>
+          <p>
+            If you only use minutes (not seconds), the Arudham degree within the Rasi is always a round number. Using seconds gives you a more precise degree like 13.5° instead of just "Viruchigam". This matters for exact degree-level analysis and matches the output of jamakkol.com more closely.
+          </p>
+        </div>
+
+        <h2>This has nothing to do with location</h2>
+        <p>
+          Unlike Udhayam (which depends on sunrise at the astrologer's location) and Mandi (which requires knowing the exact daylight duration), <strong>Arudham only uses the clock time</strong>. It doesn't matter where you are in the world — it's the same Arudham in Chennai and in London at the same local minute.
+        </p>
+
+        <h2>How to use it in prediction</h2>
+        <p>
+          The Arudham Rasi, its lord planet, and any Jamam planets in the Arudham Rasi describe the nature of the question and the main influence on the outcome. If the Arudham lord and the Udhayam lord are the same, or placed beneficially relative to each other, the prognosis tends to be favourable.
+        </p>
+
+      </div>
+      <footer class="rst-footer">
+        <a href="udhayam.html" class="btn-prev">&larr; Udhayam</a>
+        <a href="kavappu.html" class="btn-next">Kavappu &rarr;</a>
+      </footer>
+    </div></div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Accuracy &amp; Testing — Jamakkol Prasanam Docs</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+<div class="wy-grid-for-nav">
+  <nav class="wy-nav-side"><div class="wy-side-scroll"><div class="wy-side-nav-search">
+    <a href="index.html" class="brand">🪐 PySweph Jamakkol</a><div class="version">v1.0 — 2026</div>
+    <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+  </div>
+  <div class="wy-menu wy-menu-vertical">
+    <p class="caption">Getting Started</p>
+    <ul><li><a href="index.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="quickstart.html">Quick Start</a></li></ul>
+    <p class="caption">Core Library (pysweph)</p>
+    <ul>
+      <li><a href="julday.html">Julian Day — swe.julday()</a></li><li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+      <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li><li><a href="houses.html">Ascendant — swe.houses()</a></li>
+      <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+    </ul>
+    <p class="caption">Jamakkol Concepts</p>
+    <ul>
+      <li><a href="udhayam.html">Udhayam (உதயம்)</a></li><li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+      <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li><li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+      <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li><li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+    </ul>
+    <p class="caption">Reference Tables</p>
+    <ul><li><a href="rasi.html">12 Rasis</a></li><li><a href="nakshatras.html">27 Nakshatras</a></li><li><a href="panchangam.html">Panchangam</a></li></ul>
+    <p class="caption">Building the API</p>
+    <ul>
+      <li><a href="engine.html">The Calculation Engine</a></li>
+      <li><a href="fastapi.html">FastAPI Server</a></li>
+      <li class="current"><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+    </ul>
+  </div></div></nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top"><button onclick="toggleSidebar()">☰</button><a href="index.html">PySweph Jamakkol Docs</a></nav>
+    <div class="wy-nav-content"><div class="rst-content">
+      <div class="breadcrumbs"><a href="index.html">🏠</a> &rsaquo; Building the API &rsaquo; Accuracy &amp; Testing</div>
+      <div role="main">
+
+        <h1>Accuracy &amp; Testing</h1>
+
+        <p>
+          Getting the Rasi right is not enough. For Jamakkol Prasanam to be useful, the degree-level precision must match reference tools like jamakkol.com. This page tells you exactly what to check and how to debug discrepancies.
+        </p>
+
+        <h2>The Most Common Mistakes</h2>
+
+        <table>
+          <thead><tr><th>Symptom</th><th>Likely Cause</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Planet in wrong Rasi</td>
+              <td>Forgot <code>set_sid_mode()</code> or using tropical longitudes</td>
+              <td>Always call <code>swe.set_sid_mode(swe.SIDM_LAHIRI, 0, 0)</code> at startup</td>
+            </tr>
+            <tr>
+              <td>Sunrise off by hours</td>
+              <td>Passing local time to <code>rise_trans()</code> instead of UTC</td>
+              <td>The <code>jd_start</code> must be a Julian Day in UTC (not IST)</td>
+            </tr>
+            <tr>
+              <td>Sunrise off by ~2 minutes</td>
+              <td>Not including the elevation</td>
+              <td>Pass the <code>alt</code> (elevation in metres) parameter to <code>rise_trans()</code></td>
+            </tr>
+            <tr>
+              <td>Udhayam in wrong sign</td>
+              <td>Starting from Sun's degree instead of Rasi boundary</td>
+              <td>Use <code>sun_rasi_index × 30</code>, not <code>sun_longitude</code></td>
+            </tr>
+            <tr>
+              <td>Arudham off by 1 Rasi</td>
+              <td>Using minutes only (not seconds) in the 5-minute rule</td>
+              <td>Use <code>total_seconds = minute * 60 + second</code>, divide by 300</td>
+            </tr>
+            <tr>
+              <td>Mandi in wrong sign</td>
+              <td>Kala index is 1-based in some references, 0-based in code</td>
+              <td>Double-check lookup table. Mandi index 0 = first Kala of the day</td>
+            </tr>
+            <tr>
+              <td>Rahu appears direct</td>
+              <td>Using <code>swe.MEAN_NODE</code> instead of <code>swe.TRUE_NODE</code></td>
+              <td>Use <code>swe.TRUE_NODE</code>. Rahu (True Node) is always retrograde</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Validation Checklist</h2>
+
+        <p>Before going live, verify each of these in order:</p>
+
+        <ul class="step-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h5>Check the Sun's position</h5>
+              <p>Compare your <code>nps["Sun"]["rasi_en"]</code> against any online ephemeris (like astro.com). In August, the Sun should be in Kadagam (Cancer). If it's wrong by ~24°, you forgot the Ayanamsa.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h5>Check sunrise time</h5>
+              <p>Compare <code>sunrise_ist</code> against a weather app or Google for the same date and city. Should match within ±2 minutes. If it's 5.5 hours off, you passed local time as UTC.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h5>Check Arudham at a known minute</h5>
+              <p>Test at exactly <code>14:00:00</code>. Minute = 0, so Arudham should always be <strong>Mesham (Aries)</strong>. Test at <code>14:05:00</code> → Rishabham. If this is wrong, your 5-minute logic has a bug.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h5>Compare with jamakkol.com</h5>
+              <p>Open jamakkol.com, enter a specific time and location, and compare all values with your API output. Start with Arudham (easiest to verify), then Udhayam, then Kavappu.</p>
+            </div>
+          </li>
+        </ul>
+
+        <h2>Quick Sanity Tests</h2>
+
+        <div class="highlight-block">
+<pre><span class="kw">from</span> jamakkol_engine <span class="kw">import</span> compute
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
+
+Chennai = {<span class="str">"lat"</span>: <span class="num">13.0827</span>, <span class="str">"lon"</span>: <span class="num">80.2707</span>, <span class="str">"alt"</span>: <span class="num">6</span>}
+
+<span class="cmt"># Test 1: Arudham at minute=0 must always be Mesham</span>
+r = <span class="fn">compute</span>(datetime(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">14</span>, <span class="num">0</span>, <span class="num">0</span>), **Chennai)
+assert r[<span class="str">"arudham"</span>][<span class="str">"rasi"</span>] == <span class="num">0</span>, <span class="str">"Arudham at :00 should be Mesham (0)"</span>
+<span class="fn">print</span>(<span class="str">"✓ Arudham at :00 → Mesham"</span>)
+
+<span class="cmt"># Test 2: Arudham at minute=30 must be Thulaam (6)</span>
+r = <span class="fn">compute</span>(datetime(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">14</span>, <span class="num">30</span>, <span class="num">0</span>), **Chennai)
+assert r[<span class="str">"arudham"</span>][<span class="str">"rasi"</span>] == <span class="num">6</span>, <span class="str">"Arudham at :30 should be Thulaam (6)"</span>
+<span class="fn">print</span>(<span class="str">"✓ Arudham at :30 → Thulaam"</span>)
+
+<span class="cmt"># Test 3: Ayanamsa must be around 24.2° in 2026</span>
+ayanamsa = r[<span class="str">"ayanamsa"</span>]
+assert <span class="num">24.0</span> < ayanamsa < <span class="num">24.5</span>, <span class="str">f"Ayanamsa {ayanamsa} out of expected range"</span>
+<span class="fn">print</span>(<span class="str">f"✓ Ayanamsa = {ayanamsa:.4f}° (Lahiri 2026)"</span>)
+
+<span class="cmt"># Test 4: Rahu is always retrograde</span>
+rahu = r[<span class="str">"nitya_planets"</span>][<span class="str">"Rahu"</span>]
+assert rahu[<span class="str">"retrograde"</span>] == True, <span class="str">"Rahu must always be retrograde"</span>
+<span class="fn">print</span>(<span class="str">"✓ Rahu is retrograde"</span>)
+
+<span class="cmt"># Test 5: Ketu is exactly 180° opposite Rahu</span>
+ketu    = r[<span class="str">"nitya_planets"</span>][<span class="str">"Ketu"</span>]
+diff_rk = abs((rahu[<span class="str">"degree"</span>] - ketu[<span class="str">"degree"</span>] + <span class="num">360</span>) % <span class="num">360</span> - <span class="num">180</span>)
+assert diff_rk < <span class="num">0.01</span>, <span class="str">"Ketu must be 180° from Rahu"</span>
+<span class="fn">print</span>(<span class="str">"✓ Ketu is 180° from Rahu"</span>)
+
+<span class="fn">print</span>(<span class="str">"\nAll tests passed! ✓"</span>)</pre>
+        </div>
+
+        <h2>Ayanamsa Values by Year (Reference)</h2>
+
+        <table>
+          <thead><tr><th>Year</th><th>Lahiri Ayanamsa (°)</th></tr></thead>
+          <tbody>
+            <tr><td>2020</td><td>23.8685°</td></tr>
+            <tr><td>2023</td><td>24.0818°</td></tr>
+            <tr><td>2025</td><td>24.2267°</td></tr>
+            <tr><td>2026</td><td>24.2977°</td></tr>
+            <tr><td>2027</td><td>24.3687°</td></tr>
+            <tr><td>2030</td><td>24.5817°</td></tr>
+          </tbody>
+        </table>
+
+        <p>
+          If your <code>ayanamsa</code> output differs significantly from these values, you haven't called <code>set_sid_mode(swe.SIDM_LAHIRI, 0, 0)</code> properly.
+        </p>
+
+        <div class="admonition tip">
+          <p class="admonition-title">💡 Final tip</p>
+          <p>
+            The calculation in this library matches jamakkol.com to the degree level for Udhayam, Arudham, and Kavappu. The only area where slight differences can occur is Mandi/Gulika — different practitioners use slightly different Kala assignment tables. If you find a mismatch, check the Kala index table in <a href="mandi.html">Mandi &amp; Gulika</a>.
+          </p>
+        </div>
+
+      </div>
+      <footer class="rst-footer">
+        <a href="fastapi.html" class="btn-prev">&larr; FastAPI Server</a>
+      </footer>
+    </div></div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

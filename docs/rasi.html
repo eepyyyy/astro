@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>12 Rasis Reference — Jamakkol Prasanam Docs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+      </div>
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li class="current"><a href="rasi.html">12 Rasis</a></li>
+          <li><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Reference Tables &rsaquo; 12 Rasis Reference
+        </div>
+        <div role="main">
+          <h1>12 Rasis (Signs of the Zodiac)</h1>
+          
+          <p>
+            The zodiac belt of 360 degrees is divided into 12 equal sectors of 30 degrees each, called <strong>Rasis</strong> (இராசிகள்). In Jamakkol Prasanam, these represent the physical houses of the chart where planets are positioned.
+          </p>
+
+          <h2>The 12 Rasis Table</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Index (0-11)</th>
+                <th>Tamil Name</th>
+                <th>English / Sanskrit Name</th>
+                <th>Zodiac Span</th>
+                <th>Ruling Planet (Lord)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>0</td><td>மேஷம் (Mesham)</td><td>Aries</td><td>0° &ndash; 30°</td><td>Mars</td></tr>
+              <tr><td>1</td><td>ரிஷபம் (Rishabham)</td><td>Taurus</td><td>30° &ndash; 60°</td><td>Venus</td></tr>
+              <tr><td>2</td><td>மிதுனம் (Mithunam)</td><td>Gemini</td><td>60° &ndash; 90°</td><td>Mercury</td></tr>
+              <tr><td>3</td><td>கடகம் (Kadagam)</td><td>Cancer</td><td>90° &ndash; 120°</td><td>Moon</td></tr>
+              <tr><td>4</td><td>சிம்மம் (Simmam)</td><td>Leo</td><td>120° &ndash; 150°</td><td>Sun</td></tr>
+              <tr><td>5</td><td>கன்னி (Kanni)</td><td>Virgo</td><td>150° &ndash; 180°</td><td>Mercury</td></tr>
+              <tr><td>6</td><td>துலாம் (Thulaam)</td><td>Libra</td><td>180° &ndash; 210°</td><td>Venus</td></tr>
+              <tr><td>7</td><td>விருச்சிகம் (Viruchigam)</td><td>Scorpio</td><td>210° &ndash; 240°</td><td>Mars</td></tr>
+              <tr><td>8</td><td>தனுசு (Dhanusu)</td><td>Sagittarius</td><td>240° &ndash; 270°</td><td>Jupiter</td></tr>
+              <tr><td>9</td><td>மகரம் (Magaram)</td><td>Capricorn</td><td>270° &ndash; 300°</td><td>Saturn</td></tr>
+              <tr><td>10</td><td>கும்பம் (Kumbam)</td><td>Aquarius</td><td>300° &ndash; 330°</td><td>Saturn</td></tr>
+              <tr><td>11</td><td>மீனம் (Meenam)</td><td>Pisces</td><td>330° &ndash; 360°</td><td>Jupiter</td></tr>
+            </tbody>
+          </table>
+
+          <h2>Longitude to Rasi Conversion</h2>
+          <p>
+            To convert any planet's longitude (0.0 to 360.0 degrees) to its Rasi index, use integer division by 30:
+          </p>
+          <div class="formula-box">
+            rasi_index = int(longitude // 30)<br/>
+            degree_in_rasi = longitude % 30
+          </div>
+
+          <h2>Python Code Example</h2>
+          <div class="highlight-block">
+<pre><span class="cmt"># Rasi names arrays</span>
+RASI_TA = [<span class="str">"மேஷம்"</span>, <span class="str">"ரிஷபம்"</span>, <span class="str">"மிதுனம்"</span>, <span class="str">"கடகம்"</span>, <span class="str">"சிம்மம்"</span>, <span class="str">"கன்னி"</span>,
+           <span class="str">"துலாம்"</span>, <span class="str">"விருச்சிகம்"</span>, <span class="str">"தனுசு"</span>, <span class="str">"மகரம்"</span>, <span class="str">"கும்பம்"</span>, <span class="str">"மீனம்"</span>]
+
+RASI_EN = [<span class="str">"Mesham"</span>, <span class="str">"Rishabham"</span>, <span class="str">"Mithunam"</span>, <span class="str">"Kadagam"</span>, <span class="str">"Simmam"</span>, <span class="str">"Kanni"</span>,
+           <span class="str">"Thulaam"</span>, <span class="str">"Viruchigam"</span>, <span class="str">"Dhanusu"</span>, <span class="str">"Magaram"</span>, <span class="str">"Kumbam"</span>, <span class="str">"Meenam"</span>]
+
+<span class="kw">def</span> <span class="fn">get_rasi_info</span>(deg: float) -> dict:
+    deg = deg % <span class="num">360.0</span>
+    ri = int(deg // <span class="num">30</span>)
+    deg_in_rasi = deg % <span class="num">30</span>
+    <span class="kw">return</span> {
+        <span class="str">"index"</span>: ri,
+        <span class="str">"name_ta"</span>: RASI_TA[ri],
+        <span class="str">"name_en"</span>: RASI_EN[ri],
+        <span class="str">"deg_in_rasi"</span>: round(deg_in_rasi, <span class="num">4</span>),
+    }
+
+<span class="cmt"># Example: Sun is at 108.0673°</span>
+info = <span class="fn">get_rasi_info</span>(<span class="num">108.0673</span>)
+<span class="fn">print</span>(<span class="str">f"Sun is in {info['name_en']} ({info['name_ta']}) at {info['deg_in_rasi']}°"</span>)
+<span class="cmt"># Output: Sun is in Kadagam (கடகம்) at 18.0673°</span></pre>
+          </div>
+
+        </div>
+        <footer class="rst-footer">
+          <a href="mandi.html" class="btn-prev">&larr; Mandi &amp; Gulika</a>
+          <a href="nakshatras.html" class="btn-next">27 Nakshatras &rarr;</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

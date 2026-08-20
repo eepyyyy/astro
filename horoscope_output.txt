@@ -1,0 +1,355 @@
+=======================================================
+   COMPLETE JAMAKKOL PRASANAM & DIVISIONAL CHARTS      
+=======================================================
+
+Date/Time Local : 2007-10-21 00:00:00
+Date/Time UTC   : 2007-10-20 18:30:00
+Latitude        : 12.986
+Longitude       : 77.47
+Julian Day      : 2454394.2708333335
+Ayanamsa        : 23.944503°
+
+-------------------------------------------------------
+1. MAIN CHART (JAMAKKOL PRASANAM CORE)
+-------------------------------------------------------
+Sidereal Ascendant : Kadagam (House: 3) - 2° 51' 11.5541
+Udhayam Lagna      : Meenam (House: 11) - 29° 51' 39.7714
+Arudham Point      : Mesham (House: 0) - 0° 0' 0.0000
+Kavippu Point      : Mesham (House: 0) - 29° 59' 59.0000
+
+Main Ephemeris Planets:
+  Sun       : Thulaam      (House 6) | 3° 2' 19.2488      | KP: Chitra-3 / Chithirai-3,   Mars, Venus,  Sun, Sun
+  Moon      : Magaram      (House 9) | 19° 58' 29.8029    | KP: Shravana-3 / Thiruvonam-3,   Moon, Ketu,  Mars, Ketu
+  Mars      : Mithunam     (House 2) | 14° 24' 23.0044    | KP: Ardra-3 / Thiruvathirai-3,   Rahu, Mercury,  Saturn, Jupiter
+  Mercury   : Thulaam      (House 6) | 10° 10' 19.4270    | KP: Swati-2 / Swaathi-2,   Rahu, Jupiter,  Mars, Moon
+  Jupiter   : Viruchigam   (House 7) | 23° 32' 13.0832    | KP: Jyestha-3 / Kettai-3,   Mercury, Mars,  Jupiter, Mercury
+  Venus     : Simmam       (House 4) | 16° 48' 30.3559    | KP: Purva Phalguni-2 / Pooram-2,   Venus, Moon,  Saturn, Moon
+  Saturn    : Simmam       (House 4) | 11° 33' 0.2528     | KP: Magha-4 / Makam-4,   Ketu, Mercury,  Mercury, Sun
+  Rahu      : Kumbam       (House 10) | 10° 13' 13.4493    | KP: Shatabhisha-2 / Sadhayam-2,   Rahu, Jupiter,  Rahu, Jupiter
+  Ketu      : Simmam       (House 4) | 10° 13' 13.4493    | KP: Magha-4 / Makam-4,   Ketu, Saturn,  Venus, Rahu
+
+Outer Jamakkol Planets:
+  Sun       : Kanni        (House 5) | 29° 59' 59.9996   
+  Mars      : Simmam       (House 4) | 14° 59' 59.9996   
+  Jupiter   : Mithunam     (House 2) | 29° 59' 59.9996   
+  Mercury   : Rishabham    (House 1) | 14° 59' 59.9996   
+  Venus     : Meenam       (House 11) | 29° 59' 59.9996   
+  Saturn    : Kumbam       (House 10) | 14° 59' 59.9996   
+  Moon      : Dhanusu      (House 8) | 29° 59' 59.9996   
+  Snake     : Viruchigam   (House 7) | 14° 59' 59.9996   
+
+-------------------------------------------------------
+2. ALL 26 DIVISIONAL CHARTS (D-1 TO D-300)
+-------------------------------------------------------
+
+[D-1 - Rasi (Harmonic 1)]
+  Ascendant : Kadagam      | House  0 | 2° 51' 11.5541"    | KP: Punarvasu-4, Jupiter, Rahu, Venus
+  Sun       : Thulaam      | House  3 | 3° 2' 19.2488"     | KP: Chitra-3, Mars, Venus, Sun
+  Moon      : Magaram      | House  6 | 19° 58' 29.8029"   | KP: Shravana-3, Moon, Ketu, Mars
+  Mars      : Mithunam     | House 11 | 14° 24' 23.0044"   | KP: Ardra-3, Rahu, Mercury, Saturn
+  Mercury   : Thulaam      | House  3 | 10° 10' 19.4270"   | KP: Swati-2, Rahu, Jupiter, Mars
+  Jupiter   : Viruchigam   | House  4 | 23° 32' 13.0832"   | KP: Jyestha-3, Mercury, Mars, Jupiter
+  Venus     : Simmam       | House  1 | 16° 48' 30.3559"   | KP: Purva Phalguni-2, Venus, Moon, Saturn
+  Saturn    : Simmam       | House  1 | 11° 33' 0.2528"    | KP: Magha-4, Ketu, Mercury, Mercury
+  Rahu      : Kumbam       | House  7 | 10° 13' 13.4493"   | KP: Shatabhisha-2, Rahu, Jupiter, Rahu
+  Ketu      : Simmam       | House  1 | 10° 13' 13.4493"   | KP: Magha-4, Ketu, Saturn, Venus
+
+[D-2 - Hora (Harmonic 2)]
+  Ascendant : Kadagam      | House  0 | 5° 42' 23.1081"    | KP: Pushya-1, Saturn, Mercury, Mercury
+  Sun       : Simmam       | House  1 | 6° 4' 38.4976"     | KP: Magha-2, Ketu, Rahu, Jupiter
+  Moon      : Simmam       | House  1 | 9° 56' 59.6059"    | KP: Magha-3, Ketu, Saturn, Mercury
+  Mars      : Simmam       | House  1 | 28° 48' 46.0088"   | KP: Uttara Phalguni-1, Sun, Mars, Saturn
+  Mercury   : Simmam       | House  1 | 20° 20' 38.8541"   | KP: Purva Phalguni-3, Venus, Jupiter, Jupiter
+  Jupiter   : Simmam       | House  1 | 17° 4' 26.1664"    | KP: Purva Phalguni-2, Venus, Moon, Ketu
+  Venus     : Kadagam      | House  0 | 3° 37' 0.7118"     | KP: Pushya-1, Saturn, Saturn, Saturn
+  Saturn    : Simmam       | House  1 | 23° 6' 0.5057"     | KP: Purva Phalguni-3, Venus, Saturn, Sun
+  Rahu      : Simmam       | House  1 | 20° 26' 26.8985"   | KP: Purva Phalguni-3, Venus, Jupiter, Saturn
+  Ketu      : Simmam       | House  1 | 20° 26' 26.8985"   | KP: Purva Phalguni-3, Venus, Jupiter, Saturn
+
+[D-3 - Drekkana (Harmonic 3)]
+  Ascendant : Kadagam      | House  0 | 8° 33' 34.6622"    | KP: Pushya-2, Saturn, Venus, Sun
+  Sun       : Thulaam      | House  3 | 9° 6' 57.7464"     | KP: Swati-1, Rahu, Jupiter, Saturn
+  Moon      : Rishabham    | House 10 | 29° 55' 29.4088"   | KP: Mrigashira-2, Mars, Saturn, Jupiter
+  Mars      : Thulaam      | House  3 | 13° 13' 9.0131"    | KP: Swati-2, Rahu, Mercury, Venus
+  Mercury   : Kumbam       | House  7 | 0° 30' 58.2811"    | KP: Dhanishtha-3, Mars, Mercury, Venus
+  Jupiter   : Kadagam      | House  0 | 10° 36' 39.2496"   | KP: Pushya-3, Saturn, Sun, Jupiter
+  Venus     : Dhanusu      | House  5 | 20° 25' 31.0677"   | KP: Purva Ashadha-3, Venus, Jupiter, Saturn
+  Saturn    : Dhanusu      | House  5 | 4° 39' 0.7585"     | KP: Mula-2, Ketu, Moon, Venus
+  Rahu      : Mithunam     | House 11 | 0° 39' 40.3478"    | KP: Mrigashira-3, Mars, Mercury, Venus
+  Ketu      : Dhanusu      | House  5 | 0° 39' 40.3478"    | KP: Mula-1, Ketu, Ketu, Saturn
+
+[D-4 - Chaturthamsa (Harmonic 4)]
+  Ascendant : Kadagam      | House  0 | 11° 24' 46.2162"   | KP: Pushya-3, Saturn, Moon, Jupiter
+  Sun       : Thulaam      | House  3 | 12° 9' 16.9952"    | KP: Swati-2, Rahu, Saturn, Rahu
+  Moon      : Kadagam      | House  0 | 19° 53' 59.2118"   | KP: Ashlesha-1, Mercury, Venus, Moon
+  Mars      : Kanni        | House  2 | 27° 37' 32.0175"   | KP: Chitra-2, Mars, Jupiter, Rahu
+  Mercury   : Magaram      | House  6 | 10° 41' 17.7082"   | KP: Shravana-1, Moon, Moon, Mercury
+  Jupiter   : Simmam       | House  1 | 4° 8' 52.3328"     | KP: Magha-2, Ketu, Moon, Saturn
+  Venus     : Kumbam       | House  7 | 7° 14' 1.4236"     | KP: Shatabhisha-1, Rahu, Rahu, Saturn
+  Saturn    : Viruchigam   | House  4 | 16° 12' 1.0114"    | KP: Anuradha-4, Saturn, Jupiter, Moon
+  Rahu      : Rishabham    | House 10 | 10° 52' 53.7970"   | KP: Rohini-1, Moon, Moon, Venus
+  Ketu      : Viruchigam   | House  4 | 10° 52' 53.7970"   | KP: Anuradha-3, Saturn, Sun, Ketu
+
+[D-5 - Panchamsha (Harmonic 5)]
+  Ascendant : Mesham       | House  0 | 14° 15' 57.7703"   | KP: Bharani-1, Venus, Venus, Rahu
+  Sun       : Mesham       | House  0 | 15° 11' 36.2439"   | KP: Bharani-1, Venus, Venus, Mercury
+  Moon      : Kadagam      | House  3 | 9° 52' 29.0147"    | KP: Pushya-2, Saturn, Venus, Saturn
+  Mars      : Kumbam       | House 10 | 12° 1' 55.0219"    | KP: Shatabhisha-2, Rahu, Saturn, Rahu
+  Mercury   : Rishabham    | House  1 | 20° 51' 37.1352"   | KP: Rohini-4, Moon, Venus, Sun
+  Jupiter   : Viruchigam   | House  7 | 27° 41' 5.4161"    | KP: Jyestha-4, Mercury, Jupiter, Rahu
+  Venus     : Thulaam      | House  6 | 24° 2' 31.7795"    | KP: Vishakha-2, Jupiter, Mercury, Mercury
+  Saturn    : Kanni        | House  5 | 27° 45' 1.2642"    | KP: Chitra-2, Mars, Jupiter, Rahu
+  Rahu      : Kanni        | House  5 | 21° 6' 7.2463"     | KP: Hasta-4, Moon, Venus, Moon
+  Ketu      : Kanni        | House  5 | 21° 6' 7.2463"     | KP: Hasta-4, Moon, Venus, Moon
+
+[D-6 - Shashtamsha (Harmonic 6)]
+  Ascendant : Thulaam      | House  0 | 17° 7' 9.3244"     | KP: Swati-4, Rahu, Venus, Mercury
+  Sun       : Mesham       | House  6 | 18° 13' 55.4927"   | KP: Bharani-2, Venus, Rahu, Rahu
+  Moon      : Magaram      | House  3 | 29° 50' 58.8177"   | KP: Dhanishtha-2, Mars, Saturn, Jupiter
+  Mars      : Mithunam     | House  8 | 26° 26' 18.0263"   | KP: Punarvasu-2, Jupiter, Ketu, Saturn
+  Mercury   : Mithunam     | House  8 | 1° 1' 56.5623"     | KP: Mrigashira-3, Mars, Mercury, Mars
+  Jupiter   : Kumbam       | House  4 | 21° 13' 18.4993"   | KP: Purva Bhadrapada-1, Jupiter, Jupiter, Sun
+  Venus     : Kadagam      | House  9 | 10° 51' 2.1354"    | KP: Pushya-3, Saturn, Sun, Ketu
+  Saturn    : Mithunam     | House  8 | 9° 18' 1.5170"     | KP: Ardra-1, Rahu, Jupiter, Mercury
+  Rahu      : Mithunam     | House  8 | 1° 19' 20.6955"    | KP: Mrigashira-3, Mars, Mercury, Rahu
+  Ketu      : Mithunam     | House  8 | 1° 19' 20.6955"    | KP: Mrigashira-3, Mars, Mercury, Rahu
+
+[D-7 - Saptamsha (Harmonic 7)]
+  Ascendant : Magaram      | House  0 | 19° 58' 20.8784"   | KP: Shravana-3, Moon, Ketu, Mars
+  Sun       : Thulaam      | House  9 | 21° 16' 14.7415"   | KP: Vishakha-1, Jupiter, Jupiter, Moon
+  Moon      : Viruchigam   | House 10 | 19° 49' 28.6206"   | KP: Jyestha-1, Mercury, Venus, Moon
+  Mars      : Kanni        | House  8 | 10° 50' 41.0307"   | KP: Hasta-1, Moon, Moon, Ketu
+  Mercury   : Dhanusu      | House 11 | 11° 12' 15.9893"   | KP: Mula-4, Ketu, Saturn, Jupiter
+  Jupiter   : Thulaam      | House  9 | 14° 45' 31.5825"   | KP: Swati-3, Rahu, Ketu, Mars
+  Venus     : Viruchigam   | House 10 | 27° 39' 32.4913"   | KP: Jyestha-4, Mercury, Jupiter, Rahu
+  Saturn    : Thulaam      | House  9 | 20° 51' 1.7699"    | KP: Vishakha-1, Jupiter, Jupiter, Ketu
+  Rahu      : Mesham       | House  3 | 11° 32' 34.1448"   | KP: Aswini-4, Ketu, Mercury, Mercury
+  Ketu      : Thulaam      | House  9 | 11° 32' 34.1448"   | KP: Swati-2, Rahu, Saturn, Venus
+
+[D-8 - Ashtamsha (Harmonic 8)]
+  Ascendant : Mesham       | House  0 | 22° 49' 32.4325"   | KP: Bharani-3, Venus, Saturn, Venus
+  Sun       : Mesham       | House  0 | 24° 18' 33.9903"   | KP: Bharani-4, Venus, Mercury, Ketu
+  Moon      : Kanni        | House  5 | 9° 47' 58.4235"    | KP: Uttara Phalguni-4, Sun, Venus, Mercury
+  Mars      : Viruchigam   | House  7 | 25° 15' 4.0351"    | KP: Jyestha-3, Mercury, Rahu, Mercury
+  Mercury   : Mithunam     | House  2 | 21° 22' 35.4164"   | KP: Punarvasu-1, Jupiter, Jupiter, Moon
+  Jupiter   : Mithunam     | House  2 | 8° 17' 44.6657"    | KP: Ardra-1, Rahu, Rahu, Sun
+  Venus     : Mesham       | House  0 | 14° 28' 2.8472"    | KP: Bharani-1, Venus, Venus, Jupiter
+  Saturn    : Meenam       | House 11 | 2° 24' 2.0227"     | KP: Purva Bhadrapada-4, Jupiter, Rahu, Mercury
+  Rahu      : Kumbam       | House 10 | 21° 45' 47.5940"   | KP: Purva Bhadrapada-1, Jupiter, Jupiter, Rahu
+  Ketu      : Kumbam       | House 10 | 21° 45' 47.5940"   | KP: Purva Bhadrapada-1, Jupiter, Jupiter, Rahu
+
+[D-9 - Navamsha (Harmonic 9)]
+  Ascendant : Kadagam      | House  0 | 25° 40' 43.9865"   | KP: Ashlesha-3, Mercury, Rahu, Venus
+  Sun       : Thulaam      | House  3 | 27° 20' 53.2391"   | KP: Vishakha-3, Jupiter, Venus, Mars
+  Moon      : Mithunam     | House 11 | 29° 46' 28.2265"   | KP: Punarvasu-3, Jupiter, Moon, Jupiter
+  Mars      : Kumbam       | House  7 | 9° 39' 27.0394"    | KP: Shatabhisha-1, Rahu, Jupiter, Venus
+  Mercury   : Magaram      | House  6 | 1° 32' 54.8434"    | KP: Uttara Ashadha-2, Sun, Jupiter, Saturn
+  Jupiter   : Kumbam       | House  7 | 1° 49' 57.7489"    | KP: Dhanishtha-3, Mars, Mercury, Saturn
+  Venus     : Kanni        | House  2 | 1° 16' 33.2031"    | KP: Uttara Phalguni-2, Sun, Jupiter, Jupiter
+  Saturn    : Kadagam      | House  0 | 13° 57' 2.2756"    | KP: Pushya-4, Saturn, Rahu, Mercury
+  Rahu      : Magaram      | House  6 | 1° 59' 1.0433"     | KP: Uttara Ashadha-2, Sun, Jupiter, Mercury
+  Ketu      : Kadagam      | House  0 | 1° 59' 1.0433"     | KP: Punarvasu-4, Jupiter, Rahu, Saturn
+
+[D-10 - Dasamsha (Harmonic 10)]
+  Ascendant : Meenam       | House  0 | 28° 31' 55.5406"   | KP: Revati-4, Mercury, Saturn, Ketu
+  Sun       : Viruchigam   | House  8 | 0° 23' 12.4879"    | KP: Vishakha-4, Jupiter, Moon, Venus
+  Moon      : Meenam       | House  0 | 19° 44' 58.0294"   | KP: Revati-1, Mercury, Venus, Sun
+  Mars      : Thulaam      | House  7 | 24° 3' 50.0438"    | KP: Vishakha-2, Jupiter, Mercury, Mercury
+  Mercury   : Magaram      | House 10 | 11° 43' 14.2705"   | KP: Shravana-1, Moon, Mars, Venus
+  Jupiter   : Kumbam       | House 11 | 25° 22' 10.8321"   | KP: Purva Bhadrapada-2, Jupiter, Mercury, Jupiter
+  Venus     : Magaram      | House 10 | 18° 5' 3.5590"     | KP: Shravana-3, Moon, Mercury, Ketu
+  Saturn    : Viruchigam   | House  8 | 25° 30' 2.5284"    | KP: Jyestha-3, Mercury, Rahu, Venus
+  Rahu      : Rishabham    | House  2 | 12° 12' 14.4925"   | KP: Rohini-1, Moon, Rahu, Jupiter
+  Ketu      : Viruchigam   | House  8 | 12° 12' 14.4925"   | KP: Anuradha-3, Saturn, Mars, Rahu
+
+[D-11 - Rudramsha (Harmonic 11)]
+  Ascendant : Dhanusu      | House  0 | 1° 23' 7.0947"     | KP: Mula-1, Ketu, Venus, Moon
+  Sun       : Kanni        | House  9 | 3° 25' 31.7367"    | KP: Uttara Phalguni-3, Sun, Saturn, Mercury
+  Moon      : Dhanusu      | House  0 | 9° 43' 27.8324"    | KP: Mula-3, Ketu, Saturn, Mercury
+  Mars      : Kanni        | House  9 | 8° 28' 13.0482"    | KP: Uttara Phalguni-4, Sun, Venus, Mars
+  Mercury   : Kadagam      | House  7 | 21° 53' 33.6975"   | KP: Ashlesha-2, Mercury, Sun, Saturn
+  Jupiter   : Magaram      | House  1 | 18° 54' 23.9153"   | KP: Shravana-3, Moon, Mercury, Rahu
+  Venus     : Mithunam     | House  6 | 4° 53' 33.9149"    | KP: Mrigashira-4, Mars, Sun, Sun
+  Saturn    : Simmam       | House  8 | 7° 3' 2.7812"      | KP: Magha-3, Ketu, Rahu, Venus
+  Rahu      : Meenam       | House  3 | 22° 25' 27.9418"   | KP: Revati-2, Mercury, Moon, Rahu
+  Ketu      : Kanni        | House  9 | 22° 25' 27.9418"   | KP: Hasta-4, Moon, Venus, Mercury
+
+[D-12 - Dwadasamsha (Harmonic 12)]
+  Ascendant : Simmam       | House  0 | 4° 14' 18.6487"    | KP: Magha-2, Ketu, Moon, Saturn
+  Sun       : Viruchigam   | House  3 | 6° 27' 50.9855"    | KP: Anuradha-1, Saturn, Mercury, Mars
+  Moon      : Simmam       | House  0 | 29° 41' 57.6353"   | KP: Uttara Phalguni-1, Sun, Rahu, Jupiter
+  Mars      : Viruchigam   | House  3 | 22° 52' 36.0526"   | KP: Jyestha-2, Mercury, Moon, Mercury
+  Mercury   : Kumbam       | House  6 | 2° 3' 53.1246"     | KP: Dhanishtha-3, Mars, Ketu, Sun
+  Jupiter   : Simmam       | House  0 | 12° 26' 36.9985"   | KP: Magha-4, Ketu, Mercury, Mars
+  Venus     : Kumbam       | House  6 | 21° 42' 4.2708"    | KP: Purva Bhadrapada-1, Jupiter, Jupiter, Rahu
+  Saturn    : Dhanusu      | House  4 | 18° 36' 3.0341"    | KP: Purva Ashadha-2, Venus, Rahu, Jupiter
+  Rahu      : Mithunam     | House 10 | 2° 38' 41.3910"    | KP: Mrigashira-3, Mars, Ketu, Mercury
+  Ketu      : Dhanusu      | House  4 | 2° 38' 41.3910"    | KP: Mula-1, Ketu, Venus, Mercury
+
+[D-16 - Shodashamsha (Harmonic 16)]
+  Ascendant : Rishabham    | House  0 | 15° 39' 4.8650"    | KP: Rohini-2, Moon, Jupiter, Rahu
+  Sun       : Rishabham    | House  0 | 18° 37' 7.9806"    | KP: Rohini-3, Moon, Mercury, Moon
+  Moon      : Kumbam       | House  9 | 19° 35' 56.8471"   | KP: Shatabhisha-4, Rahu, Mars, Saturn
+  Mars      : Kadagam      | House  2 | 20° 30' 8.0701"    | KP: Ashlesha-2, Mercury, Venus, Jupiter
+  Mercury   : Kanni        | House  4 | 12° 45' 10.8328"   | KP: Hasta-1, Moon, Rahu, Saturn
+  Jupiter   : Simmam       | House  3 | 16° 35' 29.3314"   | KP: Purva Phalguni-1, Venus, Moon, Jupiter
+  Venus     : Mesham       | House 11 | 28° 56' 5.6944"    | KP: Krittika-1, Sun, Mars, Mercury
+  Saturn    : Kumbam       | House  9 | 4° 48' 4.0454"     | KP: Dhanishtha-4, Mars, Venus, Ketu
+  Rahu      : Magaram      | House  8 | 13° 31' 35.1880"   | KP: Shravana-2, Moon, Rahu, Sun
+  Ketu      : Magaram      | House  8 | 13° 31' 35.1880"   | KP: Shravana-2, Moon, Rahu, Sun
+
+[D-20 - Vimsamsha (Harmonic 20)]
+  Ascendant : Rishabham    | House  0 | 27° 3' 51.0812"    | KP: Mrigashira-2, Mars, Jupiter, Venus
+  Sun       : Mithunam     | House  1 | 0° 46' 24.9758"    | KP: Mrigashira-3, Mars, Mercury, Sun
+  Moon      : Rishabham    | House  0 | 9° 29' 56.0589"    | KP: Krittika-4, Sun, Venus, Saturn
+  Mars      : Rishabham    | House  0 | 18° 7' 40.0876"    | KP: Rohini-3, Moon, Mercury, Ketu
+  Mercury   : Thulaam      | House  5 | 23° 26' 28.5410"   | KP: Vishakha-2, Jupiter, Saturn, Rahu
+  Jupiter   : Meenam       | House 10 | 20° 44' 21.6642"   | KP: Revati-2, Mercury, Venus, Jupiter
+  Venus     : Viruchigam   | House  6 | 6° 10' 7.1180"     | KP: Anuradha-1, Saturn, Mercury, Sun
+  Saturn    : Kadagam      | House  2 | 21° 0' 5.0568"     | KP: Ashlesha-2, Mercury, Venus, Saturn
+  Rahu      : Mithunam     | House  1 | 24° 24' 28.9851"   | KP: Punarvasu-2, Jupiter, Mercury, Venus
+  Ketu      : Mithunam     | House  1 | 24° 24' 28.9851"   | KP: Punarvasu-2, Jupiter, Mercury, Venus
+
+[D-24 - Siddhamsa (Harmonic 24)]
+  Ascendant : Kanni        | House  0 | 8° 28' 37.2975"    | KP: Uttara Phalguni-4, Sun, Venus, Mars
+  Sun       : Thulaam      | House  1 | 12° 55' 41.9709"   | KP: Swati-2, Rahu, Mercury, Ketu
+  Moon      : Thulaam      | House  1 | 29° 23' 55.2706"   | KP: Vishakha-3, Jupiter, Sun, Venus
+  Mars      : Kadagam      | House 10 | 15° 45' 12.1052"   | KP: Pushya-4, Saturn, Jupiter, Ketu
+  Mercury   : Mesham       | House  7 | 4° 7' 46.2492"     | KP: Aswini-2, Ketu, Moon, Jupiter
+  Jupiter   : Magaram      | House  4 | 24° 53' 13.9971"   | KP: Dhanishtha-1, Mars, Rahu, Saturn
+  Venus     : Kanni        | House  0 | 13° 24' 8.5416"    | KP: Hasta-2, Moon, Rahu, Venus
+  Saturn    : Rishabham    | House  8 | 7° 12' 6.0682"     | KP: Krittika-4, Sun, Ketu, Sun
+  Rahu      : Mesham       | House  7 | 5° 17' 22.7821"    | KP: Aswini-2, Ketu, Mars, Ketu
+  Ketu      : Mesham       | House  7 | 5° 17' 22.7821"    | KP: Aswini-2, Ketu, Mars, Ketu
+
+[D-27 - Saptavimsamsha (Harmonic 27)]
+  Ascendant : Meenam       | House  0 | 17° 2' 11.9596"    | KP: Revati-1, Mercury, Mercury, Ketu
+  Sun       : Dhanusu      | House  9 | 22° 2' 39.7173"    | KP: Purva Ashadha-3, Venus, Saturn, Saturn
+  Moon      : Dhanusu      | House  9 | 29° 19' 24.6795"   | KP: Uttara Ashadha-1, Sun, Rahu, Rahu
+  Mars      : Thulaam      | House  7 | 28° 58' 21.1183"   | KP: Vishakha-3, Jupiter, Sun, Rahu
+  Mercury   : Kadagam      | House  4 | 4° 38' 44.5303"    | KP: Pushya-1, Saturn, Saturn, Moon
+  Jupiter   : Thulaam      | House  7 | 5° 29' 53.2467"    | KP: Chitra-4, Mars, Sun, Venus
+  Venus     : Kadagam      | House  4 | 3° 49' 39.6093"    | KP: Pushya-1, Saturn, Saturn, Mercury
+  Saturn    : Kumbam       | House 11 | 11° 51' 6.8267"    | KP: Shatabhisha-2, Rahu, Saturn, Mars
+  Rahu      : Kadagam      | House  4 | 5° 57' 3.1298"     | KP: Pushya-1, Saturn, Mercury, Venus
+  Ketu      : Magaram      | House 10 | 5° 57' 3.1298"     | KP: Uttara Ashadha-3, Sun, Mercury, Moon
+
+[D-30 - Trimsamsha (Harmonic 30)]
+  Ascendant : Rishabham    | House  0 | 25° 35' 46.6218"   | KP: Mrigashira-1, Mars, Rahu, Venus
+  Sun       : Mesham       | House 11 | 1° 9' 37.4637"     | KP: Aswini-1, Ketu, Venus, Sun
+  Moon      : Meenam       | House 10 | 29° 14' 54.0883"   | KP: Revati-4, Mercury, Saturn, Moon
+  Mars      : Dhanusu      | House  7 | 12° 11' 30.1315"   | KP: Mula-4, Ketu, Mercury, Sun
+  Mercury   : Dhanusu      | House  7 | 5° 9' 42.8114"     | KP: Mula-2, Ketu, Mars, Saturn
+  Jupiter   : Magaram      | House  8 | 16° 6' 32.4964"    | KP: Shravana-2, Moon, Saturn, Mercury
+  Venus     : Dhanusu      | House  7 | 24° 15' 10.6770"   | KP: Purva Ashadha-4, Venus, Mercury, Mercury
+  Saturn    : Dhanusu      | House  7 | 16° 30' 7.5852"    | KP: Purva Ashadha-1, Venus, Moon, Rahu
+  Rahu      : Dhanusu      | House  7 | 6° 36' 43.4776"    | KP: Mula-2, Ketu, Rahu, Mercury
+  Ketu      : Dhanusu      | House  7 | 6° 36' 43.4776"    | KP: Mula-2, Ketu, Rahu, Mercury
+
+[D-40 - Khavedamsha (Harmonic 40)]
+  Ascendant : Magaram      | House  0 | 24° 7' 42.1624"    | KP: Dhanishtha-1, Mars, Rahu, Rahu
+  Sun       : Simmam       | House  7 | 1° 32' 49.9516"    | KP: Magha-1, Ketu, Venus, Mars
+  Moon      : Dhanusu      | House 11 | 18° 59' 52.1177"   | KP: Purva Ashadha-2, Venus, Rahu, Mercury
+  Mars      : Viruchigam   | House 10 | 6° 15' 20.1753"    | KP: Anuradha-1, Saturn, Mercury, Moon
+  Mercury   : Rishabham    | House  4 | 16° 52' 57.0819"   | KP: Rohini-3, Moon, Saturn, Moon
+  Jupiter   : Rishabham    | House  4 | 11° 28' 43.3285"   | KP: Rohini-1, Moon, Mars, Saturn
+  Venus     : Kumbam       | House  1 | 12° 20' 14.2360"   | KP: Shatabhisha-2, Rahu, Saturn, Jupiter
+  Saturn    : Kadagam      | House  6 | 12° 0' 10.1136"    | KP: Pushya-3, Saturn, Moon, Venus
+  Rahu      : Rishabham    | House  4 | 18° 48' 57.9701"   | KP: Rohini-3, Moon, Mercury, Mars
+  Ketu      : Rishabham    | House  4 | 18° 48' 57.9701"   | KP: Rohini-3, Moon, Mercury, Mars
+
+[D-45 - Akshavedamsha (Harmonic 45)]
+  Ascendant : Simmam       | House  0 | 8° 23' 39.9327"    | KP: Magha-3, Ketu, Jupiter, Ketu
+  Sun       : Simmam       | House  0 | 16° 44' 26.1955"   | KP: Purva Phalguni-2, Venus, Moon, Saturn
+  Moon      : Kanni        | House  1 | 28° 52' 21.1324"   | KP: Chitra-2, Mars, Saturn, Venus
+  Mars      : Kanni        | House  1 | 18° 17' 15.1972"   | KP: Hasta-3, Moon, Mercury, Venus
+  Mercury   : Kadagam      | House 11 | 7° 44' 34.2172"    | KP: Pushya-2, Saturn, Ketu, Rahu
+  Jupiter   : Kadagam      | House 11 | 9° 9' 48.7445"     | KP: Pushya-2, Saturn, Venus, Rahu
+  Venus     : Kanni        | House  1 | 6° 22' 46.0155"    | KP: Uttara Phalguni-3, Sun, Mercury, Rahu
+  Saturn    : Magaram      | House  5 | 9° 45' 11.3778"    | KP: Uttara Ashadha-4, Sun, Venus, Mercury
+  Rahu      : Viruchigam   | House  3 | 9° 55' 5.2164"     | KP: Anuradha-2, Saturn, Venus, Mercury
+  Ketu      : Viruchigam   | House  3 | 9° 55' 5.2164"     | KP: Anuradha-2, Saturn, Venus, Mercury
+
+[D-60 - Shashtiamsha (Harmonic 60)]
+  Ascendant : Dhanusu      | House  0 | 21° 11' 33.2436"   | KP: Purva Ashadha-3, Venus, Jupiter, Venus
+  Sun       : Mesham       | House  4 | 2° 19' 14.9274"    | KP: Aswini-1, Ketu, Venus, Saturn
+  Moon      : Mesham       | House  4 | 28° 29' 48.1766"   | KP: Krittika-1, Sun, Mars, Rahu
+  Mars      : Thulaam      | House 10 | 24° 23' 0.2629"    | KP: Vishakha-2, Jupiter, Mercury, Venus
+  Mercury   : Mithunam     | House  6 | 10° 19' 25.6229"   | KP: Ardra-2, Rahu, Jupiter, Rahu
+  Jupiter   : Thulaam      | House 10 | 2° 13' 4.9927"     | KP: Chitra-3, Mars, Ketu, Rahu
+  Venus     : Rishabham    | House  5 | 18° 30' 21.3540"   | KP: Rohini-3, Moon, Mercury, Sun
+  Saturn    : Kadagam      | House  7 | 3° 0' 15.1704"     | KP: Punarvasu-4, Jupiter, Rahu, Sun
+  Rahu      : Thulaam      | House 10 | 13° 13' 26.9552"   | KP: Swati-2, Rahu, Mercury, Venus
+  Ketu      : Mesham       | House  4 | 13° 13' 26.9552"   | KP: Aswini-4, Ketu, Mercury, Saturn
+
+[D-72 - Ashtamamsha (Harmonic 72)]
+  Ascendant : Thulaam      | House  0 | 25° 25' 51.8924"   | KP: Vishakha-2, Jupiter, Mercury, Jupiter
+  Sun       : Viruchigam   | House  1 | 8° 47' 5.9128"     | KP: Anuradha-2, Saturn, Venus, Mars
+  Moon      : Meenam       | House  5 | 28° 11' 45.8119"   | KP: Revati-4, Mercury, Saturn, Saturn
+  Mars      : Mithunam     | House  8 | 17° 15' 36.3155"   | KP: Ardra-4, Rahu, Venus, Mercury
+  Mercury   : Mesham       | House  6 | 12° 23' 18.7475"   | KP: Aswini-4, Ketu, Mercury, Moon
+  Jupiter   : Simmam       | House 10 | 14° 39' 41.9913"   | KP: Purva Phalguni-1, Venus, Venus, Jupiter
+  Venus     : Mesham       | House  6 | 10° 12' 25.6247"   | KP: Aswini-4, Ketu, Saturn, Venus
+  Saturn    : Meenam       | House  5 | 21° 36' 18.2045"   | KP: Revati-2, Mercury, Sun, Moon
+  Rahu      : Dhanusu      | House  2 | 15° 52' 8.3462"    | KP: Purva Ashadha-1, Venus, Sun, Jupiter
+  Ketu      : Dhanusu      | House  2 | 15° 52' 8.3462"    | KP: Purva Ashadha-1, Venus, Sun, Jupiter
+
+[D-81 - Nava-Navamsha (Harmonic 81)]
+  Ascendant : Kumbam       | House  0 | 21° 6' 35.8789"    | KP: Purva Bhadrapada-1, Jupiter, Jupiter, Venus
+  Sun       : Mithunam     | House  4 | 6° 7' 59.1520"     | KP: Mrigashira-4, Mars, Moon, Saturn
+  Moon      : Mithunam     | House  4 | 27° 58' 14.0384"   | KP: Punarvasu-3, Jupiter, Venus, Jupiter
+  Mars      : Dhanusu      | House 10 | 26° 55' 3.3549"    | KP: Uttara Ashadha-1, Sun, Sun, Jupiter
+  Mercury   : Magaram      | House 11 | 13° 56' 13.5909"   | KP: Shravana-2, Moon, Jupiter, Jupiter
+  Jupiter   : Thulaam      | House  8 | 16° 29' 39.7402"   | KP: Swati-3, Rahu, Venus, Jupiter
+  Venus     : Magaram      | House 11 | 11° 28' 58.8278"   | KP: Shravana-1, Moon, Mars, Saturn
+  Saturn    : Viruchigam   | House  9 | 5° 33' 20.4800"    | KP: Anuradha-1, Saturn, Mercury, Mercury
+  Rahu      : Magaram      | House 11 | 17° 51' 9.3895"    | KP: Shravana-3, Moon, Mercury, Mercury
+  Ketu      : Kadagam      | House  5 | 17° 51' 9.3895"    | KP: Ashlesha-1, Mercury, Mercury, Rahu
+
+[D-108 - Ashtottaramsa (Harmonic 108)]
+  Ascendant : Kumbam       | House  0 | 8° 8' 47.8386"     | KP: Shatabhisha-1, Rahu, Rahu, Venus
+  Sun       : Kumbam       | House  0 | 28° 10' 38.8693"   | KP: Purva Bhadrapada-3, Jupiter, Venus, Saturn
+  Moon      : Meenam       | House  1 | 27° 17' 38.7178"   | KP: Revati-4, Mercury, Jupiter, Sun
+  Mars      : Kadagam      | House  5 | 25° 53' 24.4732"   | KP: Ashlesha-3, Mercury, Rahu, Moon
+  Mercury   : Mesham       | House  2 | 18° 34' 58.1212"   | KP: Bharani-2, Venus, Rahu, Jupiter
+  Jupiter   : Mesham       | House  2 | 21° 59' 32.9869"   | KP: Bharani-3, Venus, Saturn, Saturn
+  Venus     : Mesham       | House  2 | 15° 18' 38.4371"   | KP: Bharani-1, Venus, Venus, Mercury
+  Saturn    : Kanni        | House  7 | 17° 24' 27.3067"   | KP: Hasta-3, Moon, Saturn, Rahu
+  Rahu      : Mesham       | House  2 | 23° 48' 12.5193"   | KP: Bharani-4, Venus, Saturn, Jupiter
+  Ketu      : Mesham       | House  2 | 23° 48' 12.5193"   | KP: Bharani-4, Venus, Saturn, Jupiter
+
+[D-144 - Dwadasamsa-Dwadasamsha (Harmonic 144)]
+  Ascendant : Simmam       | House  0 | 20° 51' 43.7848"   | KP: Purva Phalguni-3, Venus, Jupiter, Mercury
+  Sun       : Dhanusu      | House  4 | 17° 34' 11.8257"   | KP: Purva Ashadha-2, Venus, Mars, Jupiter
+  Moon      : Dhanusu      | House  4 | 26° 23' 31.6238"   | KP: Purva Ashadha-4, Venus, Ketu, Jupiter
+  Mars      : Meenam       | House  7 | 4° 31' 12.6310"    | KP: Uttara Bhadrapada-1, Saturn, Saturn, Sun
+  Mercury   : Thulaam      | House  2 | 24° 46' 37.4949"   | KP: Vishakha-2, Jupiter, Mercury, Moon
+  Jupiter   : Meenam       | House  7 | 29° 19' 23.9825"   | KP: Revati-4, Mercury, Saturn, Mars
+  Venus     : Mesham       | House  8 | 20° 24' 51.2495"   | KP: Bharani-3, Venus, Jupiter, Saturn
+  Saturn    : Meenam       | House  7 | 13° 12' 36.4090"   | KP: Uttara Bhadrapada-3, Saturn, Rahu, Jupiter
+  Rahu      : Meenam       | House  7 | 1° 44' 16.6924"    | KP: Purva Bhadrapada-4, Jupiter, Rahu, Jupiter
+  Ketu      : Kanni        | House  1 | 1° 44' 16.6924"    | KP: Uttara Phalguni-2, Sun, Jupiter, Saturn
+
+[D-150 - Nadiamsa (Harmonic 150)]
+  Ascendant : Kanni        | House  0 | 7° 58' 53.1091"    | KP: Uttara Phalguni-4, Sun, Venus, Venus
+  Sun       : Magaram      | House  4 | 5° 48' 7.3184"     | KP: Uttara Ashadha-3, Sun, Mercury, Venus
+  Moon      : Mesham       | House  7 | 26° 14' 30.4414"   | KP: Bharani-4, Venus, Ketu, Rahu
+  Mars      : Mithunam     | House  9 | 0° 57' 30.6573"    | KP: Mrigashira-3, Mars, Mercury, Mars
+  Mercury   : Dhanusu      | House  3 | 25° 48' 34.0572"   | KP: Purva Ashadha-4, Venus, Mercury, Saturn
+  Jupiter   : Simmam       | House 11 | 20° 32' 42.4818"   | KP: Purva Phalguni-3, Venus, Jupiter, Saturn
+  Venus     : Simmam       | House 11 | 1° 15' 53.3849"    | KP: Magha-1, Ketu, Venus, Moon
+  Saturn    : Rishabham    | House  8 | 22° 30' 37.9260"   | KP: Rohini-4, Moon, Venus, Mercury
+  Rahu      : Rishabham    | House  8 | 3° 3' 37.3879"     | KP: Krittika-2, Sun, Saturn, Saturn
+  Ketu      : Viruchigam   | House  2 | 3° 3' 37.3879"     | KP: Vishakha-4, Jupiter, Rahu, Moon
+
+[D-300 - Ardha-Nadiamsa (Harmonic 300)]
+  Ascendant : Viruchigam   | House  0 | 15° 57' 46.2182"   | KP: Anuradha-4, Saturn, Jupiter, Venus
+  Sun       : Mesham       | House  5 | 11° 36' 14.6369"   | KP: Aswini-4, Ketu, Mercury, Mercury
+  Moon      : Simmam       | House  9 | 22° 29' 0.8828"    | KP: Purva Phalguni-3, Venus, Saturn, Mercury
+  Mars      : Mithunam     | House  7 | 1° 55' 1.3146"     | KP: Mrigashira-3, Mars, Ketu, Ketu
+  Mercury   : Meenam       | House  4 | 21° 37' 8.1144"    | KP: Revati-2, Mercury, Sun, Moon
+  Jupiter   : Mithunam     | House  7 | 11° 5' 24.9636"    | KP: Ardra-2, Rahu, Saturn, Ketu
+  Venus     : Simmam       | House  9 | 2° 31' 46.7698"    | KP: Magha-1, Ketu, Venus, Saturn
+  Saturn    : Meenam       | House  4 | 15° 1' 15.8520"    | KP: Uttara Bhadrapada-4, Saturn, Jupiter, Jupiter
+  Rahu      : Simmam       | House  9 | 6° 7' 14.7758"     | KP: Magha-2, Ketu, Rahu, Jupiter
+  Ketu      : Kumbam       | House  3 | 6° 7' 14.7758"     | KP: Dhanishtha-4, Mars, Moon, Saturn

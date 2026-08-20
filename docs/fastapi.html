@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>FastAPI Server — Jamakkol Prasanam Docs</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+<div class="wy-grid-for-nav">
+  <nav class="wy-nav-side"><div class="wy-side-scroll"><div class="wy-side-nav-search">
+    <a href="index.html" class="brand">🪐 PySweph Jamakkol</a><div class="version">v1.0 — 2026</div>
+    <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+  </div>
+  <div class="wy-menu wy-menu-vertical">
+    <p class="caption">Getting Started</p>
+    <ul><li><a href="index.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="quickstart.html">Quick Start</a></li></ul>
+    <p class="caption">Core Library (pysweph)</p>
+    <ul>
+      <li><a href="julday.html">Julian Day — swe.julday()</a></li><li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+      <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li><li><a href="houses.html">Ascendant — swe.houses()</a></li>
+      <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+    </ul>
+    <p class="caption">Jamakkol Concepts</p>
+    <ul>
+      <li><a href="udhayam.html">Udhayam (உதயம்)</a></li><li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+      <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li><li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+      <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li><li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+    </ul>
+    <p class="caption">Reference Tables</p>
+    <ul><li><a href="rasi.html">12 Rasis</a></li><li><a href="nakshatras.html">27 Nakshatras</a></li><li><a href="panchangam.html">Panchangam</a></li></ul>
+    <p class="caption">Building the API</p>
+    <ul>
+      <li><a href="engine.html">The Calculation Engine</a></li>
+      <li class="current"><a href="fastapi.html">FastAPI Server</a></li>
+      <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+    </ul>
+  </div></div></nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top"><button onclick="toggleSidebar()">☰</button><a href="index.html">PySweph Jamakkol Docs</a></nav>
+    <div class="wy-nav-content"><div class="rst-content">
+      <div class="breadcrumbs"><a href="index.html">🏠</a> &rsaquo; Building the API &rsaquo; FastAPI Server</div>
+      <div role="main">
+
+        <h1>FastAPI Server</h1>
+
+        <p>
+          Now that you have the <a href="engine.html">calculation engine</a>, wrapping it in a REST API takes about 30 lines. FastAPI is perfect for this — it auto-generates documentation at <code>/docs</code>, validates input types automatically, and handles errors cleanly.
+        </p>
+
+        <h2>The <code>main.py</code> file</h2>
+
+        <div class="highlight-block">
+<pre><span class="str">"""
+main.py — Jamakkol Prasanam REST API
+
+Run with:   uv run uvicorn main:app --reload
+Open docs:  http://localhost:8000/docs
+"""</span>
+<span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI, HTTPException, Query
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
+<span class="kw">from</span> jamakkol_engine <span class="kw">import</span> compute
+
+app = <span class="fn">FastAPI</span>(
+    title       = <span class="str">"Jamakkol Prasanam API"</span>,
+    description = <span class="str">"High-accuracy Jamakkol Prasanam via Swiss Ephemeris."</span>,
+    version     = <span class="str">"1.0.0"</span>,
+)
+
+
+<span class="op">@</span>app.get(<span class="str">"/"</span>)
+<span class="kw">def</span> <span class="fn">root</span>():
+    <span class="kw">return</span> {<span class="str">"status"</span>: <span class="str">"online"</span>, <span class="str">"docs"</span>: <span class="str">"/docs"</span>}
+
+
+<span class="op">@</span>app.get(<span class="str">"/api/v1/prasanam"</span>)
+<span class="kw">def</span> <span class="fn">prasanam</span>(
+    date : str   = <span class="fn">Query</span>(..., example=<span class="str">"2026-08-04"</span>,
+                        description=<span class="str">"Date YYYY-MM-DD"</span>),
+    time : str   = <span class="fn">Query</span>(..., example=<span class="str">"14:30:00"</span>,
+                        description=<span class="str">"Local time HH:MM:SS"</span>),
+    lat  : float = <span class="fn">Query</span>(..., example=<span class="num">13.0827</span>,
+                        description=<span class="str">"Astrologer's latitude"</span>),
+    lon  : float = <span class="fn">Query</span>(..., example=<span class="num">80.2707</span>,
+                        description=<span class="str">"Astrologer's longitude"</span>),
+    tz   : float = <span class="fn">Query</span>(<span class="num">5.5</span>,
+                        description=<span class="str">"Timezone offset in hours (IST = 5.5)"</span>),
+    alt  : float = <span class="fn">Query</span>(<span class="num">0.0</span>,
+                        description=<span class="str">"Elevation in metres (optional)"</span>),
+):
+    <span class="str">"""
+    Get a complete Jamakkol Prasanam chart for a given time and place.
+
+    Pass the ASTROLOGER's location — not the client's. In Jamakkol,
+    the chart is cast for where the question was asked.
+    """</span>
+    <span class="kw">try</span>:
+        dt     = datetime.<span class="fn">strptime</span>(<span class="str">f"{date} {time}"</span>, <span class="str">"%Y-%m-%d %H:%M:%S"</span>)
+        result = <span class="fn">compute</span>(dt, lat, lon, tz, alt)
+        <span class="kw">return</span> {<span class="str">"status"</span>: <span class="str">"ok"</span>, <span class="str">"data"</span>: result}
+    <span class="kw">except</span> ValueError <span class="kw">as</span> e:
+        <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">422</span>, detail=<span class="str">f"Invalid date/time: {e}"</span>)
+    <span class="kw">except</span> Exception <span class="kw">as</span> e:
+        <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">500</span>, detail=str(e))</pre>
+        </div>
+
+        <h2>Running the Server</h2>
+
+        <div class="highlight-shell">
+          <pre>uv run uvicorn main:app --reload --port 8000</pre>
+        </div>
+
+        <p>Once it's running, open <a href="http://localhost:8000/docs">http://localhost:8000/docs</a> — FastAPI auto-generates an interactive UI where you can test every endpoint.</p>
+
+        <h2>Testing with curl</h2>
+
+        <div class="highlight-shell">
+          <pre>curl "http://localhost:8000/api/v1/prasanam?date=2026-08-04&time=14:30:00&lat=13.0827&lon=80.2707"</pre>
+        </div>
+
+        <h2>Sample Response</h2>
+
+        <div class="highlight-block">
+<pre>{
+  <span class="str">"status"</span>: <span class="str">"ok"</span>,
+  <span class="str">"data"</span>: {
+    <span class="str">"query_local"</span>: <span class="str">"2026-08-04T14:30:00"</span>,
+    <span class="str">"ayanamsa"</span>: <span class="num">24.2341</span>,
+    <span class="str">"sunrise_ist"</span>: <span class="str">"06:05:32 IST"</span>,
+    <span class="str">"sunset_ist"</span>: <span class="str">"18:37:14 IST"</span>,
+    <span class="str">"udhayam"</span>: {
+      <span class="str">"degree"</span>: <span class="num">227.34</span>,
+      <span class="str">"rasi"</span>: <span class="num">7</span>,
+      <span class="str">"rasi_en"</span>: <span class="str">"Viruchigam"</span>,
+      <span class="str">"rasi_ta"</span>: <span class="str">"விருச்சிகம்"</span>,
+      <span class="str">"nakshatra"</span>: <span class="str">"Anuradha"</span>,
+      <span class="str">"pada"</span>: <span class="num">4</span>
+    },
+    <span class="str">"arudham"</span>: {
+      <span class="str">"rasi"</span>: <span class="num">3</span>,
+      <span class="str">"rasi_en"</span>: <span class="str">"Kadagam"</span>,
+      <span class="str">"rasi_ta"</span>: <span class="str">"கடகம்"</span>
+    },
+    <span class="str">"kavappu"</span>: {
+      <span class="str">"rasi"</span>: <span class="num">5</span>,
+      <span class="str">"rasi_en"</span>: <span class="str">"Kanni"</span>,
+      <span class="str">"rasi_ta"</span>: <span class="str">"கன்னி"</span>
+    },
+    <span class="str">"jamam"</span>: {
+      <span class="str">"is_day"</span>: true,
+      <span class="str">"number"</span>: <span class="num">7</span>,
+      <span class="str">"lord"</span>: <span class="str">"Rahu"</span>,
+      <span class="str">"duration_mins"</span>: <span class="num">91.4</span>
+    }
+  }
+}</pre>
+        </div>
+
+        <h2>Why the astrologer's location?</h2>
+        <p>
+          In Jamakkol Prasanam, the chart is drawn for <strong>where the question is asked</strong> — not where the person asking lives. If someone calls you from Mumbai but you're in Chennai, you use <em>Chennai's</em> coordinates. This is because the sunrise time (which determines the Jamam and Udhayam) is calculated for your local sky.
+        </p>
+
+      </div>
+      <footer class="rst-footer">
+        <a href="engine.html" class="btn-prev">&larr; Calculation Engine</a>
+        <a href="accuracy.html" class="btn-next">Accuracy &amp; Testing &rarr;</a>
+      </footer>
+    </div></div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

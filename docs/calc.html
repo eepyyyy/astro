@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Planet Positions — Jamakkol Prasanam Docs</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+<div class="wy-grid-for-nav">
+  <nav class="wy-nav-side"><div class="wy-side-scroll"><div class="wy-side-nav-search">
+    <a href="index.html" class="brand">🪐 PySweph Jamakkol</a><div class="version">v1.0 — 2026</div>
+    <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+  </div>
+  <div class="wy-menu wy-menu-vertical">
+    <p class="caption">Getting Started</p>
+    <ul><li><a href="index.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="quickstart.html">Quick Start</a></li></ul>
+    <p class="caption">Core Library (pysweph)</p>
+    <ul>
+      <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+      <li class="current"><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+      <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+      <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+      <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+    </ul>
+    <p class="caption">Jamakkol Concepts</p>
+    <ul>
+      <li><a href="udhayam.html">Udhayam (உதயம்)</a></li><li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+      <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li><li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+      <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li><li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+    </ul>
+    <p class="caption">Reference Tables</p>
+    <ul><li><a href="rasi.html">12 Rasis</a></li><li><a href="nakshatras.html">27 Nakshatras</a></li><li><a href="panchangam.html">Panchangam</a></li></ul>
+    <p class="caption">Building the API</p>
+    <ul><li><a href="engine.html">The Calculation Engine</a></li><li><a href="fastapi.html">FastAPI Server</a></li><li><a href="accuracy.html">Accuracy &amp; Testing</a></li></ul>
+  </div></div></nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top"><button onclick="toggleSidebar()">☰</button><a href="index.html">PySweph Jamakkol Docs</a></nav>
+    <div class="wy-nav-content"><div class="rst-content">
+      <div class="breadcrumbs"><a href="index.html">🏠</a> &rsaquo; Core Library &rsaquo; Planet Positions</div>
+      <div role="main">
+
+        <h1>Planet Positions — <code>swe.calc_ut()</code></h1>
+
+        <p>
+          This is the most important function in the library. You call it to find out <em>where a planet is right now</em> — its longitude in the zodiac, how fast it's moving, and whether it's in retrograde. Everything in Jamakkol Prasanam starts with these planetary positions.
+        </p>
+
+        <h2>The Function</h2>
+
+        <div class="fn-sig">
+          <code><span class="fn-name">swe.calc_ut</span>(jd_ut, planet, flags)</code>
+          <span class="fn-ret">→ Returns: (result_tuple, return_flag)</span>
+        </div>
+
+        <h3>Parameters</h3>
+        <dl class="param-table">
+          <dt><span class="pname">jd_ut</span> <span class="ptype">: float</span></dt>
+          <dd>The Julian Day in Universal Time. See <a href="julday.html">Julian Day</a> to understand how to compute this.</dd>
+
+          <dt><span class="pname">planet</span> <span class="ptype">: int</span></dt>
+          <dd>Which planet you want. Use the constants below — e.g. <code>swe.SUN</code>, <code>swe.MOON</code>, etc.</dd>
+
+          <dt><span class="pname">flags</span> <span class="ptype">: int</span></dt>
+          <dd>
+            Bitmask flags that control what type of calculation to do. You'll almost always want:<br/>
+            <code>swe.FLG_SWIEPH | swe.FLG_SIDEREAL | swe.FLG_SPEED</code>
+          </dd>
+        </dl>
+
+        <h3>What's in the result tuple?</h3>
+        <table>
+          <thead><tr><th>Index</th><th>Meaning</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><code>res[0]</code></td><td>Ecliptic <strong>longitude</strong> (0°–360°)</td><td>108.4521</td></tr>
+            <tr><td><code>res[1]</code></td><td>Ecliptic latitude</td><td>0.0002 (Sun is near ecliptic)</td></tr>
+            <tr><td><code>res[2]</code></td><td>Distance from Earth (AU)</td><td>1.0124</td></tr>
+            <tr><td><code>res[3]</code></td><td>Daily speed in longitude (°/day)</td><td>0.9856 (or negative = retrograde)</td></tr>
+            <tr><td><code>res[4]</code></td><td>Daily speed in latitude</td><td>0.00001</td></tr>
+            <tr><td><code>res[5]</code></td><td>Daily speed in distance</td><td>0.00001</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Planet Constants</h2>
+
+        <table>
+          <thead><tr><th>Constant</th><th>Planet</th><th>Tamil</th><th>Typical speed °/day</th></tr></thead>
+          <tbody>
+            <tr><td><code>swe.SUN</code></td><td>☉ Sun</td><td class="ta">சூரியன்</td><td>~0.985 (never retrograde)</td></tr>
+            <tr><td><code>swe.MOON</code></td><td>☽ Moon</td><td class="ta">சந்திரன்</td><td>~13.17 (never retrograde)</td></tr>
+            <tr><td><code>swe.MARS</code></td><td>♂ Sevvai</td><td class="ta">செவ்வாய்</td><td>~0.52</td></tr>
+            <tr><td><code>swe.MERCURY</code></td><td>☿ Budhan</td><td class="ta">புதன்</td><td>~1.38</td></tr>
+            <tr><td><code>swe.JUPITER</code></td><td>♃ Guru</td><td class="ta">குரு</td><td>~0.083</td></tr>
+            <tr><td><code>swe.VENUS</code></td><td>♀ Sukran</td><td class="ta">சுக்கிரன்</td><td>~1.2</td></tr>
+            <tr><td><code>swe.SATURN</code></td><td>♄ Sani</td><td class="ta">சனி</td><td>~0.034</td></tr>
+            <tr><td><code>swe.TRUE_NODE</code></td><td>☊ Rahu</td><td class="ta">ராகு</td><td>~-0.053 (always retrograde)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="admonition note">
+          <p class="admonition-title">📌 Ketu is not a separate function</p>
+          <p>Ketu is always exactly 180° opposite to Rahu. So: <code>ketu_longitude = (rahu_longitude + 180) % 360</code>. You never call <code>swe.calc_ut()</code> for Ketu — you derive it from Rahu.</p>
+        </div>
+
+        <h2>Flags Explained</h2>
+
+        <table>
+          <thead><tr><th>Flag</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><code>swe.FLG_SWIEPH</code></td><td>Use Swiss Ephemeris calculation method (use this always)</td></tr>
+            <tr><td><code>swe.FLG_MOSEPH</code></td><td>Use Moshier method (alternate, slightly less accurate)</td></tr>
+            <tr><td><code>swe.FLG_SIDEREAL</code></td><td>Return sidereal longitude (subtracts Ayanamsa automatically)</td></tr>
+            <tr><td><code>swe.FLG_SPEED</code></td><td>Include daily speed in result[3]. Without this, speed is 0.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="admonition important">
+          <p class="admonition-title">🔑 Important: FLG_SIDEREAL needs set_sid_mode first</p>
+          <p>
+            You must call <code>swe.set_sid_mode(swe.SIDM_LAHIRI, 0, 0)</code> <em>before</em> using <code>FLG_SIDEREAL</code>. Otherwise the library doesn't know which ayanamsa to apply.
+          </p>
+        </div>
+
+        <h2>Example — Get All 9 Planet Positions</h2>
+
+        <div class="highlight-block">
+<pre><span class="kw">import</span> pysweph <span class="kw">as</span> swe
+
+swe.<span class="fn">set_ephe_path</span>(<span class="str">""</span>)
+swe.<span class="fn">set_sid_mode</span>(swe.SIDM_LAHIRI, <span class="num">0</span>, <span class="num">0</span>)
+
+<span class="cmt"># Combine flags: sidereal + speed</span>
+FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL | swe.FLG_SPEED
+
+PLANET_IDS = {
+    <span class="str">"Sun"</span>    : swe.SUN,
+    <span class="str">"Moon"</span>   : swe.MOON,
+    <span class="str">"Mars"</span>   : swe.MARS,
+    <span class="str">"Mercury"</span>: swe.MERCURY,
+    <span class="str">"Jupiter"</span>: swe.JUPITER,
+    <span class="str">"Venus"</span>  : swe.VENUS,
+    <span class="str">"Saturn"</span> : swe.SATURN,
+    <span class="str">"Rahu"</span>   : swe.TRUE_NODE,
+}
+
+<span class="kw">def</span> <span class="fn">get_planets</span>(jd: float) -> dict:
+    planets = {}
+
+    <span class="kw">for</span> name, pid <span class="kw">in</span> PLANET_IDS.items():
+        res, _ = swe.<span class="fn">calc_ut</span>(jd, pid, FLAGS)
+
+        lon       = res[<span class="num">0</span>] % <span class="num">360.0</span>    <span class="cmt"># sidereal longitude, 0-360</span>
+        speed     = res[<span class="num">3</span>]             <span class="cmt"># daily motion in degrees</span>
+        rasi      = int(lon // <span class="num">30</span>)    <span class="cmt"># which Rasi (0=Mesham...11=Meenam)</span>
+        deg_in_r  = lon % <span class="num">30</span>           <span class="cmt"># degrees within that Rasi</span>
+        retrograde = speed < <span class="num">0</span>         <span class="cmt"># negative speed = moving backwards</span>
+
+        planets[name] = {
+            <span class="str">"longitude"</span>  : round(lon, <span class="num">4</span>),
+            <span class="str">"rasi"</span>       : rasi,
+            <span class="str">"deg_in_rasi"</span>: round(deg_in_r, <span class="num">4</span>),
+            <span class="str">"speed"</span>      : round(speed, <span class="num">6</span>),
+            <span class="str">"retrograde"</span> : retrograde,
+        }
+
+    <span class="cmt"># Ketu = Rahu + 180 degrees</span>
+    rahu_lon = planets[<span class="str">"Rahu"</span>][<span class="str">"longitude"</span>]
+    ketu_lon = (rahu_lon + <span class="num">180</span>) % <span class="num">360</span>
+    planets[<span class="str">"Ketu"</span>] = {
+        <span class="str">"longitude"</span>  : round(ketu_lon, <span class="num">4</span>),
+        <span class="str">"rasi"</span>       : int(ketu_lon // <span class="num">30</span>),
+        <span class="str">"deg_in_rasi"</span>: round(ketu_lon % <span class="num">30</span>, <span class="num">4</span>),
+        <span class="str">"speed"</span>      : -planets[<span class="str">"Rahu"</span>][<span class="str">"speed"</span>],
+        <span class="str">"retrograde"</span> : True,  <span class="cmt"># Ketu is always retrograde</span>
+    }
+
+    <span class="kw">return</span> planets
+
+
+<span class="cmt"># Usage</span>
+jd = swe.<span class="fn">julday</span>(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">9.0</span>)  <span class="cmt"># Aug 4, 09:00 UTC</span>
+planets = <span class="fn">get_planets</span>(jd)
+
+<span class="kw">for</span> name, data <span class="kw">in</span> planets.items():
+    retro_marker = <span class="str">" ℞"</span> if data[<span class="str">"retrograde"</span>] else <span class="str">""</span>
+    <span class="fn">print</span>(<span class="str">f"{name:8} → Rasi {data['rasi']+1:2}, {data['deg_in_rasi']:6.2f}°{retro_marker}"</span>)</pre>
+        </div>
+
+        <h2>How to read the longitude</h2>
+        <p>
+          The longitude (0°–360°) maps directly to the 12 Rasis. Since each Rasi is 30°:
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-title">Longitude → Rasi</div>
+          rasi_index   = int(longitude // 30)    # 0 = Mesham, 1 = Rishabham … 11 = Meenam<br/>
+          deg_in_rasi  = longitude % 30           # 0° to 29.99°<br/>
+          minutes      = (deg_in_rasi % 1) * 60<br/>
+          seconds      = (minutes % 1) * 60
+        </div>
+
+        <p>For example: <code>108.45°</code> → <code>int(108.45 // 30) = 3</code> = Kadagam (Cancer), at <code>108.45 % 30 = 18.45°</code> within Kadagam.</p>
+
+        <h2>Retrograde (வக்கிரம்)</h2>
+        <p>
+          A planet is in retrograde — moving backwards — when <code>speed &lt; 0</code>. This is because from Earth's perspective, when we overtake a slower outer planet in orbit, it appears to move backwards across the sky.
+        </p>
+        <p>
+          In Jamakkol, retrograde planets are given special significance in predictions. Always check <code>speed &lt; 0</code> in your code. Rahu and Ketu are <em>always</em> retrograde.
+        </p>
+
+      </div>
+      <footer class="rst-footer">
+        <a href="julday.html" class="btn-prev">&larr; Julian Day</a>
+        <a href="ayanamsa.html" class="btn-next">Ayanamsa &rarr;</a>
+      </footer>
+    </div></div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

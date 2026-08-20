@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jamam &amp; Jamam Planets — Jamakkol Prasanam Docs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+      </div>
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li class="current"><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li><a href="rasi.html">12 Rasis</a></li>
+          <li><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Jamakkol Concepts &rsaquo; Jamam
+        </div>
+        <div role="main">
+          <h1>Jamam &amp; Jamam Planets</h1>
+          
+          <p>
+            In Jamakkol Prasanam, time and space are split into dynamic, symbolic sections. A <strong>Jamam</strong> (ஜாமம்) represents a division of time, while <strong>Jamam Planets</strong> (ஜாமக்கோள் கிரகங்கள்) represent symbolic planets placed on the zodiac wheel.
+          </p>
+
+          <h2>1. What is a Jamam?</h2>
+          <p>
+            The day is divided into two major spans: <strong>Daytime</strong> (sunrise to sunset) and <strong>Nighttime</strong> (sunset to the next sunrise). Each of these spans is divided into <strong>8 equal parts called Jamams</strong>.
+          </p>
+          <p>
+            If a day has exactly 12 hours of sunlight, each daytime Jamam is exactly 1.5 hours (90 minutes). However, because day lengths change throughout the year, Jamam lengths are dynamic.
+          </p>
+
+          <h2>2. The Jamam Planets</h2>
+          <p>
+            In Jamakkol, there are 8 Jamam planets. <strong>The Moon is excluded</strong> from this list, and <strong>Rahu and Ketu are included</strong>. The order is fixed:
+          </p>
+          <div class="formula-box" style="text-align: center; font-weight: bold;">
+            Sun &rarr; Mars &rarr; Jupiter &rarr; Mercury &rarr; Venus &rarr; Saturn &rarr; Rahu &rarr; Ketu
+          </div>
+
+          <h2>3. Finding the Active Jamam Lord</h2>
+          <p>
+            The ruling planet of the first Jamam depends on the weekday. Sunday starts with the Sun, Tuesday with Mars, and so on. Because the Moon is excluded, **Monday starts with Venus**.
+          </p>
+          <table>
+            <thead><tr><th>Weekday</th><th>Start Planet (1st Jamam Lord)</th></tr></thead>
+            <tbody>
+              <tr><td>Sunday</td><td>Sun</td></tr>
+              <tr><td>Monday</td><td>Venus</td></tr>
+              <tr><td>Tuesday</td><td>Mars</td></tr>
+              <tr><td>Wednesday</td><td>Mercury</td></tr>
+              <tr><td>Thursday</td><td>Jupiter</td></tr>
+              <tr><td>Friday</td><td>Venus</td></tr>
+              <tr><td>Saturday</td><td>Saturn</td></tr>
+            </tbody>
+          </table>
+
+          <p>
+            To find the lord of the active Jamam, we look up the starting planet for the weekday and step forward through the sequence. For example, on a Sunday:
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 14px;">
+            <li>1st Jamam Lord: Sun</li>
+            <li>2nd Jamam Lord: Mars</li>
+            <li>3rd Jamam Lord: Jupiter</li>
+            <li>... and so on.</li>
+          </ul>
+
+          <h2>4. Placing Jamam Planets on the Chart</h2>
+          <p>
+            Jamam planets do not have physical degrees; they occupy entire Rasis. Their placement is symbolic:
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 14px;">
+            <li><strong>The Sun</strong> is placed in the Rasi it physically occupies at the query moment.</li>
+            <li>The remaining 7 planets are placed in consecutive Rasis going **clockwise** starting from the Sun's Rasi, following the fixed planet order.</li>
+          </ul>
+
+          <h2>Python Implementation</h2>
+          <div class="highlight-block">
+<pre><span class="cmt"># Fixed planet order</span>
+JAMAM_PLANETS = [<span class="str">"Sun"</span>, <span class="str">"Mars"</span>, <span class="str">"Jupiter"</span>, <span class="str">"Mercury"</span>, <span class="str">"Venus"</span>, <span class="str">"Saturn"</span>, <span class="str">"Rahu"</span>, <span class="str">"Ketu"</span>]
+
+<span class="cmt"># Weekday starts (0 = Sunday ... 6 = Saturday)</span>
+DAY_START = {
+    <span class="num">0</span>: <span class="str">"Sun"</span>, 
+    <span class="num">1</span>: <span class="str">"Venus"</span>, 
+    <span class="num">2</span>: <span class="str">"Mars"</span>, 
+    <span class="num">3</span>: <span class="str">"Mercury"</span>, 
+    <span class="num">4</span>: <span class="str">"Jupiter"</span>, 
+    <span class="num">5</span>: <span class="str">"Venus"</span>, 
+    <span class="num">6</span>: <span class="str">"Saturn"</span>
+}
+
+<span class="kw">def</span> <span class="fn">get_jamam_details</span>(jd: float, sr: float, ss: float, weekday: int, sun_rasi: int) -> dict:
+    <span class="cmt"># 1. Calculate duration of a single Jamam</span>
+    jdur = (ss - sr) / <span class="num">8.0</span>
+    
+    <span class="cmt"># 2. Find active Jamam number (1 to 8)</span>
+    jnum = max(<span class="num">1</span>, min(<span class="num">8</span>, int((jd - sr) / jdur) + <span class="num">1</span>))
+    
+    <span class="cmt"># 3. Get active Jamam Lord</span>
+    start_p = DAY_START[weekday]
+    start_idx = JAMAM_PLANETS.index(start_p)
+    lord = JAMAM_PLANETS[(start_idx + jnum - <span class="num">1</span>) % <span class="num">8</span>]
+    
+    <span class="cmt"># 4. Map Jamam Planet Rasi placements</span>
+    jpos = {}
+    <span class="kw">for</span> i, p <span class="kw">in</span> enumerate(JAMAM_PLANETS):
+        jpos[p] = (sun_rasi + i) % <span class="num">12</span>  <span class="cmt"># Placed in order clockwise</span>
+        
+    <span class="kw">return</span> {
+        <span class="str">"active_jamam"</span>   : jnum,
+        <span class="str">"jamam_lord"</span>     : lord,
+        <span class="str">"jamam_duration"</span> : round(jdur * <span class="num">1440</span>, <span class="num">2</span>),  <span class="cmt"># In minutes</span>
+        <span class="str">"placements"</span>     : jpos
+    }</pre>
+          </div>
+
+        </div>
+        <footer class="rst-footer">
+          <a href="kavappu.html" class="btn-prev">&larr; Kavappu</a>
+          <a href="planets.html" class="btn-next">Nitya Grahas &rarr;</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

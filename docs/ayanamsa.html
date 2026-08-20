@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ayanamsa — Lahiri Correction — Jamakkol Prasanam Docs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+      </div>
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li class="current"><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li><a href="rasi.html">12 Rasis</a></li>
+          <li><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Core Library &rsaquo; Ayanamsa
+        </div>
+        <div role="main">
+          <h1>Ayanamsa — Lahiri Correction</h1>
+          
+          <p>
+            When calculating the positions of astronomical bodies, western astronomy uses the <strong>Tropical (Sayana) zodiac</strong>, which defines 0° Aries as the vernal equinox point in the sky. Because of the Earth's axial precession, this point slowly shifts backward through the stars at about 50.3 arc-seconds per year.
+          </p>
+          <p>
+            Vedic astrology (and Jamakkol Prasanam) uses the <strong>Sidereal (Nirayana) zodiac</strong>, which is tied to the actual fixed background constellations. The distance between the tropical vernal equinox and the starting point of the sidereal Aries constellation is called the <strong>Ayanamsa</strong>.
+          </p>
+
+          <div class="formula-box" style="text-align: center;">
+            <strong>Sidereal Longitude = Tropical Longitude - Ayanamsa</strong>
+          </div>
+
+          <h2>The Lahiri Ayanamsa</h2>
+          <p>
+            There are several ayanamsas (different estimates of where sidereal 0° Aries is), but the official Indian government standard and the one used by all Tamil astrologers for Jamakkol is the <strong>Lahiri Ayanamsa</strong> (also called Chitra Paksha).
+          </p>
+          <p>
+            For reference, in the year 2026, the Lahiri Ayanamsa is approximately <strong>24.23°</strong>. This means every tropical planet position is shifted backward by about 24 degrees to get its sidereal position!
+          </p>
+
+          <h2>Setting Ayanamsa in pysweph</h2>
+          <p>
+            You must tell the Swiss Ephemeris library to use the Lahiri ayanamsa before performing any planet calculations. Use the <code>swe.set_sid_mode()</code> function:
+          </p>
+
+          <div class="fn-sig">
+            <code><span class="fn-name">swe.set_sid_mode</span>(sid_mode, t0, ayan_t0)</code>
+            <span class="fn-ret">→ Returns: None</span>
+          </div>
+
+          <dl class="param-table">
+            <dt><span class="pname">sid_mode</span> <span class="ptype">: int</span></dt>
+            <dd>The sidereal mode constant. For Lahiri, use <code>swe.SIDM_LAHIRI</code>.</dd>
+            <dt><span class="pname">t0</span> <span class="ptype">: float = 0</span></dt>
+            <dd>Reference epoch (0 for standard mode).</dd>
+            <dt><span class="pname">ayan_t0</span> <span class="ptype">: float = 0</span></dt>
+            <dd>Initial ayanamsa value (0 for standard mode).</dd>
+          </dl>
+
+          <div class="highlight-block">
+<pre><span class="kw">import</span> pysweph <span class="kw">as</span> swe
+
+<span class="cmt"># Initialize Sidereal mode with Lahiri ayanamsa</span>
+swe.<span class="fn">set_sid_mode</span>(swe.SIDM_LAHIRI, <span class="num">0</span>, <span class="num">0</span>)</pre>
+          </div>
+
+          <h2>Fetching the Current Ayanamsa Value</h2>
+          <p>
+            To inspect the exact Ayanamsa offset value for a specific Julian Day, use <code>swe.get_ayanamsa_ut()</code>:
+          </p>
+
+          <div class="fn-sig">
+            <code><span class="fn-name">swe.get_ayanamsa_ut</span>(jd)</code>
+            <span class="fn-ret">→ Returns: float (Ayanamsa value in decimal degrees)</span>
+          </div>
+
+          <div class="highlight-block">
+<pre><span class="cmt"># Calculate Ayanamsa for August 4, 2026</span>
+jd = swe.<span class="fn">julday</span>(<span class="num">2026</span>, <span class="num">8</span>, <span class="num">4</span>, <span class="num">9.0</span>, swe.GREG_CAL)
+aya = swe.<span class="fn">get_ayanamsa_ut</span>(jd)
+<span class="fn">print</span>(<span class="str">f"Lahiri Ayanamsa: {aya:.4f}°"</span>)
+<span class="cmt"># Output: Lahiri Ayanamsa: 24.2381°</span></pre>
+          </div>
+
+          <div class="admonition warning">
+            <p class="admonition-title">⚠️ Manually Subtract for Houses / Ascendant</p>
+            <p>
+              When calling <code>swe.calc_ut()</code> for planet positions, passing the <code>swe.FLG_SIDEREAL</code> flag automatically applies the Lahiri Ayanamsa to the result.
+            </p>
+            <p>
+              However, <strong><code>swe.houses()</code> does not take calculation flags</strong> and always returns tropical values. To get the sidereal Ascendant or house cusps, you must manually subtract the ayanamsa:
+            </p>
+            <pre style="margin-top: 8px; font-family: monospace;">sidereal_asc = (tropical_asc - ayanamsa) % 360</pre>
+          </div>
+
+        </div>
+        <footer class="rst-footer">
+          <a href="calc.html" class="btn-prev">&larr; Planet Positions</a>
+          <a href="houses.html" class="btn-next">Ascendant &rarr;</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mandi &amp; Gulika — Jamakkol Prasanam Docs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+      </div>
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li class="current"><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li><a href="rasi.html">12 Rasis</a></li>
+          <li><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Jamakkol Concepts &rsaquo; Mandi &amp; Gulika
+        </div>
+        <div role="main">
+          <h1>Mandi &amp; Gulika — The Sub-planets</h1>
+          
+          <p>
+            In South Indian astrology, <strong>Mandi</strong> (மாந்தி) and <strong>Gulika</strong> (குளிகன்) are two highly malefic sub-planets (Upagrahas). They do not have physical bodies, but rather represent mathematical shadow points in space associated with the planet Saturn.
+          </p>
+          <p>
+            Mandi represents poison, obstacles, and blockages, while Gulika is associated with delays, debts, and structural struggles.
+          </p>
+
+          <h2>1. Dividing the Day into 8 Parts (Kalas)</h2>
+          <p>
+            To compute Mandi and Gulika, the duration of the daytime (sunrise to sunset) or nighttime (sunset to sunrise) is divided into 8 equal parts called <strong>Kalas</strong>. 
+          </p>
+          <p>
+            During the day, the first 7 parts are ruled by the lords of the weekdays starting with the day's ruler, and the 8th part is lordless. Saturn's assigned Kala index differs depending on the weekday:
+          </p>
+
+          <h3>Saturn's Kala Index by Weekday</h3>
+          <table>
+            <thead><tr><th>Weekday</th><th>Daytime Saturn Index (0-based)</th><th>Nighttime Saturn Index (0-based)</th></tr></thead>
+            <tbody>
+              <tr><td>Sunday</td><td>5 (6th part)</td><td>0 (1st part)</td></tr>
+              <tr><td>Monday</td><td>4 (5th part)</td><td>1 (2nd part)</td></tr>
+              <tr><td>Tuesday</td><td>7 (8th part)</td><td>4 (5th part)</td></tr>
+              <tr><td>Wednesday</td><td>3 (4th part)</td><td>2 (3rd part)</td></tr>
+              <tr><td>Thursday</td><td>2 (3rd part)</td><td>3 (4th part)</td></tr>
+              <tr><td>Friday</td><td>1 (2nd part)</td><td>6 (7th part)</td></tr>
+              <tr><td>Saturday</td><td>6 (7th part)</td><td>7 (8th part)</td></tr>
+            </tbody>
+          </table>
+
+          <h2>2. The Formulas</h2>
+          <p>
+            The formulas to find the exact Julian Day for Mandi and Gulika are:
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 14px;">
+            <li><strong>Gulika</strong> is calculated at the **start** of Saturn's Kala.</li>
+            <li><strong>Mandi</strong> is calculated at the **end** of Saturn's Kala.</li>
+          </ul>
+
+          <div class="formula-box">
+            <strong>Daytime:</strong><br/>
+            Kala duration = (Sunset - Sunrise) / 8<br/>
+            Gulika Julian Day = Sunrise + (Saturn Index - 1) * Kala duration<br/>
+            Mandi Julian Day = Sunrise + Saturn Index * Kala duration
+          </div>
+
+          <h2>3. Calculating their Zodiac Longitudes</h2>
+          <p>
+            Once we have the exact Julian Days (<code>jg</code> for Gulika, <code>jm</code> for Mandi), their zodiac longitudes are equal to the **physical Ascendant (Lagna)** at those times.
+          </p>
+          <p>
+            Remember to calculate the Ascendant using <code>swe.houses()</code> and manually subtract the Lahiri Ayanamsa to convert the tropical longitude to sidereal.
+          </p>
+
+          <h2>Python Code Example</h2>
+          <div class="highlight-block">
+<pre><span class="cmt"># Saturn indices (0-based) for Mandi/Saturn Kala</span>
+MANDI_DAY   = [<span class="num">5</span>, <span class="num">4</span>, <span class="num">7</span>, <span class="num">3</span>, <span class="num">2</span>, <span class="num">1</span>, <span class="num">6</span>]  <span class="cmt"># Sun=0, Mon=1...</span>
+MANDI_NIGHT = [<span class="num">0</span>, <span class="num">1</span>, <span class="num">4</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">6</span>, <span class="num">7</span>]
+
+<span class="kw">def</span> <span class="fn">calculate_mandi_gulika</span>(sr: float, ss: float, weekday: int, lat: float, lon: float) -> dict:
+    <span class="cmt"># Get Saturn's Kala index</span>
+    mk_d = MANDI_DAY[weekday]
+    
+    <span class="cmt"># Mandi time (end of Saturn's Kala)</span>
+    jm = sr + mk_d * (ss - sr) / <span class="num">8.0</span>
+    
+    <span class="cmt"># Gulika time (start of Saturn's Kala)</span>
+    jg = jm - (ss - sr) / <span class="num">8.0</span>
+    
+    <span class="cmt"># Helper to compute sidereal Ascendant at a given JD</span>
+    <span class="kw">def</span> <span class="fn">_asc</span>(jd_val):
+        cusps, ascmc = swe.<span class="fn">houses</span>(jd_val, lat, lon, <span class="str">b'P'</span>)
+        aya = swe.<span class="fn">get_ayanamsa_ut</span>(jd_val)
+        <span class="kw">return</span> (ascmc[<span class="num">0</span>] - aya) % <span class="num">360</span>
+
+    <span class="kw">return</span> {
+        <span class="str">"mandi_lon"</span>  : _asc(jm),
+        <span class="str">"gulika_lon"</span> : _asc(jg),
+    }</pre>
+          </div>
+
+        </div>
+        <footer class="rst-footer">
+          <a href="planets.html" class="btn-prev">&larr; Nitya Grahas</a>
+          <a href="rasi.html" class="btn-next">12 Rasis &rarr;</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

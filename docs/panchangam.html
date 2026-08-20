@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panchangam Calculations — Jamakkol Prasanam Docs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+      </div>
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li><a href="rasi.html">12 Rasis</a></li>
+          <li><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li class="current"><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Reference Tables &rsaquo; Panchangam Calculations
+        </div>
+        <div role="main">
+          <h1>Panchangam (Five Limbs of Time)</h1>
+          
+          <p>
+            The <strong>Panchangam</strong> (பஞ்சாங்கம்) is the traditional Hindu calendar system based on the movement of the Sun and Moon. It measures five key parameters representing temporal qualities: <strong>Vaaram</strong>, <strong>Thithi</strong>, <strong>Nakshatra</strong>, <strong>Yogam</strong>, and <strong>Karanam</strong>.
+          </p>
+
+          <h2>1. Vaaram (Weekday)</h2>
+          <p>
+            The solar weekday. It determines the starting lord of the daytime Jamam (see <a href="jamam.html">Jamam</a>).
+          </p>
+
+          <h2>2. Thithi (Lunar Day)</h2>
+          <p>
+            A Thithi is a lunar day representing a <strong>12-degree elongation</strong> of the Moon relative to the Sun. There are 30 Thithis in a lunar month, split into two fortnights (<strong>Pakshas</strong>):
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 14px;">
+            <li><strong>Shukla Paksha</strong> (Bright / Waxing Half): Elongation angle is between 0° and 180°.</li>
+            <li><strong>Krishna Paksha</strong> (Dark / Waning Half): Elongation angle is between 180° and 360°.</li>
+          </ul>
+
+          <div class="formula-box">
+            diff = (Moon_longitude - Sun_longitude) % 360<br/>
+            thithi_number = (int(diff / 12) % 15) + 1<br/>
+            paksha = "Shukla" if diff &lt; 180 else "Krishna"
+          </div>
+
+          <h2>3. Nakshatra (Lunar Mansion)</h2>
+          <p>
+            The stellar mansion occupied by the Moon. Calculated by dividing the Moon's longitude by 13°20' (see <a href="nakshatras.html">27 Nakshatras</a>).
+          </p>
+
+          <h2>4. Yogam (Luni-Solar Day)</h2>
+          <p>
+            Determined by summing the longitudes of the Sun and Moon. There are 27 Yogams, each spanning 13°20' (13.3333°):
+          </p>
+          <div class="formula-box">
+            sum_lon = (Sun_longitude + Moon_longitude) % 360<br/>
+            yogam_index = int(sum_lon / (360 / 27))
+          </div>
+
+          <h2>5. Karanam (Half-Thithi)</h2>
+          <p>
+            A Karanam spans exactly <strong>6 degrees</strong> of Moon-Sun elongation (half of a Thithi). There are 60 Karanams in a lunar month, consisting of 4 fixed (immobile) Karanams and 7 recurring (mobile) Karanams:
+          </p>
+          <div class="formula-box">
+            karanam_number = int(diff / 6) + 1
+          </div>
+
+          <h2>Python Implementation</h2>
+          <div class="highlight-block">
+<pre><span class="cmt"># Vaaram names in Tamil</span>
+VAAR_TA = [<span class="str">"ஞாயிறு"</span>, <span class="str">"திங்கள்"</span>, <span class="str">"செவ்வாய்"</span>, <span class="str">"புதன்"</span>, <span class="str">"வியாழன்"</span>, <span class="str">"வெள்ளி"</span>, <span class="str">"சனி"</span>]
+
+<span class="kw">def</span> <span class="fn">calculate_panchangam</span>(sun_lon: float, moon_lon: float, weekday: int) -> dict:
+    diff = (moon_lon - sun_lon) % <span class="num">360.0</span>
+    
+    <span class="cmt"># 1. Thithi</span>
+    thithi_idx = int(diff // <span class="num">12.0</span>)
+    thithi_num = (thithi_idx % <span class="num">15</span>) + <span class="num">1</span>
+    paksha = <span class="str">"Shukla"</span> <span class="kw">if</span> diff < <span class="num">180.0</span> <span class="kw">else</span> <span class="str">"Krishna"</span>
+    
+    <span class="cmt"># 2. Yogam (sum of positions)</span>
+    sum_lon = (sun_lon + moon_lon) % <span class="num">360.0</span>
+    yogam_idx = int(sum_lon // (<span class="num">360.0</span> / <span class="num">27.0</span>))
+    
+    <span class="cmt"># 3. Karanam</span>
+    karanam_num = int(diff // <span class="num">6.0</span>) + <span class="num">1</span>
+    
+    <span class="kw">return</span> {
+        <span class="str">"vaaram"</span>      : VAAR_TA[weekday],
+        <span class="str">"thithi"</span>      : thithi_num,
+        <span class="str">"paksha"</span>      : paksha,
+        <span class="str">"yogam_idx"</span>   : yogam_idx,
+        <span class="str">"karanam_num"</span> : karanam_num,
+    }</pre>
+          </div>
+
+        </div>
+        <footer class="rst-footer">
+          <a href="nakshatras.html" class="btn-prev">&larr; 27 Nakshatras</a>
+          <a href="engine.html" class="btn-next">Calculation Engine &rarr;</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>27 Nakshatras Reference — Jamakkol Prasanam Docs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wy-grid-for-nav">
+  <!-- ── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="brand">🪐 PySweph Jamakkol</a>
+        <div class="version">v1.0 — 2026</div>
+        <div class="search-box"><input type="text" placeholder="Search docs…" oninput="filterNav(this.value)"/></div>
+      </div>
+      <div class="wy-menu wy-menu-vertical" id="nav-tree">
+        <p class="caption">Getting Started</p>
+        <ul>
+          <li><a href="index.html">Introduction</a></li>
+          <li><a href="installation.html">Installation</a></li>
+          <li><a href="quickstart.html">Quick Start</a></li>
+        </ul>
+        <p class="caption">Core Library (pysweph)</p>
+        <ul>
+          <li><a href="julday.html">Julian Day — swe.julday()</a></li>
+          <li><a href="calc.html">Planet Positions — swe.calc_ut()</a></li>
+          <li><a href="ayanamsa.html">Ayanamsa — Lahiri Correction</a></li>
+          <li><a href="houses.html">Ascendant — swe.houses()</a></li>
+          <li><a href="risetrans.html">Sunrise &amp; Sunset — swe.rise_trans()</a></li>
+        </ul>
+        <p class="caption">Jamakkol Concepts</p>
+        <ul>
+          <li><a href="udhayam.html">Udhayam (உதயம்)</a></li>
+          <li><a href="arudham.html">Arudham (ஆருடம்)</a></li>
+          <li><a href="kavappu.html">Kavappu (கவப்பு)</a></li>
+          <li><a href="jamam.html">Jamam &amp; Jamam Planets</a></li>
+          <li><a href="planets.html">Nitya Grahas (9 Planets)</a></li>
+          <li><a href="mandi.html">Mandi &amp; Gulika</a></li>
+        </ul>
+        <p class="caption">Reference Tables</p>
+        <ul>
+          <li><a href="rasi.html">12 Rasis</a></li>
+          <li class="current"><a href="nakshatras.html">27 Nakshatras</a></li>
+          <li><a href="panchangam.html">Panchangam</a></li>
+        </ul>
+        <p class="caption">Building the API</p>
+        <ul>
+          <li><a href="engine.html">The Calculation Engine</a></li>
+          <li><a href="fastapi.html">FastAPI Server</a></li>
+          <li><a href="accuracy.html">Accuracy &amp; Testing</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="wy-nav-content-wrap">
+    <nav class="wy-nav-top">
+      <button onclick="toggleSidebar()">☰</button>
+      <a href="index.html">PySweph Jamakkol Docs</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div class="breadcrumbs">
+          <a href="index.html">🏠</a> &rsaquo; Reference Tables &rsaquo; 27 Nakshatras Reference
+        </div>
+        <div role="main">
+          <h1>27 Nakshatras (Lunar Mansions)</h1>
+          
+          <p>
+            In Vedic astrology, the ecliptic is divided into 27 equal parts called <strong>Nakshatras</strong> (நட்சத்திரங்கள்). Each Nakshatra spans exactly <strong>13°20' (13.3333 degrees)</strong>. The Moon's position in a Nakshatra determines the active stellar influence at the query moment.
+          </p>
+
+          <h2>Nakshatra Padas</h2>
+          <p>
+            Each Nakshatra is divided into 4 quarters called <strong>Padas</strong> (பாதங்கள்). Each Pada spans exactly <strong>3°20' (3.3333 degrees)</strong>. There are a total of 108 Padas in the entire 360° zodiac (27 Nakshatras &times; 4 Padas = 108 Padas).
+          </p>
+
+          <h2>The 27 Nakshatras Table</h2>
+          <div style="max-height: 400px; overflow-y: scroll; border: 1px solid #ddd; margin-bottom: 20px;">
+            <table style="margin: 0;">
+              <thead>
+                <tr>
+                  <th>Index (0-26)</th>
+                  <th>Nakshatra Name</th>
+                  <th>Degree Span</th>
+                  <th>Ruling Planet</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>0</td><td>Ashwini</td><td>0° 00' &ndash; 13° 20'</td><td>Ketu</td></tr>
+                <tr><td>1</td><td>Bharani</td><td>13° 20' &ndash; 26° 40'</td><td>Venus</td></tr>
+                <tr><td>2</td><td>Krittika</td><td>26° 40' &ndash; 40° 00'</td><td>Sun</td></tr>
+                <tr><td>3</td><td>Rohini</td><td>40° 00' &ndash; 53° 20'</td><td>Moon</td></tr>
+                <tr><td>4</td><td>Mrigashira</td><td>53° 20' &ndash; 66° 40'</td><td>Mars</td></tr>
+                <tr><td>5</td><td>Ardra</td><td>66° 40' &ndash; 80° 00'</td><td>Rahu</td></tr>
+                <tr><td>6</td><td>Punarvasu</td><td>80° 00' &ndash; 93° 20'</td><td>Jupiter</td></tr>
+                <tr><td>7</td><td>Pushya</td><td>93° 20' &ndash; 106° 40'</td><td>Saturn</td></tr>
+                <tr><td>8</td><td>Ashlesha</td><td>106° 40' &ndash; 120° 00'</td><td>Mercury</td></tr>
+                <tr><td>9</td><td>Magha</td><td>120° 00' &ndash; 133° 20'</td><td>Ketu</td></tr>
+                <tr><td>10</td><td>Purva Phalguni</td><td>133° 20' &ndash; 146° 40'</td><td>Venus</td></tr>
+                <tr><td>11</td><td>Uttara Phalguni</td><td>146° 40' &ndash; 160° 00'</td><td>Sun</td></tr>
+                <tr><td>12</td><td>Hasta</td><td>160° 00' &ndash; 173° 20'</td><td>Moon</td></tr>
+                <tr><td>13</td><td>Chitra</td><td>173° 20' &ndash; 186° 40'</td><td>Mars</td></tr>
+                <tr><td>14</td><td>Svati</td><td>186° 40' &ndash; 200° 00'</td><td>Rahu</td></tr>
+                <tr><td>15</td><td>Vishakha</td><td>200° 00' &ndash; 213° 20'</td><td>Jupiter</td></tr>
+                <tr><td>16</td><td>Anuradha</td><td>213° 20' &ndash; 226° 40'</td><td>Saturn</td></tr>
+                <tr><td>17</td><td>Jyeshtha</td><td>226° 40' &ndash; 240° 00'</td><td>Mercury</td></tr>
+                <tr><td>18</td><td>Mula</td><td>240° 00' &ndash; 253° 20'</td><td>Ketu</td></tr>
+                <tr><td>19</td><td>Purva Ashadha</td><td>253° 20' &ndash; 266° 40'</td><td>Venus</td></tr>
+                <tr><td>20</td><td>Uttara Ashadha</td><td>266° 40' &ndash; 280° 00'</td><td>Sun</td></tr>
+                <tr><td>21</td><td>Shravana</td><td>280° 00' &ndash; 293° 20'</td><td>Moon</td></tr>
+                <tr><td>22</td><td>Dhanishtha</td><td>293° 20' &ndash; 306° 40'</td><td>Mars</td></tr>
+                <tr><td>23</td><td>Shatabhisha</td><td>306° 40' &ndash; 320° 00'</td><td>Rahu</td></tr>
+                <tr><td>24</td><td>Purva Bhadrapada</td><td>320° 00' &ndash; 333° 20'</td><td>Jupiter</td></tr>
+                <tr><td>25</td><td>Uttara Bhadrapada</td><td>333° 20' &ndash; 346° 40'</td><td>Saturn</td></tr>
+                <tr><td>26</td><td>Revati</td><td>346° 40' &ndash; 360° 00'</td><td>Mercury</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Calculating Nakshatra &amp; Pada in Python</h2>
+          <div class="highlight-block">
+<pre><span class="cmt"># The 27 Nakshatras list</span>
+NAKSHATRAS = [
+    <span class="str">"Ashwini"</span>, <span class="str">"Bharani"</span>, <span class="str">"Krittika"</span>, <span class="str">"Rohini"</span>, <span class="str">"Mrigashira"</span>,
+    <span class="str">"Ardra"</span>, <span class="str">"Punarvasu"</span>, <span class="str">"Pushya"</span>, <span class="str">"Ashlesha"</span>, <span class="str">"Magha"</span>,
+    <span class="str">"Purva Phalguni"</span>, <span class="str">"Uttara Phalguni"</span>, <span class="str">"Hasta"</span>, <span class="str">"Chitra"</span>,
+    <span class="str">"Svati"</span>, <span class="str">"Vishakha"</span>, <span class="str">"Anuradha"</span>, <span class="str">"Jyeshtha"</span>, <span class="str">"Mula"</span>,
+    <span class="str">"Purva Ashadha"</span>, <span class="str">"Uttara Ashadha"</span>, <span class="str">"Shravana"</span>,
+    <span class="str">"Dhanishtha"</span>, <span class="str">"Shatabhisha"</span>, <span class="str">"Purva Bhadrapada"</span>,
+    <span class="str">"Uttara Bhadrapada"</span>, <span class="str">"Revati"</span>,
+]
+
+<span class="kw">def</span> <span class="fn">get_nakshatra_info</span>(deg: float) -> dict:
+    deg = deg % <span class="num">360.0</span>
+    
+    <span class="cmt"># 360 / 27 = 13.3333 degrees per Nakshatra</span>
+    ni = int(deg // (<span class="num">360.0</span> / <span class="num">27.0</span>))
+    
+    <span class="cmt"># 360 / 108 = 3.3333 degrees per Pada (4 Padas per Nakshatra)</span>
+    pada = int((deg % (<span class="num">360.0</span> / <span class="num">27.0</span>)) // (<span class="num">360.0</span> / <span class="num">108.0</span>)) + <span class="num">1</span>
+    
+    <span class="kw">return</span> {
+        <span class="str">"index"</span>: ni,
+        <span class="str">"name"</span>: NAKSHATRAS[ni],
+        <span class="str">"pada"</span>: pada,
+    }
+
+<span class="cmt"># Example: Moon is at 235.12°</span>
+info = <span class="fn">get_nakshatra_info</span>(<span class="num">235.12</span>)
+<span class="fn">print</span>(<span class="str">f"Moon is in Nakshatra: {info['name']}, Pada: {info['pada']}"</span>)
+<span class="cmt"># Output: Moon is in Nakshatra: Jyeshtha, Pada: 2</span></pre>
+          </div>
+
+        </div>
+        <footer class="rst-footer">
+          <a href="rasi.html" class="btn-prev">&larr; 12 Rasis</a>
+          <a href="panchangam.html" class="btn-next">Panchangam &rarr;</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="docs.js"></script>
+</body>
+</html>
