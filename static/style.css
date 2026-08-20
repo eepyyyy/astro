@@ -1217,14 +1217,40 @@ body {
     order: 5;
   }
 
+  .app-header {
+    padding: 8px 14px;
+  }
+
   .header-container {
-    flex-direction: column;
-    gap: 6px;
-    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .header-left .brand-title {
+    font-size: 15px;
+    letter-spacing: 1px;
   }
 
   .header-middle {
-    margin: 4px 0;
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .hora-badge {
+    padding: 4px 10px;
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .hora-label {
+    font-size: 10px;
+  }
+
+  .header-right {
+    display: none;
   }
 
   .toolbar-wrapper {
