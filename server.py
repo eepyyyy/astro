@@ -200,5 +200,11 @@ if __name__ == '__main__':
     import uvicorn
     # Default port is 8080 (or passed via command line, or PORT environment variable)
     port = int(os.environ.get("PORT", sys.argv[1] if len(sys.argv) > 1 else 8080))
-    print(f"Starting server on http://127.0.0.1:{port}")
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    print(f"Starting server on http://0.0.0.0:{port}")
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=port,
+        proxy_headers=True,
+        forwarded_allow_ips="*"
+    )
