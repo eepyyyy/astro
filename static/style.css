@@ -161,6 +161,87 @@ body {
   gap: 8px;
 }
 
+/* Direct Date & Time Fields */
+.direct-datetime-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.field-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.field-lbl {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.num-input, .time-inp, .city-toolbar-inp {
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.num-input:focus, .time-inp:focus, .city-toolbar-inp:focus {
+  border-color: var(--btn-green);
+  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.2);
+}
+
+.day-inp {
+  width: 52px;
+  text-align: center;
+}
+
+.month-select {
+  height: 32px;
+  padding: 0 6px;
+  font-size: 13px;
+}
+
+.year-inp {
+  width: 70px;
+  text-align: center;
+}
+
+.time-inp {
+  width: 105px;
+}
+
+/* Direct Location Group */
+.direct-location-group {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 180px;
+  max-width: 280px;
+}
+
+.loc-item {
+  width: 100%;
+}
+
+.city-toolbar-inp {
+  width: 100%;
+}
+
 .ctrl-btn {
   height: 36px;
   padding: 0 14px;
@@ -1081,38 +1162,157 @@ body {
 }
 
 /* ==========================================================================
-   11. RESPONSIVE ADJUSTMENTS FOR MOBILE
+   11. RESPONSIVE ADJUSTMENTS FOR MOBILE & TABLET
    ========================================================================== */
 
 @media (max-width: 992px) {
   .workspace-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
+
   .header-container {
     flex-direction: column;
     gap: 6px;
     text-align: center;
   }
+
   .header-middle {
     margin: 4px 0;
   }
-  .jamakkol-chart-frame {
-    padding: 22px 6px;
+
+  .toolbar-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .time-step-controls {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .direct-datetime-group {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 6px;
+  }
+
+  .direct-location-group {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .action-icons-group {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .chart-canvas-wrapper {
+    width: 100%;
     max-width: 100%;
   }
+
+  /* Adequate padding for outer border slots so they NEVER collide with Rasi cells */
+  .jamakkol-chart-frame {
+    padding: 20px 22px;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .jamma-slot {
+    font-size: 10px;
+    letter-spacing: 0.2px;
+  }
+
+  .slot-top-left { top: 3px; }
+  .slot-top-right { top: 3px; }
+  .slot-bottom-left { bottom: 3px; }
+  .slot-bottom-right { bottom: 3px; }
+  .slot-left-top { left: 2px; }
+  .slot-left-bottom { left: 2px; }
+  .slot-right-top { right: 2px; }
+  .slot-right-bottom { right: 2px; }
+
+  .rasi-code {
+    font-size: 10.5px;
+    top: 2px;
+    left: 3px;
+  }
+
+  .cell-house-num {
     font-size: 11px;
+    bottom: 2px;
+    right: 3px;
+  }
+
+  .planet-tag, .special-tag, .asc-tag {
+    font-size: 13.5px;
+  }
+
+  .cell-planets {
+    gap: 2px 4px;
+    padding: 4px 1px;
+  }
+
+  .rasi-center-box {
+    padding: 2px 4px;
+  }
+
+  .horary-title {
+    font-size: 9px;
+    line-height: 1.15;
+  }
+
+  .horary-time {
+    font-size: 8.5px;
+    line-height: 1.15;
+  }
+
+  .horary-loc {
+    font-size: 8px;
+    line-height: 1.1;
+  }
+
+  .center-degrees-grid {
+    font-size: 7.5px;
+    gap: 1px 4px;
+    padding: 1px 2px;
+  }
+
+  .deg-row .code {
+    width: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .jamakkol-chart-frame {
+    padding: 18px 20px;
+  }
+  .jamma-slot {
+    font-size: 9px;
   }
   .planet-tag, .special-tag, .asc-tag {
-    font-size: 14px;
+    font-size: 12px;
   }
-  .center-degrees-grid {
+  .rasi-code {
     font-size: 9.5px;
   }
-  .horary-title {
+  .cell-house-num {
     font-size: 10px;
   }
-  .horary-time, .horary-loc {
-    font-size: 9px;
+  .horary-title {
+    font-size: 8.5px;
+  }
+  .horary-time {
+    font-size: 8px;
+  }
+  .horary-loc {
+    font-size: 7.5px;
+  }
+  .center-degrees-grid {
+    font-size: 7px;
   }
 }

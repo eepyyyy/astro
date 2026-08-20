@@ -106,6 +106,42 @@ function setupEventListeners() {
   const btnToolbarPdf = document.getElementById("btnToolbarPdf");
   if (btnToolbarPdf) btnToolbarPdf.addEventListener("click", handleSavePdf);
 
+  // Direct Date & Time Toolbar Inputs
+  const handleToolbarDateChange = () => {
+    const day = parseInt(document.getElementById("inpDay").value) || 1;
+    const month = parseInt(document.getElementById("inpMonth").value) || 0;
+    const year = parseInt(document.getElementById("inpYear").value) || 2026;
+    const timeVal = document.getElementById("inpTime").value || "00:00:00";
+    const parts = timeVal.split(':').map(n => parseInt(n) || 0);
+    const hh = parts[0] || 0;
+    const mm = parts[1] || 0;
+    const ss = parts[2] || 0;
+
+    const d = new Date(year, month, day, hh, mm, ss);
+    STATE.currentDateTime = d;
+    fetchAndRenderHoroscope();
+  };
+
+  ["inpDay", "inpMonth", "inpYear", "inpTime"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("change", handleToolbarDateChange);
+  });
+
+  const cityToolbarInp = document.getElementById("inpCityToolbar");
+  if (cityToolbarInp) {
+    cityToolbarInp.addEventListener("change", (e) => {
+      STATE.cityName = e.target.value.trim();
+      fetchAndRenderHoroscope();
+    });
+    cityToolbarInp.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        STATE.cityName = e.target.value.trim();
+        cityToolbarInp.blur();
+        fetchAndRenderHoroscope();
+      }
+    });
+  }
+
   // View tabs
   document.querySelectorAll(".view-tab").forEach(tab => {
     tab.addEventListener("click", (e) => {
@@ -266,6 +302,26 @@ function renderChartFromState() {
   const horaInfo = data.hora_info;
   if (horaInfo) {
     document.getElementById("headerHoraValue").innerText = `${horaInfo.hora_lord} (${horaInfo.hora_display.split('(')[1] || ''}`;
+  }
+
+  // Sync Toolbar Inputs (if not currently focused)
+  const dayInp = document.getElementById("inpDay");
+  const monthInp = document.getElementById("inpMonth");
+  const yearInp = document.getElementById("inpYear");
+  const timeInp = document.getElementById("inpTime");
+  const cityInp = document.getElementById("inpCityToolbar");
+
+  if (dayInp && document.activeElement !== dayInp) dayInp.value = dt.getDate();
+  if (monthInp && document.activeElement !== monthInp) monthInp.value = dt.getMonth();
+  if (yearInp && document.activeElement !== yearInp) yearInp.value = dt.getFullYear();
+  if (timeInp && document.activeElement !== timeInp) {
+    const hh = String(dt.getHours()).padStart(2, '0');
+    const mm = String(dt.getMinutes()).padStart(2, '0');
+    const ss = String(dt.getSeconds()).padStart(2, '0');
+    timeInp.value = `${hh}:${mm}:${ss}`;
+  }
+  if (cityInp && document.activeElement !== cityInp) {
+    cityInp.value = STATE.cityName;
   }
 
   // Center Box Content (Title set to HORA CHART)
