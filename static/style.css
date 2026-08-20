@@ -1172,9 +1172,49 @@ body {
    ========================================================================== */
 
 @media (max-width: 992px) {
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 14px 40px;
+  }
+
+  /* 1. Header Timestamp at Top */
+  .active-time-banner {
+    order: 1;
+    margin-bottom: 10px;
+  }
+
+  /* 2. Chart prominently at the top in mobile view */
   .workspace-grid {
+    order: 2;
     grid-template-columns: 1fr;
     gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .chart-canvas-wrapper {
+    order: 1;
+  }
+
+  .chart-details-panel {
+    order: 2;
+  }
+
+  /* 3. Toolbar & DateTime / Location inputs below the chart */
+  .toolbar-section {
+    order: 3;
+    margin-bottom: 14px;
+  }
+
+  /* 4. Chart Selection Bar below the toolbar */
+  .view-selector-bar {
+    order: 4;
+    margin-bottom: 16px;
+  }
+
+  /* 5. Detailed tables below */
+  .details-section {
+    order: 5;
   }
 
   .header-container {
