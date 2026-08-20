@@ -18,3 +18,6 @@ venv/
 
 # Large temporary files / archives
 *.har
+
+# Local scripts
+push_to_github.ps1
