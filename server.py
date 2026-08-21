@@ -35,16 +35,23 @@ class HoroscopeRequest(BaseModel):
     ayanamsa_mode: str = "Lahiri"
 
 
-def calculate_mandi(jd: float, lat: float, lon: float, dt_local: datetime) -> HouseDetails:
-    weekday = dt_local.weekday()
-    day_ghatis = [22, 18, 14, 10, 6, 2, 26]
-    ghati = day_ghatis[weekday]
-    hours_from_sunrise = (ghati / 60.0) * 24.0
-
-    mandi_jd = jd + (hours_from_sunrise / 24.0) - 0.25
-    cusps, ascmc = swe.houses(mandi_jd, lat, lon, b'p')
-    aya = swe.get_ayanamsa_ut(mandi_jd)
-    mandi_deg = (ascmc[0] - aya) % 360.0
+def calculate_mandi(jd: float, lat: float, lon: float, dt_local: datetime, sun_deg: float) -> HouseDetails:
+    t = dt_local.hour + dt_local.minute / 60.0 + (dt_local.second + dt_local.microsecond / 1000000.0) / 3600.0
+    if t < 6.0:
+        astro_weekday = (dt_local.weekday() - 1) % 7
+    else:
+        astro_weekday = dt_local.weekday()
+    
+    # Weekday in 0=Sun ... 6=Sat
+    jkw = (astro_weekday + 1) % 7
+    is_day = (6.0 <= t < 18.0)
+    
+    # Method 5 (used by Jamakkol Prasanam): Saturn Kala / Ghati relative to Sun
+    MANDI_DAY_OFFSETS = [150.0, 120.0, 210.0, 90.0, 60.0, 30.0, 180.0]
+    MANDI_NIGHT_OFFSETS = [0.0, 30.0, 120.0, 60.0, 312.0, 150.0, 210.0]
+    
+    offset = MANDI_DAY_OFFSETS[jkw] if is_day else MANDI_NIGHT_OFFSETS[jkw]
+    mandi_deg = (sun_deg + offset) % 360.0
     return HouseDetails(deg=mandi_deg)
 
 
@@ -114,7 +121,8 @@ def compute_horoscope_response(req: HoroscopeRequest) -> dict:
         method=req.method.lower()
     )
 
-    mandi = calculate_mandi(horoscope.julian_day, req.latitude, req.longitude, horoscope.datetime_local)
+    sun_deg = horoscope.main_chart.planets.sun.housedetails.deg
+    mandi = calculate_mandi(horoscope.julian_day, req.latitude, req.longitude, horoscope.datetime_local, sun_deg)
     hora_info = calculate_hora(horoscope.datetime_local)
 
     res_data = horoscope.model_dump(mode="json")

@@ -5,7 +5,7 @@ import swisseph as swe
 from rich import print
 
 swe.set_ephe_path("")
-swe.set_sid_mode(swe.SIDM_LAHIRI, 0, 0)
+swe.set_sid_mode(27, 0, 0)
 FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL | swe.FLG_SPEED
 
 PLANETS_ID = {
@@ -19,7 +19,8 @@ PLANETS_ID = {
     "rahu" : swe.MEAN_NODE,
 }
 
-def get_planets(jd: float,lat:float,lon:float) -> PlanetaryCollections:
+def get_planets(jd: float, lat: float, lon: float, sid_mode: int = 27) -> PlanetaryCollections:
+    swe.set_sid_mode(sid_mode, 0, 0)
     raw = {}
     for name, pid in PLANETS_ID.items():
         res, rflag, serr = swe.calc_ut(jd, pid, FLAGS)

@@ -457,7 +457,7 @@ function renderMainJamakkolChart(data) {
   }
 
   // Render Outer Planets in border slots using dynamic positioning
-  renderOuterWheelSlots(jp);
+  renderOuterWheelSlots(jp, data);
 
   // Render 2-Column Degrees in Center Box (Sorted by degree in DMS format)
   renderCenterDegreesTable(asc, p, u, ar, kv, md);
@@ -535,7 +535,7 @@ function addChartTag(rasiIndex, text, cssClass, degInSign) {
   }
 }
 
-function renderOuterWheelSlots(jp) {
+function renderOuterWheelSlots(jp, data) {
   if (!jp) return;
   
   const getSlotText = (planetObj, arrowLeft = true, prefix = "J.") => {
@@ -557,8 +557,32 @@ function renderOuterWheelSlots(jp) {
     { id: "jw-left-1", arrowLeft: true }    // 7: Left-Top (Aquarius)
   ];
 
-  const jNames = ["sun", "mars", "jupiter", "mercury", "venus", "saturn", "moon", "snake"];
-  const planetsList = jNames.map(n => jp[n]).filter(Boolean);
+  // Determine weekday lord (0=Sun ... 6=Sat)
+  let jkw = 0;
+  if (data && data.datetime_local) {
+    const parts = data.datetime_local.replace('T', ' ').split(' ');
+    const dateParts = parts[0].split('-');
+    const timeParts = parts[1] ? parts[1].split(':') : [0, 0, 0];
+    const dt = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]), parseInt(timeParts[0]), parseInt(timeParts[1]), parseFloat(timeParts[2] || 0));
+    const t = dt.getHours() + dt.getMinutes() / 60.0 + (dt.getSeconds() + dt.getMilliseconds() / 1000.0) / 3600.0;
+    const astroWeekday = t < 6.0 ? (dt.getDay() + 6) % 7 : dt.getDay(); // 0=Sun ... 6=Sat
+    jkw = astroWeekday;
+  }
+
+  // Starting planet for Slot 0 (Aries) based on weekday:
+  // Sun(0): snake, Mon(1): sun, Tue(2): jupiter, Wed(3): mars, Thu(4): saturn, Fri(5): moon, Sat(6): snake
+  const START_PLANET_AT_SLOT0 = { 0: "snake", 1: "sun", 2: "jupiter", 3: "mars", 4: "saturn", 5: "moon", 6: "snake" };
+  const startPlanetName = START_PLANET_AT_SLOT0[jkw] || "saturn";
+  
+  const JAMA_CYCLE = ["jupiter", "mars", "sun", "snake", "moon", "saturn", "venus", "mercury"];
+  const startIdx = JAMA_CYCLE.indexOf(startPlanetName);
+  
+  // Sequence of 8 planets around the slots (in reverse counter-clockwise order)
+  const orderedPlanets = [];
+  for (let i = 0; i < 8; i++) {
+    const pName = JAMA_CYCLE[(startIdx - i + 8) % 8];
+    orderedPlanets.push(jp[pName]);
+  }
 
   // Clear all slots first
   slotMap.forEach(s => {
@@ -566,16 +590,12 @@ function renderOuterWheelSlots(jp) {
     if (el) el.innerText = "";
   });
 
-  // Assign each outer planet to its slot based on its degree sector
-  planetsList.forEach(pObj => {
-    const deg = (pObj.housedetails.deg % 360 + 360) % 360;
-    const sectorIdx = Math.floor(deg / 45);
-    if (sectorIdx >= 0 && sectorIdx < 8) {
-      const slot = slotMap[sectorIdx];
-      const el = document.getElementById(slot.id);
-      if (el) {
-        el.innerText = getSlotText(pObj, slot.arrowLeft, "J.");
-      }
+  // Assign to slots
+  slotMap.forEach((slot, idx) => {
+    const pObj = orderedPlanets[idx];
+    const el = document.getElementById(slot.id);
+    if (el && pObj) {
+      el.innerText = getSlotText(pObj, slot.arrowLeft, "J.");
     }
   });
 }
