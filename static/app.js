@@ -363,12 +363,12 @@ function renderMainJamakkolChart(data) {
   const lagnaRasi = asc ? asc.housedetails.house : 0;
   const udhayamRasi = u.housedetails.house;
 
-  // Set house numbers in all 12 cells
+  // Set house numbers in all 12 cells (1 to 12 relative to Udhayam)
   for (let r = 0; r < 12; r++) {
     const hEl = document.getElementById(`cell-house-${r}`);
     if (hEl) {
       if (STATE.houseIndexMode === "0to11") {
-        hEl.innerText = ((r - lagnaRasi + 12) % 12);
+        hEl.innerText = ((r - udhayamRasi + 12) % 12);
       } else {
         hEl.innerText = ((r - udhayamRasi + 12) % 12) + 1;
       }
@@ -457,7 +457,7 @@ function renderMainJamakkolChart(data) {
   }
 
   // Render Outer Planets in border slots using dynamic positioning
-  renderOuterWheelSlots(jp, data);
+  renderOuterWheelSlots(jp);
 
   // Render 2-Column Degrees in Center Box (Sorted by degree in DMS format)
   renderCenterDegreesTable(asc, p, u, ar, kv, md);
@@ -535,7 +535,7 @@ function addChartTag(rasiIndex, text, cssClass, degInSign) {
   }
 }
 
-function renderOuterWheelSlots(jp, data) {
+function renderOuterWheelSlots(jp) {
   if (!jp) return;
   
   const getSlotText = (planetObj, arrowLeft = true, prefix = "J.") => {
@@ -547,55 +547,36 @@ function renderOuterWheelSlots(jp, data) {
   };
 
   const slotMap = [
-    { id: "jw-top-1", arrowLeft: true },    // 0: Top-Left (Aries)
-    { id: "jw-top-2", arrowLeft: true },    // 1: Top-Right (Taurus)
-    { id: "jw-right-1", arrowLeft: false }, // 2: Right-Top (Cancer)
-    { id: "jw-right-2", arrowLeft: false }, // 3: Right-Bottom (Leo)
-    { id: "jw-bottom-2", arrowLeft: false },// 4: Bottom-Right (Libra)
-    { id: "jw-bottom-1", arrowLeft: false },// 5: Bottom-Left (Scorpio)
-    { id: "jw-left-2", arrowLeft: true },   // 6: Left-Bottom (Capricorn)
-    { id: "jw-left-1", arrowLeft: true }    // 7: Left-Top (Aquarius)
+    { id: "jw-top-1", arrowLeft: true },    // Sector 0: 0°-45° (above Aries)
+    { id: "jw-top-2", arrowLeft: true },    // Sector 1: 45°-90° (above Taurus)
+    { id: "jw-right-1", arrowLeft: false }, // Sector 2: 90°-135° (beside Cancer)
+    { id: "jw-right-2", arrowLeft: false }, // Sector 3: 135°-180° (beside Leo)
+    { id: "jw-bottom-2", arrowLeft: false },// Sector 4: 180°-225° (below Libra)
+    { id: "jw-bottom-1", arrowLeft: false },// Sector 5: 225°-270° (below Scorpio)
+    { id: "jw-left-2", arrowLeft: true },   // Sector 6: 270°-315° (beside Capricorn)
+    { id: "jw-left-1", arrowLeft: true }    // Sector 7: 315°-360° (beside Aquarius)
   ];
 
-  // Determine weekday lord (0=Sun ... 6=Sat)
-  let jkw = 0;
-  if (data && data.datetime_local) {
-    const parts = data.datetime_local.replace('T', ' ').split(' ');
-    const dateParts = parts[0].split('-');
-    const timeParts = parts[1] ? parts[1].split(':') : [0, 0, 0];
-    const dt = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]), parseInt(timeParts[0]), parseInt(timeParts[1]), parseFloat(timeParts[2] || 0));
-    const t = dt.getHours() + dt.getMinutes() / 60.0 + (dt.getSeconds() + dt.getMilliseconds() / 1000.0) / 3600.0;
-    const astroWeekday = t < 6.0 ? (dt.getDay() + 6) % 7 : dt.getDay(); // 0=Sun ... 6=Sat
-    jkw = astroWeekday;
-  }
-
-  // Starting planet for Slot 0 (Aries) based on weekday:
-  // Sun(0): snake, Mon(1): sun, Tue(2): jupiter, Wed(3): mars, Thu(4): saturn, Fri(5): moon, Sat(6): snake
-  const START_PLANET_AT_SLOT0 = { 0: "snake", 1: "sun", 2: "jupiter", 3: "mars", 4: "saturn", 5: "moon", 6: "snake" };
-  const startPlanetName = START_PLANET_AT_SLOT0[jkw] || "saturn";
-  
-  const JAMA_CYCLE = ["jupiter", "mars", "sun", "snake", "moon", "saturn", "venus", "mercury"];
-  const startIdx = JAMA_CYCLE.indexOf(startPlanetName);
-  
-  // Sequence of 8 planets around the slots (in reverse counter-clockwise order)
-  const orderedPlanets = [];
-  for (let i = 0; i < 8; i++) {
-    const pName = JAMA_CYCLE[(startIdx - i + 8) % 8];
-    orderedPlanets.push(jp[pName]);
-  }
-
-  // Clear all slots first
+  // Clear all 8 slots first
   slotMap.forEach(s => {
     const el = document.getElementById(s.id);
     if (el) el.innerText = "";
   });
 
-  // Assign to slots
-  slotMap.forEach((slot, idx) => {
-    const pObj = orderedPlanets[idx];
-    const el = document.getElementById(slot.id);
-    if (el && pObj) {
-      el.innerText = getSlotText(pObj, slot.arrowLeft, "J.");
+  // Assign each of the 8 outer planets to its corresponding sector slot (no slots at corners / houses 2, 5, 8, 11)
+  const jNames = ["sun", "mars", "jupiter", "mercury", "venus", "saturn", "moon", "snake"];
+  jNames.forEach(name => {
+    const pObj = jp[name];
+    if (pObj && pObj.housedetails && pObj.housedetails.deg !== undefined) {
+      const deg = ((pObj.housedetails.deg % 360) + 360) % 360;
+      const sectorIdx = Math.floor(deg / 45);
+      if (sectorIdx >= 0 && sectorIdx < 8) {
+        const slot = slotMap[sectorIdx];
+        const el = document.getElementById(slot.id);
+        if (el) {
+          el.innerText = getSlotText(pObj, slot.arrowLeft, "J.");
+        }
+      }
     }
   });
 }
