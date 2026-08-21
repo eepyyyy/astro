@@ -3,13 +3,13 @@ from datetime import datetime, timedelta
 
 def dt_jd(dt_utc: datetime) -> float:
     """Convert a UTC datetime to Julian Day Number."""
-    h = dt_utc.hour + dt_utc.minute / 60.0 + dt_utc.second / 3600.0
+    h = dt_utc.hour + dt_utc.minute / 60.0 + (dt_utc.second + dt_utc.microsecond / 1000000.0) / 3600.0
     return swe.julday(dt_utc.year, dt_utc.month, dt_utc.day, h, swe.GREG_CAL)
 
 
 def local_to_jd(dt_local: datetime, tz_offset_hours: float = 5.5) -> float:
     dt_utc = dt_local - timedelta(hours=tz_offset_hours)
-    hour_decimal = dt_utc.hour + dt_utc.minute/60 + dt_utc.second/3600
+    hour_decimal = dt_utc.hour + dt_utc.minute / 60.0 + (dt_utc.second + dt_utc.microsecond / 1000000.0) / 3600.0
     return swe.julday(dt_utc.year, dt_utc.month, dt_utc.day, hour_decimal)
 
 def jd_to_local(jd_val: float, tz_offset: float = 5.5) -> datetime:

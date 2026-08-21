@@ -59,11 +59,15 @@ def calculate_hora(dt_local: datetime) -> dict:
         4: 1,  # Friday -> Venus
         5: 4   # Saturday -> Saturn
     }
-    weekday = dt_local.weekday()
-    start_chaldean_idx = WEEKDAY_TO_CHALDEAN_START[weekday]
+    t = dt_local.hour + dt_local.minute / 60.0 + (dt_local.second + dt_local.microsecond / 1000000.0) / 3600.0
+    if t < 6.0:
+        astro_weekday = (dt_local.weekday() - 1) % 7
+        hours_from_6am = t + 18.0
+    else:
+        astro_weekday = dt_local.weekday()
+        hours_from_6am = t - 6.0
 
-    t = dt_local.hour + dt_local.minute / 60.0 + dt_local.second / 3600.0
-    hours_from_6am = (t - 6.0) % 24.0
+    start_chaldean_idx = WEEKDAY_TO_CHALDEAN_START[astro_weekday]
     hora_index = int(hours_from_6am)
 
     current_chaldean_idx = (start_chaldean_idx + hora_index) % 7
@@ -83,9 +87,18 @@ def compute_horoscope_response(req: HoroscopeRequest) -> dict:
     if req.datetime_str:
         clean_str = req.datetime_str.replace("Z", "")
         if "T" in clean_str:
-            dt = datetime.fromisoformat(clean_str)
+            try:
+                dt = datetime.fromisoformat(clean_str)
+            except Exception:
+                dt = datetime.strptime(clean_str.split(".")[0], "%Y-%m-%dT%H:%M:%S")
         else:
-            dt = datetime.strptime(clean_str, "%Y-%m-%d %H:%M:%S")
+            try:
+                dt = datetime.strptime(clean_str, "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                try:
+                    dt = datetime.strptime(clean_str, "%Y-%m-%d %H:%M")
+                except ValueError:
+                    dt = datetime.fromisoformat(clean_str)
     else:
         utc_now = datetime.now(timezone.utc)
         dt = utc_now + timedelta(hours=req.time_offset)
@@ -108,17 +121,27 @@ def compute_horoscope_response(req: HoroscopeRequest) -> dict:
     res_data["main_chart"]["mandi"] = mandi.model_dump(mode="json")
     res_data["hora_info"] = hora_info
     
-    t = dt.hour + dt.minute / 60.0 + dt.second / 3600.0
+    t = dt.hour + dt.minute / 60.0 + (dt.second + dt.microsecond / 1000000.0) / 3600.0
     is_day = (6.0 <= t < 18.0)
-    t_jamam = (t - 6.0) % 24.0 if is_day else (t - 18.0) % 24.0
-    jamam_num = int(t_jamam // 1.5) + 1
     day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    day_name = day_names[dt.weekday()]
+
+    if t < 6.0:
+        astro_weekday = (dt.weekday() - 1) % 7
+        t_jamam = t + 6.0  # elapsed hours into night (from 18:00 of previous day)
+    elif is_day:
+        astro_weekday = dt.weekday()
+        t_jamam = t - 6.0  # elapsed hours into day (from 06:00)
+    else:
+        astro_weekday = dt.weekday()
+        t_jamam = t - 18.0 # elapsed hours into night (from 18:00)
+
+    jamam_num = int(t_jamam // 1.5) + 1
+    day_name = day_names[astro_weekday]
     res_data["jamam_info"] = {
         "day_name": day_name,
         "is_day": is_day,
         "jamam_number": jamam_num,
-        "display_title": f"HORA CHART, {day_name} Jamam # {jamam_num}"
+        "display_title": f"JAMAKKOL HORARY, {day_name} Jamam # {jamam_num}"
     }
     return res_data
 

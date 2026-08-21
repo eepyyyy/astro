@@ -29,16 +29,26 @@ def jamma_planets(jd: float, tz_offset: float = 5.5):
     # 8 Outer wheel planets order
     JAMA_OUTER_PLANETS = ["Sun", "Mars", "Jupiter", "Mercury", "Venus", "Saturn", "Moon", "Snake"]
     
+    # Decimal hours local time (retaining full microsecond accuracy)
+    t = dt_local.hour + dt_local.minute / 60.0 + (dt_local.second + dt_local.microsecond / 1000000.0) / 3600.0
+    
+    # In Vedic Jamakkol, the astrological day starts at 06:00 AM.
+    # Before 06:00 AM, the weekday belongs to the previous day.
+    if t < 6.0:
+        astro_weekday = (dt_local.weekday() - 1) % 7
+        hours_since_6am = t + 18.0  # (t + 24.0 - 6.0)
+    else:
+        astro_weekday = dt_local.weekday()
+        hours_since_6am = t - 6.0
+
     # Weekday mapping (0=Sunday ... 6=Saturday)
-    jkw = (dt_local.weekday() + 1) % 7
+    jkw = (astro_weekday + 1) % 7
     
     # Weekday lord starting position mapping
     WEEKDAY_L_MAP = {0: 0, 1: 6, 2: 1, 3: 3, 4: 2, 5: 4, 6: 5}
     idx_L = WEEKDAY_L_MAP[jkw]
     
-    # Decimal hours local time (retaining full microsecond accuracy)
-    t = dt_local.hour + dt_local.minute / 60.0 + (dt_local.second + dt_local.microsecond / 1000000.0) / 3600.0
-    rotation = (t - 6.0) * 30.0
+    rotation = hours_since_6am * 30.0
     
     jamma_positions = {}
     for idx_P, p_name in enumerate(JAMA_OUTER_PLANETS):

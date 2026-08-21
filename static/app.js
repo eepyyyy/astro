@@ -453,13 +453,13 @@ function renderMainJamakkolChart(data) {
   for (let r = 0; r < 12; r++) {
     const bodies = signBodies[r];
     bodies.sort((a, b) => a.deg_in_sign - b.deg_in_sign);
-    bodies.forEach(b => addChartTag(r, b.code, b.cssClass));
+    bodies.forEach(b => addChartTag(r, b.code, b.cssClass, b.deg_in_sign));
   }
 
-  // Render Outer Planets in border slots using short names (excluding J.)
+  // Render Outer Planets in border slots using dynamic positioning
   renderOuterWheelSlots(jp);
 
-  // Render 2-Column Degrees in Center Box (Sorted by degree)
+  // Render 2-Column Degrees in Center Box (Sorted by degree in DMS format)
   renderCenterDegreesTable(asc, p, u, ar, kv, md);
 }
 
@@ -513,48 +513,71 @@ function renderDivisionalChart(data, vargaKey) {
   for (let r = 0; r < 12; r++) {
     const bList = signBodies[r];
     bList.sort((a, b) => a.deg_in_sign - b.deg_in_sign);
-    bList.forEach(b => addChartTag(r, b.code, b.cssClass));
+    bList.forEach(b => addChartTag(r, b.code, b.cssClass, b.deg_in_sign));
   }
 
   // Render Varga degrees in center
   renderCenterVargaDegrees(vargaChart);
 }
 
-function addChartTag(rasiIndex, text, cssClass) {
+function addChartTag(rasiIndex, text, cssClass, degInSign) {
   const cell = document.getElementById(`cell-planets-${rasiIndex}`);
   if (cell) {
     const span = document.createElement("span");
     span.className = cssClass;
-    span.innerText = text;
+    if (degInSign !== undefined && degInSign !== null) {
+      const degInt = Math.floor(degInSign);
+      span.innerHTML = `<span class="tag-sym">${text}</span> <span class="tag-deg">${degInt}</span>`;
+    } else {
+      span.innerHTML = `<span class="tag-sym">${text}</span>`;
+    }
     cell.appendChild(span);
   }
 }
 
 function renderOuterWheelSlots(jp) {
   if (!jp) return;
-  // Outer 8 rotational planets: short name (MO, SA, VE, ME, MA, JU, SU, SN) excluding 'J.'
-  const getSlotText = (planetObj, arrowLeft = true) => {
+  
+  const getSlotText = (planetObj, arrowLeft = true, prefix = "J.") => {
     if (!planetObj) return "";
     const shortCode = PLANET_SHORT_NAMES[planetObj.planet_name] || planetObj.planet_name.substr(0,2).toUpperCase();
     const dms = formatDmsShort(planetObj.housedetails.deg);
-    return arrowLeft ? `← ${shortCode} ${dms}` : `${shortCode} ${dms} →`;
+    const label = `${prefix}${shortCode}`;
+    return arrowLeft ? `← ${label} ${dms}` : `${label} ${dms} →`;
   };
 
-  // Top slots
-  document.getElementById("jw-top-1").innerText = getSlotText(jp.moon, true);
-  document.getElementById("jw-top-2").innerText = getSlotText(jp.saturn, true);
+  const slotMap = [
+    { id: "jw-top-1", arrowLeft: true },    // 0: Top-Left (Aries)
+    { id: "jw-top-2", arrowLeft: true },    // 1: Top-Right (Taurus)
+    { id: "jw-right-1", arrowLeft: false }, // 2: Right-Top (Cancer)
+    { id: "jw-right-2", arrowLeft: false }, // 3: Right-Bottom (Leo)
+    { id: "jw-bottom-2", arrowLeft: false },// 4: Bottom-Right (Libra)
+    { id: "jw-bottom-1", arrowLeft: false },// 5: Bottom-Left (Scorpio)
+    { id: "jw-left-2", arrowLeft: true },   // 6: Left-Bottom (Capricorn)
+    { id: "jw-left-1", arrowLeft: true }    // 7: Left-Top (Aquarius)
+  ];
 
-  // Right slots
-  document.getElementById("jw-right-1").innerText = getSlotText(jp.venus, false);
-  document.getElementById("jw-right-2").innerText = getSlotText(jp.mercury, false);
+  const jNames = ["sun", "mars", "jupiter", "mercury", "venus", "saturn", "moon", "snake"];
+  const planetsList = jNames.map(n => jp[n]).filter(Boolean);
 
-  // Bottom slots
-  document.getElementById("jw-bottom-1").innerText = getSlotText(jp.mars, false);
-  document.getElementById("jw-bottom-2").innerText = getSlotText(jp.jupiter, false);
+  // Clear all slots first
+  slotMap.forEach(s => {
+    const el = document.getElementById(s.id);
+    if (el) el.innerText = "";
+  });
 
-  // Left slots
-  document.getElementById("jw-left-1").innerText = getSlotText(jp.snake, true);
-  document.getElementById("jw-left-2").innerText = getSlotText(jp.sun, true);
+  // Assign each outer planet to its slot based on its degree sector
+  planetsList.forEach(pObj => {
+    const deg = (pObj.housedetails.deg % 360 + 360) % 360;
+    const sectorIdx = Math.floor(deg / 45);
+    if (sectorIdx >= 0 && sectorIdx < 8) {
+      const slot = slotMap[sectorIdx];
+      const el = document.getElementById(slot.id);
+      if (el) {
+        el.innerText = getSlotText(pObj, slot.arrowLeft, "J.");
+      }
+    }
+  });
 }
 
 function renderCenterDegreesTable(asc, p, u, ar, kv, md) {
@@ -563,25 +586,28 @@ function renderCenterDegreesTable(asc, p, u, ar, kv, md) {
   leftCol.innerHTML = "";
   rightCol.innerHTML = "";
 
-  const itemsLeft = [
+  const allItems = [
     { code: "ASC", deg: asc ? asc.housedetails.deg : 0 },
+    { code: "SU", deg: p.sun ? p.sun.housedetails.deg : 0 },
+    { code: "MO", deg: p.moon ? p.moon.housedetails.deg : 0 },
     { code: "MA", deg: p.mars ? p.mars.housedetails.deg : 0 },
-    { code: "md", deg: md ? md.deg : 0 },
-    { code: "JU", deg: p.jupiter ? p.jupiter.housedetails.deg : 0 },
-    { code: "AR", deg: ar ? ar.deg : 0 },
     { code: "ME", deg: p.mercury ? p.mercury.housedetails.deg : 0 },
-    { code: "SU", deg: p.sun ? p.sun.housedetails.deg : 0 }
+    { code: "JU", deg: p.jupiter ? p.jupiter.housedetails.deg : 0 },
+    { code: "VE", deg: p.venus ? p.venus.housedetails.deg : 0 },
+    { code: "SA", deg: p.saturn ? p.saturn.housedetails.deg : 0 },
+    { code: "RA", deg: p.rahu ? p.rahu.housedetails.deg : 0 },
+    { code: "KE", deg: p.ketu ? p.ketu.housedetails.deg : 0 },
+    { code: "UD", deg: u ? u.housedetails.deg : 0 },
+    { code: "AR", deg: ar ? ar.deg : 0 },
+    { code: "KV", deg: kv ? kv.deg : 0 },
+    { code: "md", deg: md ? md.deg : 0 }
   ];
 
-  const itemsRight = [
-    { code: "KE", deg: p.ketu ? p.ketu.housedetails.deg : 0 },
-    { code: "KV", deg: kv ? kv.deg : 0 },
-    { code: "VE", deg: p.venus ? p.venus.housedetails.deg : 0 },
-    { code: "MO", deg: p.moon ? p.moon.housedetails.deg : 0 },
-    { code: "UD", deg: u ? u.housedetails.deg : 0 },
-    { code: "RA", deg: p.rahu ? p.rahu.housedetails.deg : 0 },
-    { code: "SA", deg: p.saturn ? p.saturn.housedetails.deg : 0 }
-  ];
+  // Sort ALL 14 items strictly by absolute degree in ascending order
+  allItems.sort((a, b) => a.deg - b.deg);
+
+  const itemsLeft = allItems.slice(0, 7);
+  const itemsRight = allItems.slice(7, 14);
 
   itemsLeft.forEach(item => {
     const row = document.createElement("div");
@@ -874,5 +900,6 @@ function formatDateTimeLocal(d) {
   const day = String(d.getDate()).padStart(2, '0');
   const h = String(d.getHours()).padStart(2, '0');
   const min = String(d.getMinutes()).padStart(2, '0');
-  return `${y}-${m}-${day}T${h}:${min}`;
+  const sec = String(d.getSeconds()).padStart(2, '0');
+  return `${y}-${m}-${day}T${h}:${min}:${sec}`;
 }

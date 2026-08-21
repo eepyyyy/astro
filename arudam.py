@@ -8,7 +8,7 @@ from planets import get_planets
 def arudam(dt_local: datetime) -> HouseDetails:
 
 
-    total_sec = dt_local.minute * 60.0 + dt_local.second
+    total_sec = dt_local.minute * 60.0 + dt_local.second + (dt_local.microsecond / 1000000.0)
 
     arudam_rasi = total_sec // 300
     seconds_in_rasi = total_sec % 300
