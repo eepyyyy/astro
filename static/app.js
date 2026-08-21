@@ -29,7 +29,7 @@ const STATE = {
   timeOffset: 5.5,
   method: "vedic",
   activeVarga: "main",
-  houseIndexMode: "0to11", // '0to11' or '1to12'
+  houseIndexMode: "1to12", // '1to12' (Traditional 1 to 12 default) or '0to11'
   latestHoroscopeData: null,
   clientName: "Rajagopal",
   clientNotes: ""
