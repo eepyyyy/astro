@@ -468,58 +468,58 @@ body {
   user-select: none;
 }
 
-/* Top Border Slots */
-.slot-top-left {
+/* Top Border Slots: Aries (Col 2: 37.5%), Gemini (Col 4: 87.5%) */
+.slot-top-ari {
   top: 4px;
   left: 37.5%;
   transform: translateX(-50%);
 }
 
-.slot-top-right {
+.slot-top-gem {
   top: 4px;
+  left: 87.5%;
+  transform: translateX(-50%);
+}
+
+/* Bottom Border Slots: Sagittarius (Col 1: 12.5%), Libra (Col 3: 62.5%) */
+.slot-bottom-sag {
+  bottom: 4px;
+  left: 12.5%;
+  transform: translateX(-50%);
+}
+
+.slot-bottom-lib {
+  bottom: 4px;
   left: 62.5%;
   transform: translateX(-50%);
 }
 
-/* Bottom Border Slots */
-.slot-bottom-left {
-  bottom: 4px;
-  left: 37.5%;
-  transform: translateX(-50%);
-}
-
-.slot-bottom-right {
-  bottom: 4px;
-  left: 62.5%;
-  transform: translateX(-50%);
-}
-
-/* Left Border Slots */
-.slot-left-top {
+/* Left Border Slots: Pisces (Row 1: 12.5%), Capricorn (Row 3: 62.5%) */
+.slot-left-pis {
   left: 4px;
-  top: 37.5%;
+  top: 12.5%;
   transform: translateY(-50%) rotate(180deg);
   writing-mode: vertical-lr;
 }
 
-.slot-left-bottom {
+.slot-left-cap {
   left: 4px;
   top: 62.5%;
   transform: translateY(-50%) rotate(180deg);
   writing-mode: vertical-lr;
 }
 
-/* Right Border Slots - PROPER VERTICAL SPACING */
-.slot-right-top {
+/* Right Border Slots: Cancer (Row 2: 37.5%), Virgo (Row 4: 87.5%) */
+.slot-right-can {
   right: 4px;
   top: 37.5%;
   transform: translateY(-50%);
   writing-mode: vertical-rl;
 }
 
-.slot-right-bottom {
+.slot-right-vir {
   right: 4px;
-  top: 62.5%;
+  top: 87.5%;
   transform: translateY(-50%);
   writing-mode: vertical-rl;
 }
@@ -1310,14 +1310,14 @@ body {
     letter-spacing: 0.2px;
   }
 
-  .slot-top-left { top: 3px; }
-  .slot-top-right { top: 3px; }
-  .slot-bottom-left { bottom: 3px; }
-  .slot-bottom-right { bottom: 3px; }
-  .slot-left-top { left: 2px; }
-  .slot-left-bottom { left: 2px; }
-  .slot-right-top { right: 2px; }
-  .slot-right-bottom { right: 2px; }
+  .slot-top-ari { top: 3px; }
+  .slot-top-gem { top: 3px; }
+  .slot-bottom-sag { bottom: 3px; }
+  .slot-bottom-lib { bottom: 3px; }
+  .slot-left-pis { left: 2px; }
+  .slot-left-cap { left: 2px; }
+  .slot-right-can { right: 2px; }
+  .slot-right-vir { right: 2px; }
 
   .rasi-code {
     font-size: 11px;

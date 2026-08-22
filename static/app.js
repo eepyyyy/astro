@@ -546,32 +546,41 @@ function renderOuterWheelSlots(jp) {
     return arrowLeft ? `← ${label} ${dms}` : `${label} ${dms} →`;
   };
 
-  const slotMap = [
-    { id: "jw-top-1", arrowLeft: true },    // Sector 0: 0°-45° (above Aries)
-    { id: "jw-top-2", arrowLeft: true },    // Sector 1: 45°-90° (above Taurus)
-    { id: "jw-right-1", arrowLeft: false }, // Sector 2: 90°-135° (beside Cancer)
-    { id: "jw-right-2", arrowLeft: false }, // Sector 3: 135°-180° (beside Leo)
-    { id: "jw-bottom-2", arrowLeft: false },// Sector 4: 180°-225° (below Libra)
-    { id: "jw-bottom-1", arrowLeft: false },// Sector 5: 225°-270° (below Scorpio)
-    { id: "jw-left-2", arrowLeft: true },   // Sector 6: 270°-315° (beside Capricorn)
-    { id: "jw-left-1", arrowLeft: true }    // Sector 7: 315°-360° (beside Aquarius)
-  ];
+  // 8 Allowed Outer Wheel Rasi Signs (Boxes 2, 5, 8, 11 / Taurus, Leo, Scorpio, Aquarius are SKIPPED):
+  // Rasi 0 (Aries) -> Top of Aries (arrowLeft: true)
+  // Rasi 2 (Gemini) -> Top of Gemini (arrowLeft: true)
+  // Rasi 3 (Cancer) -> Right of Cancer (arrowLeft: false)
+  // Rasi 5 (Virgo) -> Right of Virgo (arrowLeft: false)
+  // Rasi 6 (Libra) -> Bottom of Libra (arrowLeft: false)
+  // Rasi 8 (Sagittarius) -> Bottom of Sagittarius (arrowLeft: false)
+  // Rasi 9 (Capricorn) -> Left of Capricorn (arrowLeft: true)
+  // Rasi 11 (Pisces) -> Left of Pisces (arrowLeft: true)
+  const rasiSlotMap = {
+    0: { id: "jw-top-ari", arrowLeft: true },
+    2: { id: "jw-top-gem", arrowLeft: true },
+    3: { id: "jw-right-can", arrowLeft: false },
+    5: { id: "jw-right-vir", arrowLeft: false },
+    6: { id: "jw-bottom-lib", arrowLeft: false },
+    8: { id: "jw-bottom-sag", arrowLeft: false },
+    9: { id: "jw-left-cap", arrowLeft: true },
+    11: { id: "jw-left-pis", arrowLeft: true }
+  };
 
   // Clear all 8 slots first
-  slotMap.forEach(s => {
-    const el = document.getElementById(s.id);
+  Object.values(rasiSlotMap).forEach(slot => {
+    const el = document.getElementById(slot.id);
     if (el) el.innerText = "";
   });
 
-  // Assign each of the 8 outer planets to its corresponding sector slot (no slots at corners / houses 2, 5, 8, 11)
+  // Assign each of the 8 outer rotational grahas to its calculated sign slot
   const jNames = ["sun", "mars", "jupiter", "mercury", "venus", "saturn", "moon", "snake"];
   jNames.forEach(name => {
     const pObj = jp[name];
     if (pObj && pObj.housedetails && pObj.housedetails.deg !== undefined) {
       const deg = ((pObj.housedetails.deg % 360) + 360) % 360;
-      const sectorIdx = Math.floor(deg / 45);
-      if (sectorIdx >= 0 && sectorIdx < 8) {
-        const slot = slotMap[sectorIdx];
+      const rasiIdx = Math.floor(deg / 30);
+      const slot = rasiSlotMap[rasiIdx];
+      if (slot) {
         const el = document.getElementById(slot.id);
         if (el) {
           el.innerText = getSlotText(pObj, slot.arrowLeft, "J.");
