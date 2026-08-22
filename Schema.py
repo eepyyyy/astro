@@ -239,6 +239,8 @@ class JamaPlanetDetails(BaseModel):
     is_retrograde: bool = True
     rasi_name_en: str
     rasi_name_sanskrit: str
+    start_deg: Optional[float] = None
+    start_deg_dms: Optional[str] = None
 
 class JamaPlanetaryCollections(BaseModel):
     sun: JamaPlanetDetails

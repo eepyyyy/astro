@@ -737,7 +737,7 @@ function renderJammaPlanetsTable(data) {
         <td>${hd.rasi} (${item.rasi_name_en})</td>
         <td>${hd.house}</td>
         <td class="mono-cell">${hd.DMS}</td>
-        <td class="mono-cell">${formatDmsTotal(hd.deg)}</td>
+        <td class="mono-cell">${item.start_deg_dms || (item.start_deg !== undefined ? formatDmsTotal(item.start_deg) : formatDmsTotal(hd.deg))}</td>
         <td>${kp.star_lord || '-'}</td>
         <td><strong>${kp.sub_lord || '-'}</strong></td>
       `;

@@ -62,13 +62,27 @@ def jamma_planets(jd: float, tz_offset: float = 5.5):
         rasi_idx = int(lon // 30)
         rasi_eng, rasi_san = RASI_NAMES_MAP[rasi_idx]
         
+        # Format starting degree DMS
+        s_deg = int(start_deg)
+        s_mnt = int((start_deg - s_deg) * 60)
+        s_sec = int(round(((start_deg - s_deg) * 60 - s_mnt) * 60))
+        if s_sec == 60:
+            s_sec = 0
+            s_mnt += 1
+        if s_mnt == 60:
+            s_mnt = 0
+            s_deg = (s_deg + 1) % 360
+        start_dms_str = f"{s_deg:03d}° {s_mnt:02d}' {s_sec:02d}\""
+
         # Instantiate JamaPlanetDetails using the HouseDetails schema (which automatically calculates KP subdivisions)
         jamma_positions[p_name.lower()] = JamaPlanetDetails(
             planet_name=p_name,
             housedetails=HouseDetails(deg=lon),
             is_retrograde=True,
             rasi_name_en=rasi_eng,
-            rasi_name_sanskrit=rasi_san
+            rasi_name_sanskrit=rasi_san,
+            start_deg=start_deg,
+            start_deg_dms=start_dms_str
         )
         
     return JamaPlanetaryCollections(**jamma_positions)
