@@ -20,6 +20,19 @@ const PLANET_SHORT_NAMES = {
   "Snake": "SN"
 };
 
+const PLANET_SYMBOLS = {
+  "Sun": "☉",
+  "Moon": "☽",
+  "Mars": "♂",
+  "Mercury": "☿",
+  "Jupiter": "♃",
+  "Venus": "♀",
+  "Saturn": "♄",
+  "Snake": "☊",
+  "Rahu": "☊",
+  "Ketu": "☋"
+};
+
 const STATE = {
   currentDateTime: new Date(),
   latitude: 12.98117,
@@ -538,11 +551,12 @@ function addChartTag(rasiIndex, text, cssClass, degInSign) {
 function renderOuterWheelSlots(jp) {
   if (!jp) return;
   
-  const getSlotText = (planetObj, arrowLeft = true, prefix = "J.") => {
+  const getSlotText = (planetObj, arrowLeft = true) => {
     if (!planetObj) return "";
     const shortCode = PLANET_SHORT_NAMES[planetObj.planet_name] || planetObj.planet_name.substr(0,2).toUpperCase();
+    const symbol = PLANET_SYMBOLS[planetObj.planet_name] || "";
     const dms = formatDmsShort(planetObj.housedetails.deg);
-    const label = `${prefix}${shortCode}`;
+    const label = symbol ? `${shortCode} ${symbol}` : shortCode;
     return arrowLeft ? `← ${label} ${dms}` : `${label} ${dms} →`;
   };
 
@@ -583,7 +597,7 @@ function renderOuterWheelSlots(jp) {
         const slot = sectorSlots[sectorIdx];
         const el = document.getElementById(slot.id);
         if (el) {
-          el.innerText = getSlotText(pObj, slot.arrowLeft, "J.");
+          el.innerText = getSlotText(pObj, slot.arrowLeft);
         }
       }
     }
