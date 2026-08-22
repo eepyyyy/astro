@@ -546,41 +546,41 @@ function renderOuterWheelSlots(jp) {
     return arrowLeft ? `← ${label} ${dms}` : `${label} ${dms} →`;
   };
 
-  // 8 Allowed Outer Wheel Rasi Signs (Boxes 2, 5, 8, 11 / Taurus, Leo, Scorpio, Aquarius are SKIPPED):
-  // Rasi 0 (Aries) -> Top of Aries (arrowLeft: true)
-  // Rasi 2 (Gemini) -> Top of Gemini (arrowLeft: true)
-  // Rasi 3 (Cancer) -> Right of Cancer (arrowLeft: false)
-  // Rasi 5 (Virgo) -> Right of Virgo (arrowLeft: false)
-  // Rasi 6 (Libra) -> Bottom of Libra (arrowLeft: false)
-  // Rasi 8 (Sagittarius) -> Bottom of Sagittarius (arrowLeft: false)
-  // Rasi 9 (Capricorn) -> Left of Capricorn (arrowLeft: true)
-  // Rasi 11 (Pisces) -> Left of Pisces (arrowLeft: true)
-  const rasiSlotMap = {
-    0: { id: "jw-top-ari", arrowLeft: true },
-    2: { id: "jw-top-gem", arrowLeft: true },
-    3: { id: "jw-right-can", arrowLeft: false },
-    5: { id: "jw-right-vir", arrowLeft: false },
-    6: { id: "jw-bottom-lib", arrowLeft: false },
-    8: { id: "jw-bottom-sag", arrowLeft: false },
-    9: { id: "jw-left-cap", arrowLeft: true },
-    11: { id: "jw-left-pis", arrowLeft: true }
-  };
+  // 8 Fixed Border Slots (Boxes 2, 5, 8, 11 / Taurus, Leo, Scorpio, Aquarius are SKIPPED):
+  // Sector 0 (0°-45°): Aries Top (←)
+  // Sector 1 (45°-90°): Gemini Top (←)
+  // Sector 2 (90°-135°): Cancer Right (→)
+  // Sector 3 (135°-180°): Virgo Right (→)
+  // Sector 4 (180°-225°): Libra Bottom (→)
+  // Sector 5 (225°-270°): Sagittarius Bottom (→)
+  // Sector 6 (270°-315°): Capricorn Left (←)
+  // Sector 7 (315°-360°): Pisces Left (←)
+  const sectorSlots = [
+    { id: "jw-top-ari", arrowLeft: true },
+    { id: "jw-top-gem", arrowLeft: true },
+    { id: "jw-right-can", arrowLeft: false },
+    { id: "jw-right-vir", arrowLeft: false },
+    { id: "jw-bottom-lib", arrowLeft: false },
+    { id: "jw-bottom-sag", arrowLeft: false },
+    { id: "jw-left-cap", arrowLeft: true },
+    { id: "jw-left-pis", arrowLeft: true }
+  ];
 
   // Clear all 8 slots first
-  Object.values(rasiSlotMap).forEach(slot => {
+  sectorSlots.forEach(slot => {
     const el = document.getElementById(slot.id);
     if (el) el.innerText = "";
   });
 
-  // Assign each of the 8 outer rotational grahas to its calculated sign slot
+  // Assign each outer rotational graha to its corresponding 45-degree sector slot
   const jNames = ["sun", "mars", "jupiter", "mercury", "venus", "saturn", "moon", "snake"];
   jNames.forEach(name => {
     const pObj = jp[name];
     if (pObj && pObj.housedetails && pObj.housedetails.deg !== undefined) {
       const deg = ((pObj.housedetails.deg % 360) + 360) % 360;
-      const rasiIdx = Math.floor(deg / 30);
-      const slot = rasiSlotMap[rasiIdx];
-      if (slot) {
+      const sectorIdx = Math.floor(deg / 45);
+      if (sectorIdx >= 0 && sectorIdx < 8) {
+        const slot = sectorSlots[sectorIdx];
         const el = document.getElementById(slot.id);
         if (el) {
           el.innerText = getSlotText(pObj, slot.arrowLeft, "J.");
