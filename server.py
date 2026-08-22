@@ -46,9 +46,11 @@ def calculate_mandi(jd: float, lat: float, lon: float, dt_local: datetime, sun_d
     jkw = (astro_weekday + 1) % 7
     is_day = (6.0 <= t < 18.0)
     
-    # Method 5 (used by Jamakkol Prasanam): Saturn Kala / Ghati relative to Sun
-    MANDI_DAY_OFFSETS = [150.0, 120.0, 210.0, 90.0, 60.0, 30.0, 180.0]
-    MANDI_NIGHT_OFFSETS = [0.0, 30.0, 120.0, 60.0, 312.0, 150.0, 210.0]
+    # Method 5 (used by Jamakkol Prasanam): Saturn Kala / Ghati relative to Sun (1 Ghati = 6°)
+    # Day Ghatis: Sun 26 (156°), Mon 22 (132°), Tue 18 (108°), Wed 14 (84°), Thu 10 (60°), Fri 6 (36°), Sat 2 (12°)
+    MANDI_DAY_OFFSETS = [156.0, 132.0, 108.0, 84.0, 60.0, 36.0, 12.0]
+    # Night Ghatis from Sunset (Sun+180°): Sun 10 (240°), Mon 6 (216°), Tue 2 (192°), Wed 26 (336°), Thu 22 (312°), Fri 18 (288°), Sat 14 (264°)
+    MANDI_NIGHT_OFFSETS = [240.0, 216.0, 192.0, 336.0, 312.0, 288.0, 264.0]
     
     offset = MANDI_DAY_OFFSETS[jkw] if is_day else MANDI_NIGHT_OFFSETS[jkw]
     mandi_deg = (sun_deg + offset) % 360.0
