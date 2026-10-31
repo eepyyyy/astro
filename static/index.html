@@ -7,441 +7,750 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/style.css?v=4.1">
+  <!-- CodeMirror 5 (Obsidian Stack Vanilla JS Editor) -->
+  <link rel="stylesheet" href="/static/vendor/codemirror/codemirror.min.css">
+  <link rel="stylesheet" href="/static/style.css?v=10.0">
 </head>
-<body>
+<body class="obsidian-dark chart-theme-classic">
 
-  <!-- 1. APP HEADER -->
-  <header class="app-header no-print">
-    <div class="header-container">
-      <div class="header-left">
-        <span class="brand-title">HORA CHART</span>
+  <div class="obsidian-app-shell">
+
+    <!-- 1. OBSIDIAN LEFT VERTICAL ICON RIBBON -->
+    <nav class="obsidian-ribbon no-print" aria-label="Workspace Ribbon">
+      <div class="ribbon-top">
+        <!-- Obsidian Gem Brand Icon -->
+        <div class="ribbon-logo" title="Jamakkol Hora Studio — Obsidian Desktop Stack (Electron + Vanilla JS + CodeMirror)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 19 8 16 22 8 22 5 8 12 2" fill="rgba(139, 92, 246, 0.25)" stroke="#a78bfa"/>
+            <polyline points="12 2 12 22" stroke="#a78bfa" stroke-width="1.4"/>
+            <polyline points="5 8 19 8" stroke="#a78bfa" stroke-width="1.4"/>
+          </svg>
+        </div>
+
+        <button class="ribbon-btn active" id="btnNavCharts" title="Dual Split Chart Studio (Top)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <line x1="12" y1="3" x2="12" y2="21"/>
+          </svg>
+        </button>
+
+        <button class="ribbon-btn active" id="btnToggleVault" title="Local Markdown Vault Explorer (.md Files)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <span class="ribbon-badge" id="vaultCountBadge">0</span>
+        </button>
+
+        <button class="ribbon-btn" id="btnNavEditor" title="CodeMirror Markdown Consultation Note Editor">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9"/>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+        </button>
+
+        <button class="ribbon-btn" id="btnNavTables" title="Planetary & KP Sub-Lords Data Tables">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <line x1="3" y1="9" x2="21" y2="9"/>
+            <line x1="3" y1="15" x2="21" y2="15"/>
+            <line x1="9" y1="9" x2="9" y2="21"/>
+          </svg>
+        </button>
+
+        <button class="ribbon-btn" id="btnCommandPalette" title="Open Command Palette (Ctrl+P / Ctrl+K)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="4 17 10 11 4 5"/>
+            <line x1="12" y1="19" x2="20" y2="19"/>
+          </svg>
+        </button>
+
+        <button class="ribbon-btn" id="btnToggleChartTheme" title="Toggle Chart Grid Style (Classic Cream vs. Obsidian Dark)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+        </button>
+
+        <button class="ribbon-btn" id="btnToggleAppTheme" title="Toggle Workspace Theme (Obsidian Dark vs. Light)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
       </div>
-      
-      <!-- HORA DISPLAY IN MIDDLE OF TOP BAR -->
-      <div class="header-middle">
-        <div class="hora-badge" id="headerHoraDisplay">
-          <span class="hora-label">Hora:</span> <span class="hora-value" id="headerHoraValue">Loading...</span>
+
+      <div class="ribbon-bottom">
+        <button class="ribbon-btn" id="btnRibbonPdf" title="Export Landscape PDF Report">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"/>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+            <rect x="6" y="14" width="12" height="8"/>
+          </svg>
+        </button>
+
+        <button class="ribbon-btn" id="btnRibbonSettings" title="Horoscope & Location Settings">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- 2. LOCAL MARKDOWN (.md) VAULT EXPLORER DRAWER -->
+    <aside class="obsidian-vault-drawer open no-print" id="vaultDrawer">
+      <div class="vault-drawer-header">
+        <span class="vault-title" id="vaultFolderNameDisplay">📁 HORARY VAULT (.md)</span>
+        <div class="vault-header-actions">
+          <button class="vault-clear-btn" id="btnSelectVaultFolder" title="Choose Local Markdown Vault Folder" style="display:none;">Folder</button>
+          <button class="vault-clear-btn" id="btnNewVaultNote" title="Save current captured chart as a new .md file in Vault">+ Save .md</button>
         </div>
       </div>
-
-      <div class="header-right">
-        <span class="system-tag">Vedic Horary System</span>
+      <div class="vault-search-box">
+        <input type="text" id="vaultSearchInput" class="vault-search-inp" placeholder="Filter .md readings in vault...">
       </div>
-    </div>
-  </header>
+      <div class="vault-sub" id="vaultFolderPathSub">Local Markdown (.md) Files on Disk — click to load chart & note:</div>
+      <div class="vault-list" id="vaultHistoryList">
+        <!-- Populated dynamically with local .md files from HoraryVault -->
+      </div>
+    </aside>
 
-  <!-- 2. MAIN CONTENT -->
-  <main class="main-content">
+    <!-- 3. MAIN WORKSPACE CONTAINER -->
+    <div class="obsidian-workspace-container">
 
-    <!-- CONTROLS & NAVIGATION TOOLBAR -->
-    <section class="toolbar-section no-print">
-      <div class="toolbar-wrapper">
-        
-        <!-- Step Navigation Controls -->
-        <div class="time-step-controls">
-          <button id="btnStepPrev" class="ctrl-btn btn-step" title="Step backward in time">-</button>
+      <!-- TOP TAB & BREADCRUMB BAR (OBSIDIAN HEADER + ELECTRON DRAG REGION) -->
+      <header class="obsidian-tabbar no-print" id="obsidianTitleBar">
+        <div class="tabbar-left">
+          <div class="obsidian-tab active">
+            <span class="tab-dot"></span>
+            <span class="tab-name" id="activeTabBreadcrumb">HoraryVault / Live Horary Split Studio.md</span>
+          </div>
+          <button class="tabbar-cmd-btn" id="btnTopCmdPalette" title="Open Command Palette (Ctrl+P)">
+            <span>⌘ Ctrl+P</span>
+          </button>
+        </div>
+
+        <div class="tabbar-center">
+          <div class="hora-badge" id="headerHoraDisplay">
+            <span class="hora-label">Live Hora:</span> <span class="hora-value" id="headerHoraValue">Loading...</span>
+          </div>
+        </div>
+
+        <div class="tabbar-right">
+          <span class="obs-status-pill ms-pill">⚡ 1ms (.mmm)</span>
+          <span class="obs-status-pill" id="stackBadgePill">Electron + CodeMirror</span>
+
+          <!-- Native Frameless Window Controls (Visible when running inside Electron) -->
+          <div class="electron-window-controls" id="electronWindowControls" style="display: none;">
+            <button class="win-ctrl-btn" id="btnWinMin" title="Minimize">—</button>
+            <button class="win-ctrl-btn" id="btnWinMax" title="Maximize / Restore">□</button>
+            <button class="win-ctrl-btn win-close-btn" id="btnWinClose" title="Close">✕</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN SCROLLABLE WORKSPACE (CHARTS IMMEDIATELY AT THE TOP) -->
+      <main class="main-content" id="topChartWorkspace">
+
+        <!-- 3-COLUMN WORKSPACE AT VERY TOP:
+             LEFT = LIVE RUNNING CHART (WITH MILLISECONDS)
+             MIDDLE = INSPECTOR, CONTROLS, VARGAS & PDF EXPORT (IN BETWEEN BOTH CHARTS)
+             RIGHT = CAPTURED HORARY CHART -->
+        <div class="workspace-grid tri-column-workspace" id="mainWorkspaceGrid">
           
-          <select id="stepUnit" class="ctrl-select" title="Select time step duration">
-            <option value="1m">1 Minute</option>
-            <option value="5m">5 Minutes</option>
-            <option value="15m">15 Minutes</option>
-            <option value="1j">1 Jamam (90m)</option>
-            <option value="1h">1 Hour</option>
-            <option value="1d" selected>Day</option>
-            <option value="1mo">1 Month</option>
-            <option value="1y">1 Year</option>
-          </select>
-          
-          <button id="btnStepNext" class="ctrl-btn btn-step" title="Step forward in time">+</button>
-          <button id="btnNow" class="ctrl-btn btn-primary" title="Jump to current real time">Now</button>
-        </div>
-
-        <!-- Traditional Date & Time Input Fields -->
-        <div class="direct-datetime-group">
-          <div class="field-item">
-            <label class="field-lbl">Day</label>
-            <input type="number" id="inpDay" class="num-input day-inp" min="1" max="31" value="21">
-          </div>
-          <div class="field-item">
-            <label class="field-lbl">Month</label>
-            <select id="inpMonth" class="ctrl-select month-select">
-              <option value="0">Jan</option>
-              <option value="1">Feb</option>
-              <option value="2">Mar</option>
-              <option value="3">Apr</option>
-              <option value="4">May</option>
-              <option value="5">Jun</option>
-              <option value="6">Jul</option>
-              <option value="7" selected>Aug</option>
-              <option value="8">Sep</option>
-              <option value="9">Oct</option>
-              <option value="10">Nov</option>
-              <option value="11">Dec</option>
-            </select>
-          </div>
-          <div class="field-item">
-            <label class="field-lbl">Year</label>
-            <input type="number" id="inpYear" class="num-input year-inp" min="1900" max="2100" value="2026">
-          </div>
-          <div class="field-item">
-            <label class="field-lbl">Time</label>
-            <input type="time" id="inpTime" class="time-inp" step="1" value="00:43:00">
-          </div>
-        </div>
-
-        <!-- Location Field Direct -->
-        <div class="direct-location-group">
-          <div class="field-item loc-item">
-            <label class="field-lbl">Location</label>
-            <input type="text" id="inpCityToolbar" class="city-toolbar-inp" placeholder="e.g. Bengaluru, India" value="Bedarahalli, Bengaluru, Karnataka">
-          </div>
-        </div>
-
-        <!-- Action Icons -->
-        <div class="action-icons-group">
-          <button id="btnGps" class="ctrl-icon-btn active-pulse" title="Auto-Detect GPS Location">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-              <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
-            </svg>
-            <span class="btn-label">GPS</span>
-          </button>
-
-          <button id="btnDatePicker" class="ctrl-icon-btn" title="Pick Date & Time">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-              <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 4h-2v-2h2v2zm4 4h-2v-2h2v2z"/>
-            </svg>
-            <span class="btn-label">Date</span>
-          </button>
-
-          <button id="btnToolbarPdf" class="ctrl-icon-btn" title="Export Landscape PDF Report">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-              <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
-            </svg>
-            <span class="btn-label">PDF</span>
-          </button>
-
-          <button id="btnSettings" class="ctrl-icon-btn" title="Settings & Parameters">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-              <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
-            </svg>
-            <span class="btn-label">Settings</span>
-          </button>
-        </div>
-
-      </div>
-
-      <!-- Hidden Datetime Input for Native Picker with seconds precision -->
-      <input type="datetime-local" id="hiddenDateTimeInput" step="1" style="position: absolute; opacity: 0; pointer-events: none;">
-    </section>
-
-    <!-- ACTIVE FORMATTED TIMESTAMP HEADER -->
-    <div class="active-time-banner no-print">
-      <h2 id="displayFormattedTime">Loading Horoscope...</h2>
-      <div id="displayLocationSub" class="location-badge">Detecting Location...</div>
-    </div>
-
-    <!-- VIEW SELECTOR BAR -->
-    <div class="view-selector-bar no-print">
-      <div class="view-tabs">
-        <button class="view-tab active" data-varga="main">Hora Chart</button>
-        <button class="view-tab" data-varga="d1">D-1 Rasi</button>
-        <button class="view-tab" data-varga="d9">D-9 Navamsha</button>
-        <button class="view-tab" data-varga="d10">D-10 Dasamsha</button>
-        <button class="view-tab" data-varga="d60">D-60 Shashtiamsha</button>
-        <button class="view-tab" data-varga="d150">D-150 Nadiamsa</button>
-      </div>
-
-      <div class="varga-dropdown-container">
-        <label for="allVargasSelect">All 26 Vargas:</label>
-        <select id="allVargasSelect" class="ctrl-select varga-select">
-          <option value="main">-- Select Divisional Chart --</option>
-          <option value="d1">D-1 Rasi (General / Self)</option>
-          <option value="d2">D-2 Hora (Wealth)</option>
-          <option value="d3">D-3 Drekkana (Siblings / Courage)</option>
-          <option value="d4">D-4 Chaturthamsa (Property / Home)</option>
-          <option value="d5">D-5 Panchamsha (Spiritual Prowess)</option>
-          <option value="d6">D-6 Shashtamsha (Health / Enemies)</option>
-          <option value="d7">D-7 Saptamsha (Children / Progeny)</option>
-          <option value="d8">D-8 Ashtamsha (Longevity / Occult)</option>
-          <option value="d9">D-9 Navamsha (Marriage / Dharma)</option>
-          <option value="d10">D-10 Dasamsha (Career & Fame)</option>
-          <option value="d11">D-11 Rudramsha (Arishta / Victory)</option>
-          <option value="d12">D-12 Dwadasamsha (Parents & Ancestry)</option>
-          <option value="d16">D-16 Shodashamsha (Vehicles & Luxury)</option>
-          <option value="d20">D-20 Vimsamsha (Upasana & Meditation)</option>
-          <option value="d24">D-24 Siddhamsa (Higher Learning)</option>
-          <option value="d27">D-27 Saptavimsamsha (Strength / Vitality)</option>
-          <option value="d30">D-30 Trimsamsha (Misfortunes / Evils)</option>
-          <option value="d40">D-40 Khavedamsha (Auspicious Effects)</option>
-          <option value="d45">D-45 Akshavedamsha (Moral Character)</option>
-          <option value="d60">D-60 Shashtiamsha (Root Past Karma)</option>
-          <option value="d72">D-72 Ashtamamsha (Subtle Vitality)</option>
-          <option value="d81">D-81 Nava-Navamsha (Soul Refinement)</option>
-          <option value="d108">D-108 Ashtottaramsa (Sacred Destiny)</option>
-          <option value="d144">D-144 Dwadasa-Dwadasamsha (Genetic Code)</option>
-          <option value="d150">D-150 Nadiamsa (Exact Palm Leaf Line)</option>
-          <option value="d300">D-300 Ardha-Nadiamsa (Micro-Subtle Nadi)</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- 2-COLUMN WORKSPACE: CHART ON LEFT, EXPORT DIALOG RIGHT NEXT TO IT -->
-    <div class="workspace-grid" id="mainWorkspaceGrid">
-      
-      <!-- LEFT: SOUTH INDIAN HORA CHART CANVAS -->
-      <section class="chart-canvas-wrapper" id="chartExportContainer">
-        <div class="jamakkol-chart-frame" id="mainChartFrame">
-
-          <!-- Outer Planet Border Annotations (TOP) -->
-          <div class="jamma-slot slot-top-ari" id="jw-top-ari"></div>
-          <div class="jamma-slot slot-top-gem" id="jw-top-gem"></div>
-
-          <!-- Outer Planet Border Annotations (LEFT) -->
-          <div class="jamma-slot slot-left-pis" id="jw-left-pis"></div>
-          <div class="jamma-slot slot-left-cap" id="jw-left-cap"></div>
-
-          <!-- Inner 12 Rasi South Indian Grid -->
-          <div class="south-indian-grid">
-            
-            <!-- Rasi 11: Pisces (Pis) -->
-            <div class="rasi-cell cell-pis" data-rasi-idx="11" data-rasi-name="Pisces">
-              <div class="rasi-code">Pis</div>
-              <div class="cell-planets" id="cell-planets-11"></div>
-              <div class="cell-house-num" id="cell-house-11">4</div>
-            </div>
-
-            <!-- Rasi 0: Aries (Ari) -->
-            <div class="rasi-cell cell-ari" data-rasi-idx="0" data-rasi-name="Aries">
-              <div class="rasi-code">Ari</div>
-              <div class="cell-planets" id="cell-planets-0"></div>
-              <div class="cell-house-num" id="cell-house-0">5</div>
-            </div>
-
-            <!-- Rasi 1: Taurus (Tau) -->
-            <div class="rasi-cell cell-tau" data-rasi-idx="1" data-rasi-name="Taurus">
-              <div class="rasi-code">Tau</div>
-              <div class="cell-planets" id="cell-planets-1"></div>
-              <div class="cell-house-num" id="cell-house-1">6</div>
-            </div>
-
-            <!-- Rasi 2: Gemini (Gem) -->
-            <div class="rasi-cell cell-gem" data-rasi-idx="2" data-rasi-name="Gemini">
-              <div class="rasi-code">Gem</div>
-              <div class="cell-planets" id="cell-planets-2"></div>
-              <div class="cell-house-num" id="cell-house-2">7</div>
-            </div>
-
-            <!-- Rasi 10: Aquarius (Aqu) -->
-            <div class="rasi-cell cell-aqu" data-rasi-idx="10" data-rasi-name="Aquarius">
-              <div class="rasi-code">Aqu</div>
-              <div class="cell-planets" id="cell-planets-10"></div>
-              <div class="cell-house-num" id="cell-house-10">3</div>
-            </div>
-
-            <!-- CENTER INFORMATION BOX -->
-            <div class="rasi-center-box">
-              <div class="center-content">
-                <div class="horary-title" id="centerJamamTitle">HORA CHART, Thursday Jamam # 4</div>
-                <div class="horary-time" id="centerTimeSubtitle">Thursday, 20-Aug-2026 11:19:08 PM (UTC+05:30)</div>
-                <div class="horary-loc" id="centerLocationSubtitle">Bedarahalli, Bengaluru, Karnataka 560091<br><span id="centerCoords">12.98117 / 77.48509</span></div>
-                
-                <!-- 2-Column Planetary Degrees List (Sorted by Degree within sign) -->
-                <div class="center-degrees-grid" id="centerDegreesList">
-                  <div class="deg-col-left" id="degColLeft"></div>
-                  <div class="deg-col-right" id="degColRight"></div>
-                </div>
+          <!-- ====================================================================
+               LEFT SIDE: LIVE RUNNING CHART (RUNS CONSTANTLY WITH EXACT .mmm TIME)
+               CLICK ANYWHERE ON THIS CHART TO CAPTURE EXACT MOMENT TO THE RIGHT
+               ==================================================================== -->
+          <section class="chart-column live-chart-column no-print" id="liveChartColumn">
+            <div class="chart-panel-bar live-panel-bar">
+              <div class="panel-bar-left">
+                <span class="live-pulse-dot"></span>
+                <span class="panel-bar-title">LIVE RUNNING</span>
+                <span class="panel-bar-time" id="liveHeaderClock">--:--:--.---</span>
+              </div>
+              <div class="panel-bar-right">
+                <span class="click-to-capture-pill">👆 Click chart to capture .ms →</span>
               </div>
             </div>
 
-            <!-- Rasi 3: Cancer (Can) -->
-            <div class="rasi-cell cell-can" data-rasi-idx="3" data-rasi-name="Cancer">
-              <div class="rasi-code">Can</div>
-              <div class="cell-planets" id="cell-planets-3"></div>
-              <div class="cell-house-num" id="cell-house-3">8</div>
+            <div class="chart-canvas-wrapper">
+              <div class="jamakkol-chart-frame live-interactive-frame" id="liveChartFrame" title="Click anywhere on this Live Chart to capture this exact millisecond moment onto the Right Chart">
+
+                <!-- Outer Planet Border Annotations (TOP) -->
+                <div class="jamma-slot slot-top-ari" id="live-jw-top-ari"></div>
+                <div class="jamma-slot slot-top-gem" id="live-jw-top-gem"></div>
+
+                <!-- Outer Planet Border Annotations (LEFT) -->
+                <div class="jamma-slot slot-left-pis" id="live-jw-left-pis"></div>
+                <div class="jamma-slot slot-left-cap" id="live-jw-left-cap"></div>
+
+                <!-- Inner 12 Rasi South Indian Grid -->
+                <div class="south-indian-grid">
+                  
+                  <!-- Rasi 11: Pisces (Pis) -->
+                  <div class="rasi-cell cell-pis" data-rasi-idx="11" data-rasi-name="Pisces">
+                    <div class="rasi-code">Pis</div>
+                    <div class="cell-planets" id="live-cell-planets-11"></div>
+                    <div class="cell-house-num" id="live-cell-house-11">4</div>
+                  </div>
+
+                  <!-- Rasi 0: Aries (Ari) -->
+                  <div class="rasi-cell cell-ari" data-rasi-idx="0" data-rasi-name="Aries">
+                    <div class="rasi-code">Ari</div>
+                    <div class="cell-planets" id="live-cell-planets-0"></div>
+                    <div class="cell-house-num" id="live-cell-house-0">5</div>
+                  </div>
+
+                  <!-- Rasi 1: Taurus (Tau) -->
+                  <div class="rasi-cell cell-tau" data-rasi-idx="1" data-rasi-name="Taurus">
+                    <div class="rasi-code">Tau</div>
+                    <div class="cell-planets" id="live-cell-planets-1"></div>
+                    <div class="cell-house-num" id="live-cell-house-1">6</div>
+                  </div>
+
+                  <!-- Rasi 2: Gemini (Gem) -->
+                  <div class="rasi-cell cell-gem" data-rasi-idx="2" data-rasi-name="Gemini">
+                    <div class="rasi-code">Gem</div>
+                    <div class="cell-planets" id="live-cell-planets-2"></div>
+                    <div class="cell-house-num" id="live-cell-house-2">7</div>
+                  </div>
+
+                  <!-- Rasi 10: Aquarius (Aqu) -->
+                  <div class="rasi-cell cell-aqu" data-rasi-idx="10" data-rasi-name="Aquarius">
+                    <div class="rasi-code">Aqu</div>
+                    <div class="cell-planets" id="live-cell-planets-10"></div>
+                    <div class="cell-house-num" id="live-cell-house-10">3</div>
+                  </div>
+
+                  <!-- CENTER INFORMATION BOX (LIVE) -->
+                  <div class="rasi-center-box">
+                    <div class="center-content">
+                      <div class="horary-title" id="live-centerJamamTitle">HORA CHART [LIVE]</div>
+                      <div class="horary-time" id="live-centerTimeSubtitle">Loading live time...</div>
+                      <div class="horary-loc" id="live-centerLocationSubtitle">Bedarahalli, Bengaluru, Karnataka 560091<br><span id="live-centerCoords">12.98117 / 77.48509</span></div>
+                      
+                      <!-- 2-Column Planetary Degrees List (Sorted by Degree) -->
+                      <div class="center-degrees-grid" id="live-centerDegreesList">
+                        <div class="deg-col-left" id="live-degColLeft"></div>
+                        <div class="deg-col-right" id="live-degColRight"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Rasi 3: Cancer (Can) -->
+                  <div class="rasi-cell cell-can" data-rasi-idx="3" data-rasi-name="Cancer">
+                    <div class="rasi-code">Can</div>
+                    <div class="cell-planets" id="live-cell-planets-3"></div>
+                    <div class="cell-house-num" id="live-cell-house-3">8</div>
+                  </div>
+
+                  <!-- Rasi 9: Capricorn (Cap) -->
+                  <div class="rasi-cell cell-cap" data-rasi-idx="9" data-rasi-name="Capricorn">
+                    <div class="rasi-code">Cap</div>
+                    <div class="cell-planets" id="live-cell-planets-9"></div>
+                    <div class="cell-house-num" id="live-cell-house-9">2</div>
+                  </div>
+
+                  <!-- Rasi 4: Leo (Leo) -->
+                  <div class="rasi-cell cell-leo" data-rasi-idx="4" data-rasi-name="Leo">
+                    <div class="rasi-code">Leo</div>
+                    <div class="cell-planets" id="live-cell-planets-4"></div>
+                    <div class="cell-house-num" id="live-cell-house-4">9</div>
+                  </div>
+
+                  <!-- Rasi 8: Sagittarius (Sag) -->
+                  <div class="rasi-cell cell-sag" data-rasi-idx="8" data-rasi-name="Sagittarius">
+                    <div class="rasi-code">Sag</div>
+                    <div class="cell-planets" id="live-cell-planets-8"></div>
+                    <div class="cell-house-num" id="live-cell-house-8">1</div>
+                  </div>
+
+                  <!-- Rasi 7: Scorpio (Sco) -->
+                  <div class="rasi-cell cell-sco" data-rasi-idx="7" data-rasi-name="Scorpio">
+                    <div class="rasi-code">Sco</div>
+                    <div class="cell-planets" id="live-cell-planets-7"></div>
+                    <div class="cell-house-num" id="live-cell-house-7">12</div>
+                  </div>
+
+                  <!-- Rasi 6: Libra (Lib) -->
+                  <div class="rasi-cell cell-lib" data-rasi-idx="6" data-rasi-name="Libra">
+                    <div class="rasi-code">Lib</div>
+                    <div class="cell-planets" id="live-cell-planets-6"></div>
+                    <div class="cell-house-num" id="live-cell-house-6">11</div>
+                  </div>
+
+                  <!-- Rasi 5: Virgo (Vir) -->
+                  <div class="rasi-cell cell-vir" data-rasi-idx="5" data-rasi-name="Virgo">
+                    <div class="rasi-code">Vir</div>
+                    <div class="cell-planets" id="live-cell-planets-5"></div>
+                    <div class="cell-house-num" id="live-cell-house-5">10</div>
+                  </div>
+
+                </div>
+
+                <!-- Outer Planet Border Annotations (RIGHT) -->
+                <div class="jamma-slot slot-right-can" id="live-jw-right-can"></div>
+                <div class="jamma-slot slot-right-vir" id="live-jw-right-vir"></div>
+
+                <!-- Outer Planet Border Annotations (BOTTOM) -->
+                <div class="jamma-slot slot-bottom-sag" id="live-jw-bottom-sag"></div>
+                <div class="jamma-slot slot-bottom-lib" id="live-jw-bottom-lib"></div>
+
+              </div>
             </div>
+          </section>
 
-            <!-- Rasi 9: Capricorn (Cap) -->
-            <div class="rasi-cell cell-cap" data-rasi-idx="9" data-rasi-name="Capricorn">
-              <div class="rasi-code">Cap</div>
-              <div class="cell-planets" id="cell-planets-9"></div>
-              <div class="cell-house-num" id="cell-house-9">2</div>
-            </div>
-
-            <!-- Rasi 4: Leo (Leo) -->
-            <div class="rasi-cell cell-leo" data-rasi-idx="4" data-rasi-name="Leo">
-              <div class="rasi-code">Leo</div>
-              <div class="cell-planets" id="cell-planets-4"></div>
-              <div class="cell-house-num" id="cell-house-4">9</div>
-            </div>
-
-            <!-- Rasi 8: Sagittarius (Sag) -->
-            <div class="rasi-cell cell-sag" data-rasi-idx="8" data-rasi-name="Sagittarius">
-              <div class="rasi-code">Sag</div>
-              <div class="cell-planets" id="cell-planets-8"></div>
-              <div class="cell-house-num" id="cell-house-8">1</div>
-            </div>
-
-            <!-- Rasi 7: Scorpio (Sco) -->
-            <div class="rasi-cell cell-sco" data-rasi-idx="7" data-rasi-name="Scorpio">
-              <div class="rasi-code">Sco</div>
-              <div class="cell-planets" id="cell-planets-7"></div>
-              <div class="cell-house-num" id="cell-house-7">12</div>
-            </div>
-
-            <!-- Rasi 6: Libra (Lib) -->
-            <div class="rasi-cell cell-lib" data-rasi-idx="6" data-rasi-name="Libra">
-              <div class="rasi-code">Lib</div>
-              <div class="cell-planets" id="cell-planets-6"></div>
-              <div class="cell-house-num" id="cell-house-6">11</div>
-            </div>
-
-            <!-- Rasi 5: Virgo (Vir) -->
-            <div class="rasi-cell cell-vir" data-rasi-idx="5" data-rasi-name="Virgo">
-              <div class="rasi-code">Vir</div>
-              <div class="cell-planets" id="cell-planets-5"></div>
-              <div class="cell-house-num" id="cell-house-5">10</div>
-            </div>
-
-          </div>
-
-          <!-- Outer Planet Border Annotations (RIGHT) -->
-          <div class="jamma-slot slot-right-can" id="jw-right-can"></div>
-          <div class="jamma-slot slot-right-vir" id="jw-right-vir"></div>
-
-          <!-- Outer Planet Border Annotations (BOTTOM) -->
-          <div class="jamma-slot slot-bottom-sag" id="jw-bottom-sag"></div>
-          <div class="jamma-slot slot-bottom-lib" id="jw-bottom-lib"></div>
-
-        </div>
-      </section>
-
-      <!-- RIGHT: EXPORT DIALOG BOX RIGHT NEXT TO THE CHART -->
-      <aside class="chart-details-panel no-print">
-        <div class="card-panel export-panel-card">
-          <div class="card-header">
-            <h3>Chart Details & PDF Export</h3>
-          </div>
-          <div class="panel-body">
-            <div class="form-group">
-              <label for="clientNameInput">Person / Querent Name:</label>
-              <input type="text" id="clientNameInput" class="form-control" placeholder="e.g. Rajagopal" value="Rajagopal">
-            </div>
-
-            <div class="form-group">
-              <label for="clientNotesInput">Query / Notes / Description:</label>
-              <textarea id="clientNotesInput" class="form-control textarea-notes" rows="4" placeholder="e.g. Horary inquiry regarding career & new business expansion..."></textarea>
-            </div>
-
-            <div class="export-actions-row">
-              <button id="btnSavePdf" class="ctrl-btn btn-save-export btn-primary">
-                Save / Export Landscape PDF
+          <!-- ====================================================================
+               MIDDLE COLUMN (IN BETWEEN BOTH CHARTS):
+               OBSIDIAN INSPECTOR: CAPTURE, .ms CONTROLS, VARGAS & PDF EXPORT
+               ==================================================================== -->
+          <aside class="center-controls-column no-print" id="centerControlsColumn">
+            
+            <!-- 1. Active Captured Timestamp & Quick Capture Button -->
+            <div class="mid-card mid-status-card">
+              <button id="btnNow" class="ctrl-btn btn-primary btn-capture-main" title="Capture exact current millisecond moment to Right Chart & Local Markdown Vault">
+                ⚡ Capture Exact Millisecond →
               </button>
+              <div id="displayFormattedTime" class="mid-timestamp-text">Loading Horoscope...</div>
+              <div id="displayLocationSub" class="location-badge">Detecting Location...</div>
             </div>
-            <div class="export-hint">Prints a clean single-page landscape PDF with chart on left and formatted degrees on right.</div>
-          </div>
-        </div>
-      </aside>
 
-      <!-- PRINT-ONLY LANDSCAPE RIGHT SIDE PANEL (APPEARS IN PDF PRINT ONLY) -->
-      <div class="print-right-panel theme-red-yellow" id="printLandscapeRightSide">
-        
-        <!-- TOP: CLIENT & HORARY DETAILS BOX -->
-        <div class="print-meta-box theme-box">
-          <div class="print-meta-header">
-            <h2 id="printReportTitle">HORA CHART REPORT</h2>
-            <div class="print-system-tag">Vedic Horary System</div>
-          </div>
-          
-          <div class="print-details-grid">
-            <div class="meta-row"><strong>Name / Querent:</strong> <span id="printNameDisplay">Rajagopal</span></div>
-            <div class="meta-row"><strong>Date & Time:</strong> <span id="printDateTimeDisplay">20-Aug-2026 11:57:00 PM</span></div>
-            <div class="meta-row"><strong>Location:</strong> <span id="printLocDisplay">Bengaluru, Karnataka</span></div>
-            <div class="meta-row"><strong>Jamam & Hora:</strong> <span id="printJamamHoraDisplay">Thursday Jamam # 4 | Hora: Venus</span></div>
-            <div class="meta-row"><strong>Ayanamsa:</strong> <span id="printAyaDisplay">Lahiri 24° 12' 36"</span></div>
-            <div class="meta-row query-row" id="printQueryRow"><strong>Query / Notes:</strong> <span id="printNotesDisplay">-</span></div>
-          </div>
-        </div>
+            <!-- 2. Time Stepping (with 100ms & 1s), Date/Time & Location Controls -->
+            <div class="mid-card mid-toolbar-card">
+              <div class="mid-card-title">Time & Location Inspector</div>
+              
+              <!-- Step Navigation -->
+              <div class="time-step-controls">
+                <button id="btnStepPrev" class="ctrl-btn btn-step" title="Step captured chart backward">-</button>
+                <select id="stepUnit" class="ctrl-select step-select-mid" title="Select time step duration">
+                  <option value="100ms">100 Milliseconds</option>
+                  <option value="1s">1 Second</option>
+                  <option value="1m">1 Minute</option>
+                  <option value="5m">5 Minutes</option>
+                  <option value="15m">15 Minutes</option>
+                  <option value="1j">1 Jamam (90m)</option>
+                  <option value="1h">1 Hour</option>
+                  <option value="1d" selected>1 Day</option>
+                  <option value="1mo">1 Month</option>
+                  <option value="1y">1 Year</option>
+                </select>
+                <button id="btnStepNext" class="ctrl-btn btn-step" title="Step captured chart forward">+</button>
+              </div>
 
-        <!-- BOTTOM: FULL DETAILS 2-PART DEGREES BOX WITH PRECISE GRID SPACING -->
-        <div class="print-degrees-box theme-box">
-          <div class="print-box-title">Planetary & Special Point Degrees</div>
-          <div class="print-degrees-2col">
-            <div class="print-deg-col" id="printColLeft">
-              <!-- Left Column: ASC, MA, md, JU, AR, ME, SU with Sign, House, DMS, Nakshatra, KP Sub-Lord -->
+              <!-- Date & Time Direct Inputs -->
+              <div class="direct-datetime-group">
+                <div class="field-item">
+                  <label class="field-lbl">Day</label>
+                  <input type="number" id="inpDay" class="num-input day-inp" min="1" max="31" value="31">
+                </div>
+                <div class="field-item">
+                  <label class="field-lbl">Month</label>
+                  <select id="inpMonth" class="ctrl-select month-select">
+                    <option value="0">Jan</option>
+                    <option value="1">Feb</option>
+                    <option value="2">Mar</option>
+                    <option value="3">Apr</option>
+                    <option value="4">May</option>
+                    <option value="5">Jun</option>
+                    <option value="6">Jul</option>
+                    <option value="7">Aug</option>
+                    <option value="8">Sep</option>
+                    <option value="9" selected>Oct</option>
+                    <option value="10">Nov</option>
+                    <option value="11">Dec</option>
+                  </select>
+                </div>
+                <div class="field-item">
+                  <label class="field-lbl">Year</label>
+                  <input type="number" id="inpYear" class="num-input year-inp" min="1900" max="2100" value="2026">
+                </div>
+                <div class="field-item field-time-full">
+                  <label class="field-lbl">Time (.ms)</label>
+                  <input type="time" id="inpTime" class="time-inp" step="0.001" value="18:30:00.000">
+                </div>
+              </div>
+
+              <!-- Location & Quick Action Buttons -->
+              <div class="mid-location-row">
+                <input type="text" id="inpCityToolbar" class="city-toolbar-inp" placeholder="Location (e.g. Bengaluru)" value="Bedarahalli, Bengaluru, Karnataka">
+              </div>
+
+              <div class="action-icons-group">
+                <button id="btnGps" class="ctrl-icon-btn active-pulse" title="Auto-Detect GPS Location">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                    <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                  </svg>
+                  <span>GPS</span>
+                </button>
+
+                <button id="btnDatePicker" class="ctrl-icon-btn" title="Pick Date & Time">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                    <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 4h-2v-2h2v2zm4 4h-2v-2h2v2z"/>
+                  </svg>
+                  <span>Date</span>
+                </button>
+
+                <button id="btnToolbarPdf" class="ctrl-icon-btn" title="Export Landscape PDF Report">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                    <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+                  </svg>
+                  <span>PDF</span>
+                </button>
+
+                <button id="btnSettings" class="ctrl-icon-btn" title="Settings & Parameters">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                    <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                  </svg>
+                  <span>Cfg</span>
+                </button>
+              </div>
+              <input type="datetime-local" id="hiddenDateTimeInput" step="0.001" style="position: absolute; opacity: 0; pointer-events: none;">
             </div>
-            <div class="print-deg-col" id="printColRight">
-              <!-- Right Column: KE, KV, VE, MO, UD, RA, SA with Sign, House, DMS, Nakshatra, KP Sub-Lord -->
+
+            <!-- 3. Divisional Chart (Varga) Selector -->
+            <div class="mid-card mid-varga-card">
+              <div class="mid-card-title">Divisional View (Captured Chart)</div>
+              <div class="view-tabs">
+                <button class="view-tab active" data-varga="main">Hora</button>
+                <button class="view-tab" data-varga="d1">D-1</button>
+                <button class="view-tab" data-varga="d9">D-9</button>
+                <button class="view-tab" data-varga="d10">D-10</button>
+                <button class="view-tab" data-varga="d60">D-60</button>
+                <button class="view-tab" data-varga="d150">D-150</button>
+              </div>
+              <select id="allVargasSelect" class="ctrl-select varga-select-mid">
+                <option value="main">-- All 26 Vargas (Hora Chart) --</option>
+                <option value="d1">D-1 Rasi (General / Self)</option>
+                <option value="d2">D-2 Hora (Wealth)</option>
+                <option value="d3">D-3 Drekkana (Siblings / Courage)</option>
+                <option value="d4">D-4 Chaturthamsa (Property / Home)</option>
+                <option value="d5">D-5 Panchamsha (Spiritual Prowess)</option>
+                <option value="d6">D-6 Shashtamsha (Health / Enemies)</option>
+                <option value="d7">D-7 Saptamsha (Children / Progeny)</option>
+                <option value="d8">D-8 Ashtamsha (Longevity / Occult)</option>
+                <option value="d9">D-9 Navamsha (Marriage / Dharma)</option>
+                <option value="d10">D-10 Dasamsha (Career & Fame)</option>
+                <option value="d11">D-11 Rudramsha (Arishta / Victory)</option>
+                <option value="d12">D-12 Dwadasamsha (Parents & Ancestry)</option>
+                <option value="d16">D-16 Shodashamsha (Vehicles & Luxury)</option>
+                <option value="d20">D-20 Vimsamsha (Upasana & Meditation)</option>
+                <option value="d24">D-24 Siddhamsa (Higher Learning)</option>
+                <option value="d27">D-27 Saptavimsamsha (Strength / Vitality)</option>
+                <option value="d30">D-30 Trimsamsha (Misfortunes / Evils)</option>
+                <option value="d40">D-40 Khavedamsha (Auspicious Effects)</option>
+                <option value="d45">D-45 Akshavedamsha (Moral Character)</option>
+                <option value="d60">D-60 Shashtiamsha (Root Past Karma)</option>
+                <option value="d72">D-72 Ashtamamsha (Subtle Vitality)</option>
+                <option value="d81">D-81 Nava-Navamsha (Soul Refinement)</option>
+                <option value="d108">D-108 Ashtottaramsa (Sacred Destiny)</option>
+                <option value="d144">D-144 Dwadasa-Dwadasamsha (Genetic Code)</option>
+                <option value="d150">D-150 Nadiamsa (Exact Palm Leaf Line)</option>
+                <option value="d300">D-300 Ardha-Nadiamsa (Micro-Subtle Nadi)</option>
+              </select>
             </div>
+
+            <!-- 4. Chart Details, Local .md Vault Save & Landscape PDF Export -->
+            <div class="mid-card mid-export-card">
+              <div class="mid-card-title">Vault Note & PDF Export</div>
+              <div class="form-group">
+                <label for="clientNameInput">Person / Querent Name:</label>
+                <input type="text" id="clientNameInput" class="form-control" placeholder="e.g. Rajagopal" value="Rajagopal">
+              </div>
+              <div class="form-group">
+                <label for="clientNotesInput">Query / Short Summary:</label>
+                <textarea id="clientNotesInput" class="form-control textarea-notes" rows="2" placeholder="Horary inquiry summary..."></textarea>
+              </div>
+              <div class="export-btn-row">
+                <button id="btnSaveMarkdownVault" class="ctrl-btn btn-secondary btn-vault-save" title="Save captured chart and CodeMirror notes to local .md file in HoraryVault">
+                  💾 Save .md to Vault
+                </button>
+                <button id="btnSavePdf" class="ctrl-btn btn-save-export btn-primary" title="Export Single-Page Landscape PDF with exact millisecond filename">
+                  📄 Export PDF
+                </button>
+              </div>
+            </div>
+
+          </aside>
+
+          <!-- ====================================================================
+               RIGHT SIDE: CAPTURED / SNAPSHOT HORARY CHART
+               POPULATED WHEN CLICKING THE LIVE RUNNING CHART OR USING CONTROLS
+               ==================================================================== -->
+          <section class="chart-column captured-chart-column" id="chartExportContainer">
+            <div class="chart-panel-bar captured-panel-bar no-print">
+              <div class="panel-bar-left">
+                <span class="captured-badge-icon">📌</span>
+                <span class="panel-bar-title">CAPTURED</span>
+                <span class="panel-bar-time" id="capturedHeaderClock">Captured Moment</span>
+              </div>
+              <div class="panel-bar-right">
+                <span class="varga-active-pill" id="capturedVargaBadge">Hora Chart</span>
+              </div>
+            </div>
+
+            <div class="chart-canvas-wrapper">
+              <div class="jamakkol-chart-frame" id="mainChartFrame">
+
+                <!-- Outer Planet Border Annotations (TOP) -->
+                <div class="jamma-slot slot-top-ari" id="jw-top-ari"></div>
+                <div class="jamma-slot slot-top-gem" id="jw-top-gem"></div>
+
+                <!-- Outer Planet Border Annotations (LEFT) -->
+                <div class="jamma-slot slot-left-pis" id="jw-left-pis"></div>
+                <div class="jamma-slot slot-left-cap" id="jw-left-cap"></div>
+
+                <!-- Inner 12 Rasi South Indian Grid -->
+                <div class="south-indian-grid">
+                  
+                  <!-- Rasi 11: Pisces (Pis) -->
+                  <div class="rasi-cell cell-pis" data-rasi-idx="11" data-rasi-name="Pisces">
+                    <div class="rasi-code">Pis</div>
+                    <div class="cell-planets" id="cell-planets-11"></div>
+                    <div class="cell-house-num" id="cell-house-11">4</div>
+                  </div>
+
+                  <!-- Rasi 0: Aries (Ari) -->
+                  <div class="rasi-cell cell-ari" data-rasi-idx="0" data-rasi-name="Aries">
+                    <div class="rasi-code">Ari</div>
+                    <div class="cell-planets" id="cell-planets-0"></div>
+                    <div class="cell-house-num" id="cell-house-0">5</div>
+                  </div>
+
+                  <!-- Rasi 1: Taurus (Tau) -->
+                  <div class="rasi-cell cell-tau" data-rasi-idx="1" data-rasi-name="Taurus">
+                    <div class="rasi-code">Tau</div>
+                    <div class="cell-planets" id="cell-planets-1"></div>
+                    <div class="cell-house-num" id="cell-house-1">6</div>
+                  </div>
+
+                  <!-- Rasi 2: Gemini (Gem) -->
+                  <div class="rasi-cell cell-gem" data-rasi-idx="2" data-rasi-name="Gemini">
+                    <div class="rasi-code">Gem</div>
+                    <div class="cell-planets" id="cell-planets-2"></div>
+                    <div class="cell-house-num" id="cell-house-2">7</div>
+                  </div>
+
+                  <!-- Rasi 10: Aquarius (Aqu) -->
+                  <div class="rasi-cell cell-aqu" data-rasi-idx="10" data-rasi-name="Aquarius">
+                    <div class="rasi-code">Aqu</div>
+                    <div class="cell-planets" id="cell-planets-10"></div>
+                    <div class="cell-house-num" id="cell-cell-house-10">3</div>
+                  </div>
+
+                  <!-- CENTER INFORMATION BOX (CAPTURED) -->
+                  <div class="rasi-center-box">
+                    <div class="center-content">
+                      <div class="horary-title" id="centerJamamTitle">HORA CHART, Thursday Jamam # 4</div>
+                      <div class="horary-time" id="centerTimeSubtitle">Thursday, 20-Aug-2026 11:19:08.000 PM (UTC+05:30)</div>
+                      <div class="horary-loc" id="centerLocationSubtitle">Bedarahalli, Bengaluru, Karnataka 560091<br><span id="centerCoords">12.98117 / 77.48509</span></div>
+                      
+                      <!-- 2-Column Planetary Degrees List (Sorted by Degree within sign) -->
+                      <div class="center-degrees-grid" id="centerDegreesList">
+                        <div class="deg-col-left" id="degColLeft"></div>
+                        <div class="deg-col-right" id="degColRight"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Rasi 3: Cancer (Can) -->
+                  <div class="rasi-cell cell-can" data-rasi-idx="3" data-rasi-name="Cancer">
+                    <div class="rasi-code">Can</div>
+                    <div class="cell-planets" id="cell-planets-3"></div>
+                    <div class="cell-house-num" id="cell-house-3">8</div>
+                  </div>
+
+                  <!-- Rasi 9: Capricorn (Cap) -->
+                  <div class="rasi-cell cell-cap" data-rasi-idx="9" data-rasi-name="Capricorn">
+                    <div class="rasi-code">Cap</div>
+                    <div class="cell-planets" id="cell-planets-9"></div>
+                    <div class="cell-house-num" id="cell-house-9">2</div>
+                  </div>
+
+                  <!-- Rasi 4: Leo (Leo) -->
+                  <div class="rasi-cell cell-leo" data-rasi-idx="4" data-rasi-name="Leo">
+                    <div class="rasi-code">Leo</div>
+                    <div class="cell-planets" id="cell-planets-4"></div>
+                    <div class="cell-house-num" id="cell-house-4">9</div>
+                  </div>
+
+                  <!-- Rasi 8: Sagittarius (Sag) -->
+                  <div class="rasi-cell cell-sag" data-rasi-idx="8" data-rasi-name="Sagittarius">
+                    <div class="rasi-code">Sag</div>
+                    <div class="cell-planets" id="cell-planets-8"></div>
+                    <div class="cell-house-num" id="cell-house-8">1</div>
+                  </div>
+
+                  <!-- Rasi 7: Scorpio (Sco) -->
+                  <div class="rasi-cell cell-sco" data-rasi-idx="7" data-rasi-name="Scorpio">
+                    <div class="rasi-code">Sco</div>
+                    <div class="cell-planets" id="cell-planets-7"></div>
+                    <div class="cell-house-num" id="cell-house-7">12</div>
+                  </div>
+
+                  <!-- Rasi 6: Libra (Lib) -->
+                  <div class="rasi-cell cell-lib" data-rasi-idx="6" data-rasi-name="Libra">
+                    <div class="rasi-code">Lib</div>
+                    <div class="cell-planets" id="cell-planets-6"></div>
+                    <div class="cell-house-num" id="cell-house-6">11</div>
+                  </div>
+
+                  <!-- Rasi 5: Virgo (Vir) -->
+                  <div class="rasi-cell cell-vir" data-rasi-idx="5" data-rasi-name="Virgo">
+                    <div class="rasi-code">Vir</div>
+                    <div class="cell-planets" id="cell-planets-5"></div>
+                    <div class="cell-house-num" id="cell-house-5">10</div>
+                  </div>
+
+                </div>
+
+                <!-- Outer Planet Border Annotations (RIGHT) -->
+                <div class="jamma-slot slot-right-can" id="jw-right-can"></div>
+                <div class="jamma-slot slot-right-vir" id="jw-right-vir"></div>
+
+                <!-- Outer Planet Border Annotations (BOTTOM) -->
+                <div class="jamma-slot slot-bottom-sag" id="jw-bottom-sag"></div>
+                <div class="jamma-slot slot-bottom-lib" id="jw-bottom-lib"></div>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- PRINT-ONLY LANDSCAPE RIGHT SIDE PANEL (APPEARS IN PDF PRINT ONLY) -->
+          <div class="print-right-panel theme-red-yellow" id="printLandscapeRightSide">
+            
+            <!-- TOP: CLIENT & HORARY DETAILS BOX -->
+            <div class="print-meta-box theme-box">
+              <div class="print-meta-header">
+                <h2 id="printReportTitle">HORA CHART REPORT</h2>
+                <div class="print-system-tag">Vedic Horary System</div>
+              </div>
+              
+              <div class="print-details-grid">
+                <div class="meta-row"><strong>Name / Querent:</strong> <span id="printNameDisplay">Rajagopal</span></div>
+                <div class="meta-row"><strong>Date & Time (.ms):</strong> <span id="printDateTimeDisplay">20-Aug-2026 11:57:00.000 PM</span></div>
+                <div class="meta-row"><strong>Location:</strong> <span id="printLocDisplay">Bengaluru, Karnataka</span></div>
+                <div class="meta-row"><strong>Jamam & Hora:</strong> <span id="printJamamHoraDisplay">Thursday Jamam # 4 | Hora: Venus</span></div>
+                <div class="meta-row"><strong>Ayanamsa:</strong> <span id="printAyaDisplay">Lahiri 24° 12' 36"</span></div>
+                <div class="meta-row query-row" id="printQueryRow"><strong>Query / Notes:</strong> <span id="printNotesDisplay">-</span></div>
+              </div>
+            </div>
+
+            <!-- BOTTOM: FULL DETAILS 2-PART DEGREES BOX WITH PRECISE GRID SPACING -->
+            <div class="print-degrees-box theme-box">
+              <div class="print-box-title">Planetary & Special Point Degrees</div>
+              <div class="print-degrees-2col">
+                <div class="print-deg-col" id="printColLeft"></div>
+                <div class="print-deg-col" id="printColRight"></div>
+              </div>
+            </div>
+
           </div>
+
         </div>
 
-      </div>
+        <!-- 2B. OBSIDIAN CODEMIRROR MARKDOWN CONSULTATION NOTE EDITOR -->
+        <section class="details-section no-print" id="markdownEditorSection">
+          <div class="card-panel codemirror-card-panel">
+            <div class="card-header">
+              <div class="cm-header-left">
+                <h3>📝 Obsidian Markdown Consultation Note (CodeMirror Editor)</h3>
+                <span class="cm-file-pill" id="activeMarkdownFilename">Unsaved_Capture.md</span>
+              </div>
+              <div class="cm-header-actions">
+                <span class="badge badge-info" id="vaultSaveStatusBadge">Synced with Captured Chart</span>
+                <button class="ctrl-btn btn-secondary btn-sm" id="btnOpenVaultExplorer" title="Open Local Vault Folder in File Explorer" style="display:none;">📂 Open Vault Folder</button>
+                <button class="ctrl-btn btn-primary btn-sm" id="btnSaveEditorMd" title="Save Markdown (.md) Note to Local Vault (Ctrl+S)">💾 Save .md File (Ctrl+S)</button>
+              </div>
+            </div>
+            <div class="codemirror-wrapper">
+              <textarea id="codemirrorMarkdownInput" spellcheck="false"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. DETAILED PLANETARY DATA & KP SUB-LORDS TABLE -->
+        <section class="details-section no-print" id="printSectionKp">
+          <div class="card-panel">
+            <div class="card-header">
+              <h3 id="tableCardTitle">Planetary Placements & 4-Tier KP Sub-Lords (Captured Chart)</h3>
+              <span class="badge" id="ayanamsaBadge">Lahiri Ayanamsa: 24° 12' 40"</span>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table" id="kpDataTable">
+                <thead>
+                  <tr>
+                    <th>Body</th>
+                    <th>Rasi (Sign)</th>
+                    <th>House (0-11)</th>
+                    <th>Degree (DMS)</th>
+                    <th>Speed / Status</th>
+                    <th>Nakshatra - Pada</th>
+                    <th>Star Lord</th>
+                    <th>Sub Lord</th>
+                    <th>Sub-Sub Lord</th>
+                    <th>SSSL</th>
+                  </tr>
+                </thead>
+                <tbody id="kpTableBody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. JAMAKKOL OUTER WHEEL SUMMARY -->
+        <section class="details-section no-print" id="printSectionJamma">
+          <div class="card-panel">
+            <div class="card-header">
+              <h3>Outer Wheel Planets — Rotational Grahas (Captured Chart)</h3>
+              <span class="badge badge-info">8 Rotational Grahas</span>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Planet</th>
+                    <th>Rasi (Sign)</th>
+                    <th>House (0-11)</th>
+                    <th>Degree (DMS)</th>
+                    <th>Starting Deg (06:00 AM)</th>
+                    <th>KP Star Lord</th>
+                    <th>KP Sub Lord</th>
+                  </tr>
+                </thead>
+                <tbody id="jammaTableBody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </main>
 
     </div>
 
-    <!-- 3. DETAILED PLANETARY DATA & KP SUB-LORDS TABLE -->
-    <section class="details-section no-print" id="printSectionKp">
-      <div class="card-panel">
-        <div class="card-header">
-          <h3 id="tableCardTitle">Planetary Placements & 4-Tier KP Sub-Lords</h3>
-          <span class="badge" id="ayanamsaBadge">Lahiri Ayanamsa: 24° 12' 40"</span>
-        </div>
-        <div class="table-responsive">
-          <table class="data-table" id="kpDataTable">
-            <thead>
-              <tr>
-                <th>Body</th>
-                <th>Rasi (Sign)</th>
-                <th>House (0-11)</th>
-                <th>Degree (DMS)</th>
-                <th>Speed / Status</th>
-                <th>Nakshatra - Pada</th>
-                <th>Star Lord</th>
-                <th>Sub Lord</th>
-                <th>Sub-Sub Lord</th>
-                <th>SSSL</th>
-              </tr>
-            </thead>
-            <tbody id="kpTableBody">
-              <!-- Populated via JavaScript -->
-            </tbody>
-          </table>
-        </div>
+  </div>
+
+  <!-- 5. OBSIDIAN COMMAND PALETTE MODAL (Ctrl+P / Ctrl+K) -->
+  <div class="modal-overlay" id="commandPaletteModal">
+    <div class="modal-card cmd-palette-card">
+      <div class="cmd-search-bar">
+        <span class="cmd-icon">⌘</span>
+        <input type="text" id="cmdPaletteInput" class="cmd-input" placeholder="Type a command (e.g., Capture Millisecond, Save .md, Export PDF, D-9 Navamsha)..." autocomplete="off">
+        <span class="cmd-esc-hint">ESC</span>
       </div>
-    </section>
-
-    <!-- 4. JAMAKKOL OUTER WHEEL SUMMARY -->
-    <section class="details-section no-print" id="printSectionJamma">
-      <div class="card-panel">
-        <div class="card-header">
-          <h3>Outer Wheel Planets (Rotational Grahas)</h3>
-          <span class="badge badge-info">8 Rotational Grahas</span>
-        </div>
-        <div class="table-responsive">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Planet</th>
-                <th>Rasi (Sign)</th>
-                <th>House (0-11)</th>
-                <th>Degree (DMS)</th>
-                <th>Starting Deg (06:00 AM)</th>
-                <th>KP Star Lord</th>
-                <th>KP Sub Lord</th>
-              </tr>
-            </thead>
-            <tbody id="jammaTableBody">
-              <!-- Populated via JavaScript -->
-            </tbody>
-          </table>
-        </div>
+      <div class="cmd-list" id="cmdPaletteList">
+        <!-- Populated dynamically -->
       </div>
-    </section>
+    </div>
+  </div>
 
-  </main>
-
-  <!-- 5. SETTINGS MODAL -->
+  <!-- 6. SETTINGS MODAL -->
   <div class="modal-overlay" id="settingsModal">
     <div class="modal-card">
       <div class="modal-header">
@@ -495,10 +804,10 @@
     </div>
   </div>
 
-  <footer class="app-footer no-print">
-    Hora Chart & Vedic Astrology System • Powered by Swiss Ephemeris & Pure Python Vector Engine
-  </footer>
-
-  <script src="/static/app.js?v=4.1"></script>
+  <!-- CodeMirror 5 Scripts (Local Offline Bundle) -->
+  <script src="/static/vendor/codemirror/codemirror.min.js"></script>
+  <script src="/static/vendor/codemirror/markdown.min.js"></script>
+  <script src="/static/vendor/codemirror/yaml.min.js"></script>
+  <script src="/static/app.js?v=10.0"></script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+{
+  "appId": "com.jamakkol.horastudio",
+  "appName": "Jamakkol Hora Studio",
+  "webDir": "static",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1200,
+      "backgroundColor": "#111114"
+    }
+  }
+}
+

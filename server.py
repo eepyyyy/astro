@@ -24,6 +24,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+import time
+
+LAST_ACTIVITY_TIME = time.time()
+
+@app.middleware("http")
+async def add_no_cache_header(request: Request, call_next):
+    global LAST_ACTIVITY_TIME
+    LAST_ACTIVITY_TIME = time.time()
+    response = await call_next(request)
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
+
 class HoroscopeRequest(BaseModel):
     datetime_str: Optional[str] = None  # ISO format "YYYY-MM-DDTHH:MM:SS"
     latitude: float = 12.98117
@@ -128,6 +142,7 @@ def compute_horoscope_response(req: HoroscopeRequest) -> dict:
     hora_info = calculate_hora(horoscope.datetime_local)
 
     res_data = horoscope.model_dump(mode="json")
+    res_data["datetime_local"] = horoscope.datetime_local.isoformat(timespec="milliseconds")
     res_data["main_chart"]["mandi"] = mandi.model_dump(mode="json")
     res_data["hora_info"] = hora_info
     
@@ -203,7 +218,7 @@ def get_now(lat: float = 12.98117, lon: float = 77.48509, alt: float = 820.0, ti
     utc_now = datetime.now(timezone.utc)
     dt_local = (utc_now + timedelta(hours=time_offset)).replace(tzinfo=None)
     req = HoroscopeRequest(
-        datetime_str=dt_local.strftime("%Y-%m-%dT%H:%M:%S"),
+        datetime_str=dt_local.isoformat(timespec="milliseconds"),
         latitude=lat,
         longitude=lon,
         altitude=alt,
@@ -214,9 +229,89 @@ def get_now(lat: float = 12.98117, lon: float = 77.48509, alt: float = 820.0, ti
     return JSONResponse(content=data)
 
 
-# Ensure static directory exists
-STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+# Ensure static directory exists (supports PyInstaller _MEIPASS bundle path)
+BASE_DIR = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+STATIC_DIR = os.path.join(BASE_DIR, "static")
 os.makedirs(STATIC_DIR, exist_ok=True)
+
+# Default Local Markdown Vault Directory (Obsidian-style local .md files)
+WORK_ROOT = os.path.dirname(sys.executable) if getattr(sys, "frozen", False) else os.path.dirname(os.path.abspath(__file__))
+DEFAULT_VAULT_DIR = os.environ.get("JAMAKKOL_VAULT_DIR", os.path.join(WORK_ROOT, "HoraryVault"))
+os.makedirs(DEFAULT_VAULT_DIR, exist_ok=True)
+
+
+class VaultSaveRequest(BaseModel):
+    filename: str
+    markdown_content: str
+    vault_dir: Optional[str] = None
+
+
+@app.get("/api/vault/info")
+def get_vault_info(vault_dir: Optional[str] = None):
+    target_dir = vault_dir or DEFAULT_VAULT_DIR
+    os.makedirs(target_dir, exist_ok=True)
+    return {"vault_dir": target_dir, "vault_name": os.path.basename(target_dir.rstrip("\\/"))}
+
+
+@app.get("/api/vault/notes")
+def list_vault_notes(vault_dir: Optional[str] = None):
+    target_dir = vault_dir or DEFAULT_VAULT_DIR
+    os.makedirs(target_dir, exist_ok=True)
+    notes = []
+    for fname in os.listdir(target_dir):
+        if fname.lower().endswith(".md"):
+            fpath = os.path.join(target_dir, fname)
+            try:
+                stat = os.stat(fpath)
+                with open(fpath, "r", encoding="utf-8") as f:
+                    content = f.read()
+                notes.append({
+                    "filename": fname,
+                    "title": fname[:-3],
+                    "mtime": stat.st_mtime,
+                    "size": stat.st_size,
+                    "preview": content[:320]
+                })
+            except Exception:
+                pass
+    notes.sort(key=lambda x: x["mtime"], reverse=True)
+    return {"vault_dir": target_dir, "notes": notes}
+
+
+@app.post("/api/vault/save")
+def save_vault_note(req: VaultSaveRequest):
+    target_dir = req.vault_dir or DEFAULT_VAULT_DIR
+    os.makedirs(target_dir, exist_ok=True)
+    safe_name = "".join(c if c.isalnum() or c in "._- " else "_" for c in req.filename).strip()
+    if not safe_name.lower().endswith(".md"):
+        safe_name += ".md"
+    fpath = os.path.join(target_dir, safe_name)
+    with open(fpath, "w", encoding="utf-8") as f:
+        f.write(req.markdown_content)
+    return {"ok": True, "filename": safe_name, "path": fpath}
+
+
+@app.get("/api/vault/read")
+def read_vault_note(filename: str, vault_dir: Optional[str] = None):
+    target_dir = vault_dir or DEFAULT_VAULT_DIR
+    safe_name = os.path.basename(filename)
+    fpath = os.path.join(target_dir, safe_name)
+    if not os.path.exists(fpath):
+        raise HTTPException(status_code=404, detail="Vault note not found")
+    with open(fpath, "r", encoding="utf-8") as f:
+        content = f.read()
+    return {"filename": safe_name, "path": fpath, "markdown_content": content}
+
+
+@app.delete("/api/vault/delete")
+def delete_vault_note(filename: str, vault_dir: Optional[str] = None):
+    target_dir = vault_dir or DEFAULT_VAULT_DIR
+    safe_name = os.path.basename(filename)
+    fpath = os.path.join(target_dir, safe_name)
+    if os.path.exists(fpath):
+        os.remove(fpath)
+    return {"ok": True, "deleted": safe_name}
+
 
 # Mount static assets
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
@@ -227,6 +322,13 @@ def read_root():
     if os.path.exists(index_file):
         return FileResponse(index_file)
     return {"message": "Hora Chart API Backend Running. Please create static/index.html"}
+
+@app.get("/favicon.ico")
+def read_favicon():
+    fav_file = os.path.join(STATIC_DIR, "favicon.ico")
+    if os.path.exists(fav_file):
+        return FileResponse(fav_file)
+    raise HTTPException(status_code=404)
 
 
 if __name__ == '__main__':

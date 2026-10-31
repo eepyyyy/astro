@@ -21,3 +21,10 @@ venv/
 
 # Local scripts
 push_to_github.ps1
+
+# Node / Electron & Release binaries (uploaded to GitHub Releases)
+node_modules/
+release/
+release-electron/
+*.spec
+*.log
