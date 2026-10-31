@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog, shell } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog, shell, nativeImage } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const http = require("http");
@@ -231,7 +231,7 @@ ipcMain.handle("vault:list-notes", () => {
   return { vault_dir: activeVaultDir, notes };
 });
 
-ipcMain.handle("vault:save-note", (_event, { filename, markdownContent }) => {
+ipcMain.handle("vault:save-note", (_event, { filename, markdownContent, pngFilename, pngDataUrl }) => {
   ensureVaultDirectory();
   let safeName = String(filename || "Horary_Moment")
     .replace(/[^a-zA-Z0-9._\- ]/g, "_")
@@ -241,7 +241,45 @@ ipcMain.handle("vault:save-note", (_event, { filename, markdownContent }) => {
   }
   const fpath = path.join(activeVaultDir, safeName);
   fs.writeFileSync(fpath, markdownContent, "utf-8");
-  return { ok: true, filename: safeName, path: fpath };
+
+  let pngPath = null;
+  if (pngDataUrl && String(pngDataUrl).startsWith("data:image/png;base64,")) {
+    let safePng = String(pngFilename || safeName.slice(0, -3) + ".png")
+      .replace(/[^a-zA-Z0-9._\- ]/g, "_")
+      .trim();
+    if (!safePng.toLowerCase().endsWith(".png")) {
+      safePng += ".png";
+    }
+    pngPath = path.join(activeVaultDir, safePng);
+    const b64 = String(pngDataUrl).split(",")[1];
+    fs.writeFileSync(pngPath, Buffer.from(b64, "base64"));
+  }
+  return { ok: true, filename: safeName, path: fpath, pngPath };
+});
+
+ipcMain.on("chart:start-drag", (event, { pngFilename, pngDataUrl }) => {
+  try {
+    ensureVaultDirectory();
+    if (!pngDataUrl || !String(pngDataUrl).startsWith("data:image/png;base64,")) return;
+    let safePng = String(pngFilename || "Chart.png")
+      .replace(/[^a-zA-Z0-9._\- ]/g, "_")
+      .trim();
+    if (!safePng.toLowerCase().endsWith(".png")) {
+      safePng += ".png";
+    }
+    const pngPath = path.join(activeVaultDir, safePng);
+    const b64 = String(pngDataUrl).split(",")[1];
+    fs.writeFileSync(pngPath, Buffer.from(b64, "base64"));
+
+    const fullImg = nativeImage.createFromDataURL(pngDataUrl);
+    const dragIcon = fullImg.resize({ width: 140, height: 140 });
+    event.sender.startDrag({
+      file: pngPath,
+      icon: dragIcon
+    });
+  } catch (err) {
+    console.error("chart:start-drag error:", err);
+  }
 });
 
 ipcMain.handle("vault:read-note", (_event, { filename }) => {

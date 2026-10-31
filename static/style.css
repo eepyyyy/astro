@@ -468,23 +468,38 @@ body {
   gap: 8px;
 }
 
-.obs-status-pill {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
+.precision-toggle-btn {
+  -webkit-app-region: no-drag;
+  height: 26px;
+  padding: 0 10px;
   border-radius: var(--radius-xs);
-  background: var(--obs-bg-surface);
-  border: 1px solid var(--obs-border);
-  color: var(--text-muted);
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  background: rgba(124, 58, 237, 0.18);
+  color: var(--obs-purple-light);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
 }
 
-.ms-pill {
-  color: var(--obs-purple-light);
-  border-color: rgba(139, 92, 246, 0.35);
+.precision-toggle-btn:hover {
+  background: var(--obs-purple);
+  color: #ffffff;
+  border-color: var(--obs-purple-light);
+}
+
+.precision-toggle-btn.sec-mode {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: var(--obs-gold);
 }
 
 /* ==========================================================================
-   3. 3-COLUMN SPLIT STUDIO WORKSPACE AT VERY TOP
+   3. 2-COLUMN SPLIT CHARTS AT TOP + INSPECTOR/CODEMIRROR SPLIT BELOW
    ========================================================================== */
 
 .main-content {
@@ -497,10 +512,36 @@ body {
 
 .workspace-grid {
   display: grid;
-  grid-template-columns: minmax(380px, 1fr) 310px minmax(380px, 1fr);
-  gap: 12px;
+  grid-template-columns: minmax(420px, 1fr) minmax(420px, 1fr);
+  gap: 14px;
   margin-bottom: 16px;
   align-items: start;
+}
+
+.inspector-editor-split-grid {
+  display: grid;
+  grid-template-columns: 350px minmax(460px, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+  align-items: stretch;
+}
+
+.editor-column-section {
+  margin-bottom: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.codemirror-card-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.codemirror-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .chart-column {
@@ -593,6 +634,28 @@ body {
   border-radius: var(--radius-pill);
   font-size: 10.5px;
   font-weight: 600;
+}
+
+.drag-png-pill {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #34d399;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: grab;
+  user-select: none;
+  margin-right: 4px;
+}
+
+.drag-png-pill:active,
+.draggable-captured-frame:active {
+  cursor: grabbing;
+}
+
+.draggable-captured-frame {
+  cursor: grab;
 }
 
 /* ==========================================================================
@@ -1325,7 +1388,8 @@ body {
 }
 
 .CodeMirror {
-  height: 250px !important;
+  height: 460px !important;
+  flex: 1;
   background-color: var(--obs-bg-primary) !important;
   color: var(--text-main) !important;
   font-family: var(--font-mono) !important;
@@ -1636,7 +1700,8 @@ body {
    ========================================================================== */
 
 @media (max-width: 1180px) {
-  .workspace-grid {
+  .workspace-grid,
+  .inspector-editor-split-grid {
     grid-template-columns: 1fr;
     gap: 14px;
   }

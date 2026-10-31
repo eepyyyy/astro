@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <!-- CodeMirror 5 (Obsidian Stack Vanilla JS Editor) -->
   <link rel="stylesheet" href="/static/vendor/codemirror/codemirror.min.css">
-  <link rel="stylesheet" href="/static/style.css?v=10.0">
+  <link rel="stylesheet" href="/static/style.css?v=11.0">
 </head>
 <body class="obsidian-dark chart-theme-classic">
 
@@ -139,8 +139,9 @@
         </div>
 
         <div class="tabbar-right">
-          <span class="obs-status-pill ms-pill">⚡ 1ms (.mmm)</span>
-          <span class="obs-status-pill" id="stackBadgePill">Electron + CodeMirror</span>
+          <button class="precision-toggle-btn" id="btnTogglePrecision" title="Switch precision between Seconds (sec) and Milliseconds (.ms)">
+            ⏱️ <span id="precisionModeLabel">Millisec (.ms)</span>
+          </button>
 
           <!-- Native Frameless Window Controls (Visible when running inside Electron) -->
           <div class="electron-window-controls" id="electronWindowControls" style="display: none;">
@@ -172,7 +173,7 @@
                 <span class="panel-bar-time" id="liveHeaderClock">--:--:--.---</span>
               </div>
               <div class="panel-bar-right">
-                <span class="click-to-capture-pill">👆 Click chart to capture .ms →</span>
+                <span class="click-to-capture-pill" id="liveCaptureHintPill">👆 Click chart to capture →</span>
               </div>
             </div>
 
@@ -304,14 +305,192 @@
           </section>
 
           <!-- ====================================================================
-               MIDDLE COLUMN (IN BETWEEN BOTH CHARTS):
-               OBSIDIAN INSPECTOR: CAPTURE, .ms CONTROLS, VARGAS & PDF EXPORT
+               RIGHT SIDE: CAPTURED / SNAPSHOT HORARY CHART
+               POPULATED WHEN CLICKING THE LIVE RUNNING CHART OR USING CONTROLS
+               DRAGGABLE AS A PNG IMAGE (WITH ONLY QUERENT NAME IN PNG)
                ==================================================================== -->
-          <aside class="center-controls-column no-print" id="centerControlsColumn">
+          <section class="chart-column captured-chart-column" id="chartExportContainer">
+            <div class="chart-panel-bar captured-panel-bar no-print">
+              <div class="panel-bar-left">
+                <span class="captured-badge-icon">📌</span>
+                <span class="panel-bar-title">CAPTURED</span>
+                <span class="panel-bar-time" id="capturedHeaderClock">Captured Moment</span>
+              </div>
+              <div class="panel-bar-right">
+                <span class="drag-png-pill" id="btnDragChartPng" draggable="true" title="Drag this Captured Chart as a PNG image (contains only Querent Name in center)">🖼️ Drag PNG</span>
+                <span class="varga-active-pill" id="capturedVargaBadge">Hora Chart</span>
+              </div>
+            </div>
+
+            <div class="chart-canvas-wrapper">
+              <div class="jamakkol-chart-frame draggable-captured-frame" id="mainChartFrame" draggable="true" title="Drag to export this chart as a PNG image (only Querent Name in center)">
+
+                <!-- Outer Planet Border Annotations (TOP) -->
+                <div class="jamma-slot slot-top-ari" id="jw-top-ari"></div>
+                <div class="jamma-slot slot-top-gem" id="jw-top-gem"></div>
+
+                <!-- Outer Planet Border Annotations (LEFT) -->
+                <div class="jamma-slot slot-left-pis" id="jw-left-pis"></div>
+                <div class="jamma-slot slot-left-cap" id="jw-left-cap"></div>
+
+                <!-- Inner 12 Rasi South Indian Grid -->
+                <div class="south-indian-grid">
+                  
+                  <!-- Rasi 11: Pisces (Pis) -->
+                  <div class="rasi-cell cell-pis" data-rasi-idx="11" data-rasi-name="Pisces">
+                    <div class="rasi-code">Pis</div>
+                    <div class="cell-planets" id="cell-planets-11"></div>
+                    <div class="cell-house-num" id="cell-house-11">4</div>
+                  </div>
+
+                  <!-- Rasi 0: Aries (Ari) -->
+                  <div class="rasi-cell cell-ari" data-rasi-idx="0" data-rasi-name="Aries">
+                    <div class="rasi-code">Ari</div>
+                    <div class="cell-planets" id="cell-planets-0"></div>
+                    <div class="cell-house-num" id="cell-house-0">5</div>
+                  </div>
+
+                  <!-- Rasi 1: Taurus (Tau) -->
+                  <div class="rasi-cell cell-tau" data-rasi-idx="1" data-rasi-name="Taurus">
+                    <div class="rasi-code">Tau</div>
+                    <div class="cell-planets" id="cell-planets-1"></div>
+                    <div class="cell-house-num" id="cell-house-1">6</div>
+                  </div>
+
+                  <!-- Rasi 2: Gemini (Gem) -->
+                  <div class="rasi-cell cell-gem" data-rasi-idx="2" data-rasi-name="Gemini">
+                    <div class="rasi-code">Gem</div>
+                    <div class="cell-planets" id="cell-planets-2"></div>
+                    <div class="cell-house-num" id="cell-house-2">7</div>
+                  </div>
+
+                  <!-- Rasi 10: Aquarius (Aqu) -->
+                  <div class="rasi-cell cell-aqu" data-rasi-idx="10" data-rasi-name="Aquarius">
+                    <div class="rasi-code">Aqu</div>
+                    <div class="cell-planets" id="cell-planets-10"></div>
+                    <div class="cell-house-num" id="cell-house-10">3</div>
+                  </div>
+
+                  <!-- CENTER INFORMATION BOX (CAPTURED) -->
+                  <div class="rasi-center-box">
+                    <div class="center-content">
+                      <div class="horary-title" id="centerJamamTitle">HORA CHART, Thursday Jamam # 4</div>
+                      <div class="horary-time" id="centerTimeSubtitle">Thursday, 20-Aug-2026 11:19:08.000 PM (UTC+05:30)</div>
+                      <div class="horary-loc" id="centerLocationSubtitle">Bedarahalli, Bengaluru, Karnataka 560091<br><span id="centerCoords">12.98117 / 77.48509</span></div>
+                      
+                      <!-- 2-Column Planetary Degrees List (Sorted by Degree within sign) -->
+                      <div class="center-degrees-grid" id="centerDegreesList">
+                        <div class="deg-col-left" id="degColLeft"></div>
+                        <div class="deg-col-right" id="degColRight"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Rasi 3: Cancer (Can) -->
+                  <div class="rasi-cell cell-can" data-rasi-idx="3" data-rasi-name="Cancer">
+                    <div class="rasi-code">Can</div>
+                    <div class="cell-planets" id="cell-planets-3"></div>
+                    <div class="cell-house-num" id="cell-house-3">8</div>
+                  </div>
+
+                  <!-- Rasi 9: Capricorn (Cap) -->
+                  <div class="rasi-cell cell-cap" data-rasi-idx="9" data-rasi-name="Capricorn">
+                    <div class="rasi-code">Cap</div>
+                    <div class="cell-planets" id="cell-planets-9"></div>
+                    <div class="cell-house-num" id="cell-house-9">2</div>
+                  </div>
+
+                  <!-- Rasi 4: Leo (Leo) -->
+                  <div class="rasi-cell cell-leo" data-rasi-idx="4" data-rasi-name="Leo">
+                    <div class="rasi-code">Leo</div>
+                    <div class="cell-planets" id="cell-planets-4"></div>
+                    <div class="cell-house-num" id="cell-house-4">9</div>
+                  </div>
+
+                  <!-- Rasi 8: Sagittarius (Sag) -->
+                  <div class="rasi-cell cell-sag" data-rasi-idx="8" data-rasi-name="Sagittarius">
+                    <div class="rasi-code">Sag</div>
+                    <div class="cell-planets" id="cell-planets-8"></div>
+                    <div class="cell-house-num" id="cell-house-8">1</div>
+                  </div>
+
+                  <!-- Rasi 7: Scorpio (Sco) -->
+                  <div class="rasi-cell cell-sco" data-rasi-idx="7" data-rasi-name="Scorpio">
+                    <div class="rasi-code">Sco</div>
+                    <div class="cell-planets" id="cell-planets-7"></div>
+                    <div class="cell-house-num" id="cell-house-7">12</div>
+                  </div>
+
+                  <!-- Rasi 6: Libra (Lib) -->
+                  <div class="rasi-cell cell-lib" data-rasi-idx="6" data-rasi-name="Libra">
+                    <div class="rasi-code">Lib</div>
+                    <div class="cell-planets" id="cell-planets-6"></div>
+                    <div class="cell-house-num" id="cell-house-6">11</div>
+                  </div>
+
+                  <!-- Rasi 5: Virgo (Vir) -->
+                  <div class="rasi-cell cell-vir" data-rasi-idx="5" data-rasi-name="Virgo">
+                    <div class="rasi-code">Vir</div>
+                    <div class="cell-planets" id="cell-planets-5"></div>
+                    <div class="cell-house-num" id="cell-house-5">10</div>
+                  </div>
+
+                </div>
+
+                <!-- Outer Planet Border Annotations (RIGHT) -->
+                <div class="jamma-slot slot-right-can" id="jw-right-can"></div>
+                <div class="jamma-slot slot-right-vir" id="jw-right-vir"></div>
+
+                <!-- Outer Planet Border Annotations (BOTTOM) -->
+                <div class="jamma-slot slot-bottom-sag" id="jw-bottom-sag"></div>
+                <div class="jamma-slot slot-bottom-lib" id="jw-bottom-lib"></div>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- PRINT-ONLY LANDSCAPE RIGHT SIDE PANEL (APPEARS IN PDF PRINT ONLY) -->
+          <div class="print-right-panel theme-red-yellow" id="printLandscapeRightSide">
+            
+            <!-- TOP: CLIENT & HORARY DETAILS BOX -->
+            <div class="print-meta-box theme-box">
+              <div class="print-meta-header">
+                <h2 id="printReportTitle">HORA CHART REPORT</h2>
+                <div class="print-system-tag">Vedic Horary System</div>
+              </div>
+              
+              <div class="print-details-grid">
+                <div class="meta-row"><strong>Name / Querent:</strong> <span id="printNameDisplay">Rajagopal</span></div>
+                <div class="meta-row"><strong>Date & Time:</strong> <span id="printDateTimeDisplay">20-Aug-2026 11:57:00.000 PM</span></div>
+                <div class="meta-row"><strong>Location:</strong> <span id="printLocDisplay">Bengaluru, Karnataka</span></div>
+                <div class="meta-row"><strong>Jamam & Hora:</strong> <span id="printJamamHoraDisplay">Thursday Jamam # 4 | Hora: Venus</span></div>
+                <div class="meta-row"><strong>Ayanamsa:</strong> <span id="printAyaDisplay">Lahiri 24° 12' 36"</span></div>
+                <div class="meta-row query-row" id="printQueryRow"><strong>Query / Notes:</strong> <span id="printNotesDisplay">-</span></div>
+              </div>
+            </div>
+
+            <!-- BOTTOM: FULL DETAILS 2-PART DEGREES BOX WITH PRECISE GRID SPACING -->
+            <div class="print-degrees-box theme-box">
+              <div class="print-box-title">Planetary & Special Point Degrees</div>
+              <div class="print-degrees-2col">
+                <div class="print-deg-col" id="printColLeft"></div>
+                <div class="print-deg-col" id="printColRight"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- 2B. INSPECTOR CONTROLS (LEFT) + OBSIDIAN CODEMIRROR MARKDOWN EDITOR (RIGHT) -->
+        <div class="inspector-editor-split-grid no-print" id="inspectorEditorSplitGrid">
+
+          <!-- LEFT PART OF CODEMIRROR EDITOR: INSPECTOR, VARGAS, VAULT SAVE & PDF EXPORT -->
+          <aside class="center-controls-column" id="centerControlsColumn">
             
             <!-- 1. Active Captured Timestamp & Quick Capture Button -->
             <div class="mid-card mid-status-card">
-              <button id="btnNow" class="ctrl-btn btn-primary btn-capture-main" title="Capture exact current millisecond moment to Right Chart & Local Markdown Vault">
+              <button id="btnNow" class="ctrl-btn btn-primary btn-capture-main" title="Capture live moment onto Right Chart">
                 ⚡ Capture Exact Millisecond →
               </button>
               <div id="displayFormattedTime" class="mid-timestamp-text">Loading Horoscope...</div>
@@ -368,7 +547,7 @@
                   <input type="number" id="inpYear" class="num-input year-inp" min="1900" max="2100" value="2026">
                 </div>
                 <div class="field-item field-time-full">
-                  <label class="field-lbl">Time (.ms)</label>
+                  <label class="field-lbl" id="lblTimeInput">Time (.ms)</label>
                   <input type="time" id="inpTime" class="time-inp" step="0.001" value="18:30:00.000">
                 </div>
               </div>
@@ -464,10 +643,10 @@
                 <textarea id="clientNotesInput" class="form-control textarea-notes" rows="2" placeholder="Horary inquiry summary..."></textarea>
               </div>
               <div class="export-btn-row">
-                <button id="btnSaveMarkdownVault" class="ctrl-btn btn-secondary btn-vault-save" title="Save captured chart and CodeMirror notes to local .md file in HoraryVault">
+                <button id="btnSaveMarkdownVault" class="ctrl-btn btn-secondary btn-vault-save" title="Save captured chart (.md + .png) to HoraryVault">
                   💾 Save .md to Vault
                 </button>
-                <button id="btnSavePdf" class="ctrl-btn btn-save-export btn-primary" title="Export Single-Page Landscape PDF with exact millisecond filename">
+                <button id="btnSavePdf" class="ctrl-btn btn-save-export btn-primary" title="Export Single-Page Landscape PDF">
                   📄 Export PDF
                 </button>
               </div>
@@ -475,201 +654,27 @@
 
           </aside>
 
-          <!-- ====================================================================
-               RIGHT SIDE: CAPTURED / SNAPSHOT HORARY CHART
-               POPULATED WHEN CLICKING THE LIVE RUNNING CHART OR USING CONTROLS
-               ==================================================================== -->
-          <section class="chart-column captured-chart-column" id="chartExportContainer">
-            <div class="chart-panel-bar captured-panel-bar no-print">
-              <div class="panel-bar-left">
-                <span class="captured-badge-icon">📌</span>
-                <span class="panel-bar-title">CAPTURED</span>
-                <span class="panel-bar-time" id="capturedHeaderClock">Captured Moment</span>
-              </div>
-              <div class="panel-bar-right">
-                <span class="varga-active-pill" id="capturedVargaBadge">Hora Chart</span>
-              </div>
-            </div>
-
-            <div class="chart-canvas-wrapper">
-              <div class="jamakkol-chart-frame" id="mainChartFrame">
-
-                <!-- Outer Planet Border Annotations (TOP) -->
-                <div class="jamma-slot slot-top-ari" id="jw-top-ari"></div>
-                <div class="jamma-slot slot-top-gem" id="jw-top-gem"></div>
-
-                <!-- Outer Planet Border Annotations (LEFT) -->
-                <div class="jamma-slot slot-left-pis" id="jw-left-pis"></div>
-                <div class="jamma-slot slot-left-cap" id="jw-left-cap"></div>
-
-                <!-- Inner 12 Rasi South Indian Grid -->
-                <div class="south-indian-grid">
-                  
-                  <!-- Rasi 11: Pisces (Pis) -->
-                  <div class="rasi-cell cell-pis" data-rasi-idx="11" data-rasi-name="Pisces">
-                    <div class="rasi-code">Pis</div>
-                    <div class="cell-planets" id="cell-planets-11"></div>
-                    <div class="cell-house-num" id="cell-house-11">4</div>
-                  </div>
-
-                  <!-- Rasi 0: Aries (Ari) -->
-                  <div class="rasi-cell cell-ari" data-rasi-idx="0" data-rasi-name="Aries">
-                    <div class="rasi-code">Ari</div>
-                    <div class="cell-planets" id="cell-planets-0"></div>
-                    <div class="cell-house-num" id="cell-house-0">5</div>
-                  </div>
-
-                  <!-- Rasi 1: Taurus (Tau) -->
-                  <div class="rasi-cell cell-tau" data-rasi-idx="1" data-rasi-name="Taurus">
-                    <div class="rasi-code">Tau</div>
-                    <div class="cell-planets" id="cell-planets-1"></div>
-                    <div class="cell-house-num" id="cell-house-1">6</div>
-                  </div>
-
-                  <!-- Rasi 2: Gemini (Gem) -->
-                  <div class="rasi-cell cell-gem" data-rasi-idx="2" data-rasi-name="Gemini">
-                    <div class="rasi-code">Gem</div>
-                    <div class="cell-planets" id="cell-planets-2"></div>
-                    <div class="cell-house-num" id="cell-house-2">7</div>
-                  </div>
-
-                  <!-- Rasi 10: Aquarius (Aqu) -->
-                  <div class="rasi-cell cell-aqu" data-rasi-idx="10" data-rasi-name="Aquarius">
-                    <div class="rasi-code">Aqu</div>
-                    <div class="cell-planets" id="cell-planets-10"></div>
-                    <div class="cell-house-num" id="cell-cell-house-10">3</div>
-                  </div>
-
-                  <!-- CENTER INFORMATION BOX (CAPTURED) -->
-                  <div class="rasi-center-box">
-                    <div class="center-content">
-                      <div class="horary-title" id="centerJamamTitle">HORA CHART, Thursday Jamam # 4</div>
-                      <div class="horary-time" id="centerTimeSubtitle">Thursday, 20-Aug-2026 11:19:08.000 PM (UTC+05:30)</div>
-                      <div class="horary-loc" id="centerLocationSubtitle">Bedarahalli, Bengaluru, Karnataka 560091<br><span id="centerCoords">12.98117 / 77.48509</span></div>
-                      
-                      <!-- 2-Column Planetary Degrees List (Sorted by Degree within sign) -->
-                      <div class="center-degrees-grid" id="centerDegreesList">
-                        <div class="deg-col-left" id="degColLeft"></div>
-                        <div class="deg-col-right" id="degColRight"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Rasi 3: Cancer (Can) -->
-                  <div class="rasi-cell cell-can" data-rasi-idx="3" data-rasi-name="Cancer">
-                    <div class="rasi-code">Can</div>
-                    <div class="cell-planets" id="cell-planets-3"></div>
-                    <div class="cell-house-num" id="cell-house-3">8</div>
-                  </div>
-
-                  <!-- Rasi 9: Capricorn (Cap) -->
-                  <div class="rasi-cell cell-cap" data-rasi-idx="9" data-rasi-name="Capricorn">
-                    <div class="rasi-code">Cap</div>
-                    <div class="cell-planets" id="cell-planets-9"></div>
-                    <div class="cell-house-num" id="cell-house-9">2</div>
-                  </div>
-
-                  <!-- Rasi 4: Leo (Leo) -->
-                  <div class="rasi-cell cell-leo" data-rasi-idx="4" data-rasi-name="Leo">
-                    <div class="rasi-code">Leo</div>
-                    <div class="cell-planets" id="cell-planets-4"></div>
-                    <div class="cell-house-num" id="cell-house-4">9</div>
-                  </div>
-
-                  <!-- Rasi 8: Sagittarius (Sag) -->
-                  <div class="rasi-cell cell-sag" data-rasi-idx="8" data-rasi-name="Sagittarius">
-                    <div class="rasi-code">Sag</div>
-                    <div class="cell-planets" id="cell-planets-8"></div>
-                    <div class="cell-house-num" id="cell-house-8">1</div>
-                  </div>
-
-                  <!-- Rasi 7: Scorpio (Sco) -->
-                  <div class="rasi-cell cell-sco" data-rasi-idx="7" data-rasi-name="Scorpio">
-                    <div class="rasi-code">Sco</div>
-                    <div class="cell-planets" id="cell-planets-7"></div>
-                    <div class="cell-house-num" id="cell-house-7">12</div>
-                  </div>
-
-                  <!-- Rasi 6: Libra (Lib) -->
-                  <div class="rasi-cell cell-lib" data-rasi-idx="6" data-rasi-name="Libra">
-                    <div class="rasi-code">Lib</div>
-                    <div class="cell-planets" id="cell-planets-6"></div>
-                    <div class="cell-house-num" id="cell-house-6">11</div>
-                  </div>
-
-                  <!-- Rasi 5: Virgo (Vir) -->
-                  <div class="rasi-cell cell-vir" data-rasi-idx="5" data-rasi-name="Virgo">
-                    <div class="rasi-code">Vir</div>
-                    <div class="cell-planets" id="cell-planets-5"></div>
-                    <div class="cell-house-num" id="cell-house-5">10</div>
-                  </div>
-
+          <!-- RIGHT PART: OBSIDIAN CODEMIRROR MARKDOWN CONSULTATION NOTE EDITOR -->
+          <section class="details-section editor-column-section" id="markdownEditorSection">
+            <div class="card-panel codemirror-card-panel">
+              <div class="card-header">
+                <div class="cm-header-left">
+                  <h3>📝 Obsidian Markdown Consultation Note (CodeMirror Editor)</h3>
+                  <span class="cm-file-pill" id="activeMarkdownFilename">Unsaved_Capture.md</span>
                 </div>
-
-                <!-- Outer Planet Border Annotations (RIGHT) -->
-                <div class="jamma-slot slot-right-can" id="jw-right-can"></div>
-                <div class="jamma-slot slot-right-vir" id="jw-right-vir"></div>
-
-                <!-- Outer Planet Border Annotations (BOTTOM) -->
-                <div class="jamma-slot slot-bottom-sag" id="jw-bottom-sag"></div>
-                <div class="jamma-slot slot-bottom-lib" id="jw-bottom-lib"></div>
-
+                <div class="cm-header-actions">
+                  <span class="badge badge-info" id="vaultSaveStatusBadge">Unsaved Draft — Click Save .md</span>
+                  <button class="ctrl-btn btn-secondary btn-sm" id="btnOpenVaultExplorer" title="Open Local Vault Folder in File Explorer" style="display:none;">📂 Open Vault Folder</button>
+                  <button class="ctrl-btn btn-primary btn-sm" id="btnSaveEditorMd" title="Save Markdown (.md + .png) to Local Vault (Ctrl+S)">💾 Save .md File (Ctrl+S)</button>
+                </div>
+              </div>
+              <div class="codemirror-wrapper">
+                <textarea id="codemirrorMarkdownInput" spellcheck="false"></textarea>
               </div>
             </div>
           </section>
 
-          <!-- PRINT-ONLY LANDSCAPE RIGHT SIDE PANEL (APPEARS IN PDF PRINT ONLY) -->
-          <div class="print-right-panel theme-red-yellow" id="printLandscapeRightSide">
-            
-            <!-- TOP: CLIENT & HORARY DETAILS BOX -->
-            <div class="print-meta-box theme-box">
-              <div class="print-meta-header">
-                <h2 id="printReportTitle">HORA CHART REPORT</h2>
-                <div class="print-system-tag">Vedic Horary System</div>
-              </div>
-              
-              <div class="print-details-grid">
-                <div class="meta-row"><strong>Name / Querent:</strong> <span id="printNameDisplay">Rajagopal</span></div>
-                <div class="meta-row"><strong>Date & Time (.ms):</strong> <span id="printDateTimeDisplay">20-Aug-2026 11:57:00.000 PM</span></div>
-                <div class="meta-row"><strong>Location:</strong> <span id="printLocDisplay">Bengaluru, Karnataka</span></div>
-                <div class="meta-row"><strong>Jamam & Hora:</strong> <span id="printJamamHoraDisplay">Thursday Jamam # 4 | Hora: Venus</span></div>
-                <div class="meta-row"><strong>Ayanamsa:</strong> <span id="printAyaDisplay">Lahiri 24° 12' 36"</span></div>
-                <div class="meta-row query-row" id="printQueryRow"><strong>Query / Notes:</strong> <span id="printNotesDisplay">-</span></div>
-              </div>
-            </div>
-
-            <!-- BOTTOM: FULL DETAILS 2-PART DEGREES BOX WITH PRECISE GRID SPACING -->
-            <div class="print-degrees-box theme-box">
-              <div class="print-box-title">Planetary & Special Point Degrees</div>
-              <div class="print-degrees-2col">
-                <div class="print-deg-col" id="printColLeft"></div>
-                <div class="print-deg-col" id="printColRight"></div>
-              </div>
-            </div>
-
-          </div>
-
         </div>
-
-        <!-- 2B. OBSIDIAN CODEMIRROR MARKDOWN CONSULTATION NOTE EDITOR -->
-        <section class="details-section no-print" id="markdownEditorSection">
-          <div class="card-panel codemirror-card-panel">
-            <div class="card-header">
-              <div class="cm-header-left">
-                <h3>📝 Obsidian Markdown Consultation Note (CodeMirror Editor)</h3>
-                <span class="cm-file-pill" id="activeMarkdownFilename">Unsaved_Capture.md</span>
-              </div>
-              <div class="cm-header-actions">
-                <span class="badge badge-info" id="vaultSaveStatusBadge">Synced with Captured Chart</span>
-                <button class="ctrl-btn btn-secondary btn-sm" id="btnOpenVaultExplorer" title="Open Local Vault Folder in File Explorer" style="display:none;">📂 Open Vault Folder</button>
-                <button class="ctrl-btn btn-primary btn-sm" id="btnSaveEditorMd" title="Save Markdown (.md) Note to Local Vault (Ctrl+S)">💾 Save .md File (Ctrl+S)</button>
-              </div>
-            </div>
-            <div class="codemirror-wrapper">
-              <textarea id="codemirrorMarkdownInput" spellcheck="false"></textarea>
-            </div>
-          </div>
-        </section>
 
         <!-- 3. DETAILED PLANETARY DATA & KP SUB-LORDS TABLE -->
         <section class="details-section no-print" id="printSectionKp">
@@ -808,6 +813,6 @@
   <script src="/static/vendor/codemirror/codemirror.min.js"></script>
   <script src="/static/vendor/codemirror/markdown.min.js"></script>
   <script src="/static/vendor/codemirror/yaml.min.js"></script>
-  <script src="/static/app.js?v=10.0"></script>
+  <script src="/static/app.js?v=11.0"></script>
 </body>
 </html>

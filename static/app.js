@@ -55,6 +55,7 @@ const STATE = {
   cmdSelectedIndex: 0,
 
   // Shared Location & Calculation Settings
+  useMilliseconds: true,
   latitude: 12.98117,
   longitude: 77.48509,
   altitude: 820.0,
@@ -145,27 +146,51 @@ function startLiveChartLoop() {
   if (STATE.liveTimerId) clearInterval(STATE.liveTimerId);
   if (STATE.liveClockTickerId) clearInterval(STATE.liveClockTickerId);
 
-  // High-frequency millisecond display ticker (every 55ms so .mmm visibly spins)
+  const tickerInterval = STATE.useMilliseconds ? 55 : 250;
   STATE.liveClockTickerId = setInterval(() => {
     const now = new Date();
     STATE.liveDateTime = now;
     const liveClockEl = document.getElementById("liveHeaderClock");
     if (liveClockEl) {
-      liveClockEl.innerText = formatDateToCustomString(now, true);
+      liveClockEl.innerText = formatDateToCustomString(now, STATE.useMilliseconds);
     }
     const liveSubEl = document.getElementById("live-centerTimeSubtitle");
     if (liveSubEl && STATE.liveHoroscopeData) {
       const jamamInfo = STATE.liveHoroscopeData.jamam_info || {};
       const tzFormatted = formatTzOffset(STATE.timeOffset);
-      liveSubEl.innerText = `${jamamInfo.day_name || ''}, ${formatDateToCustomString(now, true)} (${tzFormatted})`;
+      liveSubEl.innerText = `${jamamInfo.day_name || ''}, ${formatDateToCustomString(now, STATE.useMilliseconds)} (${tzFormatted})`;
     }
-  }, 55);
+  }, tickerInterval);
 
-  // Ephemeris & Arudham/Udhayam refresh loop (every 500ms for responsive sub-second updates)
+  const fetchInterval = STATE.useMilliseconds ? 500 : 1000;
   STATE.liveTimerId = setInterval(() => {
     STATE.liveDateTime = new Date();
     fetchLiveHoroscope(false);
-  }, 500);
+  }, fetchInterval);
+}
+
+function togglePrecisionMode() {
+  STATE.useMilliseconds = !STATE.useMilliseconds;
+  const btn = document.getElementById("btnTogglePrecision");
+  const lbl = document.getElementById("precisionModeLabel");
+  const btnNow = document.getElementById("btnNow");
+  const lblTime = document.getElementById("lblTimeInput");
+  const inpTime = document.getElementById("inpTime");
+
+  if (lbl) lbl.innerText = STATE.useMilliseconds ? "Millisec (.ms)" : "Seconds (sec)";
+  if (btn) btn.classList.toggle("sec-mode", !STATE.useMilliseconds);
+  if (btnNow) {
+    btnNow.innerText = STATE.useMilliseconds
+      ? "⚡ Capture Exact Millisecond →"
+      : "⚡ Capture Exact Second →";
+  }
+  if (lblTime) lblTime.innerText = STATE.useMilliseconds ? "Time (.ms)" : "Time (sec)";
+  if (inpTime) inpTime.step = STATE.useMilliseconds ? "0.001" : "1";
+
+  startLiveChartLoop();
+  renderLiveChartFromState();
+  renderCapturedChartFromState();
+  updateCodeMirrorDraftFromCapturedChart();
 }
 
 function setupEventListeners() {
@@ -326,10 +351,69 @@ function setupEventListeners() {
   const btnToolbarPdf = document.getElementById("btnToolbarPdf");
   if (btnToolbarPdf) btnToolbarPdf.addEventListener("click", handleSavePdf);
 
+  const btnTogglePrecision = document.getElementById("btnTogglePrecision");
+  if (btnTogglePrecision) {
+    btnTogglePrecision.addEventListener("click", () => togglePrecisionMode());
+  }
+
+  // Drag Right Captured Chart as PNG Image (with only Querent Name in center)
+  const mainChartFrame = document.getElementById("mainChartFrame");
+  const btnDragChartPng = document.getElementById("btnDragChartPng");
+  const handleChartDragStart = (e) => {
+    if (!STATE.latestHoroscopeData) return;
+    const pngDataUrl = renderCapturedChartToPngDataUrl();
+    const pngFilename = buildPngFilename(STATE.latestHoroscopeData);
+
+    if (window.obsidianAPI && window.obsidianAPI.isElectron && window.obsidianAPI.startDragChartPng) {
+      e.preventDefault();
+      window.obsidianAPI.startDragChartPng(pngFilename, pngDataUrl);
+      return;
+    }
+
+    if (e.dataTransfer) {
+      e.dataTransfer.effectAllowed = "copy";
+      e.dataTransfer.setData("DownloadURL", `image/png:${pngFilename}:${pngDataUrl}`);
+      e.dataTransfer.setData("text/uri-list", pngDataUrl);
+      e.dataTransfer.setData("text/plain", pngFilename);
+    }
+  };
+
+  if (mainChartFrame) {
+    mainChartFrame.addEventListener("dragstart", handleChartDragStart);
+  }
+  if (btnDragChartPng) {
+    btnDragChartPng.addEventListener("dragstart", handleChartDragStart);
+    btnDragChartPng.addEventListener("click", () => {
+      if (!STATE.latestHoroscopeData) return;
+      const pngDataUrl = renderCapturedChartToPngDataUrl();
+      const pngFilename = buildPngFilename(STATE.latestHoroscopeData);
+      const a = document.createElement("a");
+      a.href = pngDataUrl;
+      a.download = pngFilename;
+      a.click();
+    });
+  }
+
   const clientNameInp = document.getElementById("clientNameInput");
   if (clientNameInp) {
-    clientNameInp.addEventListener("input", () => syncPdfDocumentTitle());
-    clientNameInp.addEventListener("change", () => syncPdfDocumentTitle());
+    clientNameInp.addEventListener("input", () => {
+      syncPdfDocumentTitle();
+      updateCodeMirrorDraftFromCapturedChart();
+    });
+    clientNameInp.addEventListener("change", () => {
+      syncPdfDocumentTitle();
+      updateCodeMirrorDraftFromCapturedChart();
+    });
+  }
+
+  const clientNotesInp = document.getElementById("clientNotesInput");
+  if (clientNotesInp) {
+    clientNotesInp.addEventListener("input", () => {
+      updateCodeMirrorDraftFromCapturedChart();
+    });
+    clientNotesInp.addEventListener("change", () => {
+      updateCodeMirrorDraftFromCapturedChart();
+    });
   }
 
   // Direct Date & Time Toolbar Inputs (with millisecond support)
@@ -428,40 +512,44 @@ function captureLiveMomentToRight() {
     rightFrame.classList.add("capture-flash");
   }
 
-  // Immediately render the latest live snapshot with the exact clicked millisecond timestamp,
-  // and also fetch exact sub-second ephemeris/arudham from the backend for this exact millisecond!
+  // Immediately render the latest live snapshot onto the Right Chart (DO NOT auto-save .md yet)
   if (STATE.liveHoroscopeData) {
     const instantCopy = JSON.parse(JSON.stringify(STATE.liveHoroscopeData));
     instantCopy.datetime_local = formatDateTimeLocal(exactClickMoment);
     STATE.latestHoroscopeData = instantCopy;
     renderCapturedChartFromState();
+    updateCodeMirrorDraftFromCapturedChart();
   }
 
-  fetchAndRenderCapturedHoroscope(true);
+  fetchAndRenderCapturedHoroscope(false);
 }
 
-function addSnapshotToVault(data) {
-  if (!data) return;
-  saveCapturedChartToVaultMd(data, true);
-}
-
-function buildMarkdownFilename(data) {
+function buildBaseFilename(data) {
   const clientNameEl = document.getElementById("clientNameInput");
   const clientName = ((clientNameEl ? clientNameEl.value.trim() : "") || "Rajagopal").replace(/[^a-zA-Z0-9_-]/g, "_");
   const dt = data && data.datetime_local ? new Date(data.datetime_local) : STATE.currentDateTime;
-  const timePart = formatDateToCustomString(dt, true).replace(/:/g, "-").replace(/\s+/g, "_");
-  return `${clientName}_${timePart}.md`;
+  const timePart = formatDateToCustomString(dt, STATE.useMilliseconds).replace(/:/g, "-").replace(/\s+/g, "_");
+  return `${clientName}_${timePart}`;
+}
+
+function buildMarkdownFilename(data) {
+  return `${buildBaseFilename(data)}.md`;
+}
+
+function buildPngFilename(data) {
+  return `${buildBaseFilename(data)}.png`;
 }
 
 function buildMarkdownFromHoroscope(data, customNotesText = null) {
   const dt = new Date(data.datetime_local);
-  const timeFormatted = formatDateToCustomString(dt, true);
+  const timeFormatted = formatDateToCustomString(dt, STATE.useMilliseconds);
   const clientNameEl = document.getElementById("clientNameInput");
   const clientNotesEl = document.getElementById("clientNotesInput");
   const querent = (clientNameEl ? clientNameEl.value.trim() : "") || "Rajagopal";
   const shortQuery = customNotesText !== null
     ? customNotesText
     : ((clientNotesEl ? clientNotesEl.value.trim() : "") || "General Jamakkol Horary Prasanam consultation.");
+  const pngName = buildPngFilename(data);
 
   const main = data.main_chart || {};
   const u = main.udhayam ? main.udhayam.housedetails : {};
@@ -495,12 +583,15 @@ function buildMarkdownFromHoroscope(data, customNotesText = null) {
     `udhayam: "${u.rasi || ""} (${u.DMS || ""})"`,
     `arudham: "${ar.rasi || ""} (${ar.DMS || ""})"`,
     `kavippu: "${kv.rasi || ""} (${kv.DMS || ""})"`,
+    `chart_png: "${pngName}"`,
     "tags:",
     "  - jamakkol-prasanam",
     "  - horary-consultation",
     "---",
     "",
     `# 🔮 Horary Reading: [[${querent}]] — ${timeFormatted}`,
+    "",
+    `![[${pngName}]]`,
     "",
     `- **Location**: ${STATE.cityName} (\`${STATE.latitude.toFixed(5)}, ${STATE.longitude.toFixed(5)}\`)`,
     `- **Jamam & Hora**: ${jamam.display_title || "HORA CHART"} | ${hora.hora_display || ""}`,
@@ -516,18 +607,198 @@ function buildMarkdownFromHoroscope(data, customNotesText = null) {
     "| Body | Rasi | House | Degree (DMS) | Nakshatra | Star / Sub Lord |",
     "| :--- | :--- | :---: | :--- | :--- | :--- |",
     pRows,
-    "",
-    "```horary-snapshot",
-    JSON.stringify(data),
-    "```",
     ""
   ].join("\n");
+}
+
+function updateCodeMirrorDraftFromCapturedChart() {
+  const data = STATE.latestHoroscopeData;
+  if (!data) return;
+  const filename = buildMarkdownFilename(data);
+  const mdContent = buildMarkdownFromHoroscope(data);
+
+  STATE.activeVaultFilename = filename;
+  const filePill = document.getElementById("activeMarkdownFilename");
+  if (filePill) filePill.innerText = filename;
+  const tabBreadcrumb = document.getElementById("activeTabBreadcrumb");
+  if (tabBreadcrumb) tabBreadcrumb.innerText = `HoraryVault / ${filename} (Draft)`;
+  const statusBadge = document.getElementById("vaultSaveStatusBadge");
+  if (statusBadge) statusBadge.innerText = "Unsaved Draft — Click Save .md";
+
+  if (STATE.codeMirrorEditor) {
+    STATE.codeMirrorEditor.setValue(mdContent);
+  } else {
+    const rawTa = document.getElementById("codemirrorMarkdownInput");
+    if (rawTa) rawTa.value = mdContent;
+  }
+}
+
+function renderCapturedChartToPngDataUrl() {
+  const size = 960;
+  const margin = 68;
+  const innerSize = size - margin * 2;
+  const cellSize = innerSize / 4;
+
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+
+  const isDarkChart = document.body.classList.contains("chart-theme-dark");
+  const bgOuter = isDarkChart ? "#16161a" : "#ffffff";
+  const bgCell = isDarkChart ? "#1e1e26" : "#fffcf0";
+  const bgCenter = isDarkChart ? "#141418" : "#fffdf5";
+  const borderColor = isDarkChart ? "#8b5cf6" : "#b81414";
+  const textMain = isDarkChart ? "#f4f4f6" : "#1e293b";
+  const rasiLabelColor = isDarkChart ? "#a78bfa" : "#6b5b3e";
+  const houseNumColor = isDarkChart ? "#34d399" : "#7c5826";
+
+  // 1. Outer Frame Background & Border
+  ctx.fillStyle = bgOuter;
+  ctx.fillRect(0, 0, size, size);
+  ctx.strokeStyle = borderColor;
+  ctx.lineWidth = 3;
+  ctx.strokeRect(4, 4, size - 8, size - 8);
+
+  // 2. Outer Jamma Planet Annotations (8 Slots around the 4 sides)
+  const getTxt = (id) => (document.getElementById(id)?.innerText || "").trim();
+  ctx.fillStyle = isDarkChart ? "#f472b6" : "#9c1010";
+  ctx.font = "bold 17px 'JetBrains Mono', Consolas, monospace";
+  ctx.textBaseline = "middle";
+
+  // Top slots (above Ari & Gem)
+  ctx.textAlign = "center";
+  ctx.fillText(getTxt("jw-top-ari"), margin + cellSize * 1.5, margin / 2);
+  ctx.fillText(getTxt("jw-top-gem"), margin + cellSize * 3.5, margin / 2);
+
+  // Bottom slots (below Sag & Lib)
+  ctx.fillText(getTxt("jw-bottom-sag"), margin + cellSize * 0.5, size - margin / 2);
+  ctx.fillText(getTxt("jw-bottom-lib"), margin + cellSize * 2.5, size - margin / 2);
+
+  // Left slots (rotated vertical along Pis & Cap)
+  ctx.save();
+  ctx.translate(margin / 2, margin + cellSize * 0.5);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText(getTxt("jw-left-pis"), 0, 0);
+  ctx.restore();
+
+  ctx.save();
+  ctx.translate(margin / 2, margin + cellSize * 2.5);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText(getTxt("jw-left-cap"), 0, 0);
+  ctx.restore();
+
+  // Right slots (rotated vertical along Can & Vir)
+  ctx.save();
+  ctx.translate(size - margin / 2, margin + cellSize * 1.5);
+  ctx.rotate(Math.PI / 2);
+  ctx.fillText(getTxt("jw-right-can"), 0, 0);
+  ctx.restore();
+
+  ctx.save();
+  ctx.translate(size - margin / 2, margin + cellSize * 3.5);
+  ctx.rotate(Math.PI / 2);
+  ctx.fillText(getTxt("jw-right-vir"), 0, 0);
+  ctx.restore();
+
+  // 3. Draw 12 South Indian Rasi Cells
+  const cellPositions = [
+    { rasi: 11, code: "Pis", col: 0, row: 0 },
+    { rasi: 0,  code: "Ari", col: 1, row: 0 },
+    { rasi: 1,  code: "Tau", col: 2, row: 0 },
+    { rasi: 2,  code: "Gem", col: 3, row: 0 },
+    { rasi: 10, code: "Aqu", col: 0, row: 1 },
+    { rasi: 3,  code: "Can", col: 3, row: 1 },
+    { rasi: 9,  code: "Cap", col: 0, row: 2 },
+    { rasi: 4,  code: "Leo", col: 3, row: 2 },
+    { rasi: 8,  code: "Sag", col: 0, row: 3 },
+    { rasi: 7,  code: "Sco", col: 1, row: 3 },
+    { rasi: 6,  code: "Lib", col: 2, row: 3 },
+    { rasi: 5,  code: "Vir", col: 3, row: 3 }
+  ];
+
+  cellPositions.forEach((cell) => {
+    const x = margin + cell.col * cellSize;
+    const y = margin + cell.row * cellSize;
+
+    ctx.fillStyle = bgCell;
+    ctx.fillRect(x, y, cellSize, cellSize);
+    ctx.strokeStyle = borderColor;
+    ctx.lineWidth = 2.5;
+    ctx.strokeRect(x, y, cellSize, cellSize);
+
+    // Rasi short code (top-left)
+    ctx.fillStyle = rasiLabelColor;
+    ctx.font = "bold 14px 'Inter', 'Segoe UI', sans-serif";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
+    ctx.fillText(cell.code, x + 8, y + 7);
+
+    // House number (bottom-right)
+    const houseEl = document.getElementById(`cell-house-${cell.rasi}`);
+    const houseTxt = houseEl ? houseEl.innerText.trim() : "";
+    ctx.fillStyle = houseNumColor;
+    ctx.font = "bold 15px 'JetBrains Mono', Consolas, monospace";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "bottom";
+    ctx.fillText(houseTxt, x + cellSize - 8, y + cellSize - 6);
+
+    // Planet & Special Tags inside cell
+    const planetsContainer = document.getElementById(`cell-planets-${cell.rasi}`);
+    if (planetsContainer) {
+      const tags = Array.from(planetsContainer.children);
+      const startY = y + 34;
+      const lineHeight = 25;
+      tags.forEach((tagEl, idx) => {
+        const txt = tagEl.innerText.trim();
+        const rowIdx = Math.floor(idx / 2);
+        const colIdx = idx % 2;
+        const tx = x + 12 + colIdx * (cellSize * 0.46);
+        const ty = startY + rowIdx * lineHeight;
+
+        if (tagEl.classList.contains("asc-tag")) {
+          ctx.fillStyle = isDarkChart ? "#34d399" : "#15803d";
+        } else if (tagEl.classList.contains("special-tag")) {
+          ctx.fillStyle = isDarkChart ? "#f43f5e" : "#b81414";
+        } else {
+          ctx.fillStyle = isDarkChart ? "#60a5fa" : "#0b3d91";
+        }
+        ctx.font = "bold 16px 'JetBrains Mono', Consolas, monospace";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "top";
+        ctx.fillText(txt, tx, ty);
+      });
+    }
+  });
+
+  // 4. Center 2x2 Box: ONLY THE QUERENT'S NAME (as requested by user!)
+  const cx = margin + cellSize;
+  const cy = margin + cellSize;
+  const cw = cellSize * 2;
+  const ch = cellSize * 2;
+
+  ctx.fillStyle = bgCenter;
+  ctx.fillRect(cx, cy, cw, ch);
+  ctx.strokeStyle = borderColor;
+  ctx.lineWidth = 3;
+  ctx.strokeRect(cx, cy, cw, ch);
+
+  const querentName = (document.getElementById("clientNameInput")?.value || "Rajagopal").trim() || "Rajagopal";
+  ctx.fillStyle = textMain;
+  ctx.font = "bold 36px 'Cinzel', 'Segoe UI', serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(querentName, cx + cw / 2, cy + ch / 2, cw - 32);
+
+  return canvas.toDataURL("image/png");
 }
 
 async function saveCapturedChartToVaultMd(data, isAutoCapture = false) {
   if (!data) return;
   const filename = buildMarkdownFilename(data);
+  const pngFilename = buildPngFilename(data);
   const mdContent = buildMarkdownFromHoroscope(data);
+  const pngDataUrl = renderCapturedChartToPngDataUrl();
 
   STATE.activeVaultFilename = filename;
   const filePill = document.getElementById("activeMarkdownFilename");
@@ -544,17 +815,22 @@ async function saveCapturedChartToVaultMd(data, isAutoCapture = false) {
 
   try {
     if (window.obsidianAPI && window.obsidianAPI.isElectron) {
-      await window.obsidianAPI.saveVaultNote(filename, mdContent);
+      await window.obsidianAPI.saveVaultNote(filename, mdContent, pngFilename, pngDataUrl);
     } else {
       await fetch("/api/vault/save", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ filename, markdown_content: mdContent })
+        body: JSON.stringify({
+          filename,
+          markdown_content: mdContent,
+          png_filename: pngFilename,
+          png_data_url: pngDataUrl
+        })
       });
     }
     const statusBadge = document.getElementById("vaultSaveStatusBadge");
     if (statusBadge) {
-      statusBadge.innerText = isAutoCapture ? `Auto-saved ${filename}` : `Saved ${filename} to Vault`;
+      statusBadge.innerText = `Saved ${filename} + .png ✓`;
     }
     await loadVaultNotesFromDisk();
   } catch (err) {
@@ -563,25 +839,40 @@ async function saveCapturedChartToVaultMd(data, isAutoCapture = false) {
 }
 
 async function saveActiveEditorMarkdownToVault() {
-  const filename = STATE.activeVaultFilename || buildMarkdownFilename(STATE.latestHoroscopeData);
+  const data = STATE.latestHoroscopeData;
+  const filename = buildMarkdownFilename(data);
+  const pngFilename = buildPngFilename(data);
+  const pngDataUrl = renderCapturedChartToPngDataUrl();
+
   const mdContent = STATE.codeMirrorEditor
     ? STATE.codeMirrorEditor.getValue()
     : (document.getElementById("codemirrorMarkdownInput")?.value || "");
 
   if (!mdContent.trim()) return;
 
+  STATE.activeVaultFilename = filename;
+  const filePill = document.getElementById("activeMarkdownFilename");
+  if (filePill) filePill.innerText = filename;
+  const tabBreadcrumb = document.getElementById("activeTabBreadcrumb");
+  if (tabBreadcrumb) tabBreadcrumb.innerText = `HoraryVault / ${filename}`;
+
   try {
     if (window.obsidianAPI && window.obsidianAPI.isElectron) {
-      await window.obsidianAPI.saveVaultNote(filename, mdContent);
+      await window.obsidianAPI.saveVaultNote(filename, mdContent, pngFilename, pngDataUrl);
     } else {
       await fetch("/api/vault/save", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ filename, markdown_content: mdContent })
+        body: JSON.stringify({
+          filename,
+          markdown_content: mdContent,
+          png_filename: pngFilename,
+          png_data_url: pngDataUrl
+        })
       });
     }
     const statusBadge = document.getElementById("vaultSaveStatusBadge");
-    if (statusBadge) statusBadge.innerText = `Saved ${filename} ✓`;
+    if (statusBadge) statusBadge.innerText = `Saved ${filename} + .png ✓`;
     await loadVaultNotesFromDisk();
   } catch (err) {
     console.error("Failed to save editor markdown:", err);
@@ -627,6 +918,8 @@ async function openVaultNoteByFilename(filename) {
     if (filePill) filePill.innerText = noteObj.filename;
     const tabBreadcrumb = document.getElementById("activeTabBreadcrumb");
     if (tabBreadcrumb) tabBreadcrumb.innerText = `HoraryVault / ${noteObj.filename}`;
+    const statusBadge = document.getElementById("vaultSaveStatusBadge");
+    if (statusBadge) statusBadge.innerText = `Loaded ${noteObj.filename}`;
 
     if (STATE.codeMirrorEditor) {
       STATE.codeMirrorEditor.setValue(noteObj.markdown_content);
@@ -635,21 +928,20 @@ async function openVaultNoteByFilename(filename) {
       if (rawTa) rawTa.value = noteObj.markdown_content;
     }
 
-    // Parse querent from YAML frontmatter if present
+    // Parse querent & timestamp from YAML frontmatter to restore the exact chart cleanly
     const querentMatch = noteObj.markdown_content.match(/^querent:\s*"([^"]+)"/m);
     if (querentMatch && document.getElementById("clientNameInput")) {
       document.getElementById("clientNameInput").value = querentMatch[1];
     }
+    const isoMatch = noteObj.markdown_content.match(/^captured_iso_ms:\s*"([^"]+)"/m);
+    const latMatch = noteObj.markdown_content.match(/^latitude:\s*([0-9.\-]+)/m);
+    const lonMatch = noteObj.markdown_content.match(/^longitude:\s*([0-9.\-]+)/m);
+    if (latMatch) STATE.latitude = parseFloat(latMatch[1]) || STATE.latitude;
+    if (lonMatch) STATE.longitude = parseFloat(lonMatch[1]) || STATE.longitude;
 
-    // Extract embedded ```horary-snapshot JSON block to restore the exact chart!
-    const snapMatch = noteObj.markdown_content.match(/```horary-snapshot\s*([\s\S]*?)```/);
-    if (snapMatch && snapMatch[1]) {
-      const parsedChart = JSON.parse(snapMatch[1].trim());
-      STATE.latestHoroscopeData = parsedChart;
-      if (parsedChart.datetime_local) {
-        STATE.currentDateTime = new Date(parsedChart.datetime_local);
-      }
-      renderCapturedChartFromState();
+    if (isoMatch && isoMatch[1]) {
+      STATE.currentDateTime = new Date(isoMatch[1]);
+      await fetchAndRenderCapturedHoroscope(false, true);
     }
     renderVaultList();
   } catch (err) {
@@ -833,8 +1125,8 @@ async function fetchLiveHoroscope(alsoInitCaptured = false) {
     if (alsoInitCaptured || !STATE.latestHoroscopeData) {
       STATE.currentDateTime = new Date(targetTime);
       STATE.latestHoroscopeData = JSON.parse(JSON.stringify(data));
-      addSnapshotToVault(STATE.latestHoroscopeData);
       renderCapturedChartFromState();
+      updateCodeMirrorDraftFromCapturedChart();
     }
   } catch (err) {
     console.error("Failed to fetch live horoscope:", err);
@@ -843,7 +1135,7 @@ async function fetchLiveHoroscope(alsoInitCaptured = false) {
   }
 }
 
-async function fetchAndRenderCapturedHoroscope(saveToVault = false) {
+async function fetchAndRenderCapturedHoroscope(saveToVault = false, preserveEditorContent = false) {
   const payload = {
     datetime_str: formatDateTimeLocal(STATE.currentDateTime),
     latitude: STATE.latitude,
@@ -867,10 +1159,13 @@ async function fetchAndRenderCapturedHoroscope(saveToVault = false) {
 
     const data = await res.json();
     STATE.latestHoroscopeData = data;
-    if (saveToVault) {
-      addSnapshotToVault(data);
-    }
     renderCapturedChartFromState();
+    if (!preserveEditorContent) {
+      updateCodeMirrorDraftFromCapturedChart();
+    }
+    if (saveToVault) {
+      await saveCapturedChartToVaultMd(data, false);
+    }
   } catch (err) {
     console.error("Failed to fetch captured horoscope:", err);
     document.getElementById("displayFormattedTime").innerText = "Error calculating horoscope: " + err.message;
@@ -887,7 +1182,7 @@ function renderLiveChartFromState() {
 
   const dt = new Date(STATE.liveDateTime);
   const tzFormatted = formatTzOffset(data.main_chart ? STATE.timeOffset : 5.5);
-  const formattedHeaderTime = formatDateToCustomString(dt, true) + ` (${tzFormatted})`;
+  const formattedHeaderTime = formatDateToCustomString(dt, STATE.useMilliseconds) + ` (${tzFormatted})`;
 
   // Update Hora in Header Top Bar from Live Chart
   const horaInfo = data.hora_info;
@@ -905,15 +1200,15 @@ function renderCapturedChartFromState() {
 
   const dt = new Date(data.datetime_local);
   const tzFormatted = formatTzOffset(data.main_chart ? STATE.timeOffset : 5.5);
-  const formattedHeaderTime = formatDateToCustomString(dt, true) + ` (${tzFormatted})`;
+  const formattedHeaderTime = formatDateToCustomString(dt, STATE.useMilliseconds) + ` (${tzFormatted})`;
 
-  // Update Center Inspector & Captured Header Clock (with milliseconds)
+  // Update Center Inspector & Captured Header Clock
   document.getElementById("displayFormattedTime").innerText = `${formattedHeaderTime}`;
   document.getElementById("displayLocationSub").innerText = `${STATE.cityName} (${STATE.latitude.toFixed(4)} / ${STATE.longitude.toFixed(4)})`;
 
   const capturedClockEl = document.getElementById("capturedHeaderClock");
   if (capturedClockEl) {
-    capturedClockEl.innerText = formatDateToCustomString(dt, true);
+    capturedClockEl.innerText = formatDateToCustomString(dt, STATE.useMilliseconds);
   }
 
   // Sync Toolbar Inputs (if not currently focused)
@@ -931,7 +1226,7 @@ function renderCapturedChartFromState() {
     const mm = String(dt.getMinutes()).padStart(2, '0');
     const ss = String(dt.getSeconds()).padStart(2, '0');
     const ms = String(dt.getMilliseconds()).padStart(3, '0');
-    timeInp.value = `${hh}:${mm}:${ss}.${ms}`;
+    timeInp.value = STATE.useMilliseconds ? `${hh}:${mm}:${ss}.${ms}` : `${hh}:${mm}:${ss}`;
   }
   if (cityInp && document.activeElement !== cityInp) {
     cityInp.value = STATE.cityName;
@@ -1437,7 +1732,7 @@ function syncPdfDocumentTitle() {
   const chartDt = STATE.latestHoroscopeData && STATE.latestHoroscopeData.datetime_local
     ? new Date(STATE.latestHoroscopeData.datetime_local)
     : STATE.currentDateTime;
-  const chartTimeStr = formatDateToCustomString(chartDt, true).replace(/:/g, "-").replace(/\s+/g, "_");
+  const chartTimeStr = formatDateToCustomString(chartDt, STATE.useMilliseconds).replace(/:/g, "-").replace(/\s+/g, "_");
   document.title = `${clientName}_${chartTimeStr}`;
 }
 
@@ -1445,7 +1740,7 @@ async function handleSavePdf() {
   if (STATE.latestHoroscopeData) {
     const dt = new Date(STATE.latestHoroscopeData.datetime_local);
     const tzFormatted = formatTzOffset(STATE.timeOffset);
-    const formattedHeaderTime = formatDateToCustomString(dt, true) + ` (${tzFormatted})`;
+    const formattedHeaderTime = formatDateToCustomString(dt, STATE.useMilliseconds) + ` (${tzFormatted})`;
     updatePrintLandscapeData(STATE.latestHoroscopeData, formattedHeaderTime);
   }
   syncPdfDocumentTitle();

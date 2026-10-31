@@ -243,6 +243,8 @@ os.makedirs(DEFAULT_VAULT_DIR, exist_ok=True)
 class VaultSaveRequest(BaseModel):
     filename: str
     markdown_content: str
+    png_filename: Optional[str] = None
+    png_data_url: Optional[str] = None
     vault_dir: Optional[str] = None
 
 
@@ -280,6 +282,7 @@ def list_vault_notes(vault_dir: Optional[str] = None):
 
 @app.post("/api/vault/save")
 def save_vault_note(req: VaultSaveRequest):
+    import base64
     target_dir = req.vault_dir or DEFAULT_VAULT_DIR
     os.makedirs(target_dir, exist_ok=True)
     safe_name = "".join(c if c.isalnum() or c in "._- " else "_" for c in req.filename).strip()
@@ -288,7 +291,19 @@ def save_vault_note(req: VaultSaveRequest):
     fpath = os.path.join(target_dir, safe_name)
     with open(fpath, "w", encoding="utf-8") as f:
         f.write(req.markdown_content)
-    return {"ok": True, "filename": safe_name, "path": fpath}
+
+    png_saved_path = None
+    if req.png_data_url and req.png_data_url.startswith("data:image/png;base64,"):
+        raw_png_name = req.png_filename or (safe_name[:-3] + ".png")
+        safe_png = "".join(c if c.isalnum() or c in "._- " else "_" for c in raw_png_name).strip()
+        if not safe_png.lower().endswith(".png"):
+            safe_png += ".png"
+        png_saved_path = os.path.join(target_dir, safe_png)
+        b64_part = req.png_data_url.split(",", 1)[1]
+        with open(png_saved_path, "wb") as pf:
+            pf.write(base64.b64decode(b64_part))
+
+    return {"ok": True, "filename": safe_name, "path": fpath, "png_path": png_saved_path}
 
 
 @app.get("/api/vault/read")
